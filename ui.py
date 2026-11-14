@@ -72,7 +72,12 @@ summary{cursor:pointer;font-weight:600}details ul{padding-left:20px;margin:8px 0
 details h3{margin-top:16px}
 table{width:100%;border-collapse:collapse;font-size:.88rem;margin:8px 0}th,td{text-align:right;padding:7px 4px;border-bottom:1px solid var(--line)}
 th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-weight:500;font-size:.78rem}
-tr.me td{font-weight:700}.note{color:var(--mute);font-size:.8rem;margin:6px 0 0}
+tr.me td{font-weight:700}.tw{overflow-x:auto}.tw table{font-size:.8rem}.tw th,.tw td{padding:7px 3px}.note{color:var(--mute);font-size:.8rem;margin:6px 0 0}
+.seg{display:flex;gap:8px;margin-top:8px}.seg button{flex:1;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0d1117;color:var(--mute);font-weight:600}
+.seg button.on{background:var(--acc);border-color:var(--acc);color:#04111f}
+.duo{display:flex;justify-content:space-between;align-items:flex-end}.duo .r{text-align:right}.duo span{display:block;color:var(--mute);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+.split{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:14px 0 8px;background:var(--down)}.split i{background:var(--acc)}
+.roc{display:block;width:100%;max-width:260px;margin:8px 0}
 footer{color:var(--mute);font-size:.8rem;margin-top:22px;text-align:center}
 @media(max-width:420px){.card{padding:12px}.big{font-size:2.7rem}.fh label{font-size:.84rem}.num{width:58px}}
 """
@@ -118,6 +123,10 @@ const sg=v=>(v>0?'+':'')+n1(v);
 let meta,vals={},ctl={},lineInput;
 
 function field(f){
+  if(f.choices){const w=el('div','f'),seg=el('div','seg'),btn={};w.appendChild(el('label',null,f.label));
+    const set=v=>{vals[f.name]=v;Object.keys(btn).forEach(k=>btn[k].className=(+k===v?'on':''))};
+    Object.keys(f.choices).forEach(k=>{const b=el('button',null,f.choices[k]);b.type='button';b.onclick=()=>set(+k);btn[k]=b;seg.appendChild(b)});
+    ctl[f.name]=set;set(f.default);w.appendChild(seg);w.appendChild(el('p',null,f.description));return w}
   const w=el('div','f'),h=el('div','fh'),lab=el('label',null,f.label);
   if(f.unit){lab.appendChild(document.createTextNode(' '));lab.appendChild(el('small',null,f.unit))}
   const num=el('input','num');num.type='number';num.inputMode='decimal';num.step=f.step;num.min=f.hard_min;num.max=f.hard_max;
@@ -150,17 +159,64 @@ function about(){
   const ul=el('ul');c.findings.forEach(t=>ul.appendChild(el('li',null,t)));b.appendChild(ul);
   b.appendChild(el('h3',null,'How accurate is it?'));
   b.appendChild(el('p','note','Tested on the '+c.holdout_label+'.'));
-  const t=el('table'),hr=el('tr');['Method','Average miss','RMSE','R²'].forEach(x=>hr.appendChild(el('th',null,x)));t.appendChild(hr);
-  c.accuracy.forEach((a,i)=>{const r=el('tr',i?'':'me');[a.name,a.mae.toFixed(1)+' pts',a.rmse.toFixed(1),a.r2.toFixed(2)].forEach(x=>r.appendChild(el('td',null,x)));t.appendChild(r)});
-  b.appendChild(t);
-  b.appendChild(el('p','note','Average miss is how far off the prediction was on a typical game. RMSE is similar but punishes big misses more. R² is the share of game-to-game differences the method explains (1.00 would be perfect).'));
-  b.appendChild(el('h3',null,'Can you trust the range?'));
-  b.appendChild(el('p',null,'In the test games, the real final score landed inside the 80% range '+Math.round(c.coverage['80']*100)+'% of the time and inside the 95% range '+Math.round(c.coverage['95']*100)+'% of the time. That is what honest ranges should do.'));
+  const cols=c.accuracy_columns||[['mae','Average miss','pts'],['rmse','RMSE','num1'],['r2','R²','num']];
+  const show=(v,k)=>v==null?'–':k==='pct'?Math.round(v*100)+'%':k==='pts'?v.toFixed(1)+' pts':k==='num1'?v.toFixed(1):v.toFixed(2);
+  const t=el('table'),hr=el('tr');['Method',...cols.map(x=>x[1])].forEach(x=>hr.appendChild(el('th',null,x)));t.appendChild(hr);
+  c.accuracy.forEach((a,i)=>{const r=el('tr',i?'':'me');r.appendChild(el('td',null,a.name));cols.forEach(x=>r.appendChild(el('td',null,show(a[x[0]],x[2]))));t.appendChild(r)});
+  const tw=el('div','tw');tw.appendChild(t);b.appendChild(tw);
+  b.appendChild(el('p','note',c.metric_note||'Average miss is how far off the prediction was on a typical game. RMSE is similar but punishes big misses more. R² is the share of game-to-game differences the method explains (1.00 would be perfect).'));
+  if(c.roc){b.appendChild(el('h3',null,'ROC curve'));
+    const NS='http://www.w3.org/2000/svg',sv=document.createElementNS(NS,'svg');sv.setAttribute('viewBox','0 0 220 220');sv.setAttribute('class','roc');
+    const mk=(n,at)=>{const e=document.createElementNS(NS,n);Object.keys(at).forEach(k=>e.setAttribute(k,at[k]));sv.appendChild(e);return e};
+    mk('rect',{x:30,y:10,width:180,height:180,fill:'none',stroke:'#30363d'});
+    mk('line',{x1:30,y1:190,x2:210,y2:10,stroke:'#8b949e','stroke-dasharray':'4 4'});
+    mk('polyline',{points:c.roc.map(p=>(30+p[0]*180)+','+(190-p[1]*180)).join(' '),fill:'none',stroke:'#58a6ff','stroke-width':3});
+    mk('text',{x:120,y:212,fill:'#8b949e','font-size':11,'text-anchor':'middle'}).textContent='False alarms (away wins called home)';
+    mk('text',{x:12,y:100,fill:'#8b949e','font-size':11,'text-anchor':'middle',transform:'rotate(-90 12 100)'}).textContent='Home wins caught';
+    b.appendChild(sv);
+    b.appendChild(el('p','note','The further the blue line bows toward the top-left corner, the better the model separates wins from losses. The dashed line is a coin flip.'))}
+  if(c.calibration){b.appendChild(el('h3',null,'Can you trust the percentages?'));
+    b.appendChild(el('p','note','Test games grouped by what the model said, next to what really happened. Close numbers mean the percentages are honest.'));
+    const ct=el('table'),ch=el('tr');['Model said','Games','Avg predicted','Home actually won'].forEach(x=>ch.appendChild(el('th',null,x)));ct.appendChild(ch);
+    c.calibration.forEach(k=>{const r=el('tr');[k.range,k.n,Math.round(k.predicted*100)+'%',Math.round(k.actual*100)+'%'].forEach(x=>r.appendChild(el('td',null,x)));ct.appendChild(r)});
+    b.appendChild(ct);
+    if(c.confident)b.appendChild(el('p',null,'When the model was at least 80% sure (about '+Math.round(c.confident.share*100)+'% of test games), it was right '+Math.round(c.confident.accuracy*100)+'% of the time. When it was under 60% sure, it was right '+Math.round(c.confident.tossup_accuracy*100)+'% of the time.'))}
+  if(c.coverage){b.appendChild(el('h3',null,'Can you trust the range?'));
+    b.appendChild(el('p',null,'In the test games, the real final score landed inside the 80% range '+Math.round(c.coverage['80']*100)+'% of the time and inside the 95% range '+Math.round(c.coverage['95']*100)+'% of the time. That is what honest ranges should do.'))}
   b.appendChild(el('h3',null,'Limitations'));
   const ul2=el('ul');c.limitations.forEach(t=>ul2.appendChild(el('li',null,t)));b.appendChild(ul2);
-  b.appendChild(el('p','note','Linear regression trained on '+c.n_games.toLocaleString()+' games from the '+c.seasons[0]+' to '+c.seasons[1]+' seasons, after testing '+c.candidates_tested+' candidate inputs. Last trained '+c.trained_on+'. Data: nflverse.'));
+  b.appendChild(el('p','note',(c.model_kind||'Linear regression')+' trained on '+c.n_games.toLocaleString()+' games from the '+c.seasons[0]+' to '+c.seasons[1]+' seasons, after testing '+c.candidates_tested+' candidate inputs. Last trained '+c.trained_on+'. Data: nflverse.'));
+}
+function extras(box,r){
+  const why=el('div','blk');why.appendChild(el('h3',null,'The short version'));why.appendChild(el('p',null,r.synopsis));box.appendChild(why);
+  if(r.warnings.length){const w=el('div','warn');w.appendChild(el('b',null,'Unusual inputs'));const ul=el('ul');r.warnings.forEach(t=>ul.appendChild(el('li',null,t)));w.appendChild(ul);box.appendChild(w)}
+}
+function bars(box,r,note,suffix){
+  const d=el('div','blk');d.appendChild(el('h3',null,'What moved this prediction'));d.appendChild(el('p','note',note));
+  const mx=Math.max(1,...r.drivers.map(x=>Math.abs(x.effect)));
+  r.drivers.forEach(x=>{const row=el('div','drv'),nm=el('div','nm',(x.side?x.side+' ':'')+x.label.toLowerCase().replace(/^./,c=>x.side?c:c.toUpperCase()));
+    nm.appendChild(el('small',null,(x.value_label||n1(x.value)+(x.unit?' '+x.unit:''))+(x.computed?' (computed)':'')+(x.typical!=null?' · typical '+n1(x.typical):'')));
+    const tr=el('div','tr'),i=el('i'),w=Math.abs(x.effect)/mx*50;i.style.width=w+'%';i.style.left=x.effect>=0?'50%':(50-w)+'%';
+    i.style.background=x.effect>=0?'var(--up)':'var(--down)';tr.appendChild(i);
+    const tiny=Math.abs(x.effect)<0.05;row.appendChild(nm);row.appendChild(tr);row.appendChild(el('div','v '+(tiny?'':x.effect>=0?'up':'dn'),tiny?'0':sg(x.effect)+(suffix||'')));d.appendChild(row)});
+  box.appendChild(d);
+}
+function renderProb(r){
+  const box=$('result');box.replaceChildren();box.hidden=false;const p=r.probability,P=r.labels.positive,N=r.labels.negative;
+  box.appendChild(el('p','cat','Chance to win the game'));
+  const duo=el('div','duo'),l=el('div'),rt=el('div','r');
+  l.appendChild(el('span',null,P));l.appendChild(el('div','big',Math.round(p*100)+'%'));
+  rt.appendChild(el('span',null,N));rt.appendChild(el('div','big',(100-Math.round(p*100))+'%'));
+  duo.appendChild(l);duo.appendChild(rt);box.appendChild(duo);
+  const sp=el('div','split'),i=el('i');i.style.width=(p*100)+'%';sp.appendChild(i);box.appendChild(sp);
+  const i95=r.intervals['95'];
+  box.appendChild(el('p','note','The model is 95% sure the true '+P.toLowerCase()+' chance for games like this is between '+Math.round(i95.low*100)+'% and '+Math.round(i95.high*100)+'%.'));
+  extras(box,r);
+  bars(box,r,'Start from an average game ('+Math.round(r.baseline*100)+'% '+P.toLowerCase()+'). Each bar shows how many percentage points that input, on its own, moves the win chance for the '+P.toLowerCase()+' team.','');
+  box.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function render(r){
+  if(r.kind==='probability')return renderProb(r);
   const u=meta.target.unit||'',box=$('result');box.replaceChildren();box.hidden=false;
   box.appendChild(el('p','cat','Expected '+meta.target.label.toLowerCase()));
   const big=el('div','big',n1(r.prediction));big.appendChild(el('small',null,u));box.appendChild(big);
@@ -188,17 +244,8 @@ function render(r){
     l.textContent=Math.abs(c.gap)<1.5?'Right on the line. No real lean either way ('+Math.round(c.p_over*100)+'% chance of going over).'
       :'Model leans '+c.lean.toUpperCase()+' by '+n1(Math.abs(c.gap))+' '+u+'. About '+Math.round(c.p_over*100)+'% chance of going over.';
     box.appendChild(l)}
-  const why=el('div','blk');why.appendChild(el('h3',null,'The short version'));why.appendChild(el('p',null,r.synopsis));box.appendChild(why);
-  if(r.warnings.length){const w=el('div','warn');w.appendChild(el('b',null,'Unusual inputs'));const ul=el('ul');r.warnings.forEach(t=>ul.appendChild(el('li',null,t)));w.appendChild(ul);box.appendChild(w)}
-  const d=el('div','blk');d.appendChild(el('h3',null,'What moved this prediction'));
-  d.appendChild(el('p','note','Start from an average game ('+n1(r.baseline)+' '+u+'). Each bar shows how many points your input adds or removes.'));
-  const mx=Math.max(1,...r.drivers.map(x=>Math.abs(x.effect)));
-  r.drivers.forEach(x=>{const row=el('div','drv'),nm=el('div','nm',(x.side?x.side+' ':'')+x.label.toLowerCase().replace(/^./,c=>x.side?c:c.toUpperCase()));
-    nm.appendChild(el('small',null,n1(x.value)+(x.unit?' '+x.unit:'')+(x.computed?' (computed)':'')+' · typical '+n1(x.typical)));
-    const tr=el('div','tr'),i=el('i'),w=Math.abs(x.effect)/mx*50;i.style.width=w+'%';i.style.left=x.effect>=0?'50%':(50-w)+'%';
-    i.style.background=x.effect>=0?'var(--up)':'var(--down)';tr.appendChild(i);
-    row.appendChild(nm);row.appendChild(tr);const tiny=Math.abs(x.effect)<0.05;row.appendChild(el('div','v '+(tiny?'':x.effect>=0?'up':'dn'),tiny?'0':sg(x.effect)));d.appendChild(row)});
-  box.appendChild(d);
+  extras(box,r);
+  bars(box,r,'Start from an average game ('+n1(r.baseline)+' '+u+'). Each bar shows how many points your input adds or removes.','');
   box.scrollIntoView({behavior:'smooth',block:'start'});
 }
 async function run(){
