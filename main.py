@@ -11,7 +11,7 @@ from pathlib import Path
 
 import numpy as np
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from pydantic import BaseModel, Field
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -24,10 +24,18 @@ app = FastAPI(title="ddyno")
 
 # ------------------------------------------------------------------ model registry
 REGISTRY = {}
+PLOT_SVG = {}
 for meta_path in sorted((ROOT / "models").glob("*/meta.json")):
     model_path = meta_path.with_name("model.json")
     if model_path.exists():
         meta = json.loads(meta_path.read_text())
+        bundle = meta_path.with_name("plots.json")      # diagnostic plots, SVGs inlined
+        if bundle.exists():
+            items = json.loads(bundle.read_text())
+            for it in items:
+                PLOT_SVG[(meta["slug"], it["id"])] = it.pop("svg")
+                it["url"] = f"/plots/{meta['slug']}/{it['id']}.svg"
+            meta["plots"] = items
         REGISTRY[meta["slug"]] = {"meta": meta, "model": json.loads(model_path.read_text())}
 
 # Pages that are not slider models still show up on the hub through this list.
@@ -224,6 +232,14 @@ def list_models():
     out = [{"slug": s, "name": e["meta"]["name"], "category": e["meta"]["category"],
             "summary": e["meta"]["summary"], "url": f"/m/{s}"} for s, e in REGISTRY.items()]
     return {"models": out + BUILT_IN}
+
+
+@app.get("/plots/{slug}/{name}")
+def plot_file(slug: str, name: str):
+    svg = PLOT_SVG.get((slug, name[:-4])) if name.endswith(".svg") else None
+    if svg is None:
+        raise HTTPException(404, "Plot not found")
+    return Response(svg, media_type="image/svg+xml", headers={"Cache-Control": "public, max-age=3600"})
 
 
 @app.get("/api/models/{slug}")
