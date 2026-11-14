@@ -1,0 +1,207 @@
+{
+ "slug": "nfl-halftime-total",
+ "name": "Halftime to Final Total",
+ "category": "NFL Inference",
+ "type": "linear_regression",
+ "summary": "Set the halftime numbers for both teams and get the expected final combined score, with a range.",
+ "target": {
+  "label": "Final combined points",
+  "unit": "pts",
+  "decimals": 1
+ },
+ "features": [
+  {
+   "name": "home_h1_pts",
+   "label": "Halftime points",
+   "side": "home",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 31,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "home_h1_first_downs",
+   "label": "First downs",
+   "side": "home",
+   "unit": "",
+   "step": 1,
+   "min": 2,
+   "max": 19,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 30,
+   "description": "First downs gained in the first half."
+  },
+  {
+   "name": "home_h1_explosive",
+   "label": "Big plays (20+ yds)",
+   "side": "home",
+   "unit": "",
+   "step": 1,
+   "min": 0,
+   "max": 6,
+   "default": 2,
+   "hard_min": 0.0,
+   "hard_max": 15,
+   "description": "Runs or passes of 20 yards or more in the first half."
+  },
+  {
+   "name": "away_h1_pts",
+   "label": "Halftime points",
+   "side": "away",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 29,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "away_h1_first_downs",
+   "label": "First downs",
+   "side": "away",
+   "unit": "",
+   "step": 1,
+   "min": 2,
+   "max": 18,
+   "default": 9,
+   "hard_min": 0.0,
+   "hard_max": 30,
+   "description": "First downs gained in the first half."
+  },
+  {
+   "name": "away_h1_explosive",
+   "label": "Big plays (20+ yds)",
+   "side": "away",
+   "unit": "",
+   "step": 1,
+   "min": 0,
+   "max": 5,
+   "default": 2,
+   "hard_min": 0.0,
+   "hard_max": 15,
+   "description": "Runs or passes of 20 yards or more in the first half."
+  },
+  {
+   "name": "total_line",
+   "label": "Pregame over/under",
+   "side": "shared",
+   "unit": "pts",
+   "step": 0.5,
+   "min": 33.0,
+   "max": 55.5,
+   "default": 43.5,
+   "hard_min": 0.0,
+   "hard_max": 70,
+   "description": "The closing Vegas total for the game, set before kickoff."
+  },
+  {
+   "name": "wind",
+   "label": "Wind",
+   "side": "shared",
+   "unit": "mph",
+   "step": 1,
+   "min": 0,
+   "max": 22,
+   "default": 6,
+   "hard_min": 0.0,
+   "hard_max": 40,
+   "description": "Wind speed at the stadium. Use 0 for a dome or closed roof."
+  }
+ ],
+ "derived": [
+  {
+   "name": "abs_h1_margin",
+   "op": "absdiff",
+   "args": [
+    "home_h1_pts",
+    "away_h1_pts"
+   ],
+   "label": "Halftime margin",
+   "description": "Gap between the two halftime scores. Worked out for you."
+  }
+ ],
+ "floor": {
+  "op": "sum",
+  "args": [
+   "home_h1_pts",
+   "away_h1_pts"
+  ],
+  "label": "already scored"
+ },
+ "compare_line": {
+  "label": "Current over/under to compare (optional)",
+  "step": 0.5,
+  "min": 0,
+  "max": 120
+ },
+ "synopsis_extra": "With {floor} points already on the board, that means about {remaining} more in the second half.",
+ "card": {
+  "trained_on": "2026-11-13",
+  "n_games": 7410,
+  "seasons": [
+   1999,
+   2026
+  ],
+  "candidates_tested": 52,
+  "holdout_label": "2025 season onward (422 games the model never saw)",
+  "accuracy": [
+   {
+    "name": "This model",
+    "rmse": 9.72,
+    "mae": 7.63,
+    "r2": 0.514,
+    "bias": 0.68
+   },
+   {
+    "name": "Halftime score + half the over/under",
+    "rmse": 9.81,
+    "mae": 7.71,
+    "r2": 0.506,
+    "bias": 0.7
+   },
+   {
+    "name": "Halftime score doubled",
+    "rmse": 13.02,
+    "mae": 10.04,
+    "r2": 0.129,
+    "bias": 0.42
+   },
+   {
+    "name": "Pregame over/under alone",
+    "rmse": 13.23,
+    "mae": 10.46,
+    "r2": 0.1,
+    "bias": 0.98
+   }
+  ],
+  "coverage": {
+   "80": 0.813,
+   "95": 0.955
+  },
+  "typical_miss": 7.63,
+  "findings": [
+   "Two things carry almost all of the signal: the halftime score and the pregame over/under. A point already on the board is worth about 0.99 points in the final total, so first-half scoring neither snowballs nor fades much. Each point of the pregame over/under adds about 0.38.",
+   "Moving the ball without scoring still counts a little: each first down adds about 0.15 points and each 20+ yard play adds about 0.23. Offenses that looked better than the scoreboard tend to cash in later.",
+   "Wind is the only weather input that held up. Every 10 mph takes about 0.8 points off the final total.",
+   "Lopsided games slow down. Each point of halftime margin trims about 0.08 points, so a 21-point lead costs roughly 1.6 as the leader runs the clock.",
+   "Tested and left out because they added nothing once the score and the betting line were known: turnovers, third-down conversion rate, penalties, red-zone trips, how pass-heavy each team was, punts, field goal tries, sacks, total yards, play counts, the point spread, dome or outdoors, grass or turf, temperature, who gets the second-half kickoff, each team's season scoring average. Most of what these stats tell you already shows up in the score.",
+   "Advanced stats (EPA per play, success rate, shotgun and no-huddle share) were also tried. They did not beat plain box-score stats (9.64 vs 9.63 points of typical error), so the inputs stay simple.",
+   "Honest scorecard: on games it never saw, the model misses by 7.6 points on average. That is far better than doubling the halftime score (10.0) or using the pregame over/under alone (10.5), but only about 0.1 points of error better than the simple recipe of halftime score plus half the over/under."
+  ],
+  "limitations": [
+   "It only knows what you enter. Injuries, a quarterback change or a team sitting starters are invisible to it.",
+   "It is a straight-line model, so it cannot capture special situations such as a team that abandons the run when trailing big.",
+   "Overtime games are included in the history, which stretches the top of the range slightly.",
+   "The range is wide because second halves are noisy, and no halftime stat tested here narrows it much.",
+   "Sliders move independently, so you can enter combinations that rarely happen in real games. Unusual inputs are flagged."
+  ],
+  "disclaimer": "For information and learning only. Not betting advice."
+ }
+}
