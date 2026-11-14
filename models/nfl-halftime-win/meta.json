@@ -1,0 +1,392 @@
+{
+ "slug": "nfl-halftime-win",
+ "name": "Halftime Win Probability",
+ "category": "NFL Inference",
+ "type": "logistic_regression",
+ "summary": "Set the halftime numbers for both teams and get each side's chance of winning the game.",
+ "target": {
+  "label": "Home win chance",
+  "positive": "Home",
+  "negative": "Away"
+ },
+ "features": [
+  {
+   "name": "home_h1_pts",
+   "label": "Halftime points",
+   "side": "home",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 31,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "away_h1_pts",
+   "label": "Halftime points",
+   "side": "away",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 29,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "spread_line",
+   "label": "Pregame spread (home favored by)",
+   "side": "shared",
+   "unit": "pts",
+   "step": 0.5,
+   "description": "Closing point spread. Positive means the home team was favored, negative means the away team was.",
+   "min": -11.5,
+   "max": 15.5,
+   "default": 3.0,
+   "hard_min": -30,
+   "hard_max": 30
+  },
+  {
+   "name": "home_gets_2h_kickoff",
+   "label": "Who gets the ball to start the 2nd half",
+   "side": "shared",
+   "unit": "",
+   "step": 1,
+   "min": 0,
+   "max": 1,
+   "default": 1.0,
+   "hard_min": 0.0,
+   "hard_max": 1,
+   "description": "The team that kicked off to start the game receives the second-half kickoff.",
+   "choices": {
+    "1": "Home",
+    "0": "Away"
+   }
+  }
+ ],
+ "derived": [],
+ "card": {
+  "trained_on": "2026-11-13",
+  "n_games": 7394,
+  "seasons": [
+   1999,
+   2026
+  ],
+  "candidates_tested": 51,
+  "holdout_label": "2025 season onward (420 games the model never saw)",
+  "model_kind": "Logistic regression",
+  "accuracy_columns": [
+   [
+    "accuracy",
+    "Accuracy",
+    "pct"
+   ],
+   [
+    "precision",
+    "Precision",
+    "pct"
+   ],
+   [
+    "recall",
+    "Recall",
+    "pct"
+   ],
+   [
+    "specificity",
+    "Specificity",
+    "pct"
+   ],
+   [
+    "auc",
+    "AUC",
+    "num"
+   ]
+  ],
+  "accuracy": [
+   {
+    "name": "This model",
+    "accuracy": 0.769,
+    "precision": 0.77,
+    "recall": 0.795,
+    "specificity": 0.741,
+    "auc": 0.84,
+    "brier": 0.163,
+    "log_loss": 0.493
+   },
+   {
+    "name": "Pick the halftime leader",
+    "accuracy": 0.755,
+    "precision": 0.752,
+    "recall": 0.79,
+    "specificity": 0.716,
+    "auc": null,
+    "brier": null
+   },
+   {
+    "name": "Pick the pregame favorite",
+    "accuracy": 0.667,
+    "precision": 0.66,
+    "recall": 0.744,
+    "specificity": 0.582,
+    "auc": null,
+    "brier": null
+   }
+  ],
+  "metric_note": "A pick counts as 'home wins' when the model says 50% or more. Accuracy is the share of games picked right. Precision: when it picked the home team, how often the home team won. Recall: of the games the home team won, how many it picked. Specificity: of the games the away team won, how many it picked. ROC AUC measures how well the percentages rank games from least to most likely (0.5 is a coin flip, 1.0 is perfect). The simple picks have no AUC because they give no percentage.",
+  "brier": 0.163,
+  "log_loss": 0.493,
+  "calibration": [
+   {
+    "range": "0-10%",
+    "n": 39,
+    "predicted": 0.053,
+    "actual": 0.051
+   },
+   {
+    "range": "10-20%",
+    "n": 36,
+    "predicted": 0.16,
+    "actual": 0.222
+   },
+   {
+    "range": "20-30%",
+    "n": 40,
+    "predicted": 0.247,
+    "actual": 0.225
+   },
+   {
+    "range": "30-40%",
+    "n": 36,
+    "predicted": 0.353,
+    "actual": 0.306
+   },
+   {
+    "range": "40-50%",
+    "n": 43,
+    "predicted": 0.448,
+    "actual": 0.349
+   },
+   {
+    "range": "50-60%",
+    "n": 26,
+    "predicted": 0.539,
+    "actual": 0.462
+   },
+   {
+    "range": "60-70%",
+    "n": 32,
+    "predicted": 0.652,
+    "actual": 0.688
+   },
+   {
+    "range": "70-80%",
+    "n": 58,
+    "predicted": 0.75,
+    "actual": 0.707
+   },
+   {
+    "range": "80-90%",
+    "n": 48,
+    "predicted": 0.848,
+    "actual": 0.833
+   },
+   {
+    "range": "90-100%",
+    "n": 62,
+    "predicted": 0.951,
+    "actual": 0.952
+   }
+  ],
+  "roc": [
+   [
+    0.0,
+    0.151
+   ],
+   [
+    0.025,
+    0.306
+   ],
+   [
+    0.05,
+    0.416
+   ],
+   [
+    0.075,
+    0.479
+   ],
+   [
+    0.1,
+    0.562
+   ],
+   [
+    0.125,
+    0.584
+   ],
+   [
+    0.15,
+    0.694
+   ],
+   [
+    0.175,
+    0.727
+   ],
+   [
+    0.2,
+    0.763
+   ],
+   [
+    0.225,
+    0.781
+   ],
+   [
+    0.25,
+    0.795
+   ],
+   [
+    0.275,
+    0.795
+   ],
+   [
+    0.3,
+    0.804
+   ],
+   [
+    0.325,
+    0.822
+   ],
+   [
+    0.35,
+    0.831
+   ],
+   [
+    0.375,
+    0.849
+   ],
+   [
+    0.4,
+    0.863
+   ],
+   [
+    0.425,
+    0.872
+   ],
+   [
+    0.45,
+    0.877
+   ],
+   [
+    0.475,
+    0.886
+   ],
+   [
+    0.5,
+    0.913
+   ],
+   [
+    0.525,
+    0.913
+   ],
+   [
+    0.55,
+    0.927
+   ],
+   [
+    0.575,
+    0.941
+   ],
+   [
+    0.6,
+    0.941
+   ],
+   [
+    0.625,
+    0.945
+   ],
+   [
+    0.65,
+    0.95
+   ],
+   [
+    0.675,
+    0.954
+   ],
+   [
+    0.7,
+    0.954
+   ],
+   [
+    0.725,
+    0.963
+   ],
+   [
+    0.75,
+    0.963
+   ],
+   [
+    0.775,
+    0.982
+   ],
+   [
+    0.8,
+    0.986
+   ],
+   [
+    0.825,
+    0.991
+   ],
+   [
+    0.85,
+    0.991
+   ],
+   [
+    0.875,
+    0.995
+   ],
+   [
+    0.9,
+    0.995
+   ],
+   [
+    0.925,
+    0.995
+   ],
+   [
+    0.95,
+    1.0
+   ],
+   [
+    0.975,
+    1.0
+   ],
+   [
+    1.0,
+    1.0
+   ]
+  ],
+  "confident": {
+   "share": 0.44,
+   "accuracy": 0.886,
+   "tossup_share": 0.164,
+   "tossup_accuracy": 0.58
+  },
+  "findings": [
+   "The scoreboard does most of the talking. From an even game, each point of halftime lead is worth about 3.7 percentage points of win chance, so a 7-point lead moves a coin flip to roughly 74% and a 14-point lead to roughly 89%.",
+   "The pregame spread still matters at halftime. Each point the home team was favored by adds about 2.9 percentage points, so a touchdown favorite that is tied at the half is still about 69% to win. The market's read on the better team does not expire after two quarters.",
+   "Put together, one point of pregame spread is worth about 0.78 points of halftime lead.",
+   "Getting the ball to start the second half is worth about 6.7 percentage points.",
+   "Tested and left out because they added nothing once the score and spread were known: turnovers, third-down conversion rate, penalties, red-zone trips, how pass-heavy each team was, punts, field goal tries, sacks, total yards, first downs, big plays, play counts, dome or outdoors, grass or turf, temperature, wind, each team's season scoring average, the pregame over/under.",
+   "Honest scorecard: on games it never saw, the model picked the winner 77% of the time, against 76% for simply taking whoever leads at halftime and 67% for taking the pregame favorite. Its bigger advantage is that it gives a trustworthy percentage, not just a pick."
+  ],
+  "limitations": [
+   "It only knows what you enter. Injuries, a quarterback change or a team resting starters are invisible to it.",
+   "It treats every point of lead the same. Real games bend: going from a 3-point to a 10-point lead matters more than going from 24 to 31.",
+   "Ties are left out of the history (there are only a handful), so the two sides always add up to 100%.",
+   "Sliders move independently, so you can enter combinations that rarely happen in real games. Unusual inputs are flagged.",
+   "The uncertainty band shows how sure the model is about its percentage. It does not make an upset any less possible."
+  ],
+  "disclaimer": "For information and learning only. Not betting advice."
+ }
+}
