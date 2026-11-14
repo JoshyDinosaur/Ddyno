@@ -1,108 +1,228 @@
-from fastapi import FastAPI
+"""ddyno: a small host for ML models.
+
+Every folder in models/ that contains meta.json and model.json becomes a model page
+at /m/<slug> with sliders built from meta.json. Inference is plain numpy.
+To add a model, drop in a folder. No code changes needed for linear models.
+"""
+import json
+import math
+import re
+from pathlib import Path
+
+import numpy as np
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
-# Synthetic training examples: swap in real data later.
-DATA = {
-    "Dimensional": [
-        "bore diameter out of tolerance on finished part",
-        "length exceeds drawing spec by 0.02 inches",
-        "flange thickness below minimum dimension",
-        "hole position off from datum by 0.015",
-        "outer diameter oversize after final grind",
-        "wall thickness under tolerance at section B",
-    ],
-    "Surface Finish": [
-        "scratches visible on sealing surface",
-        "surface roughness exceeds Ra requirement",
-        "machining chatter marks on housing face",
-        "pitting and corrosion spots on exterior",
-        "burrs left on edge after deburr operation",
-        "tool marks on bearing journal",
-    ],
-    "Material": [
-        "hardness test below specified range",
-        "wrong alloy certificate received from supplier",
-        "inclusions found in forging cross section",
-        "material lot missing traceability documentation",
-        "porosity detected in casting during x-ray",
-        "tensile strength failed supplier cert check",
-    ],
-    "Assembly": [
-        "fastener torque not within specification",
-        "missing washer during final assembly",
-        "o-ring installed twisted in groove",
-        "wrong part number installed at station 4",
-        "connector not fully seated on harness",
-        "gasket misaligned causing leak at joint",
-    ],
-    "Documentation": [
-        "operator signature missing on traveler",
-        "inspection record incomplete for lot",
-        "revision level mismatch between drawing and work order",
-        "calibration sticker expired on gauge used",
-        "cert of conformance not attached to shipment",
-        "incorrect serial number recorded in log",
-    ],
+import ui
+
+ROOT = Path(__file__).resolve().parent
+app = FastAPI(title="ddyno")
+
+# ------------------------------------------------------------------ model registry
+REGISTRY = {}
+for meta_path in sorted((ROOT / "models").glob("*/meta.json")):
+    model_path = meta_path.with_name("model.json")
+    if model_path.exists():
+        meta = json.loads(meta_path.read_text())
+        REGISTRY[meta["slug"]] = {"meta": meta, "model": json.loads(model_path.read_text())}
+
+# Pages that are not slider models still show up on the hub through this list.
+BUILT_IN = [{"slug": "ncr", "name": "NCR Classifier", "category": "Manufacturing", "url": "/apps/ncr",
+             "summary": "Paste a manufacturing non-conformance description and get the likely flaw category."}]
+
+OPS = {
+    "absdiff": lambda a, b: abs(a - b),
+    "diff": lambda a, b: a - b,
+    "sum": lambda *a: sum(a),
+    "product": lambda a, b: a * b,
 }
 
 
+def fmt(v, decimals=1):
+    return f"{v:.{decimals}f}".rstrip("0").rstrip(".") if decimals else f"{v:.0f}"
 
 
+def tag(feature):
+    return {"home": "Home", "away": "Away"}.get(feature.get("side"), "")
 
 
+def predict_linear(entry, inputs, line=None):
+    meta, model = entry["meta"], entry["model"]
+    feats = {f["name"]: f for f in meta["features"]}
+    x = {}
+    for name, f in feats.items():
+        if name not in inputs:
+            raise HTTPException(422, f"Missing input: {name}")
+        v = float(inputs[name])
+        if not math.isfinite(v) or v < f.get("hard_min", f["min"]) or v > f.get("hard_max", f["max"]):
+            raise HTTPException(422, f"{f['label']} is outside the allowed range.")
+        x[name] = v
+    derived = {d["name"]: d for d in meta.get("derived", [])}
+    for name, d in derived.items():
+        x[name] = float(OPS[d["op"]](*[x[a] for a in d["args"]]))
 
-def train():
-    X, y = [], []
-    for label, texts in DATA.items():
-        for t in texts:
-            X.append(t)
-            y.append(label)
-    pipe = make_pipeline(
-        TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True),
-        LogisticRegression(max_iter=1000, C=10),
-    )
-    pipe.fit(X, y)
-    return pipe
+    order = model["feature_order"]                       # "const" first
+    vec = np.array([1.0] + [x[n] for n in order[1:]])
+    coefs = np.array([model["intercept"]] + [model["coefficients"][n] for n in order[1:]])
+    pred = float(vec @ coefs)
+    s = model["residual_std_error"]
+    sd = math.sqrt(s * s + float(vec @ np.array(model["covariance"]) @ vec))
+
+    floor = None
+    if meta.get("floor"):
+        floor = float(OPS[meta["floor"]["op"]](*[x[a] for a in meta["floor"]["args"]]))
+    clip = (lambda v: max(v, floor)) if floor is not None else (lambda v: v)
+    intervals = {lvl: {"low": clip(pred - t * sd), "high": pred + t * sd} for lvl, t in model["t_crit"].items()}
+    pred_shown = clip(pred)
+
+    # How far each input moves this prediction away from an average game.
+    drivers = []
+    for n in order[1:]:
+        f = feats.get(n) or derived[n]
+        side = tag(f)
+        drivers.append({"name": n, "label": f["label"], "side": side, "value": x[n],
+                        "typical": model["feature_means"][n], "unit": f.get("unit", ""),
+                        "effect": model["coefficients"][n] * (x[n] - model["feature_means"][n]),
+                        "computed": n in derived})
+    drivers.sort(key=lambda d: -abs(d["effect"]))
+
+    warnings = []
+    for n, f in feats.items():
+        p = model["percentiles"][n]
+        if x[n] < p["1"] or x[n] > p["99"]:
+            side = f"{tag(f)} " if tag(f) else ""
+            where = "higher" if x[n] > p["99"] else "lower"
+            warnings.append(f"{side}{f['label'].lower()}".capitalize() + f" of {fmt(x[n])} is {where} than 99% of past games "
+                            f"(usual range {fmt(p['1'])} to {fmt(p['99'])}). The model has seen very little like it.")
+
+    unit = meta["target"].get("unit", "")
+    lo, hi = intervals["80"]["low"], intervals["80"]["high"]
+    parts = [f"The model expects about {fmt(pred_shown)} {meta['target']['label'].lower()}, "
+             f"most likely landing between {fmt(lo, 0)} and {fmt(hi, 0)}."]
+    if floor is not None and meta.get("synopsis_extra"):
+        parts.append(meta["synopsis_extra"].format(floor=fmt(floor), remaining=fmt(pred_shown - floor), pred=fmt(pred_shown)))
+    name = lambda d: f"{(d['side'] + ' ').lower() if d['side'] else ''}{d['label'].lower()}"
+    ups = [d for d in drivers if d["effect"] > 0.5]
+    downs = [d for d in drivers if d["effect"] < -0.5]
+    avg = fmt(model["target_mean"])
+    say = lambda d: f"{name(d)} ({fmt(d['value'])}, worth {'+' if d['effect'] > 0 else ''}{fmt(d['effect'])})"
+    if ups and downs:
+        parts.append(f"Against an average game ({avg} {unit}), the biggest push up comes from {say(ups[0])}, "
+                     f"and the biggest drag is {say(downs[0])}.")
+    elif ups or downs:
+        group, word = (ups, "pushes up come from") if ups else (downs, "drags are")
+        if len(group) > 1:
+            parts.append(f"Against an average game ({avg} {unit}), the biggest {word} {say(group[0])} and {say(group[1])}.")
+        else:
+            parts.append(f"Against an average game ({avg} {unit}), the main driver is {say(group[0])}.")
+    else:
+        parts.append(f"These inputs look like an average game ({avg} {unit}), so nothing stands out.")
+
+    compare = None
+    if line is not None and math.isfinite(line):
+        p_over = 0.5 * (1 - math.erf((line - pred) / (sd * math.sqrt(2))))
+        if floor is not None and line < floor:
+            p_over = 1.0
+        gap = pred_shown - line
+        lean = "over" if gap > 0 else "under"
+        compare = {"line": line, "p_over": p_over, "gap": gap, "lean": lean}
+        if abs(gap) < 1.5:
+            parts.append(f"That is almost exactly on the {fmt(line)} line, so the model has no real lean.")
+        else:
+            parts.append(f"That is {fmt(abs(gap))} points {lean} the {fmt(line)} line, which puts the chance of going over "
+                         f"at about {round(100 * p_over)}%."
+                         + (" A gap this size is smaller than the model's typical miss." if abs(gap) < 0.8 * sd else ""))
+
+    return {"prediction": pred_shown, "sd": sd, "intervals": intervals, "floor": floor,
+            "baseline": model["target_mean"], "drivers": drivers, "warnings": warnings,
+            "synopsis": " ".join(parts), "compare": compare}
 
 
-MODEL = train()
+ENGINES = {"linear_regression": predict_linear}
 
 
-def classify(text: str, k: int = 3):
-    probs = MODEL.predict_proba([text])[0]
-    ranked = sorted(zip(MODEL.classes_, probs), key=lambda p: -p[1])[:k]
-    return [{"label": l, "score": round(float(s), 4)} for l, s in ranked]
+class PredictIn(BaseModel):
+    inputs: dict[str, float]
+    line: float | None = None
 
 
-INDEX = '<!doctype html><html lang="en"><head><meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>ddyno · ML-powered apps</title><style>:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--fg:#e6edf3;--mute:#8b949e;--acc:#58a6ff}\n*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}\nmain{max-width:760px;margin:0 auto;padding:48px 20px}\nh1{font-size:2.2rem;margin:0 0 4px}p.sub{color:var(--mute);margin:0 0 32px}\n.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}\n.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;color:inherit;display:block}\na.card:hover{border-color:var(--acc)}.card h3{margin:0 0 6px}.card p{margin:0;color:var(--mute);font-size:.95rem}\n.soon{opacity:.5}textarea{width:100%;min-height:110px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit}\nbutton{background:var(--acc);color:#04111f;border:0;border-radius:8px;padding:10px 18px;font-weight:600;cursor:pointer;margin-top:10px}\nbutton:disabled{opacity:.6}.bar{background:#21262d;border-radius:6px;height:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}\n.row{margin:14px 0}.row b{display:flex;justify-content:space-between}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}\n.chip{background:#21262d;border:1px solid var(--line);color:var(--mute);border-radius:99px;padding:4px 12px;font-size:.85rem;cursor:pointer}\na.back{color:var(--mute);text-decoration:none;font-size:.9rem}\n</style></head>\n<body><main>\n<h1>ddyno</h1><p class="sub">Small ML-powered apps. Built in the open, iterated fast.</p>\n<div class="grid">\n<a class="card" href="/apps/ncr"><h3>NCR Classifier</h3><p>Paste a manufacturing non-conformance description and get the likely flaw category.</p></a>\n<div class="card soon"><h3>NFL Game Modeling</h3><p>Pre-game win probabilities. Coming soon.</p></div>\n</div></main></body></html>\n'
-NCR = '<!doctype html><html lang="en"><head><meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>NCR Classifier · ddyno</title><style>:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--fg:#e6edf3;--mute:#8b949e;--acc:#58a6ff}\n*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}\nmain{max-width:760px;margin:0 auto;padding:48px 20px}\nh1{font-size:2.2rem;margin:0 0 4px}p.sub{color:var(--mute);margin:0 0 32px}\n.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}\n.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;color:inherit;display:block}\na.card:hover{border-color:var(--acc)}.card h3{margin:0 0 6px}.card p{margin:0;color:var(--mute);font-size:.95rem}\n.soon{opacity:.5}textarea{width:100%;min-height:110px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit}\nbutton{background:var(--acc);color:#04111f;border:0;border-radius:8px;padding:10px 18px;font-weight:600;cursor:pointer;margin-top:10px}\nbutton:disabled{opacity:.6}.bar{background:#21262d;border-radius:6px;height:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc)}\n.row{margin:14px 0}.row b{display:flex;justify-content:space-between}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}\n.chip{background:#21262d;border:1px solid var(--line);color:var(--mute);border-radius:99px;padding:4px 12px;font-size:.85rem;cursor:pointer}\na.back{color:var(--mute);text-decoration:none;font-size:.9rem}\n</style></head>\n<body><main>\n<a class="back" href="/">← ddyno</a>\n<h1>NCR Classifier</h1><p class="sub">TF-IDF + logistic regression trained on a small synthetic set. Demo model, swap in real data to iterate.</p>\n<textarea id="t" placeholder="e.g. bore diameter oversize after final grind"></textarea>\n<div class="chips" id="ex"></div>\n<button id="go">Classify</button>\n<div id="out"></div>\n<script>\nconst ex=["scratches on sealing surface","missing washer during final assembly","calibration sticker expired on gauge","porosity found in casting"];\nconst t=document.getElementById(\'t\'),out=document.getElementById(\'out\'),go=document.getElementById(\'go\');\nex.forEach(s=>{const c=document.createElement(\'span\');c.className=\'chip\';c.textContent=s;c.onclick=()=>{t.value=s;run()};document.getElementById(\'ex\').appendChild(c)});\nasync function run(){\n  if(t.value.trim().length<3)return;go.disabled=true;\n  try{\n    const r=await fetch(\'/api/classify\',{method:\'POST\',headers:{\'Content-Type\':\'application/json\'},body:JSON.stringify({text:t.value})});\n    if(!r.ok)throw new Error(r.status);\n    const {predictions}=await r.json();\n    out.innerHTML=predictions.map(p=>`<div class="row"><b><span>${p.label}</span><span>${(p.score*100).toFixed(1)}%</span></b><div class="bar"><i style="width:${p.score*100}%"></i></div></div>`).join(\'\');\n  }catch(e){out.textContent=\'Error: \'+e.message}\n  go.disabled=false;\n}\ngo.onclick=run;\n</script></main></body></html>\n'
+@app.get("/api/health")
+def health():
+    return {"ok": True, "models": len(REGISTRY)}
 
-app = FastAPI(title="ddyno")
+
+@app.get("/api/models")
+def list_models():
+    out = [{"slug": s, "name": e["meta"]["name"], "category": e["meta"]["category"],
+            "summary": e["meta"]["summary"], "url": f"/m/{s}"} for s, e in REGISTRY.items()]
+    return {"models": out + BUILT_IN}
+
+
+@app.get("/api/models/{slug}")
+def model_meta(slug: str):
+    if slug not in REGISTRY:
+        raise HTTPException(404, "Unknown model")
+    return REGISTRY[slug]["meta"]
+
+
+@app.post("/api/models/{slug}/predict")
+def model_predict(slug: str, body: PredictIn):
+    if slug not in REGISTRY:
+        raise HTTPException(404, "Unknown model")
+    entry = REGISTRY[slug]
+    return ENGINES[entry["meta"]["type"]](entry, body.inputs, body.line)
+
+
+# ------------------------------------------------------------------------- pages
+@app.get("/", response_class=HTMLResponse)
+def hub():
+    return ui.HUB
+
+
+@app.get("/m/{slug}", response_class=HTMLResponse)
+def model_page(slug: str):
+    if not re.fullmatch(r"[a-z0-9-]+", slug) or slug not in REGISTRY:
+        raise HTTPException(404, "Unknown model")
+    return ui.MODEL.replace("__SLUG__", slug).replace("__NAME__", REGISTRY[slug]["meta"]["name"])
+
+
+# ---------------------------------------------- demo: NCR text classifier (unchanged)
+NCR_DATA = {
+    "Dimensional": ["bore diameter out of tolerance on finished part", "length exceeds drawing spec by 0.02 inches",
+                    "flange thickness below minimum dimension", "hole position off from datum by 0.015",
+                    "outer diameter oversize after final grind", "wall thickness under tolerance at section B"],
+    "Surface Finish": ["scratches visible on sealing surface", "surface roughness exceeds Ra requirement",
+                       "machining chatter marks on housing face", "pitting and corrosion spots on exterior",
+                       "burrs left on edge after deburr operation", "tool marks on bearing journal"],
+    "Material": ["hardness test below specified range", "wrong alloy certificate received from supplier",
+                 "inclusions found in forging cross section", "material lot missing traceability documentation",
+                 "porosity detected in casting during x-ray", "tensile strength failed supplier cert check"],
+    "Assembly": ["fastener torque not within specification", "missing washer during final assembly",
+                 "o-ring installed twisted in groove", "wrong part number installed at station 4",
+                 "connector not fully seated on harness", "gasket misaligned causing leak at joint"],
+    "Documentation": ["operator signature missing on traveler", "inspection record incomplete for lot",
+                      "revision level mismatch between drawing and work order", "calibration sticker expired on gauge used",
+                      "cert of conformance not attached to shipment", "incorrect serial number recorded in log"],
+}
+NCR_MODEL = make_pipeline(TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True), LogisticRegression(max_iter=1000, C=10))
+NCR_MODEL.fit([t for ts in NCR_DATA.values() for t in ts], [k for k, ts in NCR_DATA.items() for _ in ts])
 
 
 class ClassifyIn(BaseModel):
     text: str = Field(min_length=3, max_length=2000)
 
 
-@app.get("/api/health")
-def health():
-    return {"ok": True}
-
-
 @app.post("/api/classify")
 def api_classify(body: ClassifyIn):
-    return {"predictions": classify(body.text)}
+    probs = NCR_MODEL.predict_proba([body.text])[0]
+    ranked = sorted(zip(NCR_MODEL.classes_, probs), key=lambda p: -p[1])[:3]
+    return {"predictions": [{"label": l, "score": round(float(s), 4)} for l, s in ranked]}
 
 
 @app.get("/apps/ncr", response_class=HTMLResponse)
 def ncr_page():
-    return NCR
-
-
-@app.get("/", response_class=HTMLResponse)
-def home():
-    return INDEX
+    return ui.NCR
