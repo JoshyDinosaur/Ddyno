@@ -3,6 +3,119 @@
 One visual language for every page: dark surface, row-based lists, right-aligned tabular numbers,
 tinted change pills, hairline borders. Tokens live in :root. Pages only read the existing API."""
 
+FIGJS = r"""/* Sideline: original 16-bit style pixel sprites, one per current league leader, idling on a strip of turf.
+   Generic figures in team colors. No likenesses and no logos. */
+const Sideline=(()=>{
+  const NS='http://www.w3.org/2000/svg';
+  const S=(n,at)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);return e};
+  /* team: [jersey, trim, helmet, pants] */
+  const TEAM={ARI:['#97233f','#ffffff','#ffffff','#ffffff'],ATL:['#101820','#a71930','#101820','#ffffff'],BAL:['#241773','#9e7c0c','#16101f','#ffffff'],BUF:['#00338d','#c60c30','#ffffff','#ffffff'],
+    CAR:['#101820','#0085ca','#bfc0bf','#bfc0bf'],CHI:['#0b162a','#c83803','#0b162a','#ffffff'],CIN:['#101820','#fb4f14','#fb4f14','#ffffff'],CLE:['#311d00','#ff3c00','#ff3c00','#ffffff'],
+    DAL:['#003594','#869397','#869397','#869397'],DEN:['#fb4f14','#002244','#002244','#ffffff'],DET:['#0076b6','#b0b7bc','#b0b7bc','#b0b7bc'],GB:['#203731','#ffb612','#ffb612','#ffb612'],
+    HOU:['#03202f','#a71930','#03202f','#ffffff'],IND:['#002c5f','#ffffff','#ffffff','#ffffff'],JAX:['#006778','#d7a22a','#101820','#ffffff'],KC:['#e31837','#ffb81c','#e31837','#ffffff'],
+    LV:['#101820','#a5acaf','#a5acaf','#a5acaf'],LAC:['#0080c6','#ffc20e','#ffffff','#ffc20e'],LA:['#003594','#ffd100','#003594','#ffd100'],MIA:['#008e97','#fc4c02','#ffffff','#ffffff'],
+    MIN:['#4f2683','#ffc62f','#4f2683','#ffffff'],NE:['#002244','#c60c30','#b0b7bc','#b0b7bc'],NO:['#101820','#d3bc8d','#d3bc8d','#d3bc8d'],NYG:['#0b2265','#a71930','#0b2265','#a5acaf'],
+    NYJ:['#125740','#ffffff','#125740','#ffffff'],PHI:['#004c54','#a5acaf','#004c54','#ffffff'],PIT:['#101820','#ffb612','#101820','#ffb612'],SF:['#aa0000','#b3995d','#b3995d','#b3995d'],
+    SEA:['#002244','#69be28','#002244','#a5acaf'],TB:['#d50a0a','#ff7900','#5a544d','#5a544d'],TEN:['#0c2340','#4b92db','#0c2340','#ffffff'],WAS:['#5a1414','#ffb612','#5a1414','#ffb612']};
+  const shade=(hex,k)=>'#'+[1,3,5].map(i=>Math.max(0,Math.min(255,Math.round(parseInt(hex.substr(i,2),16)*k))).toString(16).padStart(2,'0')).join('');
+  /* 16 x 25 pixel maps. O outline, H helmet, I helmet shade, S helmet stripe, V visor, M facemask, J jersey, Y jersey shade, T trim, N number,
+     G glove/sleeve, P pants, R pants shade, C cleat, B ball, D ball dark, L lace, W white, K skin, E headset, Q khaki, Z khaki shade, A clipboard, U paper */
+  const PLAYER=[
+    "....OOOOOOOO....",
+    "...OHHHSSHHIO...",
+    "..OHHHHSSHHHIO..",
+    "..OHHHHSSHHHIO..",
+    "..OHVVVVVVVVIO..",
+    "..OHVVVVVVVVIO..",
+    "..OHMMMMMMMMIO..",
+    "...OMOMMMMOMO...",
+    "....OOOOOOOO....",
+    ".OOJJJJJJJJJYOO.",
+    "OJJJTJJJJJJTJJYO",
+    "OJJJJJNNNNJJJJYO",
+    "OJJOJJNJJNJJOJYO",
+    "OGGOJJNNNNJYOGGO",
+    "OGGOJJJJJJJYOGGO",
+    ".OO.OJJJJJYYO.OO",
+    "....OTTTTTTTO...",
+    "....OPPPPPPRO...",
+    "....OPPPOPPRO...",
+    "....OPPO.OPRO...",
+    "....OPPO.OPRO...",
+    "....OTTO.OTTO...",
+    "....OWWO.OWWO...",
+    "...OCCCO.OCCCO..",
+    "...OOOOO.OOOOO.."];
+  const COACH=[
+    "................",
+    "....OOOOOOOO....",
+    "...OJJJJJJJYO...",
+    "..OJJJJTTJJJYO..",
+    ".EOJJJJJJJJJYOE.",
+    ".EOTTTTTTTTTTOE.",
+    ".EOKKKKKKKKKKOE.",
+    "..OKVVKKKKVVKO..",
+    "..OKKKKKKKKKKOE.",
+    "...OKKKKKKKKOEE.",
+    "....OOKKKKOO....",
+    ".OOJJJWWWWJJYOO.",
+    "OJJJJJJWWJJJJJYO",
+    "OJJOJJJJJJJYOJYO",
+    "OKKOJJJJJJJYOKKO",
+    "OKKOJJJJJJJYOKKO",
+    ".OO.OJJJJJYYO.OO",
+    "....OQQQQQQZO...",
+    "....OQQQOQQZO...",
+    "....OQQO.OQZO...",
+    "....OQQO.OQZO...",
+    "....OQQO.OQZO...",
+    "....OQQO.OQZO...",
+    "...OCCCO.OCCCO..",
+    "...OOOOO.OOOOO.."];
+  /* props: [x, y, rows] drawn over the upper body; some have their own idle motion */
+  const BALL=["ODDO","DBLB","DBLB","ODDO"], BALLW=[".ODDDO.","OBBLBBO","OBLLLBO",".ODDDO."], BOARD=["OOOOO","OAAAO","OUUUO","OUUUO","OUUUO","OOOOO"];
+  const ROLE={qb:{prop:[12,13,BALL],move:'toss'},rb:{prop:[5,12,BALLW],move:'none',hug:true},wr:{towel:true},rush:{bands:true,cross:true},tackle:{bands:true},coach:{prop:[11,13,BOARD],move:'tap'}};
+  function paint(g,rows,x0,y0,pal){
+    rows.forEach((r,y)=>{let x=0;while(x<r.length){const c=r[x];if(c==='.'){x++;continue}let n=1;while(r[x+n]===c)n++;
+      g.appendChild(S('rect',{x:x0+x,y:y0+y,width:n,height:1,fill:pal[c]||'#f0f'}));x+=n}});
+  }
+  function sprite(role,team,i){
+    const t=TEAM[team]||['#58a6ff','#ffffff','#58a6ff','#ffffff'],R=ROLE[role]||{},coach=role==='coach';
+    const pal={O:'#15181d',H:t[2],I:shade(t[2],.72),S:t[1],V:'#1d2733',M:'#aeb6bd',J:t[0],Y:shade(t[0],.7),T:t[1],N:'#ffffff',G:'#e9edf0',P:t[3],R:shade(t[3],.78),C:'#2a2f37',
+      B:'#9a5a2c',D:'#6e3d1c',L:'#ffffff',W:'#ffffff',K:'#d6a57a',E:'#2a2f37',Q:'#cbb58a',Z:'#a8946c',A:'#8a8f98',U:'#f4f1e6'};
+    if(pal.S.toLowerCase()===pal.H.toLowerCase())pal.S=shade(pal.H,.6);
+    if(pal.N.toLowerCase()===pal.J.toLowerCase())pal.N=t[1];
+    let map=(coach?COACH:PLAYER).map(r=>r.split(''));
+    const put=(x,y,str)=>str.split('').forEach((c,k)=>{if(c!=='.')map[y][x+k]=c});
+    if(R.towel){put(9,16,'WW');put(9,17,'WW');put(9,18,'W')}
+    if(R.bands){put(1,12,'TT');put(13,12,'TT')}
+    if(R.cross){put(3,13,'OGGGGGGGGO');put(3,14,'OOOOOOOOOO')}
+    if(R.hug){put(3,13,'OGG');put(3,14,'OOO')}
+    const svg=S('svg',{viewBox:'0 0 16 25','class':'px',width:64,height:100,'shape-rendering':'crispEdges','aria-hidden':'true'});
+    const legs=S('g',{}),up=S('g',{'class':'px-up'});
+    paint(legs,map.slice(17).map(r=>r.join('')),0,17,pal);paint(up,map.slice(0,17).map(r=>r.join('')),0,0,pal);
+    if(R.prop){const p=S('g',{'class':'px-'+R.move});paint(p,R.prop[2],R.prop[0],R.prop[1],pal);up.appendChild(p);p.style.animationDelay=(-i*.9)+'s'}
+    up.style.animationDuration=(1.25+(i%4)*.17)+'s';up.style.animationDelay=(-i*.41)+'s';
+    svg.appendChild(legs);svg.appendChild(up);return svg;
+  }
+  const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+  function mount(box,page){
+    fetch('/api/leaders?page='+encodeURIComponent(page)).then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+      if(!d.groups||!d.groups.length)return;box.replaceChildren();let n=0;
+      d.groups.forEach(g=>{const sec=el('section','sl-g');sec.appendChild(el('h2','sl-h',g.title));
+        const turf=el('div','sl-turf');
+        g.players.forEach((p,i)=>{const c=el('figure','sl-p');c.appendChild(sprite(g.role,p.team,n++));const cap=el('figcaption');
+          cap.appendChild(el('b',null,p.value));cap.appendChild(el('span',null,p.name));cap.appendChild(el('small',null,p.team));
+          c.title=p.name+' ('+p.team+'): '+p.value+' '+g.unit+(p.detail?', '+p.detail:'');c.appendChild(cap);turf.appendChild(c)});
+        sec.appendChild(turf);box.appendChild(sec)});
+      box.appendChild(el('p','sl-note','League leaders through Week '+d.through_week+'. Updates on its own.'));
+      box.hidden=false;
+    }).catch(()=>{});
+  }
+  return {mount,sprite,TEAM};
+})();
+"""
+
 CSS = """
 :root{--bg:#0d1117;--card:#161b22;--raise:#1c232d;--line:#30363d;--hair:#21262d;--fg:#e6edf3;--mute:#8b949e;
 --acc:#58a6ff;--up:#3fb950;--down:#f0883e;--neg:#f85149;--warn:#d29922;--ink:#04111f;
@@ -142,6 +255,43 @@ table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:right
 th:first-child,td:first-child{text-align:left;white-space:normal;padding-left:0}th{color:var(--mute);font-weight:600;font-size:.8rem}
 tr.me td{font-weight:700;color:var(--fg)}tr.me td:first-child{box-shadow:inset 3px 0 0 var(--acc);padding-left:10px}
 .roc{display:block;width:100%;max-width:280px;margin:8px 0}
+.split .cut{position:absolute;top:-7px;bottom:-7px;width:0;border-left:3px solid var(--fg);margin-left:-1.5px;border-radius:2px}
+.callbox{margin-top:18px;padding-top:16px;border-top:1px solid var(--hair)}
+.callbox .fh label{font-size:.95rem;font-weight:600}
+.call{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:4px 0 8px;font-size:1.05rem;font-weight:700}
+.call .pill{font-size:.95rem;min-width:0;padding:4px 12px}
+.pill.ov{background:rgba(88,166,255,.16);color:var(--acc)}.pill.un{background:rgba(240,136,62,.16);color:var(--down)}
+.trip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.trip div{background:var(--raise);border:1px solid var(--hair);border-radius:11px;padding:10px 12px}
+.trip b{display:block;font-size:1.25rem;font-weight:800;font-variant-numeric:tabular-nums}.trip span{color:var(--mute);font-size:.78rem;line-height:1.3;display:block}
+.tname{font-size:clamp(1.9rem,8vw,2.8rem);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin:6px 0 4px}
+.ctype{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(48px,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--hair);font-size:.93rem;font-weight:600}
+.ctype small{color:var(--mute);display:block;font-size:.8rem;font-weight:400}
+.ctype .tr{height:8px;background:var(--hair);border-radius:4px;overflow:hidden}.ctype .tr i{display:block;height:100%;border-radius:4px;background:#484f58}
+.ctype.me .tr i{background:var(--acc)}.ctype.me .nm{color:var(--fg)}.ctype b{font-variant-numeric:tabular-nums;font-weight:600;color:var(--mute);min-width:44px;text-align:right}
+.grp.line>h2 i{background:var(--fg)}.line input[type=range]{--c:var(--fg)}.grp.line .num{border-color:var(--mute)}
+.fair{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--raise);border:1px solid var(--line);font-size:.95rem}.fair b{font-variant-numeric:tabular-nums}
+.grp.set>h2 i{background:var(--warn);border-radius:2px}.set input[type=range]{--c:var(--warn)}
+
+/* sideline: pixel sprites for the current league leaders, idling on a strip of turf */
+.sideline{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:20px;align-items:flex-start}
+.sideline[hidden]{display:none}
+.sl-g{min-width:0;flex:none}
+.sl-h{font-size:.8rem;font-weight:700;color:var(--mute);margin:0 0 6px 2px}
+.sl-turf{position:relative;display:flex;gap:0 6px;padding:10px 10px 0}
+.sl-turf:before{content:"";position:absolute;left:0;right:0;top:0;height:118px;background:#47973d url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%2347973d'/%3E%3Cpath d='M2 3h1v2H2zM3 2h1v1H3zM10 9h1v2h-1zM11 8h1v1h-1zM13 2h1v1h-1zM6 13h1v1H6z' fill='%235bb04a'/%3E%3Cpath d='M6 6h2v1H6zM12 13h2v1h-2zM1 11h1v1H1zM9 1h1v1H9z' fill='%233b8434'/%3E%3C/svg%3E") 0 0/32px 32px;image-rendering:pixelated;
+box-shadow:inset 0 -4px 0 #2f6f2c,inset 0 -8px 0 #f4f1e6,inset 0 -12px 0 #3f8a37}
+.sl-p{position:relative;margin:0;width:78px;text-align:center}
+.px{display:block;margin:0 auto 14px;image-rendering:pixelated}
+.sl-p figcaption{display:flex;flex-direction:column;line-height:1.2;padding-top:2px}
+.sl-p b{font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}.sl-p span{font-size:.74rem;font-weight:600}.sl-p small{font-size:.7rem;color:var(--mute)}
+.sl-note{flex-basis:100%;font-size:.72rem;color:var(--mute);margin:-4px 2px 0}
+@keyframes px-bob{0%,49.9%{transform:translateY(0)}50%,100%{transform:translateY(1px)}}
+@keyframes px-toss{0%,52%,100%{transform:translateY(0)}58%{transform:translateY(-2px)}66%{transform:translateY(-4px)}76%{transform:translateY(-5px)}86%{transform:translateY(-4px)}93%{transform:translateY(-2px)}}
+@keyframes px-tap{0%,78%,88%,100%{transform:translateY(0)}83%,93%{transform:translateY(-1px)}}
+.px-up{animation:px-bob 1.4s steps(1) infinite}.px-toss{animation:px-toss 2.8s steps(1) infinite}.px-tap{animation:px-tap 3.4s steps(1) infinite}
+@media(prefers-reduced-motion:reduce){.px-up,.px-toss,.px-tap{animation:none}}
+@media(max-width:979px){.sideline{flex-wrap:nowrap;overflow-x:auto;margin-right:calc(-1*var(--pad));padding-right:var(--pad)}.sl-note{display:none}}
 
 /* ncr */
 textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:var(--r);padding:14px;font:inherit;resize:vertical}
@@ -162,6 +312,7 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
   .panel .ph{color:var(--mute);font-size:.82rem;font-weight:700;margin:20px 0 4px}
   .panel .big{font-size:3rem}
   .panel .btn{width:100%;margin-top:20px}
+  .mhead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 40px;align-items:end}.mhead .sideline{margin-top:0;justify-content:flex-end;max-width:640px}.mhead .sl-note{text-align:right}
   .cols{grid-template-columns:380px minmax(0,1fr);gap:28px;align-items:start}
   .inputs{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto;padding:6px 20px 0}
   .actions{position:sticky;bottom:0;left:auto;right:auto;margin:0 -20px;padding:14px 20px;background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none;border-top:1px solid var(--hair);border-radius:0 0 var(--r) var(--r)}
@@ -183,13 +334,16 @@ HUB = HEAD.replace("__TITLE__", "ddyno") + """
 <div class="wrap">
 <h1 class="title">Models<span id="count">Loading</span></h1>
 <p class="lede">Set the inputs, press Dyno, and see what each model predicts and why.</p>
+<div class="sideline" id="sideline" hidden></div>
 <div class="tools"><input class="search" id="q" type="search" placeholder="Search models" aria-label="Search models"><div class="seg" id="cats" role="group" aria-label="Category"></div></div>
 <div class="hubcols"><div id="list"></div><aside class="panel card" id="panel" aria-live="polite"></aside></div>
 <footer>Model numbers are test results on games each model never saw.</footer>
 </div>
+<script>__FIGJS__</script>
 <script>
 const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+Sideline.mount($('sideline'),'hub');
 const NS='http://www.w3.org/2000/svg';
 const svg=(n,at)=>{const e=document.createElementNS(NS,n);Object.keys(at).forEach(k=>e.setAttribute(k,at[k]));return e};
 const n1=v=>(Math.round(v*10)/10).toFixed(1), sg=v=>(v>0?'+':v<0?'−':'')+n1(Math.abs(v));
@@ -198,8 +352,11 @@ const wide=()=>matchMedia('(min-width:980px)').matches;
 
 /* headline test metric for a model, straight from its card */
 function stat(meta){
-  const a=meta.card.accuracy,me=a[0],rest=a.slice(1);
-  if(meta.type==='logistic_regression'){const best=Math.max(...rest.map(x=>x.accuracy));
+  if(meta.type==='kmeans'){const cs=meta.card.clusters;
+    return {value:String(cs.length),unit:'game types',pill:'Unsupervised',rows:cs.map(c=>({name:c.name,v:c.share,show:Math.round(c.share*100)+'%'})),flat:true,
+      caption:'Share of past games in each type'}}
+  const a=meta.card.accuracy.filter(x=>x.accuracy!=null||x.mae!=null),me=a[0],rest=a.slice(1);
+  if(meta.type!=='linear_regression'){const best=Math.max(...rest.map(x=>x.accuracy));
     return {value:Math.round(me.accuracy*100)+'%',unit:'accuracy',diff:(me.accuracy-best)*100,good:me.accuracy>best,suffix:' pts',
       rows:a.map(x=>({name:x.name,v:x.accuracy,show:Math.round(x.accuracy*100)+'%'})),caption:'Share of test games picked right'}}
   const best=Math.min(...rest.map(x=>x.mae));
@@ -208,7 +365,7 @@ function stat(meta){
 }
 function spark(st){
   const h=8*st.rows.length-3,s=svg('svg',{viewBox:'0 0 64 '+h,width:64,height:h,'class':'spark','aria-hidden':'true'}),mx=Math.max(...st.rows.map(r=>r.v));
-  st.rows.forEach((r,i)=>s.appendChild(svg('rect',{x:0,y:i*8,width:Math.max(3,r.v/mx*64),height:5,rx:2.5,fill:i?'#484f58':'#58a6ff'})));
+  st.rows.forEach((r,i)=>s.appendChild(svg('rect',{x:0,y:i*8,width:Math.max(3,r.v/mx*64),height:5,rx:2.5,fill:(i&&!st.flat)?'#484f58':'#58a6ff'})));
   return s;
 }
 function row(m){
@@ -217,7 +374,7 @@ function row(m){
   const meta=metas[m.slug],rt=el('div','rt');
   if(meta){const st=stat(meta);a.appendChild(spark(st));
     const v=el('span','val',st.value);v.appendChild(el('small',null,st.unit));rt.appendChild(v);
-    const p=el('span','pill '+(Math.abs(st.diff)<0.05?'flat':st.good?'up':'dn'),sg(st.diff)+st.suffix);p.title='Compared with the best simple method';rt.appendChild(p);
+    const p=st.pill?el('span','pill flat',st.pill):el('span','pill '+(Math.abs(st.diff)<0.05?'flat':st.good?'up':'dn'),sg(st.diff)+st.suffix);if(!st.pill)p.title='Compared with the best other method';rt.appendChild(p);
   }else{a.appendChild(el('span','spark'));rt.appendChild(el('span','pill flat','Demo'))}
   a.appendChild(rt);
   a.addEventListener('mouseenter',()=>{if(wide())pick(m.slug)});a.addEventListener('focus',()=>{if(wide())pick(m.slug)});
@@ -246,7 +403,7 @@ function panel(){
   if(meta){
     p.appendChild(el('p','ph','With typical inputs'));const box=el('div');p.appendChild(box);preview(m.slug,meta,box);
     const st=stat(meta);p.appendChild(el('p','ph',st.caption));const mx=Math.max(...st.rows.map(r=>r.v));
-    st.rows.forEach((r,i)=>{const d=el('div','rank'+(i?'':' me'));d.appendChild(el('span',null,r.name));const t=el('div','tr'),b=el('i');b.style.width=(r.v/mx*100)+'%';t.appendChild(b);d.appendChild(t);d.appendChild(el('b',null,r.show));p.appendChild(d)});
+    st.rows.forEach((r,i)=>{const d=el('div','rank'+((i&&!st.flat)?'':' me'));d.appendChild(el('span',null,r.name));const t=el('div','tr'),b=el('i');b.style.width=(r.v/mx*100)+'%';t.appendChild(b);d.appendChild(t);d.appendChild(el('b',null,r.show));p.appendChild(d)});
     p.appendChild(el('p','ph','Details'));
     const kv=(k,v)=>{const d=el('div','kv');d.appendChild(el('span',null,k));d.appendChild(el('b',null,v));p.appendChild(d)};
     kv('Inputs you set',meta.features.length);kv('Trained on',meta.card.n_games.toLocaleString()+' games');kv('Seasons',meta.card.seasons[0]+' to '+meta.card.seasons[1]);kv('Last trained',meta.card.trained_on);
@@ -255,6 +412,8 @@ function panel(){
 }
 function preview(slug,meta,box){
   const paint=r=>{if(!box.isConnected)return;box.replaceChildren();
+    if(r.kind==='cluster'){box.appendChild(el('div','tname',r.cluster.name));
+      box.appendChild(el('p','note','Games of this type average '+n1(r.cluster.profile.final_total)+' final points; the home team wins '+Math.round(r.cluster.profile.home_win*100)+'%.'));return}
     if(r.kind==='probability'){const pc=Math.round(r.probability*100),duo=el('div','duo'),l=el('div'),rt=el('div','r');
       const a=el('span');a.appendChild(el('i'));a.appendChild(document.createTextNode(r.labels.positive));l.appendChild(a);l.appendChild(el('div','big',pc+'%'));
       const c=el('span');c.appendChild(document.createTextNode(r.labels.negative));c.appendChild(el('i'));rt.appendChild(c);rt.appendChild(el('div','big',(100-pc)+'%'));
@@ -280,7 +439,8 @@ fetch('/api/models').then(r=>r.json()).then(d=>{
 MODEL = HEAD.replace("__TITLE__", "__NAME__ · ddyno") + """
 <header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb" id="crumb"></span></header>
 <div class="wrap">
-<div class="mhead"><p class="eyebrow" id="cat"></p><h1 class="title" id="name">__NAME__</h1><p class="lede" id="summary"></p></div>
+<div class="mhead"><div><p class="eyebrow" id="cat"></p><h1 class="title" id="name">__NAME__</h1><p class="lede" id="summary"></p></div>
+<div class="sideline" id="sideline" hidden></div></div>
 <div class="cols">
   <section class="inputs card" id="inputs" aria-label="Inputs">
     <div id="groups"></div>
@@ -300,22 +460,24 @@ MODEL = HEAD.replace("__TITLE__", "__NAME__ · ddyno") + """
   </div>
 </div>
 </div>
+<script>__FIGJS__</script>
 <script>
 const SLUG="__SLUG__";
 const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 const n1=v=>(Math.round(v*10)/10).toString(), n0=v=>Math.round(v).toString();
 const sg=v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(1);
-let meta,vals={},ctl={},lineInput,ran=false;
+let meta,vals={},pvals={},ctl={},lineInput,ran=false,last=null,cut=null;
 document.body.classList.add('has-actions');
+Sideline.mount($('sideline'),SLUG);
 
 function tab(id){['pred','diag','about'].forEach(k=>{$('t-'+k).setAttribute('aria-selected',k===id);$('p-'+k).hidden=k!==id})}
 ['pred','diag','about'].forEach(k=>$('t-'+k).onclick=()=>tab(k));
 function stale(){if(ran)$('p-pred').classList.add('stale')}
 
-function field(f){
+function field(f,store){store=store||vals;
   if(f.choices){const w=el('div','f'),seg=el('div','choice'),btn={};w.appendChild(el('label',null,f.label));
-    const set=(v,user)=>{vals[f.name]=v;Object.keys(btn).forEach(k=>{btn[k].className=(+k===v?'on':'');btn[k].setAttribute('aria-pressed',+k===v)});if(user)stale()};
+    const set=(v,user)=>{store[f.name]=v;Object.keys(btn).forEach(k=>{btn[k].className=(+k===v?'on':'');btn[k].setAttribute('aria-pressed',+k===v)});if(user)stale()};
     Object.keys(f.choices).forEach(k=>{const b=el('button',null,f.choices[k]);b.type='button';b.onclick=()=>set(+k,true);btn[k]=b;seg.appendChild(b)});
     ctl[f.name]=set;set(f.default);w.appendChild(seg);w.appendChild(el('p',null,f.description));return w}
   const w=el('div','f'),h=el('div','fh'),lab=el('label',null,f.label);
@@ -323,11 +485,11 @@ function field(f){
   const num=el('input','num');num.type='number';num.inputMode='decimal';num.step=f.step;num.min=f.hard_min;num.max=f.hard_max;
   const rng=el('input');rng.type='range';rng.min=f.min;rng.max=f.max;rng.step=f.step;
   lab.htmlFor=num.id='n_'+f.name;rng.setAttribute('aria-label',f.label);
-  const set=(v,from)=>{v=Math.min(f.hard_max,Math.max(f.hard_min,v));vals[f.name]=v;if(from!=='num')num.value=v;if(from!=='rng')rng.value=v;
+  const set=(v,from)=>{v=Math.min(f.hard_max,Math.max(f.hard_min,v));store[f.name]=v;if(from!=='num')num.value=v;if(from!=='rng')rng.value=v;
     rng.style.setProperty('--p',Math.min(100,Math.max(0,(v-f.min)/(f.max-f.min)*100))+'%');if(from)stale()};
   rng.oninput=()=>set(parseFloat(rng.value),'rng');
   num.oninput=()=>{const v=parseFloat(num.value);if(!isNaN(v))set(v,'num')};
-  num.onblur=()=>{num.value=vals[f.name]};
+  num.onblur=()=>{num.value=store[f.name]};
   ctl[f.name]=set;set(f.default);
   h.appendChild(lab);h.appendChild(num);w.appendChild(h);w.appendChild(rng);w.appendChild(el('p',null,f.description));
   return w;
@@ -336,12 +498,16 @@ function build(){
   $('cat').textContent=meta.category;$('crumb').textContent=meta.category;$('name').textContent=meta.name;$('summary').textContent=meta.summary;
   const box=$('groups'),sides=[['home','Home'],['away','Away']].filter(s=>meta.features.some(f=>f.side===s[0]));
   const grp=(cls,title,fs)=>{const g=el('div','grp '+cls),h=el('h2');h.appendChild(el('i'));h.appendChild(document.createTextNode(title));g.appendChild(h);fs.forEach(f=>g.appendChild(field(f)));box.appendChild(g);return g};
+  const ln=meta.features.filter(f=>f.side==='line');if(ln.length)grp('line','Your total',ln);
   sides.forEach(([k,title])=>grp(k,title,meta.features.filter(f=>f.side===k)));
   const sh=meta.features.filter(f=>f.side==='shared');
   if(sh.length)grp('shared',sides.length?'Game context':'Inputs',sh);
   if(meta.compare_line){const g=grp('shared','Compare',[]),w=el('div','f'),h=el('div','fh'),lab=el('label',null,meta.compare_line.label);
     lineInput=el('input','num');lineInput.type='number';lineInput.inputMode='decimal';lineInput.step=meta.compare_line.step;lineInput.placeholder='–';lineInput.id='line';lab.htmlFor='line';
     lineInput.oninput=stale;h.appendChild(lab);h.appendChild(lineInput);w.appendChild(h);g.appendChild(w)}
+  if((meta.controls||[]).length){const g=grp('shared set','Model settings',[]);
+    meta.controls.forEach(c=>g.appendChild(field({name:c.name,label:c.label,unit:'',step:c.step,min:c.min,max:c.max,hard_min:c.min,hard_max:c.max,default:c.default,description:c.description},pvals)))}
+  if(meta.target.cutoff)cut=meta.target.cutoff.default;
   $('miniLab').textContent=meta.target.label;
   plots();about();$('foot').textContent=meta.card.disclaimer||'';
 }
@@ -356,14 +522,21 @@ function about(){
   const c=meta.card,b=$('p-about');
   b.appendChild(el('h3',null,'What the model learned'));
   const ul=el('ul');c.findings.forEach(t=>ul.appendChild(el('li',null,t)));b.appendChild(ul);
+  const table=(head,rows,first)=>{const t=el('table'),hr=el('tr');head.forEach(x=>hr.appendChild(el('th',null,x)));t.appendChild(hr);
+    rows.forEach((cells,i)=>{const r=el('tr',first&&!i?'me':'');cells.forEach(x=>r.appendChild(el('td',null,x)));t.appendChild(r)});const w=el('div','tw');w.appendChild(t);return w};
+  const sections=()=>(c.sections||[]).forEach(sec=>{b.appendChild(el('h3',null,sec.title));(sec.paragraphs||[]).forEach(t=>{const p=el('p',null,t);p.style.marginBottom='8px';b.appendChild(p)});
+    if(sec.table)b.appendChild(table(sec.table.head,sec.table.rows,!!sec.note));if(sec.note)b.appendChild(el('p','note',sec.note))});
+  if(!c.accuracy)sections();
+  if(c.accuracy){
   b.appendChild(el('h3',null,'How accurate is it?'));
   b.appendChild(el('p','note','Tested on the '+c.holdout_label+'.'));
   const cols=c.accuracy_columns||[['mae','Average miss','pts'],['rmse','RMSE','num1'],['r2','R²','num']];
-  const show=(v,k)=>v==null?'–':k==='pct'?Math.round(v*100)+'%':k==='pts'?v.toFixed(1)+' pts':k==='num1'?v.toFixed(1):v.toFixed(2);
+  const show=(v,k)=>v==null?'–':k==='pct'?Math.round(v*100)+'%':k==='pts'?v.toFixed(1)+' pts':k==='pct1'?(v*100).toFixed(1)+'%':k==='num1'?v.toFixed(1):k==='num3'?v.toFixed(3):v.toFixed(2);
   const t=el('table'),hr=el('tr');['Method',...cols.map(x=>x[1])].forEach(x=>hr.appendChild(el('th',null,x)));t.appendChild(hr);
   c.accuracy.forEach((a,i)=>{const r=el('tr',i?'':'me');r.appendChild(el('td',null,a.name));cols.forEach(x=>r.appendChild(el('td',null,show(a[x[0]],x[2]))));t.appendChild(r)});
   const tw=el('div','tw');tw.appendChild(t);b.appendChild(tw);
   b.appendChild(el('p','note',c.metric_note||'Average miss is how far off the prediction was on a typical game. RMSE is similar but punishes big misses more. R² is the share of game-to-game differences the method explains (1.00 would be perfect).'));
+  sections();}
   if(c.roc&&!(meta.plots||[]).length){b.appendChild(el('h3',null,'ROC curve'));
     const NS='http://www.w3.org/2000/svg',sv=document.createElementNS(NS,'svg');sv.setAttribute('viewBox','0 0 220 220');sv.setAttribute('class','roc');
     const mk=(n,at)=>{const e=document.createElementNS(NS,n);Object.keys(at).forEach(k=>e.setAttribute(k,at[k]));sv.appendChild(e);return e};
@@ -376,48 +549,95 @@ function about(){
     b.appendChild(el('p','note','The further the blue line bows toward the top-left corner, the better the model separates wins from losses. The dashed line is a coin flip.'))}
   if(c.calibration){b.appendChild(el('h3',null,'Can you trust the percentages?'));
     b.appendChild(el('p','note','Test games grouped by what the model said, next to what really happened. Close numbers mean the percentages are honest.'));
-    const ct=el('table'),ch=el('tr');['Model said','Games','Avg predicted','Home actually won'].forEach(x=>ch.appendChild(el('th',null,x)));ct.appendChild(ch);
+    const ct=el('table'),ch=el('tr');['Model said','Games','Avg predicted',c.calibration_label||'Home actually won'].forEach(x=>ch.appendChild(el('th',null,x)));ct.appendChild(ch);
     c.calibration.forEach(k=>{const r=el('tr');[k.range,k.n,Math.round(k.predicted*100)+'%',Math.round(k.actual*100)+'%'].forEach(x=>r.appendChild(el('td',null,x)));ct.appendChild(r)});
     const cw=el('div','tw');cw.appendChild(ct);b.appendChild(cw);
-    if(c.confident)b.appendChild(el('p',null,'When the model was at least 80% sure (about '+Math.round(c.confident.share*100)+'% of test games), it was right '+Math.round(c.confident.accuracy*100)+'% of the time. When it was under 60% sure, it was right '+Math.round(c.confident.tossup_accuracy*100)+'% of the time.'))}
+    if(c.confident&&c.confident.accuracy!=null&&c.confident.tossup_accuracy!=null)b.appendChild(el('p',null,'When the model was at least 80% sure (about '+Math.round(c.confident.share*100)+'% of test games), it was right '+Math.round(c.confident.accuracy*100)+'% of the time. When it was under 60% sure, it was right '+Math.round(c.confident.tossup_accuracy*100)+'% of the time.'))}
   if(c.coverage){b.appendChild(el('h3',null,'Can you trust the range?'));
     b.appendChild(el('p',null,'In the test games, the real final score landed inside the 80% range '+Math.round(c.coverage['80']*100)+'% of the time and inside the 95% range '+Math.round(c.coverage['95']*100)+'% of the time. That is what honest ranges should do.'))}
   b.appendChild(el('h3',null,'Limitations'));
   const ul2=el('ul');c.limitations.forEach(t=>ul2.appendChild(el('li',null,t)));b.appendChild(ul2);
-  const tn=el('p','note',(c.model_kind||'Linear regression')+' trained on '+c.n_games.toLocaleString()+' games from the '+c.seasons[0]+' to '+c.seasons[1]+' seasons, after testing '+c.candidates_tested+' candidate inputs. Last trained '+c.trained_on+'. Data: nflverse.');
+  const tn=el('p','note',(c.model_kind||'Linear regression')+' trained on '+c.n_games.toLocaleString()+' games from the '+c.seasons[0]+' to '+c.seasons[1]+' seasons, after testing '+c.candidates_tested+' candidate inputs'+(c.sections?' and the settings shown above':'')+'. Last trained '+c.trained_on+'. Data: nflverse.');
   tn.style.marginTop='18px';b.appendChild(tn);
 }
-function below(box,r,note){
+function below(box,r,note,head,pf){pf=pf||sg;
   const g=el('div','below');
   const why=el('div','card blk');why.appendChild(el('h3',null,'The short version'));why.appendChild(el('p',null,r.synopsis));
   if(r.warnings.length){const w=el('div','warnbox');w.appendChild(el('b',null,'Unusual inputs'));const ul=el('ul');r.warnings.forEach(t=>ul.appendChild(el('li',null,t)));w.appendChild(ul);why.appendChild(w)}
   g.appendChild(why);
-  const d=el('div','card blk');d.appendChild(el('h3',null,'What moved this prediction'));const nt=el('p','note',note);nt.style.marginBottom='10px';d.appendChild(nt);
+  const d=el('div','card blk');d.appendChild(el('h3',null,head||'What moved this prediction'));const nt=el('p','note',note);nt.style.marginBottom='10px';d.appendChild(nt);
   const mx=Math.max(1,...r.drivers.map(x=>Math.abs(x.effect)));
   r.drivers.forEach(x=>{const row=el('div','drv'),nm=el('div','nm',(x.side?x.side+' ':'')+x.label.toLowerCase().replace(/^./,c=>x.side?c:c.toUpperCase()));
     nm.appendChild(el('small',null,(x.value_label||n1(x.value)+(x.unit?' '+x.unit:''))+(x.computed?' (computed)':'')+(x.typical!=null?', typical '+n1(x.typical):'')));
     const tr=el('div','tr'),i=el('i'),w=Math.abs(x.effect)/mx*50;i.style.width=w+'%';i.style.left=x.effect>=0?'50%':(50-w)+'%';
     i.style.background=x.effect>=0?'var(--up)':'var(--neg)';tr.appendChild(i);
-    const tiny=Math.abs(x.effect)<0.05;row.appendChild(nm);row.appendChild(tr);row.appendChild(el('span','pill '+(tiny?'flat':x.effect>=0?'up':'dn'),tiny?'0.0':sg(x.effect)));d.appendChild(row)});
+    const tiny=Math.abs(x.effect)<0.05;row.appendChild(nm);row.appendChild(tr);row.appendChild(el('span','pill '+(tiny?'flat':x.effect>=0?'up':'dn'),tiny?'0.0':pf(x.effect)));d.appendChild(row)});
   g.appendChild(d);box.appendChild(g);
 }
 function renderProb(r){
-  const box=$('result');box.replaceChildren();const p=r.probability,P=r.labels.positive,N=r.labels.negative,pc=Math.round(p*100);
-  const hero=el('div','card hero');hero.appendChild(el('p','lab','Chance to win the game'));
+  const box=$('result');box.replaceChildren();const p=r.probability,P=r.labels.positive,N=r.labels.negative,pc=Math.round(p*100),T=meta.target;
+  const hero=el('div','card hero');hero.appendChild(el('p','lab',r.headline||T.headline||'Chance to win the game'));
   const duo=el('div','duo'),l=el('div'),rt=el('div','r');
   const a=el('span');a.appendChild(el('i'));a.appendChild(document.createTextNode(P));l.appendChild(a);l.appendChild(el('div','big',pc+'%'));
   const c=el('span');c.appendChild(document.createTextNode(N));c.appendChild(el('i'));rt.appendChild(c);rt.appendChild(el('div','big',(100-pc)+'%'));
   duo.appendChild(l);duo.appendChild(rt);hero.appendChild(duo);
-  const i95=r.intervals['95'],sp=el('div','split'),i=el('i');i.style.width=(p*100)+'%';sp.appendChild(i);
-  const band=el('div','band');band.style.left=(i95.low*100)+'%';band.style.width=Math.max(0.6,(i95.high-i95.low)*100)+'%';sp.appendChild(band);hero.appendChild(sp);
-  hero.appendChild(el('p','note','The marked band is the 95% range for the true '+P.toLowerCase()+' chance in games like this: '+Math.round(i95.low*100)+'% to '+Math.round(i95.high*100)+'%.'));
+  const sp=el('div','split'),i=el('i');i.style.width=(p*100)+'%';sp.appendChild(i);hero.appendChild(sp);
+  if(r.intervals){const i95=r.intervals['95'],band=el('div','band');band.style.left=(i95.low*100)+'%';band.style.width=Math.max(0.6,(i95.high-i95.low)*100)+'%';sp.appendChild(band);
+    hero.appendChild(el('p','note','The marked band is the 95% range for the true '+P.toLowerCase()+' chance in games like this: '+Math.round(i95.low*100)+'% to '+Math.round(i95.high*100)+'%.'))}
+  if(r.detail)hero.appendChild(el('p','note',r.detail));
+  if(r.fair_line!=null&&r.need>=0){const f=el('div','fair');f.appendChild(document.createTextNode('Break-even total for this game: '));f.appendChild(el('b',null,n1(r.fair_line)));
+    f.appendChild(document.createTextNode('. That is where the model is 50/50. Your total of '+n1(r.line)+' is '+(Math.abs(r.line-r.fair_line)<0.25?'right on it.':n1(Math.abs(r.line-r.fair_line))+' '+(r.line>r.fair_line?'above':'below')+' it.')));hero.appendChild(f)}
+  if(T.cutoff)cutoff(hero,sp,p,P,N);
   box.appendChild(hero);
-  below(box,r,'Start from an average game ('+Math.round(r.baseline*100)+'% '+P.toLowerCase()+'). Each row shows how many percentage points that input, on its own, moves the win chance for the '+P.toLowerCase()+' team.');
+  const subj=T.subject?'the chance of '+T.subject:'the win chance for the '+P.toLowerCase()+' team';
+  if(T.cutoff)below(box,r,'Each row puts one halftime input back to its typical value, keeps your total the same, and shows how many percentage points '+subj+' moves because of what you entered instead.');
+  else below(box,r,'Start from an average game ('+Math.round(r.baseline*100)+'% '+P.toLowerCase()+'). Each row shows how many percentage points that input, on its own, moves '+subj+'.');
   $('miniVal').textContent=P+' '+pc+'%';
 }
+/* movable cutoff: turns the percentage into a call, and shows what that cutoff did on games the model had not seen */
+function cutoff(hero,sp,p,P,N){
+  const C=meta.target.cutoff,tbl=meta.card.threshold_table||[],w=el('div','callbox'),h=el('div','fh'),lab=el('label',null,'Your cutoff for calling it '+P.toLowerCase());
+  const num=el('input','num');num.type='number';num.inputMode='numeric';num.min=C.min*100;num.max=C.max*100;num.step=1;num.id='cutNum';lab.htmlFor='cutNum';
+  const rng=el('input');rng.type='range';rng.min=C.min*100;rng.max=C.max*100;rng.step=1;rng.setAttribute('aria-label','Cutoff percent');
+  const mark=el('div','cut');sp.appendChild(mark);
+  const call=el('div','call'),trip=el('div','trip'),note=el('p','note');note.style.marginTop='10px';
+  const pct=v=>Math.round(v*100)+'%';
+  const set=(v,from)=>{v=Math.min(C.max*100,Math.max(C.min*100,Math.round(v)));cut=v/100;if(from!=='num')num.value=v;if(from!=='rng')rng.value=v;
+    rng.style.setProperty('--p',((v-C.min*100)/((C.max-C.min)*100)*100)+'%');mark.style.left=v+'%';
+    const over=p>=cut;call.replaceChildren(document.createTextNode('Call:'),el('span','pill '+(over?'ov':'un'),over?P:N),
+      el('span','note',Math.round(p*100)+'% is '+(over?'at or above':'below')+' your '+v+'% cutoff'));
+    const row=tbl.find(t=>Math.round(t.cutoff*100)===v);trip.replaceChildren();
+    if(row){const cell=(big,txt)=>{const d=el('div');d.appendChild(el('b',null,big));d.appendChild(el('span',null,txt));trip.appendChild(d)};
+      cell(pct(row.over_right),P.toLowerCase()+' calls that were right');cell(pct(row.under_right),N.toLowerCase()+' calls that were right');cell(pct(row.called_over),'of games called '+P.toLowerCase());
+      note.textContent='At a '+v+'% cutoff the model was right on '+pct(row.accuracy)+' of games overall and caught '+pct(row.overs_caught)+' of the games that went '+P.toLowerCase()+'. Raise the cutoff and '+P.toLowerCase()+' calls get rarer but more reliable. '+(meta.card.threshold_note||'')}};
+  rng.oninput=()=>set(parseFloat(rng.value),'rng');num.oninput=()=>{const v=parseFloat(num.value);if(!isNaN(v)&&v>=C.min*100&&v<=C.max*100)set(v,'num')};num.onblur=()=>{num.value=Math.round(cut*100)};
+  h.appendChild(lab);h.appendChild(num);w.appendChild(h);w.appendChild(rng);w.appendChild(call);w.appendChild(trip);w.appendChild(note);hero.appendChild(w);
+  set((cut??C.default)*100);
+}
+function renderCluster(r){
+  const box=$('result');box.replaceChildren();const c=r.cluster,pr=c.profile,all=r.overall;
+  const hero=el('div','card hero');hero.appendChild(el('p','lab','This halftime looks like'));
+  hero.appendChild(el('div','tname',c.name));
+  hero.appendChild(el('p','note','One of '+r.k+' game types. About '+Math.round(c.share*100)+'% of past games ('+pr.games.toLocaleString()+') are this type.'+(r.border?' Border case: the next type is almost as close.':'')));
+  const trip=el('div','trip');const cell=(big,txt)=>{const d=el('div');d.appendChild(el('b',null,big));d.appendChild(el('span',null,txt));trip.appendChild(d)};
+  cell(n1(pr.final_total),'avg final points (all games '+n1(all.final_total)+')');cell(Math.round(pr.home_win*100)+'%','home team won (all games '+Math.round(all.home_win*100)+'%)');
+  cell(Math.round(pr.over*100)+'%','went over the pregame total');hero.appendChild(trip);
+  const nt=el('p','note','How games of this type finished. The model never saw final scores; these were looked up after grouping.');nt.style.marginTop='10px';hero.appendChild(nt);
+  box.appendChild(hero);
+  const list=el('div','card blk');list.style.marginTop='16px';list.appendChild(el('h3',null,'How close you are to each type'));
+  const ln=el('p','note','Distance from your inputs to the centre of each type, in standard deviations. Shorter is closer. Each row also shows that type’s average halftime score and how its games finished.');ln.style.marginBottom='10px';list.appendChild(ln);
+  const mx=Math.max(...r.clusters.map(x=>x.distance));
+  r.clusters.forEach((x,i)=>{const row=el('div','ctype'+(i?'':' me')),nm=el('div','nm',x.name);
+    nm.appendChild(el('small',null,'Centre '+Math.round(x.centroid.home_h1_pts)+'–'+Math.round(x.centroid.away_h1_pts)+' at half, finishes '+n1(x.profile.final_total)+' pts, home wins '+Math.round(x.profile.home_win*100)+'%'));
+    const tr=el('div','tr'),b=el('i');b.style.width=Math.max(4,x.distance/mx*100)+'%';tr.appendChild(b);row.appendChild(nm);row.appendChild(tr);row.appendChild(el('b',null,x.distance.toFixed(2)));list.appendChild(row)});
+  box.appendChild(list);
+  below(box,r,'How far each input sits from an average halftime, in standard deviations. Right of centre is above average.','What stands out about this halftime',v=>sg(v)+' SD');
+  $('miniVal').textContent=c.name;
+}
 function render(r){
-  ran=true;$('p-pred').classList.remove('stale');
+  ran=true;last=r;$('p-pred').classList.remove('stale');
   if(r.kind==='probability')return renderProb(r);
+  if(r.kind==='cluster')return renderCluster(r);
   const u=meta.target.unit||'',box=$('result');box.replaceChildren();
   const hero=el('div','card hero');hero.appendChild(el('p','lab','Expected '+meta.target.label.toLowerCase()));
   const big=el('div','big',n1(r.prediction));big.appendChild(el('small',null,u));hero.appendChild(big);
@@ -452,7 +672,7 @@ function render(r){
 async function run(user){
   const btn=$('dyno');btn.disabled=true;btn.textContent='Running';
   try{
-    const body={inputs:vals};const lv=lineInput?parseFloat(lineInput.value):NaN;if(!isNaN(lv))body.line=lv;
+    const body={inputs:vals};if(Object.keys(pvals).length)body.params=pvals;const lv=lineInput?parseFloat(lineInput.value):NaN;if(!isNaN(lv))body.line=lv;
     const r=await fetch('/api/models/'+SLUG+'/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const j=await r.json();if(!r.ok)throw new Error(typeof j.detail==='string'?j.detail:'check the inputs and try again');render(j);
     if(user){tab('pred');if(!matchMedia('(min-width:980px)').matches)$('out').scrollIntoView({behavior:'smooth',block:'start'})}
@@ -462,7 +682,7 @@ async function run(user){
 fetch('/api/models/'+SLUG).then(r=>r.ok?r.json():Promise.reject()).then(m=>{meta=m;build();
   $('dyno').onclick=()=>run(true);
   $('mini').onclick=()=>{tab('pred');$('out').scrollIntoView({behavior:'smooth',block:'start'})};
-  $('reset').onclick=()=>{meta.features.forEach(f=>ctl[f.name](f.default));if(lineInput)lineInput.value='';run(false)};
+  $('reset').onclick=()=>{meta.features.forEach(f=>ctl[f.name](f.default));(meta.controls||[]).forEach(c=>ctl[c.name](c.default));if(meta.target.cutoff)cut=meta.target.cutoff.default;if(lineInput)lineInput.value='';run(false)};
   run(false);
 }).catch(()=>{$('result').replaceChildren(el('p','empty','Could not load this model. Refresh to try again.'))});
 </script></body></html>"""
@@ -499,3 +719,6 @@ async function run(){
 }
 go.onclick=run;
 </script></body></html>"""
+
+HUB = HUB.replace("__FIGJS__", FIGJS)
+MODEL = MODEL.replace("__FIGJS__", FIGJS)
