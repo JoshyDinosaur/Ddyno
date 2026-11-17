@@ -1,0 +1,214 @@
+{
+ "season": 2026,
+ "through_week": 10,
+ "updated": "2026-11-17 05:30 UTC",
+ "groups": [
+  {
+   "id": "ypc",
+   "role": "rb",
+   "title": "Yards per carry",
+   "unit": "per carry",
+   "note": "Running backs with at least 6.25 carries per team game.",
+   "players": [
+    {
+     "name": "Jaylen Warren",
+     "team": "PIT",
+     "value": "5.71",
+     "detail": "719 yds on 126 carries"
+    },
+    {
+     "name": "Kenneth Walker III",
+     "team": "KC",
+     "value": "5.48",
+     "detail": "872 yds on 159 carries"
+    },
+    {
+     "name": "Kyle Monangai",
+     "team": "CHI",
+     "value": "5.40",
+     "detail": "324 yds on 60 carries"
+    }
+   ]
+  },
+  {
+   "id": "qbr",
+   "role": "qb",
+   "title": "Total QBR",
+   "unit": "QBR",
+   "note": "ESPN Total QBR, qualified passers.",
+   "players": [
+    {
+     "name": "Joe Burrow",
+     "team": "CIN",
+     "value": "82.0",
+     "detail": "400 plays"
+    },
+    {
+     "name": "Brock Purdy",
+     "team": "SF",
+     "value": "81.4",
+     "detail": "332 plays"
+    }
+   ]
+  },
+  {
+   "id": "pass_td",
+   "role": "qb",
+   "title": "Passing touchdowns",
+   "unit": "pass TD",
+   "note": "",
+   "players": [
+    {
+     "name": "Joe Burrow",
+     "team": "CIN",
+     "value": "27",
+     "detail": "2795 pass yds"
+    },
+    {
+     "name": "Kirk Cousins",
+     "team": "MIN",
+     "value": "22",
+     "detail": "2547 pass yds"
+    }
+   ]
+  },
+  {
+   "id": "rec_td",
+   "role": "wr",
+   "title": "Receiving touchdowns",
+   "unit": "rec TD",
+   "note": "Wide receivers.",
+   "players": [
+    {
+     "name": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "value": "10",
+     "detail": "1207 rec yds"
+    },
+    {
+     "name": "CeeDee Lamb",
+     "team": "DAL",
+     "value": "8",
+     "detail": "976 rec yds"
+    },
+    {
+     "name": "Christian Watson",
+     "team": "GB",
+     "value": "7",
+     "detail": "916 rec yds"
+    }
+   ]
+  },
+  {
+   "id": "rec_yds",
+   "role": "wr",
+   "title": "Receiving yards",
+   "unit": "rec yds",
+   "note": "Wide receivers.",
+   "players": [
+    {
+     "name": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "value": "1207",
+     "detail": "10 TD"
+    },
+    {
+     "name": "CeeDee Lamb",
+     "team": "DAL",
+     "value": "976",
+     "detail": "8 TD"
+    },
+    {
+     "name": "Christian Watson",
+     "team": "GB",
+     "value": "916",
+     "detail": "7 TD"
+    }
+   ]
+  },
+  {
+   "id": "sacks",
+   "role": "rush",
+   "title": "Sacks",
+   "unit": "sacks",
+   "note": "",
+   "players": [
+    {
+     "name": "Will Anderson Jr.",
+     "team": "HOU",
+     "value": "10.5",
+     "detail": "DE"
+    },
+    {
+     "name": "Carl Granderson",
+     "team": "NO",
+     "value": "8.5",
+     "detail": "DE"
+    }
+   ]
+  },
+  {
+   "id": "tackles",
+   "role": "tackle",
+   "title": "Tackles",
+   "unit": "tackles",
+   "note": "Solo plus assisted.",
+   "players": [
+    {
+     "name": "Alex Singleton",
+     "team": "DEN",
+     "value": "104",
+     "detail": "50 solo"
+    },
+    {
+     "name": "Nakobe Dean",
+     "team": "LV",
+     "value": "103",
+     "detail": "47 solo"
+    }
+   ]
+  },
+  {
+   "id": "coach_afc",
+   "role": "coach",
+   "title": "Most wins, AFC coaches",
+   "unit": "record",
+   "note": "This season.",
+   "players": [
+    {
+     "name": "Joe Brady",
+     "team": "BUF",
+     "value": "8-1",
+     "detail": "+88 point margin"
+    },
+    {
+     "name": "Liam Coen",
+     "team": "JAX",
+     "value": "7-2",
+     "detail": "+125 point margin"
+    }
+   ]
+  },
+  {
+   "id": "coach_nfc",
+   "role": "coach",
+   "title": "Most wins, NFC coaches",
+   "unit": "record",
+   "note": "This season.",
+   "players": [
+    {
+     "name": "Kyle Shanahan",
+     "team": "SF",
+     "value": "8-1",
+     "detail": "+85 point margin"
+    },
+    {
+     "name": "Dan Campbell",
+     "team": "DET",
+     "value": "7-2",
+     "detail": "+58 point margin"
+    }
+   ]
+  }
+ ]
+}
