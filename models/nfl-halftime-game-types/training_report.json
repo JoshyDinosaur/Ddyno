@@ -1,0 +1,110 @@
+{
+ "k_table": [
+  {
+   "k": 2,
+   "inertia": 18639,
+   "silhouette": 0.288,
+   "calinski_harabasz": 3491,
+   "davies_bouldin": 1.298,
+   "stability": 0.935,
+   "holdout_silhouette": 0.278,
+   "holdout_total_explained": 0.008,
+   "smallest_group": 0.496
+  },
+  {
+   "k": 3,
+   "inertia": 14378,
+   "silhouette": 0.259,
+   "calinski_harabasz": 3297,
+   "davies_bouldin": 1.21,
+   "stability": 0.917,
+   "holdout_silhouette": 0.28,
+   "holdout_total_explained": 0.262,
+   "smallest_group": 0.305
+  },
+  {
+   "k": 4,
+   "inertia": 12241,
+   "silhouette": 0.251,
+   "calinski_harabasz": 2988,
+   "davies_bouldin": 1.157,
+   "stability": 0.866,
+   "holdout_silhouette": 0.261,
+   "holdout_total_explained": 0.298,
+   "smallest_group": 0.2
+  },
+  {
+   "k": 5,
+   "inertia": 10832,
+   "silhouette": 0.231,
+   "calinski_harabasz": 2759,
+   "davies_bouldin": 1.178,
+   "stability": 0.796,
+   "holdout_silhouette": 0.231,
+   "holdout_total_explained": 0.368,
+   "smallest_group": 0.127
+  },
+  {
+   "k": 6,
+   "inertia": 9920,
+   "silhouette": 0.221,
+   "calinski_harabasz": 2538,
+   "davies_bouldin": 1.223,
+   "stability": 0.643,
+   "holdout_silhouette": 0.216,
+   "holdout_total_explained": 0.355,
+   "smallest_group": 0.09
+  },
+  {
+   "k": 7,
+   "inertia": 9168,
+   "silhouette": 0.206,
+   "calinski_harabasz": 2384,
+   "davies_bouldin": 1.271,
+   "stability": 0.69,
+   "holdout_silhouette": 0.207,
+   "holdout_total_explained": 0.348,
+   "smallest_group": 0.087
+  },
+  {
+   "k": 8,
+   "inertia": 8598,
+   "silhouette": 0.203,
+   "calinski_harabasz": 2245,
+   "davies_bouldin": 1.256,
+   "stability": 0.577,
+   "holdout_silhouette": 0.204,
+   "holdout_total_explained": 0.39,
+   "smallest_group": 0.075
+  },
+  {
+   "k": 9,
+   "inertia": 8137,
+   "silhouette": 0.197,
+   "calinski_harabasz": 2125,
+   "davies_bouldin": 1.279,
+   "stability": 0.575,
+   "holdout_silhouette": 0.194,
+   "holdout_total_explained": 0.379,
+   "smallest_group": 0.072
+  },
+  {
+   "k": 10,
+   "inertia": 7786,
+   "silhouette": 0.193,
+   "calinski_harabasz": 2008,
+   "davies_bouldin": 1.286,
+   "stability": 0.49,
+   "holdout_silhouette": 0.196,
+   "holdout_total_explained": 0.414,
+   "smallest_group": 0.042
+  }
+ ],
+ "default_k": 4,
+ "features": [
+  "home_h1_pts",
+  "away_h1_pts",
+  "home_h1_yards",
+  "away_h1_yards"
+ ]
+}

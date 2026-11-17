@@ -1,0 +1,347 @@
+{
+ "slug": "nfl-halftime-game-types",
+ "name": "Halftime Game Types (K-Means)",
+ "category": "NFL Inference",
+ "type": "kmeans",
+ "summary": "Set each team's halftime points and yards and see which kind of game this is, and how games of that kind usually finish.",
+ "target": {
+  "label": "Game type"
+ },
+ "features": [
+  {
+   "name": "home_h1_pts",
+   "label": "Halftime points",
+   "side": "home",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 31,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "home_h1_yards",
+   "label": "Total yards",
+   "side": "home",
+   "unit": "yds",
+   "step": 5,
+   "min": 50,
+   "max": 330,
+   "default": 170,
+   "hard_min": 0.0,
+   "hard_max": 500,
+   "description": "Offensive yards gained in the first half."
+  },
+  {
+   "name": "away_h1_pts",
+   "label": "Halftime points",
+   "side": "away",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 29,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "away_h1_yards",
+   "label": "Total yards",
+   "side": "away",
+   "unit": "yds",
+   "step": 5,
+   "min": 40,
+   "max": 315,
+   "default": 160,
+   "hard_min": -10,
+   "hard_max": 500,
+   "description": "Offensive yards gained in the first half."
+  }
+ ],
+ "derived": [],
+ "controls": [
+  {
+   "name": "k",
+   "label": "Number of game types (k)",
+   "min": 2,
+   "max": 8,
+   "step": 1,
+   "default": 4,
+   "description": "K-means needs to be told how many groups to make. 4 is the default chosen by the checks on the About tab; change it to see the games carved up differently."
+  }
+ ],
+ "card": {
+  "trained_on": "2026-11-16",
+  "n_games": 7410,
+  "seasons": [
+   1999,
+   2026
+  ],
+  "candidates_tested": 4,
+  "model_kind": "K-means clustering (k = 4 by default)",
+  "default_k": 4,
+  "overall": {
+   "games": 7410,
+   "final_total": 44.3,
+   "second_half": 22.0,
+   "home_win": 0.562,
+   "over": 0.495,
+   "total_line": 43.6
+  },
+  "clusters": [
+   {
+    "name": "Defensive struggle",
+    "share": 0.351,
+    "games": 2600,
+    "final_total": 35.9,
+    "second_half": 21.1,
+    "home_win": 0.572,
+    "over": 0.272,
+    "total_line": 42.1
+   },
+   {
+    "name": "Away in control",
+    "share": 0.225,
+    "games": 1666,
+    "final_total": 45.6,
+    "second_half": 21.9,
+    "home_win": 0.197,
+    "over": 0.534,
+    "total_line": 43.9
+   },
+   {
+    "name": "Home in control",
+    "share": 0.224,
+    "games": 1662,
+    "final_total": 45.5,
+    "second_half": 21.5,
+    "home_win": 0.892,
+    "over": 0.527,
+    "total_line": 43.9
+   },
+   {
+    "name": "Shootout",
+    "share": 0.2,
+    "games": 1482,
+    "final_total": 56.2,
+    "second_half": 24.1,
+    "home_win": 0.582,
+    "over": 0.806,
+    "total_line": 45.4
+   }
+  ],
+  "sections": [
+   {
+    "title": "The 4 game types",
+    "paragraphs": [
+     "Each row is one group. The first four columns are the centre of the group, which is the halftime box score of its average game. The rest shows how those games finished. The model never saw those columns."
+    ],
+    "table": {
+     "head": [
+      "Type",
+      "Share",
+      "Home pts",
+      "Away pts",
+      "Home yds",
+      "Away yds",
+      "Avg final total",
+      "2nd-half pts",
+      "Home wins",
+      "Went over"
+     ],
+     "rows": [
+      [
+       "Defensive struggle",
+       "35%",
+       "8",
+       "7",
+       "146",
+       "136",
+       "35.9",
+       "21.1",
+       "57%",
+       "27%"
+      ],
+      [
+       "Away in control",
+       "22%",
+       "6",
+       "18",
+       "120",
+       "221",
+       "45.6",
+       "21.9",
+       "20%",
+       "53%"
+      ],
+      [
+       "Home in control",
+       "22%",
+       "19",
+       "5",
+       "235",
+       "109",
+       "45.5",
+       "21.5",
+       "89%",
+       "53%"
+      ],
+      [
+       "Shootout",
+       "20%",
+       "17",
+       "15",
+       "213",
+       "201",
+       "56.2",
+       "24.1",
+       "58%",
+       "81%"
+      ],
+      [
+       "All games",
+       "100%",
+       "",
+       "",
+       "",
+       "",
+       "44.3",
+       "22.0",
+       "56%",
+       "50%"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "How the number of groups was chosen",
+    "paragraphs": [
+     "Clustering has no right answer to grade against, so there is no accuracy score. Instead, each choice of k is judged on whether the groups are tight, separate and repeatable. For every k the model was fit 25 times from different random starts and the best fit kept.",
+     "Inertia always falls as k grows, so you look for the bend where it stops falling fast. Silhouette (higher is better) asks whether a game is closer to its own group than the next one. Davies-Bouldin (lower is better) measures overlap between neighbouring groups. Stability refits on random halves of the games and checks the two answers agree (1.00 is identical). Test silhouette uses centres learned before 2025 on the 2025+ games.",
+     "Rule used: among the k values whose silhouette is within 0.05 of the best and whose stability is at least 0.85, take the largest. That gave k = 4."
+    ],
+    "table": {
+     "head": [
+      "k",
+      "Inertia",
+      "Silhouette",
+      "Calinski-Harabasz",
+      "Davies-Bouldin",
+      "Stability",
+      "Test silhouette",
+      "Smallest group"
+     ],
+     "rows": [
+      [
+       "2",
+       "18,639",
+       "0.288",
+       "3,491",
+       "1.30",
+       "0.94",
+       "0.278",
+       "50%"
+      ],
+      [
+       "3",
+       "14,378",
+       "0.259",
+       "3,297",
+       "1.21",
+       "0.92",
+       "0.280",
+       "30%"
+      ],
+      [
+       "4 (default)",
+       "12,241",
+       "0.251",
+       "2,988",
+       "1.16",
+       "0.87",
+       "0.261",
+       "20%"
+      ],
+      [
+       "5",
+       "10,832",
+       "0.231",
+       "2,759",
+       "1.18",
+       "0.80",
+       "0.231",
+       "13%"
+      ],
+      [
+       "6",
+       "9,920",
+       "0.221",
+       "2,538",
+       "1.22",
+       "0.64",
+       "0.216",
+       "9%"
+      ],
+      [
+       "7",
+       "9,168",
+       "0.206",
+       "2,384",
+       "1.27",
+       "0.69",
+       "0.207",
+       "9%"
+      ],
+      [
+       "8",
+       "8,598",
+       "0.203",
+       "2,245",
+       "1.26",
+       "0.58",
+       "0.204",
+       "8%"
+      ],
+      [
+       "9",
+       "8,137",
+       "0.197",
+       "2,125",
+       "1.28",
+       "0.57",
+       "0.194",
+       "7%"
+      ],
+      [
+       "10",
+       "7,786",
+       "0.193",
+       "2,008",
+       "1.29",
+       "0.49",
+       "0.196",
+       "4%"
+      ]
+     ]
+    }
+   }
+  ],
+  "findings": [
+   "K-means was given only four numbers per game (each team's halftime points and yards) and never saw a final score. Asked for 4 groups, it found: Defensive struggle (35% of games); Away in control (22% of games); Home in control (22% of games); Shootout (20% of games).",
+   "The groups mean something for how games end, even though endings were hidden from the model. 'Shootout' games finish with 56 points on average and 'Defensive struggle' games with 36. The home team wins 89% of 'Home in control' games and 20% of 'Away in control' games.",
+   "Game type also says a lot about the over/under. 'Shootout' games went over the pregame total 81% of the time and 'Defensive struggle' games only 27%. That is not magic: the type mostly reflects how many points are already on the board, which is the same signal the over/under models on this site use.",
+   "Honest caveat: halftime box scores do not fall into natural clumps. The silhouette score is 0.25 at k = 4 (best is 0.29 at k = 2; clearly separated groups score above 0.5). The games form one cloud, and k-means is slicing it into regions. The regions are stable and readable, but the borders between them are soft."
+  ],
+  "limitations": [
+   "The groups are regions of one continuous cloud of games, not separate species. A game near a border could reasonably be either type.",
+   "K-means only makes round, similar-sized groups around a centre. It cannot find long, thin or nested patterns.",
+   "It uses four inputs. Turnovers, weather and who gets the ball next are not part of the grouping.",
+   "The names are written by a simple rule from each group's centre. They are labels for convenience, not something the model knows.",
+   "How games of a type finished is an average over many games. It is context, not a prediction for this game."
+  ],
+  "disclaimer": "For information and learning only. Not betting advice."
+ }
+}

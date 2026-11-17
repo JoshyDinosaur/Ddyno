@@ -1,0 +1,999 @@
+{
+ "type": "kmeans",
+ "feature_order": [
+  "home_h1_pts",
+  "away_h1_pts",
+  "home_h1_yards",
+  "away_h1_yards"
+ ],
+ "mean": [
+  11.977058029689609,
+  10.346828609986504,
+  173.52658569500676,
+  162.1203778677463
+ ],
+ "scale": [
+  7.358050296466009,
+  6.987656849179167,
+  60.79588564659945,
+  59.43608438694988
+ ],
+ "solutions": {
+  "2": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Away in control",
+     "share": 0.502,
+     "centroid_z": [
+      -0.5307,
+      0.5797,
+      -0.5689,
+      0.6161
+     ],
+     "centroid": {
+      "home_h1_pts": 8.1,
+      "away_h1_pts": 14.4,
+      "home_h1_yards": 138.9,
+      "away_h1_yards": 198.7
+     },
+     "profile": {
+      "games": 3720,
+      "final_total": 44.8,
+      "second_half": 22.3,
+      "home_win": 0.34,
+      "over": 0.503,
+      "total_line": 43.7
+     }
+    },
+    {
+     "id": 1,
+     "name": "Home in control",
+     "share": 0.498,
+     "centroid_z": [
+      0.5342,
+      -0.5835,
+      0.5726,
+      -0.6201
+     ],
+     "centroid": {
+      "home_h1_pts": 15.9,
+      "away_h1_pts": 6.3,
+      "home_h1_yards": 208.3,
+      "away_h1_yards": 125.3
+     },
+     "profile": {
+      "games": 3690,
+      "final_total": 43.8,
+      "second_half": 21.6,
+      "home_win": 0.785,
+      "over": 0.486,
+      "total_line": 43.5
+     }
+    }
+   ],
+   "distance_p50": 1.399,
+   "distance_p95": 2.684
+  },
+  "3": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Defensive struggle",
+     "share": 0.379,
+     "centroid_z": [
+      -0.5374,
+      -0.5109,
+      -0.4612,
+      -0.4424
+     ],
+     "centroid": {
+      "home_h1_pts": 8.0,
+      "away_h1_pts": 6.8,
+      "home_h1_yards": 145.5,
+      "away_h1_yards": 135.8
+     },
+     "profile": {
+      "games": 2805,
+      "final_total": 35.9,
+      "second_half": 21.1,
+      "home_win": 0.572,
+      "over": 0.274,
+      "total_line": 42.1
+     }
+    },
+    {
+     "id": 1,
+     "name": "Away in control",
+     "share": 0.317,
+     "centroid_z": [
+      -0.3651,
+      1.0565,
+      -0.437,
+      1.0097
+     ],
+     "centroid": {
+      "home_h1_pts": 9.3,
+      "away_h1_pts": 17.7,
+      "home_h1_yards": 147.0,
+      "away_h1_yards": 222.1
+     },
+     "profile": {
+      "games": 2352,
+      "final_total": 49.9,
+      "second_half": 22.9,
+      "home_win": 0.283,
+      "over": 0.642,
+      "total_line": 44.5
+     }
+    },
+    {
+     "id": 2,
+     "name": "Home in control",
+     "share": 0.304,
+     "centroid_z": [
+      1.0533,
+      -0.464,
+      1.0331,
+      -0.5008
+     ],
+     "centroid": {
+      "home_h1_pts": 19.7,
+      "away_h1_pts": 7.1,
+      "home_h1_yards": 236.3,
+      "away_h1_yards": 132.4
+     },
+     "profile": {
+      "games": 2253,
+      "final_total": 48.8,
+      "second_half": 22.0,
+      "home_win": 0.84,
+      "over": 0.617,
+      "total_line": 44.5
+     }
+    }
+   ],
+   "distance_p50": 1.257,
+   "distance_p95": 2.287
+  },
+  "4": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Defensive struggle",
+     "share": 0.351,
+     "centroid_z": [
+      -0.5291,
+      -0.5181,
+      -0.4488,
+      -0.4399
+     ],
+     "centroid": {
+      "home_h1_pts": 8.1,
+      "away_h1_pts": 6.7,
+      "home_h1_yards": 146.2,
+      "away_h1_yards": 136.0
+     },
+     "profile": {
+      "games": 2600,
+      "final_total": 35.9,
+      "second_half": 21.1,
+      "home_win": 0.572,
+      "over": 0.272,
+      "total_line": 42.1
+     }
+    },
+    {
+     "id": 1,
+     "name": "Away in control",
+     "share": 0.225,
+     "centroid_z": [
+      -0.7852,
+      1.0285,
+      -0.8845,
+      0.9936
+     ],
+     "centroid": {
+      "home_h1_pts": 6.2,
+      "away_h1_pts": 17.5,
+      "home_h1_yards": 119.8,
+      "away_h1_yards": 221.2
+     },
+     "profile": {
+      "games": 1666,
+      "final_total": 45.6,
+      "second_half": 21.9,
+      "home_win": 0.197,
+      "over": 0.534,
+      "total_line": 43.9
+     }
+    },
+    {
+     "id": 2,
+     "name": "Home in control",
+     "share": 0.224,
+     "centroid_z": [
+      1.0139,
+      -0.8238,
+      1.0082,
+      -0.8937
+     ],
+     "centroid": {
+      "home_h1_pts": 19.4,
+      "away_h1_pts": 4.6,
+      "home_h1_yards": 234.8,
+      "away_h1_yards": 109.0
+     },
+     "profile": {
+      "games": 1662,
+      "final_total": 45.5,
+      "second_half": 21.5,
+      "home_win": 0.892,
+      "over": 0.527,
+      "total_line": 43.9
+     }
+    },
+    {
+     "id": 3,
+     "name": "Shootout",
+     "share": 0.2,
+     "centroid_z": [
+      0.6759,
+      0.6762,
+      0.6529,
+      0.6565
+     ],
+     "centroid": {
+      "home_h1_pts": 17.0,
+      "away_h1_pts": 15.1,
+      "home_h1_yards": 213.2,
+      "away_h1_yards": 201.1
+     },
+     "profile": {
+      "games": 1482,
+      "final_total": 56.2,
+      "second_half": 24.1,
+      "home_win": 0.582,
+      "over": 0.806,
+      "total_line": 45.4
+     }
+    }
+   ],
+   "distance_p50": 1.16,
+   "distance_p95": 2.106
+  },
+  "5": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Home in control",
+     "share": 0.265,
+     "centroid_z": [
+      -0.1563,
+      -0.798,
+      -0.0144,
+      -0.8582
+     ],
+     "centroid": {
+      "home_h1_pts": 10.8,
+      "away_h1_pts": 4.8,
+      "home_h1_yards": 172.7,
+      "away_h1_yards": 111.1
+     },
+     "profile": {
+      "games": 1964,
+      "final_total": 36.4,
+      "second_half": 20.8,
+      "home_win": 0.726,
+      "over": 0.286,
+      "total_line": 42.3
+     }
+    },
+    {
+     "id": 1,
+     "name": "Away in control, low scoring",
+     "share": 0.253,
+     "centroid_z": [
+      -0.8389,
+      0.0371,
+      -0.8854,
+      0.2023
+     ],
+     "centroid": {
+      "home_h1_pts": 5.8,
+      "away_h1_pts": 10.6,
+      "home_h1_yards": 119.7,
+      "away_h1_yards": 174.1
+     },
+     "profile": {
+      "games": 1875,
+      "final_total": 38.0,
+      "second_half": 21.6,
+      "home_win": 0.372,
+      "over": 0.311,
+      "total_line": 42.6
+     }
+    },
+    {
+     "id": 2,
+     "name": "Shootout",
+     "share": 0.205,
+     "centroid_z": [
+      0.5797,
+      0.5571,
+      0.5445,
+      0.5357
+     ],
+     "centroid": {
+      "home_h1_pts": 16.2,
+      "away_h1_pts": 14.2,
+      "home_h1_yards": 206.6,
+      "away_h1_yards": 194.0
+     },
+     "profile": {
+      "games": 1522,
+      "final_total": 54.3,
+      "second_half": 23.8,
+      "home_win": 0.58,
+      "over": 0.769,
+      "total_line": 45.2
+     }
+    },
+    {
+     "id": 3,
+     "name": "Home running away",
+     "share": 0.15,
+     "centroid_z": [
+      1.4224,
+      -0.7377,
+      1.3548,
+      -0.7743
+     ],
+     "centroid": {
+      "home_h1_pts": 22.4,
+      "away_h1_pts": 5.2,
+      "home_h1_yards": 255.9,
+      "away_h1_yards": 116.1
+     },
+     "profile": {
+      "games": 1113,
+      "final_total": 49.5,
+      "second_half": 21.9,
+      "home_win": 0.916,
+      "over": 0.635,
+      "total_line": 44.4
+     }
+    },
+    {
+     "id": 4,
+     "name": "Away in control, high scoring",
+     "share": 0.126,
+     "centroid_z": [
+      -0.6252,
+      1.5752,
+      -0.6925,
+      1.4491
+     ],
+     "centroid": {
+      "home_h1_pts": 7.4,
+      "away_h1_pts": 21.4,
+      "home_h1_yards": 131.4,
+      "away_h1_yards": 248.2
+     },
+     "profile": {
+      "games": 936,
+      "final_total": 51.1,
+      "second_half": 22.3,
+      "home_win": 0.146,
+      "over": 0.688,
+      "total_line": 44.6
+     }
+    }
+   ],
+   "distance_p50": 1.102,
+   "distance_p95": 1.984
+  },
+  "6": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Even game",
+     "share": 0.227,
+     "centroid_z": [
+      0.1484,
+      0.1219,
+      0.127,
+      0.155
+     ],
+     "centroid": {
+      "home_h1_pts": 13.1,
+      "away_h1_pts": 11.2,
+      "home_h1_yards": 181.2,
+      "away_h1_yards": 171.3
+     },
+     "profile": {
+      "games": 1685,
+      "final_total": 47.2,
+      "second_half": 22.9,
+      "home_win": 0.569,
+      "over": 0.583,
+      "total_line": 44.2
+     }
+    },
+    {
+     "id": 1,
+     "name": "Defensive struggle",
+     "share": 0.206,
+     "centroid_z": [
+      -0.9006,
+      -0.3852,
+      -0.8901,
+      -0.2141
+     ],
+     "centroid": {
+      "home_h1_pts": 5.4,
+      "away_h1_pts": 7.7,
+      "home_h1_yards": 119.4,
+      "away_h1_yards": 149.4
+     },
+     "profile": {
+      "games": 1529,
+      "final_total": 34.0,
+      "second_half": 20.9,
+      "home_win": 0.447,
+      "over": 0.212,
+      "total_line": 41.9
+     }
+    },
+    {
+     "id": 2,
+     "name": "Home in control",
+     "share": 0.189,
+     "centroid_z": [
+      0.1002,
+      -0.9694,
+      0.2978,
+      -1.1172
+     ],
+     "centroid": {
+      "home_h1_pts": 12.7,
+      "away_h1_pts": 3.6,
+      "home_h1_yards": 191.6,
+      "away_h1_yards": 95.7
+     },
+     "profile": {
+      "games": 1397,
+      "final_total": 36.8,
+      "second_half": 20.5,
+      "home_win": 0.82,
+      "over": 0.29,
+      "total_line": 42.4
+     }
+    },
+    {
+     "id": 3,
+     "name": "Away in control",
+     "share": 0.157,
+     "centroid_z": [
+      -0.8637,
+      1.1914,
+      -0.9723,
+      1.1334
+     ],
+     "centroid": {
+      "home_h1_pts": 5.6,
+      "away_h1_pts": 18.7,
+      "home_h1_yards": 114.4,
+      "away_h1_yards": 229.5
+     },
+     "profile": {
+      "games": 1160,
+      "final_total": 46.1,
+      "second_half": 21.8,
+      "home_win": 0.16,
+      "over": 0.562,
+      "total_line": 43.9
+     }
+    },
+    {
+     "id": 4,
+     "name": "Home running away",
+     "share": 0.13,
+     "centroid_z": [
+      1.5852,
+      -0.5619,
+      1.469,
+      -0.5642
+     ],
+     "centroid": {
+      "home_h1_pts": 23.6,
+      "away_h1_pts": 6.4,
+      "home_h1_yards": 262.8,
+      "away_h1_yards": 128.6
+     },
+     "profile": {
+      "games": 962,
+      "final_total": 52.4,
+      "second_half": 22.4,
+      "home_win": 0.903,
+      "over": 0.713,
+      "total_line": 44.9
+     }
+    },
+    {
+     "id": 5,
+     "name": "Shootout",
+     "share": 0.091,
+     "centroid_z": [
+      0.673,
+      1.3195,
+      0.6473,
+      1.2579
+     ],
+     "centroid": {
+      "home_h1_pts": 16.9,
+      "away_h1_pts": 19.6,
+      "home_h1_yards": 212.9,
+      "away_h1_yards": 236.9
+     },
+     "profile": {
+      "games": 677,
+      "final_total": 61.2,
+      "second_half": 24.7,
+      "home_win": 0.47,
+      "over": 0.91,
+      "total_line": 46.1
+     }
+    }
+   ],
+   "distance_p50": 1.051,
+   "distance_p95": 1.898
+  },
+  "7": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Even game",
+     "share": 0.211,
+     "centroid_z": [
+      0.1882,
+      0.0467,
+      0.1713,
+      0.0824
+     ],
+     "centroid": {
+      "home_h1_pts": 13.4,
+      "away_h1_pts": 10.7,
+      "home_h1_yards": 183.9,
+      "away_h1_yards": 167.0
+     },
+     "profile": {
+      "games": 1565,
+      "final_total": 46.9,
+      "second_half": 22.9,
+      "home_win": 0.599,
+      "over": 0.583,
+      "total_line": 44.2
+     }
+    },
+    {
+     "id": 1,
+     "name": "Away in control, low scoring",
+     "share": 0.178,
+     "centroid_z": [
+      -0.9043,
+      0.3094,
+      -1.0014,
+      0.4596
+     ],
+     "centroid": {
+      "home_h1_pts": 5.3,
+      "away_h1_pts": 12.5,
+      "home_h1_yards": 112.6,
+      "away_h1_yards": 189.4
+     },
+     "profile": {
+      "games": 1316,
+      "final_total": 39.4,
+      "second_half": 21.6,
+      "home_win": 0.297,
+      "over": 0.343,
+      "total_line": 42.9
+     }
+    },
+    {
+     "id": 2,
+     "name": "Defensive struggle",
+     "share": 0.165,
+     "centroid_z": [
+      -0.7441,
+      -0.7664,
+      -0.6004,
+      -0.6895
+     ],
+     "centroid": {
+      "home_h1_pts": 6.5,
+      "away_h1_pts": 5.0,
+      "home_h1_yards": 137.0,
+      "away_h1_yards": 121.1
+     },
+     "profile": {
+      "games": 1226,
+      "final_total": 32.1,
+      "second_half": 20.6,
+      "home_win": 0.586,
+      "over": 0.185,
+      "total_line": 41.4
+     }
+    },
+    {
+     "id": 3,
+     "name": "Home in control",
+     "share": 0.153,
+     "centroid_z": [
+      0.427,
+      -0.9956,
+      0.5538,
+      -1.1501
+     ],
+     "centroid": {
+      "home_h1_pts": 15.1,
+      "away_h1_pts": 3.4,
+      "home_h1_yards": 207.2,
+      "away_h1_yards": 93.8
+     },
+     "profile": {
+      "games": 1133,
+      "final_total": 39.2,
+      "second_half": 20.7,
+      "home_win": 0.858,
+      "over": 0.354,
+      "total_line": 42.8
+     }
+    },
+    {
+     "id": 4,
+     "name": "Home running away",
+     "share": 0.107,
+     "centroid_z": [
+      1.6864,
+      -0.4875,
+      1.5874,
+      -0.4839
+     ],
+     "centroid": {
+      "home_h1_pts": 24.4,
+      "away_h1_pts": 6.9,
+      "home_h1_yards": 270.0,
+      "away_h1_yards": 133.4
+     },
+     "profile": {
+      "games": 791,
+      "final_total": 53.7,
+      "second_half": 22.4,
+      "home_win": 0.91,
+      "over": 0.736,
+      "total_line": 45.2
+     }
+    },
+    {
+     "id": 5,
+     "name": "Away in control, high scoring",
+     "share": 0.093,
+     "centroid_z": [
+      -0.7199,
+      1.6944,
+      -0.8195,
+      1.4898
+     ],
+     "centroid": {
+      "home_h1_pts": 6.7,
+      "away_h1_pts": 22.2,
+      "home_h1_yards": 123.7,
+      "away_h1_yards": 250.7
+     },
+     "profile": {
+      "games": 692,
+      "final_total": 50.7,
+      "second_half": 21.9,
+      "home_win": 0.111,
+      "over": 0.699,
+      "total_line": 44.5
+     }
+    },
+    {
+     "id": 6,
+     "name": "Shootout",
+     "share": 0.093,
+     "centroid_z": [
+      0.7044,
+      1.1686,
+      0.6773,
+      1.1196
+     ],
+     "centroid": {
+      "home_h1_pts": 17.2,
+      "away_h1_pts": 18.5,
+      "home_h1_yards": 214.7,
+      "away_h1_yards": 228.7
+     },
+     "profile": {
+      "games": 687,
+      "final_total": 60.2,
+      "second_half": 24.6,
+      "home_win": 0.501,
+      "over": 0.887,
+      "total_line": 45.9
+     }
+    }
+   ],
+   "distance_p50": 1.008,
+   "distance_p95": 1.837
+  },
+  "8": {
+   "clusters": [
+    {
+     "id": 0,
+     "name": "Even game",
+     "share": 0.204,
+     "centroid_z": [
+      -0.0382,
+      0.1876,
+      -0.0101,
+      0.1938
+     ],
+     "centroid": {
+      "home_h1_pts": 11.7,
+      "away_h1_pts": 11.7,
+      "home_h1_yards": 172.9,
+      "away_h1_yards": 173.6
+     },
+     "profile": {
+      "games": 1511,
+      "final_total": 46.3,
+      "second_half": 22.9,
+      "home_win": 0.509,
+      "over": 0.551,
+      "total_line": 44.1
+     }
+    },
+    {
+     "id": 1,
+     "name": "Home in control, low scoring",
+     "share": 0.173,
+     "centroid_z": [
+      0.2884,
+      -0.8724,
+      0.442,
+      -1.0033
+     ],
+     "centroid": {
+      "home_h1_pts": 14.1,
+      "away_h1_pts": 4.3,
+      "home_h1_yards": 200.4,
+      "away_h1_yards": 102.5
+     },
+     "profile": {
+      "games": 1283,
+      "final_total": 39.3,
+      "second_half": 20.9,
+      "home_win": 0.832,
+      "over": 0.358,
+      "total_line": 42.8
+     }
+    },
+    {
+     "id": 2,
+     "name": "Defensive struggle",
+     "share": 0.148,
+     "centroid_z": [
+      -0.7787,
+      -0.7855,
+      -0.655,
+      -0.6818
+     ],
+     "centroid": {
+      "home_h1_pts": 6.2,
+      "away_h1_pts": 4.9,
+      "home_h1_yards": 133.7,
+      "away_h1_yards": 121.6
+     },
+     "profile": {
+      "games": 1097,
+      "final_total": 31.6,
+      "second_half": 20.5,
+      "home_win": 0.582,
+      "over": 0.171,
+      "total_line": 41.4
+     }
+    },
+    {
+     "id": 3,
+     "name": "Away in control, low scoring",
+     "share": 0.143,
+     "centroid_z": [
+      -1.0082,
+      0.262,
+      -1.1287,
+      0.4508
+     ],
+     "centroid": {
+      "home_h1_pts": 4.6,
+      "away_h1_pts": 12.2,
+      "home_h1_yards": 104.9,
+      "away_h1_yards": 188.9
+     },
+     "profile": {
+      "games": 1059,
+      "final_total": 38.2,
+      "second_half": 21.4,
+      "home_win": 0.28,
+      "over": 0.317,
+      "total_line": 42.7
+     }
+    },
+    {
+     "id": 4,
+     "name": "Home in control, high scoring",
+     "share": 0.099,
+     "centroid_z": [
+      1.3113,
+      0.1696,
+      1.1844,
+      0.2346
+     ],
+     "centroid": {
+      "home_h1_pts": 21.6,
+      "away_h1_pts": 11.5,
+      "home_h1_yards": 245.5,
+      "away_h1_yards": 176.1
+     },
+     "profile": {
+      "games": 735,
+      "final_total": 55.7,
+      "second_half": 22.5,
+      "home_win": 0.82,
+      "over": 0.809,
+      "total_line": 45.5
+     }
+    },
+    {
+     "id": 5,
+     "name": "Away running away",
+     "share": 0.081,
+     "centroid_z": [
+      -0.8505,
+      1.6875,
+      -0.9797,
+      1.4658
+     ],
+     "centroid": {
+      "home_h1_pts": 5.7,
+      "away_h1_pts": 22.1,
+      "home_h1_yards": 114.0,
+      "away_h1_yards": 249.2
+     },
+     "profile": {
+      "games": 597,
+      "final_total": 49.3,
+      "second_half": 21.4,
+      "home_win": 0.09,
+      "over": 0.658,
+      "total_line": 44.2
+     }
+    },
+    {
+     "id": 6,
+     "name": "Away in control, high scoring",
+     "share": 0.078,
+     "centroid_z": [
+      0.4181,
+      1.418,
+      0.4056,
+      1.3378
+     ],
+     "centroid": {
+      "home_h1_pts": 15.1,
+      "away_h1_pts": 20.3,
+      "home_h1_yards": 198.2,
+      "away_h1_yards": 241.6
+     },
+     "profile": {
+      "games": 581,
+      "final_total": 60.4,
+      "second_half": 25.1,
+      "home_win": 0.375,
+      "over": 0.882,
+      "total_line": 46.1
+     }
+    },
+    {
+     "id": 7,
+     "name": "Home running away",
+     "share": 0.074,
+     "centroid_z": [
+      1.6773,
+      -0.9977,
+      1.5517,
+      -1.043
+     ],
+     "centroid": {
+      "home_h1_pts": 24.3,
+      "away_h1_pts": 3.4,
+      "home_h1_yards": 267.9,
+      "away_h1_yards": 100.1
+     },
+     "profile": {
+      "games": 547,
+      "final_total": 49.7,
+      "second_half": 22.0,
+      "home_win": 0.94,
+      "over": 0.641,
+      "total_line": 44.2
+     }
+    }
+   ],
+   "distance_p50": 0.97,
+   "distance_p95": 1.775
+  }
+ },
+ "default_k": 4,
+ "typical": {
+  "home_h1_pts": 10,
+  "home_h1_yards": 170,
+  "away_h1_pts": 10,
+  "away_h1_yards": 160
+ },
+ "overall": {
+  "games": 7410,
+  "final_total": 44.3,
+  "second_half": 22.0,
+  "home_win": 0.562,
+  "over": 0.495,
+  "total_line": 43.6
+ },
+ "percentiles": {
+  "home_h1_pts": {
+   "1": 0.0,
+   "5": 0.0,
+   "25": 7.0,
+   "50": 10.0,
+   "75": 17.0,
+   "95": 24.0,
+   "99": 31.0
+  },
+  "away_h1_pts": {
+   "1": 0.0,
+   "5": 0.0,
+   "25": 6.0,
+   "50": 10.0,
+   "75": 14.0,
+   "95": 23.0,
+   "99": 29.0
+  },
+  "home_h1_yards": {
+   "1": 49.09,
+   "5": 78.0,
+   "25": 130.0,
+   "50": 170.0,
+   "75": 213.0,
+   "95": 278.0,
+   "99": 328.8199999999997
+  },
+  "away_h1_yards": {
+   "1": 39.09,
+   "5": 69.0,
+   "25": 119.0,
+   "50": 161.0,
+   "75": 200.0,
+   "95": 263.0,
+   "99": 314.90999999999985
+  }
+ },
+ "n_train": 7410,
+ "seasons": [
+  1999,
+  2026
+ ],
+ "trained_on": "2026-11-16"
+}
