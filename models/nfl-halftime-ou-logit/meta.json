@@ -1,0 +1,839 @@
+{
+ "slug": "nfl-halftime-ou-logit",
+ "name": "Halftime Over/Under (Tuned Logistic)",
+ "category": "NFL Inference",
+ "type": "logistic_classifier",
+ "summary": "Set the halftime numbers and any total you like, and get the chance the game finishes over it. In cross-validation it is the best-scoring over/under model here, by a small margin.",
+ "target": {
+  "label": "Chance of going over",
+  "positive": "Over",
+  "negative": "Under",
+  "headline": "Chance the game finishes over your total",
+  "subject": "going over your total",
+  "cutoff": {
+   "min": 0.3,
+   "max": 0.7,
+   "step": 0.01,
+   "default": 0.5
+  }
+ },
+ "features": [
+  {
+   "name": "home_h1_pts",
+   "label": "Halftime points",
+   "side": "home",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 31,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "home_h1_first_downs",
+   "label": "First downs",
+   "side": "home",
+   "unit": "",
+   "step": 1,
+   "min": 2,
+   "max": 19,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 30,
+   "description": "First downs gained in the first half."
+  },
+  {
+   "name": "home_h1_explosive",
+   "label": "Big plays (20+ yds)",
+   "side": "home",
+   "unit": "",
+   "step": 1,
+   "min": 0,
+   "max": 6,
+   "default": 2,
+   "hard_min": 0.0,
+   "hard_max": 15,
+   "description": "Runs or passes of 20 yards or more in the first half."
+  },
+  {
+   "name": "away_h1_pts",
+   "label": "Halftime points",
+   "side": "away",
+   "unit": "pts",
+   "step": 1,
+   "min": 0,
+   "max": 29,
+   "default": 10,
+   "hard_min": 0.0,
+   "hard_max": 60,
+   "description": "Points this team has at halftime."
+  },
+  {
+   "name": "away_h1_first_downs",
+   "label": "First downs",
+   "side": "away",
+   "unit": "",
+   "step": 1,
+   "min": 2,
+   "max": 18,
+   "default": 9,
+   "hard_min": 0.0,
+   "hard_max": 30,
+   "description": "First downs gained in the first half."
+  },
+  {
+   "name": "away_h1_explosive",
+   "label": "Big plays (20+ yds)",
+   "side": "away",
+   "unit": "",
+   "step": 1,
+   "min": 0,
+   "max": 5,
+   "default": 2,
+   "hard_min": 0.0,
+   "hard_max": 15,
+   "description": "Runs or passes of 20 yards or more in the first half."
+  },
+  {
+   "name": "total_line",
+   "label": "Pregame over/under",
+   "side": "shared",
+   "unit": "pts",
+   "step": 0.5,
+   "min": 33.0,
+   "max": 55.5,
+   "default": 43.5,
+   "hard_min": 25.0,
+   "hard_max": 70,
+   "description": "The closing Vegas total for the game, set before kickoff."
+  },
+  {
+   "name": "wind",
+   "label": "Wind",
+   "side": "shared",
+   "unit": "mph",
+   "step": 1,
+   "min": 0,
+   "max": 22,
+   "default": 6,
+   "hard_min": 0.0,
+   "hard_max": 40,
+   "description": "Wind speed at the stadium. Use 0 for a dome or closed roof."
+  },
+  {
+   "name": "spread_line",
+   "label": "Pregame spread (home favored by)",
+   "side": "shared",
+   "unit": "pts",
+   "step": 0.5,
+   "min": -11.5,
+   "max": 15.5,
+   "default": 3.0,
+   "hard_min": -30.0,
+   "hard_max": 30.0,
+   "description": "Closing point spread. Positive means the home team was favored, negative means the away team was."
+  },
+  {
+   "name": "line",
+   "label": "Total to beat",
+   "side": "line",
+   "unit": "pts",
+   "step": 0.5,
+   "min": 20.0,
+   "max": 80.0,
+   "default": 43.5,
+   "hard_min": 0.0,
+   "hard_max": 150.0,
+   "description": "The over/under you want to test, for example the live total at halftime. Use a half point to avoid a tie."
+  }
+ ],
+ "derived": [
+  {
+   "name": "need",
+   "op": "need",
+   "args": [
+    "line",
+    "home_h1_pts",
+    "away_h1_pts"
+   ],
+   "label": "Points still needed",
+   "unit": "pts",
+   "description": "Your total minus the points already scored. Worked out for you."
+  },
+  {
+   "name": "abs_h1_margin",
+   "op": "absdiff",
+   "args": [
+    "home_h1_pts",
+    "away_h1_pts"
+   ],
+   "label": "Halftime margin",
+   "unit": "pts",
+   "description": "Gap between the two halftime scores. Worked out for you."
+  },
+  {
+   "name": "h1_first_downs",
+   "op": "sum",
+   "args": [
+    "home_h1_first_downs",
+    "away_h1_first_downs"
+   ],
+   "label": "Combined first downs",
+   "unit": "",
+   "description": "Both teams' first downs added together. Worked out for you."
+  },
+  {
+   "name": "h1_explosive",
+   "op": "sum",
+   "args": [
+    "home_h1_explosive",
+    "away_h1_explosive"
+   ],
+   "label": "Combined big plays",
+   "unit": "",
+   "description": "Both teams' 20+ yard plays added together. Worked out for you."
+  },
+  {
+   "name": "need_sq",
+   "op": "square",
+   "args": [
+    "need"
+   ],
+   "label": "Points still needed, squared",
+   "unit": "",
+   "description": "Lets the model bend: needing 30 is more than twice as hard as needing 15. Worked out for you."
+  },
+  {
+   "name": "fav_lead",
+   "op": "fav_lead",
+   "args": [
+    "home_h1_pts",
+    "away_h1_pts",
+    "spread_line"
+   ],
+   "label": "Favorite's halftime lead",
+   "unit": "pts",
+   "description": "How far the pregame favorite is ahead at halftime (negative if trailing). Worked out for you."
+  }
+ ],
+ "card": {
+  "trained_on": "2026-11-16",
+  "n_games": 7410,
+  "seasons": [
+   1999,
+   2026
+  ],
+  "candidates_tested": 8,
+  "holdout_label": "2025 season onward (422 games the model never saw)",
+  "model_kind": "Logistic regression with engineered inputs",
+  "accuracy_columns": [
+   [
+    "accuracy",
+    "Accuracy, pregame total",
+    "pct1"
+   ],
+   [
+    "log_loss",
+    "Log loss, pregame total",
+    "num3"
+   ],
+   [
+    "acc_lines",
+    "Accuracy, spread of totals",
+    "pct1"
+   ],
+   [
+    "ll_lines",
+    "Log loss, spread of totals",
+    "num3"
+   ],
+   [
+    "auc",
+    "AUC",
+    "num"
+   ]
+  ],
+  "accuracy": [
+   {
+    "name": "This model",
+    "accuracy": 0.732,
+    "precision": 0.798,
+    "recall": 0.648,
+    "specificity": 0.823,
+    "auc": 0.816,
+    "brier": 0.177,
+    "log_loss": 0.535,
+    "acc_lines": 0.734,
+    "ll_lines": 0.538
+   },
+   {
+    "name": "Linear model's over chance",
+    "accuracy": 0.754,
+    "precision": 0.795,
+    "recall": 0.708,
+    "specificity": 0.803,
+    "auc": 0.814,
+    "brier": 0.176,
+    "log_loss": 0.536,
+    "acc_lines": 0.737,
+    "ll_lines": 0.54
+   },
+   {
+    "name": "Simple pace rule",
+    "accuracy": 0.742,
+    "precision": 0.781,
+    "recall": 0.699,
+    "specificity": 0.788,
+    "auc": null,
+    "brier": null,
+    "log_loss": null,
+    "acc_lines": 0.728,
+    "ll_lines": null
+   },
+   {
+    "name": "Always say 50%",
+    "accuracy": null,
+    "precision": null,
+    "recall": null,
+    "specificity": 0.0,
+    "auc": 0.5,
+    "brier": 0.25,
+    "log_loss": 0.693,
+    "acc_lines": null,
+    "ll_lines": 0.693
+   }
+  ],
+  "metric_note": "Two tests, both on seasons the model never saw. 'Pregame total' asks the old question: will the game clear its pregame over/under? 'Spread of totals' asks about seven different totals per game, from 10.5 points under to 10.5 over a rough pace guess, which is closer to how you will use the page. Accuracy is the share of calls that were right at a 50% cutoff. Log loss scores the percentages themselves and punishes confident misses; lower is better and always saying 50% scores 0.693. AUC measures how well the percentages rank games (0.5 is a coin flip, 1.0 is perfect).",
+  "brier": 0.177,
+  "log_loss": 0.535,
+  "calibration": [
+   {
+    "range": "10-20%",
+    "n": 549,
+    "predicted": 0.152,
+    "actual": 0.151
+   },
+   {
+    "range": "20-30%",
+    "n": 396,
+    "predicted": 0.246,
+    "actual": 0.288
+   },
+   {
+    "range": "30-40%",
+    "n": 290,
+    "predicted": 0.344,
+    "actual": 0.383
+   },
+   {
+    "range": "40-50%",
+    "n": 297,
+    "predicted": 0.451,
+    "actual": 0.498
+   },
+   {
+    "range": "50-60%",
+    "n": 210,
+    "predicted": 0.555,
+    "actual": 0.59
+   },
+   {
+    "range": "60-70%",
+    "n": 276,
+    "predicted": 0.645,
+    "actual": 0.685
+   },
+   {
+    "range": "70-80%",
+    "n": 329,
+    "predicted": 0.757,
+    "actual": 0.769
+   },
+   {
+    "range": "80-90%",
+    "n": 433,
+    "predicted": 0.86,
+    "actual": 0.885
+   },
+   {
+    "range": "90-100%",
+    "n": 72,
+    "predicted": 0.91,
+    "actual": 0.917
+   }
+  ],
+  "calibration_label": "Game went over",
+  "confident": {
+   "share": 0.371,
+   "accuracy": 0.869,
+   "tossup_share": 0.177,
+   "tossup_accuracy": 0.538
+  },
+  "threshold_table": [
+   {
+    "cutoff": 0.3,
+    "called_over": 0.669,
+    "over_right": 0.638,
+    "under_right": 0.805,
+    "accuracy": 0.693,
+    "overs_caught": 0.869
+   },
+   {
+    "cutoff": 0.31,
+    "called_over": 0.656,
+    "over_right": 0.644,
+    "under_right": 0.801,
+    "accuracy": 0.698,
+    "overs_caught": 0.861
+   },
+   {
+    "cutoff": 0.32,
+    "called_over": 0.643,
+    "over_right": 0.651,
+    "under_right": 0.796,
+    "accuracy": 0.703,
+    "overs_caught": 0.852
+   },
+   {
+    "cutoff": 0.33,
+    "called_over": 0.629,
+    "over_right": 0.658,
+    "under_right": 0.791,
+    "accuracy": 0.707,
+    "overs_caught": 0.842
+   },
+   {
+    "cutoff": 0.34,
+    "called_over": 0.616,
+    "over_right": 0.665,
+    "under_right": 0.787,
+    "accuracy": 0.711,
+    "overs_caught": 0.833
+   },
+   {
+    "cutoff": 0.35,
+    "called_over": 0.605,
+    "over_right": 0.671,
+    "under_right": 0.784,
+    "accuracy": 0.715,
+    "overs_caught": 0.826
+   },
+   {
+    "cutoff": 0.36,
+    "called_over": 0.594,
+    "over_right": 0.676,
+    "under_right": 0.779,
+    "accuracy": 0.717,
+    "overs_caught": 0.817
+   },
+   {
+    "cutoff": 0.37,
+    "called_over": 0.584,
+    "over_right": 0.68,
+    "under_right": 0.774,
+    "accuracy": 0.719,
+    "overs_caught": 0.809
+   },
+   {
+    "cutoff": 0.38,
+    "called_over": 0.576,
+    "over_right": 0.684,
+    "under_right": 0.771,
+    "accuracy": 0.721,
+    "overs_caught": 0.802
+   },
+   {
+    "cutoff": 0.39,
+    "called_over": 0.568,
+    "over_right": 0.688,
+    "under_right": 0.768,
+    "accuracy": 0.723,
+    "overs_caught": 0.796
+   },
+   {
+    "cutoff": 0.4,
+    "called_over": 0.56,
+    "over_right": 0.692,
+    "under_right": 0.765,
+    "accuracy": 0.724,
+    "overs_caught": 0.79
+   },
+   {
+    "cutoff": 0.41,
+    "called_over": 0.552,
+    "over_right": 0.697,
+    "under_right": 0.762,
+    "accuracy": 0.726,
+    "overs_caught": 0.783
+   },
+   {
+    "cutoff": 0.42,
+    "called_over": 0.544,
+    "over_right": 0.7,
+    "under_right": 0.758,
+    "accuracy": 0.727,
+    "overs_caught": 0.776
+   },
+   {
+    "cutoff": 0.43,
+    "called_over": 0.535,
+    "over_right": 0.705,
+    "under_right": 0.755,
+    "accuracy": 0.728,
+    "overs_caught": 0.768
+   },
+   {
+    "cutoff": 0.44,
+    "called_over": 0.526,
+    "over_right": 0.709,
+    "under_right": 0.75,
+    "accuracy": 0.729,
+    "overs_caught": 0.759
+   },
+   {
+    "cutoff": 0.45,
+    "called_over": 0.515,
+    "over_right": 0.714,
+    "under_right": 0.745,
+    "accuracy": 0.729,
+    "overs_caught": 0.749
+   },
+   {
+    "cutoff": 0.46,
+    "called_over": 0.504,
+    "over_right": 0.72,
+    "under_right": 0.741,
+    "accuracy": 0.731,
+    "overs_caught": 0.739
+   },
+   {
+    "cutoff": 0.47,
+    "called_over": 0.493,
+    "over_right": 0.725,
+    "under_right": 0.736,
+    "accuracy": 0.731,
+    "overs_caught": 0.728
+   },
+   {
+    "cutoff": 0.48,
+    "called_over": 0.482,
+    "over_right": 0.731,
+    "under_right": 0.732,
+    "accuracy": 0.731,
+    "overs_caught": 0.717
+   },
+   {
+    "cutoff": 0.49,
+    "called_over": 0.471,
+    "over_right": 0.736,
+    "under_right": 0.727,
+    "accuracy": 0.732,
+    "overs_caught": 0.707
+   },
+   {
+    "cutoff": 0.5,
+    "called_over": 0.461,
+    "over_right": 0.741,
+    "under_right": 0.723,
+    "accuracy": 0.731,
+    "overs_caught": 0.696
+   },
+   {
+    "cutoff": 0.51,
+    "called_over": 0.452,
+    "over_right": 0.746,
+    "under_right": 0.719,
+    "accuracy": 0.731,
+    "overs_caught": 0.687
+   },
+   {
+    "cutoff": 0.52,
+    "called_over": 0.444,
+    "over_right": 0.75,
+    "under_right": 0.715,
+    "accuracy": 0.731,
+    "overs_caught": 0.678
+   },
+   {
+    "cutoff": 0.53,
+    "called_over": 0.436,
+    "over_right": 0.754,
+    "under_right": 0.712,
+    "accuracy": 0.73,
+    "overs_caught": 0.669
+   },
+   {
+    "cutoff": 0.54,
+    "called_over": 0.429,
+    "over_right": 0.758,
+    "under_right": 0.709,
+    "accuracy": 0.73,
+    "overs_caught": 0.661
+   },
+   {
+    "cutoff": 0.55,
+    "called_over": 0.423,
+    "over_right": 0.761,
+    "under_right": 0.706,
+    "accuracy": 0.729,
+    "overs_caught": 0.655
+   },
+   {
+    "cutoff": 0.56,
+    "called_over": 0.416,
+    "over_right": 0.765,
+    "under_right": 0.704,
+    "accuracy": 0.73,
+    "overs_caught": 0.649
+   },
+   {
+    "cutoff": 0.57,
+    "called_over": 0.41,
+    "over_right": 0.769,
+    "under_right": 0.702,
+    "accuracy": 0.729,
+    "overs_caught": 0.642
+   },
+   {
+    "cutoff": 0.58,
+    "called_over": 0.402,
+    "over_right": 0.774,
+    "under_right": 0.699,
+    "accuracy": 0.729,
+    "overs_caught": 0.634
+   },
+   {
+    "cutoff": 0.59,
+    "called_over": 0.395,
+    "over_right": 0.777,
+    "under_right": 0.695,
+    "accuracy": 0.727,
+    "overs_caught": 0.624
+   },
+   {
+    "cutoff": 0.6,
+    "called_over": 0.386,
+    "over_right": 0.781,
+    "under_right": 0.691,
+    "accuracy": 0.726,
+    "overs_caught": 0.613
+   },
+   {
+    "cutoff": 0.61,
+    "called_over": 0.376,
+    "over_right": 0.785,
+    "under_right": 0.686,
+    "accuracy": 0.723,
+    "overs_caught": 0.6
+   },
+   {
+    "cutoff": 0.62,
+    "called_over": 0.365,
+    "over_right": 0.789,
+    "under_right": 0.68,
+    "accuracy": 0.72,
+    "overs_caught": 0.586
+   },
+   {
+    "cutoff": 0.63,
+    "called_over": 0.353,
+    "over_right": 0.795,
+    "under_right": 0.675,
+    "accuracy": 0.717,
+    "overs_caught": 0.571
+   },
+   {
+    "cutoff": 0.64,
+    "called_over": 0.342,
+    "over_right": 0.801,
+    "under_right": 0.67,
+    "accuracy": 0.714,
+    "overs_caught": 0.557
+   },
+   {
+    "cutoff": 0.65,
+    "called_over": 0.33,
+    "over_right": 0.807,
+    "under_right": 0.664,
+    "accuracy": 0.711,
+    "overs_caught": 0.542
+   },
+   {
+    "cutoff": 0.66,
+    "called_over": 0.32,
+    "over_right": 0.811,
+    "under_right": 0.659,
+    "accuracy": 0.708,
+    "overs_caught": 0.529
+   },
+   {
+    "cutoff": 0.67,
+    "called_over": 0.311,
+    "over_right": 0.815,
+    "under_right": 0.655,
+    "accuracy": 0.705,
+    "overs_caught": 0.516
+   },
+   {
+    "cutoff": 0.68,
+    "called_over": 0.301,
+    "over_right": 0.819,
+    "under_right": 0.65,
+    "accuracy": 0.701,
+    "overs_caught": 0.502
+   },
+   {
+    "cutoff": 0.69,
+    "called_over": 0.294,
+    "over_right": 0.822,
+    "under_right": 0.646,
+    "accuracy": 0.698,
+    "overs_caught": 0.491
+   },
+   {
+    "cutoff": 0.7,
+    "called_over": 0.287,
+    "over_right": 0.825,
+    "under_right": 0.643,
+    "accuracy": 0.695,
+    "overs_caught": 0.482
+   }
+  ],
+  "threshold_note": "Measured on 36,174 game-and-total pairs the model had not seen when it scored them (cross-validation folds plus the test seasons).",
+  "sections": [
+   {
+    "title": "How the settings were chosen",
+    "paragraphs": [
+     "Two things were searched together: which engineered inputs to include, and C, which controls how much the model is allowed to trust any one input (small C shrinks every weight toward zero).",
+     "All 20 combinations were scored with six rounds of cross-validation, each training on earlier seasons and grading on later ones, using seven different totals per game. 'Rounds won' counts the rounds in which the combination beat the linear model on this site."
+    ],
+    "table": {
+     "head": [
+      "Inputs",
+      "C",
+      "CV log loss",
+      "Rounds won vs linear"
+     ],
+     "rows": [
+      [
+       "+ curve + favorite's lead",
+       "1",
+       "0.5433",
+       "6 of 6"
+      ],
+      [
+       "+ curve + favorite's lead",
+       "10",
+       "0.5433",
+       "6 of 6"
+      ],
+      [
+       "+ curve + favorite's lead",
+       "0.1",
+       "0.5433",
+       "6 of 6"
+      ],
+      [
+       "+ curve",
+       "1",
+       "0.5438",
+       "3 of 6"
+      ],
+      [
+       "+ curve",
+       "10",
+       "0.5438",
+       "3 of 6"
+      ],
+      [
+       "+ curve",
+       "0.1",
+       "0.5438",
+       "4 of 6"
+      ],
+      [
+       "+ favorite's lead",
+       "0.1",
+       "0.5442",
+       "5 of 6"
+      ],
+      [
+       "+ favorite's lead",
+       "1",
+       "0.5442",
+       "5 of 6"
+      ]
+     ]
+    },
+    "note": "Top 8 combinations. The first row is the model on this page."
+   },
+   {
+    "title": "Other model types tried",
+    "paragraphs": [
+     "Same data, same cross-validation, same totals. Lower is better."
+    ],
+    "table": {
+     "head": [
+      "Model",
+      "CV log loss",
+      "Rounds won vs linear"
+     ],
+     "rows": [
+      [
+       "This model",
+       "0.5433",
+       "6 of 6"
+      ],
+      [
+       "Linear model on this site (normal curve)",
+       "0.5452",
+       "n/a"
+      ],
+      [
+       "Gradient boosting, shallow (100 rounds)",
+       "0.5466",
+       "1 of 6"
+      ],
+      [
+       "Gradient boosting, slower and longer (300 rounds)",
+       "0.5466",
+       "2 of 6"
+      ],
+      [
+       "Gradient boosting, bigger trees",
+       "0.5479",
+       "1 of 6"
+      ],
+      [
+       "Logistic with spline curves on every input",
+       "0.5453",
+       "3 of 6"
+      ],
+      [
+       "Small neural network (16 and 8 units)",
+       "0.5499",
+       "1 of 6"
+      ]
+     ]
+    }
+   }
+  ],
+  "findings": [
+   "This is the best model found for the question 'will the game clear my total?'. In cross-validation it beat the linear model in 6 of 6 rounds (log loss 0.5433 against 0.5452). The edge is consistent but small, about 0.3%.",
+   "Two additions earned their place. A curve on points still needed: the chance does not fall in a straight line as the total rises, and letting it bend fits better. And the favorite's halftime lead: each extra point the pregame favorite leads by lowers the odds of the over by about 0.7%. A favorite sitting on a lead runs the clock; a favorite that is behind has to throw.",
+   "Fancier models lost. Gradient boosting, a small neural network and spline curves all scored worse than this model in the same cross-validation, and most scored worse than the plain linear model. With about 7,000 games and one dominant signal, extra flexibility mostly fits noise.",
+   "Honest scorecard on seasons it never saw. On the pregame total, this model was right 73.2% of the time, against 75.4% for the linear model on this site and 74.2% for the simple pace rule. Across a spread of totals it was right 73.4% of the time (linear 73.7%), with log loss 0.538 against 0.540 (lower is better). Too close to separate on a test this size, so call it a tie. On the test seasons alone the log-loss edge over the linear model is +0.0015 (95% range -0.0020 to +0.0049), so the test seasons cannot confirm the edge on their own.",
+   "Why nothing does much better: second-half scoring is mostly luck from here. Even the best model on this site misses the final total by about 7.6 points on average, and no halftime stat tested so far narrows that."
+  ],
+  "limitations": [
+   "It only knows what you enter. Injuries, a quarterback change or weather that turns at halftime are invisible to it.",
+   "There are no real halftime betting lines in the training data. The model learned from every game paired with made-up totals near a normal pace, so it answers 'how often do games like this clear that number', not 'is the live line wrong'.",
+   "A whole-number total can land exactly on the final score (a push). Those cases were left out, so the two sides always add up to 100%.",
+   "Sliders move independently, so you can enter combinations that rarely happen in real games. Unusual inputs are flagged.",
+   "The edge over the simpler linear model is small. On any one game the two will usually agree within a couple of percentage points."
+  ],
+  "disclaimer": "For information and learning only. Not betting advice."
+ }
+}
