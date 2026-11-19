@@ -494,22 +494,51 @@ def build_leaders(now=None):
     if not played:
         raise RuntimeError("no finished games for the season yet")
 
+    num_by_id, num_by_name = {}, {}
+    try:
+        for r in _rows(NFLVERSE + f"rosters/roster_{season}.csv"):
+            raw = (r.get("jersey_number") or "").strip()
+            if not raw or raw == "NA":
+                continue
+            num = raw.split(".", 1)[0]
+            if not num.isdigit():
+                continue
+            gid = (r.get("gsis_id") or "").strip()
+            if gid:
+                num_by_id[gid] = num
+            nm = (r.get("full_name") or "").strip().lower()
+            tm = (r.get("team") or "").strip()
+            if nm:
+                num_by_name[(nm, tm)] = num
+                num_by_name.setdefault((nm, ""), num)
+    except Exception:
+        pass
+
+    def jersey_for(name, team, gid=""):
+        key = name.strip().lower()
+        return num_by_id.get(gid) or num_by_name.get((key, team)) or num_by_name.get((key, "")) or ""
+
     players = []
     for p in _rows(NFLVERSE + f"stats_player/stats_player_reg_{season}.csv"):
-        players.append({"name": p["player_display_name"], "pos": p["position"], "team": p["recent_team"],
+        nm, tm = p["player_display_name"], p["recent_team"]
+        players.append({"name": nm, "pos": p["position"], "team": tm,
+                        "number": jersey_for(nm, tm, (p.get("player_id") or "").strip()),
                         "carries": _num(p["carries"]), "rush_yds": _num(p["rushing_yards"]), "pass_td": _num(p["passing_tds"]),
                         "pass_yds": _num(p["passing_yards"]), "rec_td": _num(p["receiving_tds"]), "rec_yds": _num(p["receiving_yards"]),
                         "sacks": _num(p["def_sacks"]), "tackles": _num(p["def_tackles_solo"]) + _num(p["def_tackle_assists"]),
                         "solo": _num(p["def_tackles_solo"])})
 
-    qbr = [{"name": q["name_display"], "team": q["team_abb"], "qbr": _num(q["qbr_total"]), "plays": _num(q["qb_plays"])}
+    qbr = [{"name": q["name_display"], "team": q["team_abb"],
+            "number": jersey_for(q["name_display"], q["team_abb"]),
+            "qbr": _num(q["qbr_total"]), "plays": _num(q["qb_plays"])}
            for q in _rows(NFLVERSE + "espn_data/qbr_season_level.csv")
            if q["season"] == str(season) and q["season_type"] == "Regular" and q["qualified"].upper() == "TRUE"]
 
     whole = lambda v: f"{v:.0f}"
     def top(pool, key, n, show, tie=None, detail=None):
         ranked = sorted(pool, key=lambda p: (-key(p), -(tie(p) if tie else 0), p["name"]))[:n]
-        return [{"name": p["name"], "team": p["team"], "value": show(key(p)), "detail": detail(p) if detail else ""} for p in ranked]
+        return [{"name": p["name"], "team": p["team"], "number": p.get("number", ""),
+                 "value": show(key(p)), "detail": detail(p) if detail else ""} for p in ranked]
 
     # NFL qualifier for rushing average: 6.25 carries per game the player's team has played.
     backs = [p for p in players if p["pos"] == "RB" and p["carries"] >= 6.25 * played.get(p["team"], 99)]

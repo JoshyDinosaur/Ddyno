@@ -3,8 +3,8 @@
 One visual language for every page: dark surface, row-based lists, right-aligned tabular numbers,
 tinted change pills, hairline borders. Tokens live in :root. Pages only read the existing API."""
 
-FIGJS = r"""/* Sideline: original 16-bit style pixel sprites, one per current league leader, idling on a strip of turf.
-   Generic figures in team colors. No likenesses and no logos. */
+FIGJS = r"""/* Sideline: Stardew-inspired pixel vignettes, one per current league leader.
+   Generic football players (full pads, helmet, jersey number) and coaches in varied environments. */
 const Sideline=(()=>{
   const NS='http://www.w3.org/2000/svg';
   const S=(n,at)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);return e};
@@ -17,102 +17,430 @@ const Sideline=(()=>{
     MIN:['#4f2683','#ffc62f','#4f2683','#ffffff'],NE:['#002244','#c60c30','#b0b7bc','#b0b7bc'],NO:['#101820','#d3bc8d','#d3bc8d','#d3bc8d'],NYG:['#0b2265','#a71930','#0b2265','#a5acaf'],
     NYJ:['#125740','#ffffff','#125740','#ffffff'],PHI:['#004c54','#a5acaf','#004c54','#ffffff'],PIT:['#101820','#ffb612','#101820','#ffb612'],SF:['#aa0000','#b3995d','#b3995d','#b3995d'],
     SEA:['#002244','#69be28','#002244','#a5acaf'],TB:['#d50a0a','#ff7900','#5a544d','#5a544d'],TEN:['#0c2340','#4b92db','#0c2340','#ffffff'],WAS:['#5a1414','#ffb612','#5a1414','#ffb612']};
-  const shade=(hex,k)=>'#'+[1,3,5].map(i=>Math.max(0,Math.min(255,Math.round(parseInt(hex.substr(i,2),16)*k))).toString(16).padStart(2,'0')).join('');
-  /* 16 x 25 pixel maps. O outline, H helmet, I helmet shade, S helmet stripe, V visor, M facemask, J jersey, Y jersey shade, T trim, N number,
-     G glove/sleeve, P pants, R pants shade, C cleat, B ball, D ball dark, L lace, W white, K skin, E headset, Q khaki, Z khaki shade, A clipboard, U paper */
+  const rgb=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+  const hex=a=>'#'+a.map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');
+  /* Stardew hue-shifting: warm sunlight highlights, rich plum/espresso shadows */
+  const mix=(a,b,t)=>{const A=rgb(a),B=rgb(b);return hex([A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t])};
+  const luma=h=>{const c=rgb(h);return .299*c[0]+.587*c[1]+.114*c[2]};
+  const hash=s=>{let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)};
+  const R=(g,x,y,w,h,f,op)=>{const at={x,y,width:w,height:h,fill:f};if(op!=null)at.opacity=op;g.appendChild(S('rect',at))};
+  const paint=(g,rows,x0,y0,pal)=>rows.forEach((r,y)=>{let x=0;while(x<r.length){const c=r[x];if(c==='.'){x++;continue}
+    let n=1;while(r[x+n]===c)n++;R(g,x0+x,y0+y,n,1,pal[c]||'#f0f');x+=n}});
+
+  /* 3x5 pixel digits for jersey chest numbers */
+  const DIG={
+    0:['111','101','101','101','111'],1:['010','110','010','010','111'],2:['111','001','111','100','111'],
+    3:['111','001','111','001','111'],4:['101','101','111','001','001'],5:['111','100','111','001','111'],
+    6:['111','100','111','101','111'],7:['111','001','001','010','010'],8:['111','101','111','101','111'],
+    9:['111','101','111','001','111']
+  };
+  const drawNum=(g,num,x0,y0,col)=>{
+    const ds=String(num||'').replace(/\D/g,'').slice(0,2);if(!ds)return;
+    const sx=ds.length===1?x0+7:x0+5;
+    for(let k=0;k<ds.length;k++){const bm=DIG[ds[k]];if(!bm)continue;
+      bm.forEach((row,ry)=>{for(let rx=0;rx<3;rx++)if(row[rx]==='1')R(g,sx+k*4+rx,y0+ry,1,1,col)})}
+  };
+
+  /* 17x22 football player in full equipment (helmet, facemask, bulky shoulder pads, pants, knee pads, cleats) */
   const PLAYER=[
-    "....OOOOOOOO....",
-    "...OHHHSSHHIO...",
-    "..OHHHHSSHHHIO..",
-    "..OHHHHSSHHHIO..",
-    "..OHVVVVVVVVIO..",
-    "..OHVVVVVVVVIO..",
-    "..OHMMMMMMMMIO..",
-    "...OMOMMMMOMO...",
-    "....OOOOOOOO....",
-    ".OOJJJJJJJJJYOO.",
-    "OJJJTJJJJJJTJJYO",
-    "OJJJJJNNNNJJJJYO",
-    "OJJOJJNJJNJJOJYO",
-    "OGGOJJNNNNJYOGGO",
-    "OGGOJJJJJJJYOGGO",
-    ".OO.OJJJJJYYO.OO",
-    "....OTTTTTTTO...",
-    "....OPPPPPPRO...",
-    "....OPPPOPPRO...",
-    "....OPPO.OPRO...",
-    "....OPPO.OPRO...",
-    "....OTTO.OTTO...",
-    "....OWWO.OWWO...",
-    "...OCCCO.OCCCO..",
-    "...OOOOO.OOOOO.."];
-  const COACH=[
-    "................",
-    "....OOOOOOOO....",
-    "...OJJJJJJJYO...",
-    "..OJJJJTTJJJYO..",
-    ".EOJJJJJJJJJYOE.",
-    ".EOTTTTTTTTTTOE.",
-    ".EOKKKKKKKKKKOE.",
-    "..OKVVKKKKVVKO..",
-    "..OKKKKKKKKKKOE.",
-    "...OKKKKKKKKOEE.",
-    "....OOKKKKOO....",
-    ".OOJJJWWWWJJYOO.",
-    "OJJJJJJWWJJJJJYO",
-    "OJJOJJJJJJJYOJYO",
-    "OKKOJJJJJJJYOKKO",
-    "OKKOJJJJJJJYOKKO",
-    ".OO.OJJJJJYYO.OO",
-    "....OQQQQQQZO...",
-    "....OQQQOQQZO...",
-    "....OQQO.OQZO...",
-    "....OQQO.OQZO...",
-    "....OQQO.OQZO...",
-    "....OQQO.OQZO...",
-    "...OCCCO.OCCCO..",
-    "...OOOOO.OOOOO.."];
-  /* props: [x, y, rows] drawn over the upper body; some have their own idle motion */
-  const BALL=["ODDO","DBLB","DBLB","ODDO"], BALLW=[".ODDDO.","OBBLBBO","OBLLLBO",".ODDDO."], BOARD=["OOOOO","OAAAO","OUUUO","OUUUO","OUUUO","OOOOO"];
-  const ROLE={qb:{prop:[12,13,BALL],move:'toss'},rb:{prop:[5,12,BALLW],move:'none',hug:true},wr:{towel:true},rush:{bands:true,cross:true},tackle:{bands:true},coach:{prop:[11,13,BOARD],move:'tap'}};
-  function paint(g,rows,x0,y0,pal){
-    rows.forEach((r,y)=>{let x=0;while(x<r.length){const c=r[x];if(c==='.'){x++;continue}let n=1;while(r[x+n]===c)n++;
-      g.appendChild(S('rect',{x:x0+x,y:y0+y,width:n,height:1,fill:pal[c]||'#f0f'}));x+=n}});
+    "....OOOOOOOOO....",
+    "...OIIHHSHHDDO...",
+    "..OIIHHHSHHHDDO..",
+    "..OHHHHHSHHHDDO..",
+    "..OHHKEKKKEKDDO..",
+    "..OHMKMKMKMKMDO..",
+    "...OOMMMMMMMOO...",
+    "..OOOOOWWWOOOOO..",
+    "OLTLLJJJJJJJYYTYO",
+    "OJTOJJJJJJJJYOTYO",
+    "OJJOJJJJJJJJYOYYO",
+    "OKKOJJJJJJJJYOKKO",
+    "OGGOJJJJJJJJYOGGO",
+    ".OOOJJJJJJJJYOOO.",
+    "...OJJJJJJJJYO...",
+    "...OTTTTTTTTTO...",
+    "...OTPPPPPRRTO...",
+    "...OPQQPOPQQRO...",
+    "....OPPO.OPRO....",
+    "....OTTO.OTTO....",
+    "....OWWO.OWWO....",
+    "...OCCCO.OCCCO..."
+  ];
+  const PLAYER_SIT=[
+    ...PLAYER.slice(0,16),
+    "...OTPPPPPRRTO...",
+    "..OQPPO...OPQRO..",
+    "..OTTO.....OTTO..",
+    "..OWWO.....OWWO..",
+    ".OCCCO.....OCCCO.",
+    "................."
+  ];
+  /* 17x22 Stardew-style coaches (cap or hair, headset, warm rosy cheeks, quarter-zip, khakis) */
+  const COACH_CAP=[
+    "....OOOOOOOOO....",
+    "...OJJJTTTJJYO...",
+    "...OJJJJJJJYYO...",
+    "..OOTTTTTTTTTOO..",
+    "..EOKKKKKKKKKOE..",
+    "..EOKKEKKKEKKOE..",
+    "..EOKcKKKKKcKOE..",
+    "...OKKKKKKKKMO...",
+    "....OOKKKKMMO....",
+    "..OOOJJWWWYYOOO..",
+    ".OJJJJJTWTJJJYYO.",
+    ".OJJOJJJTJJYOYYO.",
+    ".OKKOJJJTJJYOKKO.",
+    ".OKKOJJJJJJYOKKO.",
+    "..OO.OJJJJYO.OO..",
+    "....OQQQQQQZO....",
+    "....OQQQQQQZO....",
+    "....OQQQOQQZO....",
+    "....OQQO.OQZO....",
+    "....OQQO.OQZO....",
+    "....OWWO.OWWO....",
+    "...OCCCO.OCCCO..."
+  ];
+  const COACH_HAIR=[
+    "....OOOOOOOOO....",
+    "...OhiihhhhhdO...",
+    "..OhihhhhhhhddO..",
+    "..EOhhhhhhhhdOE..",
+    "..EOKKKKKKKKKOE..",
+    "..EOKKEKKKEKKOE..",
+    "..EOKcKKKKKcKOE..",
+    "...OKKKKKKKKMO...",
+    "....OOKKKKMMO....",
+    ...COACH_CAP.slice(9)
+  ];
+
+  const BALL=['.OOO.','OBBLO','ODDBO','.OOO.'];
+  const BOARD=['OOOOO','OAAAO','OUUUO','OUUUO','OUUUO','OOOOO'];
+  const MUG=['OOO.','OWWO','OWWO','OOO.'];
+  const STEAM=['.w.','w..','.w.'];
+  const HAIR=[['#5c3a21','#7b5132','#3e2514'],['#8f5b2c','#b57941','#663e1c'],['#3a3136','#574b52','#231d21'],['#8c8881','#b3aea6','#66625c']];
+
+  const SCENE_META={
+    office:"Coach's office",stadium:'Stadium sideline',film_room:'Film room',tunnel:'Stadium concourse',
+    field:'Under the lights',practice:'Practice field',locker_room:'Locker room',sideline_bench:'Sideline bench',gym:'Weight room',tunnel_run:'Stadium tunnel'
+  };
+  const COACH_SCENES=['office','stadium','film_room','tunnel'];
+  const PLAYER_SCENES=['field','practice','locker_room','sideline_bench','gym','tunnel_run'];
+  const GROUP_SCENES={
+    coach_afc:['office','stadium'],coach_nfc:['film_room','tunnel'],
+    qbr:['field','practice'],pass_td:['tunnel_run','sideline_bench'],
+    ypc:['field','practice','locker_room'],rec_yds:['field','practice','sideline_bench'],
+    rec_td:['tunnel_run','field','locker_room'],sacks:['gym','field'],tackles:['locker_room','practice']
+  };
+
+  /* 44x32 Stardew-inspired miniature environments (back + optional foreground overlay) */
+  function drawScene(bg,fg,scene,teamCol,trimCol,idx){
+    const W=44,H=32;
+    if(scene==='office'){
+      /* Cozy Stardew cedar-plank coach's office with window, chalkboard, fern, desk & steaming mug */
+      R(bg,0,0,W,23,'#b67b4b');
+      for(let y=3;y<22;y+=4)R(bg,0,y,W,1,'#9e6338');
+      for(let y=0;y<22;y+=4){R(bg,10+(y%8),y,1,3,'#a76b3e');R(bg,29-(y%8),y,1,3,'#a76b3e')}
+      R(bg,0,22,W,2,'#6e4124');R(bg,0,24,W,8,'#8c5834');
+      /* sunlit window (left) */
+      R(bg,2,3,10,9,'#5c341d');R(bg,3,4,8,7,'#88d1ec');R(bg,3,8,8,3,'#bce8f7');
+      R(bg,4,5,3,1,'#faf6ea');R(bg,5,4,2,1,'#ffffff');
+      R(bg,6,4,1,7,'#734427');R(bg,3,7,8,1,'#734427');
+      /* chalkboard with X's and O's (right) */
+      R(bg,29,3,13,9,'#6b3e22');R(bg,30,4,11,7,'#2d523c');R(bg,30,10,11,1,'#244331');
+      R(bg,32,6,1,1,'#f4f0df');R(bg,34,6,1,1,'#f4f0df');R(bg,33,7,1,1,'#f4f0df');
+      R(bg,32,8,1,1,'#f4f0df');R(bg,34,8,1,1,'#f4f0df');
+      R(bg,37,6,2,1,'#ffd972');R(bg,39,5,1,2,'#ffd972');R(bg,36,8,3,1,'#f4f0df');
+      /* potted Stardew fern (far left) */
+      R(bg,2,17,4,5,'#c76b44');R(bg,2,17,4,1,'#db8358');R(bg,3,18,2,4,'#a85432');
+      R(bg,1,14,6,3,'#4a9b43');R(bg,2,13,4,2,'#6bc256');R(bg,3,12,2,1,'#8bd96c');
+      /* office chair backrest behind coach */
+      R(bg,16,13,12,10,'#3b2a26');R(bg,17,14,10,8,'#56403a');R(bg,18,14,8,2,'#6b5149');
+      /* Foreground oak desk + open playbook + warm lamp + steaming coffee mug */
+      R(fg,7,23,30,9,'#704224');R(fg,8,24,28,2,'#d49a64');R(fg,8,26,28,5,'#a66a3c');
+      R(fg,9,27,26,1,'#8f572e');R(fg,10,28,9,2,'#824d27');R(fg,25,28,9,2,'#824d27');
+      R(fg,14,29,1,1,'#e6c36a');R(fg,29,29,1,1,'#e6c36a');
+      /* open playbook on desk */
+      R(fg,17,23,10,3,'#f6f1e1');R(fg,22,23,1,3,'#c9bfa6');
+      R(fg,18,24,3,1,'#5282c2');R(fg,24,24,2,1,'#c7584a');
+      /* desk lamp (left of desk) */
+      R(fg,9,23,3,1,'#4d3b32');R(fg,10,20,1,3,'#7a685c');R(fg,8,19,5,2,'#e8b84b');R(fg,9,21,3,1,'#fff4b8',0.6);
+      /* coffee mug + animated steam (right of desk) */
+      R(fg,31,21,3,3,'#f4eee0');R(fg,34,22,1,1,'#f4eee0');R(fg,32,21,1,1,'#6e4326');
+      const st=S('g',{'class':'px-steam'});st.style.animationDelay=(-idx*.7)+'s';
+      R(st,32,19,1,1,'#ffffff',0.8);R(st,31,17,1,1,'#ffffff',0.55);R(st,33,15,1,1,'#ffffff',0.35);
+      fg.appendChild(st);
+    }else if(scene==='stadium'){
+      /* Sunlit Stardew stadium: blue sky, fluffy cloud, bleachers with fans, goalpost, lush grass */
+      R(bg,0,0,W,11,'#7bc7e6');R(bg,0,7,W,4,'#a6ddf2');
+      R(bg,5,2,7,2,'#ffffff');R(bg,6,1,5,1,'#ffffff');R(bg,26,3,6,2,'#ffffff');R(bg,27,2,4,1,'#ffffff');
+      /* bleachers & colorful pixel crowd */
+      R(bg,0,10,W,9,'#586375');R(bg,0,11,W,1,'#717e94');R(bg,0,14,W,1,'#717e94');R(bg,0,17,W,2,'#3f4857');
+      const fans=['#e05a47','#f2c14e','#55a6e0','#f4f1e6',teamCol,trimCol];
+      for(let x=2;x<W-1;x+=3){R(bg,x,10,2,1,fans[(x+idx)%fans.length]);R(bg,x+1,13,2,1,fans[(x*2+idx)%fans.length])}
+      /* yellow goalpost upright (right) */
+      R(bg,36,3,1,10,'#f2c84b');R(bg,40,3,1,10,'#f2c84b');R(bg,36,12,5,1,'#f2c84b');R(bg,38,13,1,6,'#d9ad38');
+      /* sideline wall & Stardew grass turf */
+      R(bg,0,19,W,2,teamCol);R(bg,0,19,W,1,mix(teamCol,'#fff4d1',.2));
+      R(bg,0,21,W,11,'#58a642');R(bg,0,25,W,1,'#f4f1e6');R(bg,0,30,W,2,'#468c34');
+      for(let x=3;x<W;x+=7){R(bg,x,22,1,2,'#74c257');R(bg,x+1,23,1,1,'#74c257');R(bg,x+3,28,2,1,'#499137')}
+      /* orange yard marker */
+      R(bg,4,21,3,4,'#f07b30');R(bg,5,22,1,2,'#fff6e5');
+    }else if(scene==='film_room'){
+      /* Cozy dark-wood & slate film room with glowing play-diagram screen & playbook shelf */
+      R(bg,0,0,W,23,'#3e3647');R(bg,0,0,W,2,'#5e3e28');
+      for(let y=4;y<22;y+=4)R(bg,0,y,W,1,'#342d3d');
+      R(bg,0,22,W,2,'#6e4326');R(bg,0,24,W,8,'#8f5b37');
+      for(let x=0;x<W;x+=8)R(bg,x,24,1,8,'#784a2b');
+      /* glowing projector screen with mini football field & play routes */
+      R(bg,3,4,19,13,'#6b4227');R(bg,4,5,17,11,'#1e2924');
+      const scr=S('g',{'class':'px-glow'});
+      R(scr,5,6,15,9,'#2f6b3e');
+      for(let x=8;x<=16;x+=4)R(scr,x,6,1,9,'#458a54');
+      R(scr,7,11,1,1,'#fff3b0');R(scr,10,12,1,1,'#fff3b0');R(scr,13,11,1,1,'#fff3b0');
+      R(scr,7,8,1,3,'#ffffff');R(scr,8,8,3,1,'#ffffff');R(scr,13,9,4,1,'#ff9472');R(scr,16,8,1,1,'#ff9472');
+      bg.appendChild(scr);
+      /* bookshelf of playbooks (right) */
+      R(bg,33,6,9,16,'#6e4124');R(bg,34,7,7,4,'#4d2c17');R(bg,34,12,7,4,'#4d2c17');R(bg,34,17,7,4,'#4d2c17');
+      R(bg,35,8,2,3,teamCol);R(bg,37,8,2,3,'#e0b44c');R(bg,39,9,1,2,'#d95c4a');
+      R(bg,35,13,2,3,'#589cd6');R(bg,38,13,2,3,trimCol);R(bg,35,18,3,3,'#78b863');
+    }else if(scene==='tunnel'){
+      /* Stadium tunnel concourse: warm brick archway, sunlit sky + floodlights, team banner, cooler */
+      R(bg,0,0,W,22,'#8a7565');
+      for(let y=2;y<22;y+=3){R(bg,0,y,W,1,'#756153');for(let x=(y%6?3:0);x<W;x+=6)R(bg,x,y-2,1,2,'#756153')}
+      /* bright arched stadium opening */
+      R(bg,13,3,18,19,'#54443a');R(bg,14,4,16,18,'#8ad2ed');R(bg,14,12,16,10,'#b5e5f7');
+      R(bg,16,6,2,6,'#525c6b');R(bg,15,5,4,2,'#fff5c2');
+      R(bg,26,6,2,6,'#525c6b');R(bg,25,5,4,2,'#fff5c2');
+      R(bg,14,17,16,5,'#5aa643');R(bg,14,19,16,1,'#f4f1e6');
+      /* team pennant banner on left wall */
+      R(bg,3,5,7,9,teamCol);R(bg,3,5,7,1,'#d4a24c');R(bg,4,8,5,2,trimCol);R(bg,3,13,2,1,'#8a7565');R(bg,8,13,2,1,'#8a7565');
+      /* concrete concourse floor */
+      R(bg,0,22,W,10,'#9e958b');R(bg,0,22,W,1,'#bdb4aa');R(bg,0,30,W,2,'#7d756c');
+      /* Gatorade cooler on right */
+      R(bg,35,18,6,7,'#eb7228');R(bg,35,17,6,2,'#f7f3e8');R(bg,37,22,2,2,'#3d3530');
+    }else if(scene==='field'){
+      /* Under the stadium lights: twilight sky, glowing floodlights, Stardew grass, yard lines, pylon */
+      R(bg,0,0,W,13,'#273859');R(bg,0,6,W,5,'#39507a');R(bg,0,10,W,3,'#586e96');
+      /* two stadium light towers */
+      for(const lx of [6,34]){
+        R(bg,lx+1,6,2,8,'#434f66');R(bg,lx,2,4,4,'#606e87');
+        const gl=S('g',{'class':'px-glow'});R(gl,lx,2,4,3,'#fff4b8');R(gl,lx-1,1,6,5,'#fff4b8',0.22);bg.appendChild(gl);
+      }
+      /* distant stands & wall */
+      R(bg,0,13,W,5,'#323c4f');R(bg,0,18,W,2,teamCol);
+      for(let x=2;x<W;x+=4)R(bg,x,14,2,1,(x%8)?'#7a88a3':trimCol);
+      /* lush Stardew turf + yard line + orange pylon */
+      R(bg,0,20,W,12,'#499439');R(bg,0,20,W,1,'#5cb048');R(bg,0,30,W,2,'#3a7a2d');
+      R(bg,0,26,W,1,'#f4f1e6');R(bg,10,20,1,12,'#f4f1e6',0.45);R(bg,33,20,1,12,'#f4f1e6',0.45);
+      for(let x=4;x<W;x+=6){R(bg,x,22,1,2,'#62b54c');R(bg,x+2,28,1,1,'#3c802f')}
+      R(bg,37,20,3,6,'#ff6e26');R(bg,38,20,1,5,'#ff9a52');
+    }else if(scene==='practice'){
+      /* Sunny Stardew training camp: sky, clouds, pine treeline, emerald turf, cones & blocking pad */
+      R(bg,0,0,W,13,'#79c8ea');R(bg,0,8,W,5,'#aee0f5');
+      R(bg,4,2,7,2,'#ffffff');R(bg,6,1,4,1,'#ffffff');R(bg,30,3,6,2,'#ffffff');
+      /* classic Stardew pine treeline */
+      for(let tx=0;tx<W;tx+=7){
+        R(bg,tx+2,9,3,3,'#2f6939');R(bg,tx+1,11,5,4,'#3c7d44');R(bg,tx,14,7,4,'#2f6939');R(bg,tx+3,12,1,2,'#549e56');
+      }
+      R(bg,0,18,W,2,'#7c6148');R(bg,0,19,W,1,'#a38262');
+      /* sunny practice turf */
+      R(bg,0,20,W,12,'#64b347');R(bg,0,30,W,2,'#4e9637');
+      for(let x=2;x<W;x+=5){R(bg,x,22,1,2,'#82cc5e');R(bg,x+2,27,1,1,'#539c3a')}
+      /* orange agility cones (left) */
+      R(bg,4,26,4,1,'#d9581a');R(bg,5,24,2,2,'#ff7729');R(bg,5,25,2,1,'#fff4e0');
+      R(bg,9,24,3,1,'#d9581a');R(bg,10,22,1,2,'#ff7729');
+      /* blue/gold blocking dummy (right) */
+      R(bg,35,16,5,11,'#2c4e82');R(bg,36,16,3,10,'#3e69a8');R(bg,35,20,5,2,'#f2c14e');R(bg,34,26,7,2,'#26374d');
+    }else if(scene==='locker_room'){
+      /* Stardew carpenter-wood locker cubbies with vents, shelf gear, team header & bench */
+      R(bg,0,0,W,24,'#a86d3f');R(bg,0,0,W,3,'#6e4124');R(bg,0,3,W,1,teamCol);
+      for(const lx of [1,12,23,34]){
+        R(bg,lx,4,10,19,'#754526');R(bg,lx+1,5,8,17,'#bf8452');
+        R(bg,lx+2,6,6,2,teamCol);R(bg,lx+3,6,4,1,trimCol);
+        R(bg,lx+2,10,6,1,'#87522e');R(bg,lx+2,12,6,1,'#87522e');
+        R(bg,lx+2,16,6,5,'#9c6438');
+      }
+      /* towel & mini ball in lockers */
+      R(bg,4,17,4,3,'#f5f1e4');R(bg,37,18,3,2,'#9c5528');
+      /* tiled/carpet floor + wooden bench */
+      R(bg,0,23,W,9,'#4b5363');for(let x=0;x<W;x+=6)R(bg,x,23,1,9,'#3f4654');
+      R(bg,4,25,36,2,'#d49b63');R(bg,4,27,36,1,'#8f5931');R(bg,7,28,2,3,'#613a1f');R(bg,35,28,2,3,'#613a1f');
+    }else if(scene==='sideline_bench'){
+      /* Sideline bench & orange Gatorade jug, stadium crowd behind, lush turf */
+      R(bg,0,0,W,12,'#7fc8e6');R(bg,0,7,W,5,'#acdcf0');
+      R(bg,0,10,W,7,'#4d5769');
+      const fans=['#e05a47','#f2c14e','#55a6e0','#f4f1e6',teamCol,trimCol];
+      for(let x=1;x<W-1;x+=3){R(bg,x,11,2,1,fans[(x+idx)%fans.length]);R(bg,x+1,14,2,1,fans[(x+2+idx)%fans.length])}
+      R(bg,0,17,W,2,teamCol);R(bg,0,19,W,13,'#58a642');R(bg,0,30,W,2,'#468c34');
+      for(let x=3;x<W;x+=7)R(bg,x,28,2,1,'#74c257');
+      /* bench behind/under seated player */
+      R(bg,10,22,28,2,'#c8cfd6');R(bg,10,24,28,1,'#8e98a3');R(bg,12,25,2,5,'#646e7a');R(bg,34,25,2,5,'#646e7a');
+      R(bg,32,22,4,4,'#f6f3e8');/* sideline towel draped on bench */
+      /* Gatorade cooler on left */
+      R(bg,2,19,7,8,'#eb7228');R(bg,2,18,7,2,'#f7f3e8');R(bg,3,20,5,1,'#ff964f');R(bg,4,24,2,2,'#3b332d');
+      R(bg,5,16,2,2,'#e3f2fd');/* cup stack */
+    }else if(scene==='gym'){
+      /* Training facility / weight room: warm brick wall, window, barbell rack, pennant, rubber mat */
+      R(bg,0,0,W,22,'#965744');
+      for(let y=2;y<22;y+=3){R(bg,0,y,W,1,'#7d4535');for(let x=(y%6?3:0);x<W;x+=6)R(bg,x,y-2,1,2,'#7d4535')}
+      /* high sunlit window (left) */
+      R(bg,2,3,11,7,'#573526');R(bg,3,4,9,5,'#9cdaf0');R(bg,7,4,1,5,'#573526');
+      /* team pennant (center-left) */
+      R(bg,15,2,8,4,teamCol);R(bg,16,3,5,2,trimCol);R(bg,22,2,1,1,'#965744');R(bg,22,5,1,1,'#965744');
+      /* barbell squat rack (right) */
+      R(bg,31,7,1,16,'#3d434d');R(bg,40,7,1,16,'#3d434d');R(bg,30,11,12,1,'#b8c0cc');
+      R(bg,29,9,2,5,'#2a2f38');R(bg,41,9,2,5,'#2a2f38');R(bg,30,10,1,3,teamCol);R(bg,41,10,1,3,teamCol);
+      /* gym floor + kettlebell */
+      R(bg,0,22,W,10,'#454954');R(bg,0,22,W,1,'#5f6573');
+      for(let x=2;x<W;x+=8)R(bg,x,25,2,1,'#535866');
+      R(bg,5,24,3,3,'#252930');R(bg,6,23,1,1,'#596170');
+    }else{
+      /* tunnel_run: dramatic brick & steel stadium tunnel opening onto bright floodlit field + mist */
+      R(bg,0,0,W,22,'#4a4146');R(bg,0,0,W,4,'#383136');
+      R(bg,8,4,28,18,'#2a2429');R(bg,10,6,24,16,'#3d4a66');R(bg,12,8,20,14,'#6d82ab');
+      /* overhead tunnel lamps + team banner */
+      R(bg,14,1,16,3,teamCol);R(bg,16,2,12,1,trimCol);
+      const gl=S('g',{'class':'px-glow'});
+      R(gl,13,6,4,2,'#fff3b0');R(gl,27,6,4,2,'#fff3b0');R(gl,12,8,20,6,'#fff4c2',0.16);
+      bg.appendChild(gl);
+      /* turf carpet leading out */
+      R(bg,0,22,W,10,'#468c36');R(bg,10,22,24,10,'#59a844');R(bg,10,22,1,10,'#f4f1e6');R(bg,33,22,1,10,'#f4f1e6');
+      /* animated game-day smoke/sparkle motes */
+      const sm=S('g',{'class':'px-steam'});sm.style.animationDelay=(-idx*.8)+'s';
+      R(sm,8,20,2,2,'#ffffff',0.4);R(sm,34,19,2,2,'#ffffff',0.4);R(sm,10,16,1,1,'#fff4c2',0.55);R(sm,33,15,1,1,'#fff4c2',0.55);
+      fg.appendChild(sm);
+    }
   }
-  function sprite(role,team,i){
-    const t=TEAM[team]||['#58a6ff','#ffffff','#58a6ff','#ffffff'],R=ROLE[role]||{},coach=role==='coach';
-    const pal={O:'#15181d',H:t[2],I:shade(t[2],.72),S:t[1],V:'#1d2733',M:'#aeb6bd',J:t[0],Y:shade(t[0],.7),T:t[1],N:'#ffffff',G:'#e9edf0',P:t[3],R:shade(t[3],.78),C:'#2a2f37',
-      B:'#9a5a2c',D:'#6e3d1c',L:'#ffffff',W:'#ffffff',K:'#d6a57a',E:'#2a2f37',Q:'#cbb58a',Z:'#a8946c',A:'#8a8f98',U:'#f4f1e6'};
-    if(pal.S.toLowerCase()===pal.H.toLowerCase())pal.S=shade(pal.H,.6);
-    if(pal.N.toLowerCase()===pal.J.toLowerCase())pal.N=t[1];
-    let map=(coach?COACH:PLAYER).map(r=>r.split(''));
-    const put=(x,y,str)=>str.split('').forEach((c,k)=>{if(c!=='.')map[y][x+k]=c});
-    if(R.towel){put(9,16,'WW');put(9,17,'WW');put(9,18,'W')}
-    if(R.bands){put(1,12,'TT');put(13,12,'TT')}
-    if(R.cross){put(3,13,'OGGGGGGGGO');put(3,14,'OOOOOOOOOO')}
-    if(R.hug){put(3,13,'OGG');put(3,14,'OOO')}
-    const svg=S('svg',{viewBox:'0 0 16 25','class':'px',width:64,height:100,'shape-rendering':'crispEdges','aria-hidden':'true'});
-    const legs=S('g',{}),up=S('g',{'class':'px-up'});
-    paint(legs,map.slice(17).map(r=>r.join('')),0,17,pal);paint(up,map.slice(0,17).map(r=>r.join('')),0,0,pal);
-    if(R.prop){const p=S('g',{'class':'px-'+R.move});paint(p,R.prop[2],R.prop[0],R.prop[1],pal);up.appendChild(p);p.style.animationDelay=(-i*.9)+'s'}
-    up.style.animationDuration=(1.25+(i%4)*.17)+'s';up.style.animationDelay=(-i*.41)+'s';
-    svg.appendChild(legs);svg.appendChild(up);return svg;
+
+  function sprite(role,team,i,opts){
+    opts=opts||{};
+    const t=TEAM[team]||['#2f6bb8','#f2c14e','#2f6bb8','#f4f1e6'];
+    const coach=role==='coach',num=opts.number||'',name=opts.name||'';
+    const scene=opts.scene||(coach?COACH_SCENES[i%COACH_SCENES.length]:PLAYER_SCENES[i%PLAYER_SCENES.length]);
+    const seated=(coach&&scene==='office')||(!coach&&scene==='sideline_bench');
+    const darkOut='#321d18';
+    const jersey=t[0],trim=t[1],helm=t[2],pants=t[3];
+    const numCol=luma(jersey)>175?(luma(trim)<120?trim:darkOut):'#faf6e8';
+    const hair=HAIR[hash(name||team)%HAIR.length];
+    const pal={
+      O:darkOut,H:helm,I:mix(helm,'#fff8dc',.42),D:mix(helm,'#2a1826',.35),S:trim,
+      J:jersey,L:mix(jersey,'#fff6d6',.28),Y:mix(jersey,'#2a1826',.32),T:trim,
+      P:pants,R:mix(pants,'#2a1826',.28),Q:mix(pants,'#ffffff',.4),
+      K:'#f0be96',c:'#e38b79',E:'#2d1a16',M:'#c6ccd4',V:'#1c2738',v:'#7ab8e8',
+      W:'#faf6eb',G:role==='wr'?trim:'#eef1f4',C:'#362826',
+      B:'#a85d2e',A:'#8a6f52',U:'#f6f1e1',Q2:'#c9b288',Z:'#a38b62',
+      h:hair[0],i:hair[1],d:hair[2]
+    };
+    if(coach){pal.Q='#cbb48a';pal.Z='#a38c64';pal.E='#2e3138'}
+    if(pal.S.toLowerCase()===pal.H.toLowerCase())pal.S=mix(pal.H,'#2a1826',.38);
+    if(pal.T.toLowerCase()===pal.J.toLowerCase())pal.T='#faf6eb';
+
+    const svg=S('svg',{viewBox:'0 0 44 32','class':'px',width:88,height:64,'shape-rendering':'crispEdges','aria-hidden':'true'});
+    const bg=S('g',{}),fg=S('g',{});
+    drawScene(bg,fg,scene,jersey,trim,i);
+    svg.appendChild(bg);
+
+    /* ground shadow under standing character */
+    const cx=coach&&scene==='film_room'?18:13;
+    const cy=seated?(coach?6:7):8;
+    if(!seated)R(svg,cx+3,cy+21,11,2,'#1b1214',0.28);
+
+    let base;
+    if(coach){
+      base=(hash(name+team)%2===0?COACH_CAP:COACH_HAIR).map(r=>r.split(''));
+      if(scene==='office')base=base.slice(0,15);/* seated behind desk */
+    }else{
+      base=(seated?PLAYER_SIT:PLAYER).map(r=>r.split(''));
+    }
+    const put=(x,y,str)=>{if(!base[y])return;str.split('').forEach((ch,k)=>{if(ch!=='.'&&base[y][x+k]!=null)base[y][x+k]=ch})};
+
+    if(!coach){
+      /* Position equipment customization */
+      const visor=role==='rush'||role==='rb'||(role==='wr'&&hash(name)%2===0);
+      if(visor){put(5,4,'VvVVVVv');put(5,5,'VMVMVMV')}
+      if(role==='rush'||role==='tackle'){put(6,7,'DDDDD');put(1,11,'TT');put(14,11,'TT')}
+      if(role==='qb'){put(1,11,'WW');put(4,16,'W');put(4,17,'W')}
+      if(role==='rb'){put(1,11,'WW');put(14,11,'WW')}
+      if(role==='wr'){put(12,16,'W');put(12,17,'W');put(12,18,'W')}
+    }else if(scene==='film_room'){
+      /* Coach raising left arm to hold pointer toward the film screen */
+      put(0,9,'KK');put(1,10,'JJ');put(1,11,'JJ');
+    }
+
+    const chG=S('g',{}),legs=S('g',{}),up=S('g',{'class':'px-up'});
+    const splitY=seated?base.length:16;
+    if(!seated)paint(legs,base.slice(splitY).map(r=>r.join('')),cx,cy+splitY,pal);
+    paint(up,base.slice(0,splitY).map(r=>r.join('')),cx,cy,pal);
+
+    /* Real pixel jersey number on player chest */
+    if(!coach&&num)drawNum(up,num,cx,cy+9,numCol);
+
+    /* Props & idle animations */
+    const ballPal={O:darkOut,B:'#a85d2e',D:'#753c1b',L:'#faf6eb'};
+    if(!coach){
+      if(role==='qb'||role==='wr'){
+        const prop=S('g',{'class':'px-toss'});prop.style.animationDelay=(-i*.9)+'s';
+        paint(prop,BALL,cx+14,cy+8,ballPal);up.appendChild(prop);
+      }else if(role==='rb'){
+        paint(up,BALL,cx+1,cy+11,ballPal);
+      }
+    }else if(scene==='stadium'){
+      const prop=S('g',{'class':'px-tap'});prop.style.animationDelay=(-i*.8)+'s';
+      paint(prop,BOARD,cx+12,cy+11,pal);up.appendChild(prop);
+    }else if(scene==='tunnel'){
+      paint(up,MUG,cx+13,cy+11,{O:darkOut,W:'#f4eee0'});
+      R(up,cx+14,cy+11,2,1,'#6e4326');
+      const st=S('g',{'class':'px-steam'});st.style.animationDelay=(-i*.6)+'s';
+      paint(st,STEAM,cx+13,cy+8,{w:'#e8e0d5'});up.appendChild(st);
+    }else if(scene==='film_room'){
+      /* Wooden pointer held in hand reaching to the screen */
+      const pt=S('g',{'class':'px-tap'});pt.style.animationDelay=(-i*.7)+'s';
+      R(pt,cx-4,cy+9,5,1,'#e8c488');R(pt,cx-5,cy+9,1,1,'#ff6b57');
+      up.appendChild(pt);
+    }
+
+    up.style.animationDuration=(1.35+(i%4)*.19)+'s';
+    up.style.animationDelay=(-i*.43)+'s';
+    chG.appendChild(legs);chG.appendChild(up);svg.appendChild(chG);
+    svg.appendChild(fg);
+    return svg;
   }
+
   const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
   function mount(box,page){
     fetch('/api/leaders?page='+encodeURIComponent(page)).then(r=>r.ok?r.json():Promise.reject()).then(d=>{
       if(!d.groups||!d.groups.length)return;box.replaceChildren();let n=0;
       d.groups.forEach(g=>{const sec=el('section','sl-g');sec.appendChild(el('h2','sl-h',g.title));
-        const turf=el('div','sl-turf');
-        g.players.forEach((p,i)=>{const c=el('figure','sl-p');c.appendChild(sprite(g.role,p.team,n++));const cap=el('figcaption');
-          cap.appendChild(el('b',null,p.value));cap.appendChild(el('span',null,p.name));cap.appendChild(el('small',null,p.team));
-          c.title=p.name+' ('+p.team+'): '+p.value+' '+g.unit+(p.detail?', '+p.detail:'');c.appendChild(cap);turf.appendChild(c)});
-        sec.appendChild(turf);box.appendChild(sec)});
-      box.appendChild(el('p','sl-note','League leaders through Week '+d.through_week+'. Updates on its own.'));
+        const row=el('div','sl-row');
+        const pool=g.role==='coach'?COACH_SCENES:PLAYER_SCENES;
+        const picks=GROUP_SCENES[g.id]||pool;
+        g.players.forEach((p,pi)=>{
+          const idx=n++;
+          let sc=picks[pi%picks.length];
+          const c=el('figure','sl-p');
+          const frame=el('button','sl-scene');frame.type='button';
+          const render=()=>{
+            frame.replaceChildren(sprite(g.role,p.team,idx,{number:p.number,name:p.name,scene:sc}));
+            const loc=SCENE_META[sc]||'';
+            const numTag=p.number?' #'+p.number:'';
+            c.title=p.name+numTag+' ('+p.team+'): '+p.value+' '+g.unit+(p.detail?', '+p.detail:'')+(loc?' · '+loc:'')+' (click to change scene)';
+            frame.setAttribute('aria-label',p.name+', '+loc+'. Click to switch scene.');
+          };
+          frame.onclick=()=>{sc=pool[(pool.indexOf(sc)+1)%pool.length];render()};
+          render();
+          c.appendChild(frame);
+          const cap=el('figcaption');
+          cap.appendChild(el('b',null,p.value));
+          cap.appendChild(el('span',null,p.name));
+          cap.appendChild(el('small',null,(p.number?'#'+p.number+' · ':'')+p.team));
+          c.appendChild(cap);row.appendChild(c);
+        });
+        sec.appendChild(row);box.appendChild(sec)});
+      box.appendChild(el('p','sl-note','League leaders through Week '+d.through_week+'. Click any scene to switch environments.'));
       box.hidden=false;
     }).catch(()=>{});
   }
-  return {mount,sprite,TEAM};
+  return {mount,sprite,TEAM,COACH_SCENES,PLAYER_SCENES};
 })();
 """
 
@@ -273,24 +601,26 @@ tr.me td{font-weight:700;color:var(--fg)}tr.me td:first-child{box-shadow:inset 3
 .fair{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--raise);border:1px solid var(--line);font-size:.95rem}.fair b{font-variant-numeric:tabular-nums}
 .grp.set>h2 i{background:var(--warn);border-radius:2px}.set input[type=range]{--c:var(--warn)}
 
-/* sideline: pixel sprites for the current league leaders, idling on a strip of turf */
-.sideline{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:20px;align-items:flex-start}
+/* sideline: Stardew-inspired pixel vignettes for the current league leaders */
+.sideline{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:18px;align-items:flex-start}
 .sideline[hidden]{display:none}
 .sl-g{min-width:0;flex:none}
-.sl-h{font-size:.8rem;font-weight:700;color:var(--mute);margin:0 0 6px 2px}
-.sl-turf{position:relative;display:flex;gap:0 6px;padding:10px 10px 0}
-.sl-turf:before{content:"";position:absolute;left:0;right:0;top:0;height:118px;background:#47973d url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%2347973d'/%3E%3Cpath d='M2 3h1v2H2zM3 2h1v1H3zM10 9h1v2h-1zM11 8h1v1h-1zM13 2h1v1h-1zM6 13h1v1H6z' fill='%235bb04a'/%3E%3Cpath d='M6 6h2v1H6zM12 13h2v1h-2zM1 11h1v1H1zM9 1h1v1H9z' fill='%233b8434'/%3E%3C/svg%3E") 0 0/32px 32px;image-rendering:pixelated;
-box-shadow:inset 0 -4px 0 #2f6f2c,inset 0 -8px 0 #f4f1e6,inset 0 -12px 0 #3f8a37}
-.sl-p{position:relative;margin:0;width:78px;text-align:center}
-.px{display:block;margin:0 auto 14px;image-rendering:pixelated}
-.sl-p figcaption{display:flex;flex-direction:column;line-height:1.2;padding-top:2px}
-.sl-p b{font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}.sl-p span{font-size:.74rem;font-weight:600}.sl-p small{font-size:.7rem;color:var(--mute)}
+.sl-h{font-size:.78rem;font-weight:700;color:var(--mute);margin:0 0 6px 2px}
+.sl-row{display:flex;gap:8px;align-items:flex-start}
+.sl-p{position:relative;margin:0;width:90px;text-align:center}
+.sl-scene{display:block;padding:0;margin:0 auto 5px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;line-height:0;box-shadow:0 2px 6px rgba(0,0,0,.32);transition:transform .12s ease,border-color .12s ease}
+.sl-scene:hover{transform:translateY(-1px);border-color:var(--acc)}
+.px{display:block;width:88px;height:64px;image-rendering:pixelated}
+.sl-p figcaption{display:flex;flex-direction:column;line-height:1.2}
+.sl-p b{font-size:.94rem;font-weight:800;font-variant-numeric:tabular-nums}.sl-p span{font-size:.72rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sl-p small{font-size:.68rem;color:var(--mute)}
 .sl-note{flex-basis:100%;font-size:.72rem;color:var(--mute);margin:-4px 2px 0}
 @keyframes px-bob{0%,49.9%{transform:translateY(0)}50%,100%{transform:translateY(1px)}}
 @keyframes px-toss{0%,52%,100%{transform:translateY(0)}58%{transform:translateY(-2px)}66%{transform:translateY(-4px)}76%{transform:translateY(-5px)}86%{transform:translateY(-4px)}93%{transform:translateY(-2px)}}
 @keyframes px-tap{0%,78%,88%,100%{transform:translateY(0)}83%,93%{transform:translateY(-1px)}}
-.px-up{animation:px-bob 1.4s steps(1) infinite}.px-toss{animation:px-toss 2.8s steps(1) infinite}.px-tap{animation:px-tap 3.4s steps(1) infinite}
-@media(prefers-reduced-motion:reduce){.px-up,.px-toss,.px-tap{animation:none}}
+@keyframes px-steam{0%,100%{transform:translateY(0);opacity:.85}50%{transform:translateY(-2px);opacity:.35}}
+@keyframes px-glow{0%,100%{opacity:1}50%{opacity:.82}}
+.px-up{animation:px-bob 1.5s steps(1) infinite}.px-toss{animation:px-toss 2.8s steps(1) infinite}.px-tap{animation:px-tap 3.2s steps(1) infinite}.px-steam{animation:px-steam 2.6s steps(2) infinite}.px-glow{animation:px-glow 3.4s steps(2) infinite}
+@media(prefers-reduced-motion:reduce){.px-up,.px-toss,.px-tap,.px-steam,.px-glow{animation:none}}
 @media(max-width:979px){.sideline{flex-wrap:nowrap;overflow-x:auto;margin-right:calc(-1*var(--pad));padding-right:var(--pad)}.sl-note{display:none}}
 
 /* ncr */

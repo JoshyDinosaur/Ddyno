@@ -13,18 +13,21 @@
     {
      "name": "Jaylen Warren",
      "team": "PIT",
+     "number": "30",
      "value": "5.71",
      "detail": "719 yds on 126 carries"
     },
     {
      "name": "Kenneth Walker III",
      "team": "KC",
+     "number": "9",
      "value": "5.48",
      "detail": "872 yds on 159 carries"
     },
     {
      "name": "Kyle Monangai",
      "team": "CHI",
+     "number": "25",
      "value": "5.40",
      "detail": "324 yds on 60 carries"
     }
@@ -40,12 +43,14 @@
     {
      "name": "Joe Burrow",
      "team": "CIN",
+     "number": "9",
      "value": "82.0",
      "detail": "400 plays"
     },
     {
      "name": "Brock Purdy",
      "team": "SF",
+     "number": "13",
      "value": "81.4",
      "detail": "332 plays"
     }
@@ -61,12 +66,14 @@
     {
      "name": "Joe Burrow",
      "team": "CIN",
+     "number": "9",
      "value": "27",
      "detail": "2795 pass yds"
     },
     {
      "name": "Kirk Cousins",
      "team": "MIN",
+     "number": "8",
      "value": "22",
      "detail": "2547 pass yds"
     }
@@ -82,18 +89,21 @@
     {
      "name": "Jaxon Smith-Njigba",
      "team": "SEA",
+     "number": "11",
      "value": "10",
      "detail": "1207 rec yds"
     },
     {
      "name": "CeeDee Lamb",
      "team": "DAL",
+     "number": "88",
      "value": "8",
      "detail": "976 rec yds"
     },
     {
      "name": "Christian Watson",
      "team": "GB",
+     "number": "9",
      "value": "7",
      "detail": "916 rec yds"
     }
@@ -109,18 +119,21 @@
     {
      "name": "Jaxon Smith-Njigba",
      "team": "SEA",
+     "number": "11",
      "value": "1207",
      "detail": "10 TD"
     },
     {
      "name": "CeeDee Lamb",
      "team": "DAL",
+     "number": "88",
      "value": "976",
      "detail": "8 TD"
     },
     {
      "name": "Christian Watson",
      "team": "GB",
+     "number": "9",
      "value": "916",
      "detail": "7 TD"
     }
@@ -136,12 +149,14 @@
     {
      "name": "Will Anderson Jr.",
      "team": "HOU",
+     "number": "51",
      "value": "10.5",
      "detail": "DE"
     },
     {
      "name": "Carl Granderson",
      "team": "NO",
+     "number": "96",
      "value": "8.5",
      "detail": "DE"
     }
@@ -157,12 +172,14 @@
     {
      "name": "Alex Singleton",
      "team": "DEN",
+     "number": "49",
      "value": "104",
      "detail": "50 solo"
     },
     {
      "name": "Nakobe Dean",
      "team": "LV",
+     "number": "17",
      "value": "103",
      "detail": "47 solo"
     }
