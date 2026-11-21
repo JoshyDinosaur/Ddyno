@@ -24,6 +24,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
+import track
 import ui
 import watch
 
@@ -606,7 +607,7 @@ def leaders(page: str = "hub"):
 
 # ------------------------------------------------------------- game watch & implications
 WATCH_REFRESH_SECONDS = 6 * 3600
-WATCH = {"data": None, "rows": None, "team_rows": None, "weeks": {}, "live": False}
+WATCH = {"data": None, "rows": None, "team_rows": None, "track": None, "weeks": {}, "live": False}
 WATCH_NOTES = ROOT / "models" / "watch_notes.json"
 
 
@@ -618,6 +619,14 @@ def _refresh_watch_forever():
             WATCH["rows"] = bundle["rows"]
             WATCH["team_rows"] = bundle["team_rows"]
             WATCH["weeks"] = {bundle["active"]["week"]: bundle["active"]}
+            try:
+                WATCH["track"] = track.build_track_data(
+                    season=bundle["active"]["season"],
+                    raw_rows=bundle["rows"],
+                    team_rows=bundle["team_rows"],
+                )
+            except Exception as te:
+                print("track refresh failed:", repr(te))
             WATCH["live"] = True
         except Exception as e:                           # keep snapshot / previous refresh; retry later
             print("watch refresh failed:", repr(e))
@@ -629,6 +638,9 @@ if _watch_snap.exists():
     _wdata = json.loads(_watch_snap.read_text())
     WATCH["data"] = _wdata
     WATCH["weeks"][_wdata["week"]] = _wdata
+_track_snap = ROOT / "models" / "track_snapshot.json"
+if _track_snap.exists():
+    WATCH["track"] = json.loads(_track_snap.read_text())
 threading.Thread(target=_refresh_watch_forever, daemon=True).start()
 
 
@@ -652,6 +664,15 @@ def api_watch(week: int | None = None):
     raise HTTPException(404, f"Week {week} is not available right now.")
 
 
+@app.get("/api/watch/track")
+def api_watch_track():
+    """Point-in-time verification scorecard and game-by-game audit log for Why Watch."""
+    data = WATCH["track"]
+    if not data:
+        raise HTTPException(503, "Track record data is still loading. Try again in a moment.")
+    return {**data, "live": WATCH["live"]}
+
+
 # ------------------------------------------------------------------------- pages
 @app.get("/", response_class=HTMLResponse)
 def hub():
@@ -659,6 +680,7 @@ def hub():
 
 
 @app.get("/watch", response_class=HTMLResponse)
+@app.get("/watch/track", response_class=HTMLResponse)
 def watch_page():
     return ui.WATCH
 

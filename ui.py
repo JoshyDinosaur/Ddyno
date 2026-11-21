@@ -731,17 +731,58 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
 .wwatchfor{margin-top:10px;padding:9px 12px;border-left:3px solid var(--acc);border-radius:0 8px 8px 0;background:rgba(88,166,255,.07);font-size:.87rem;line-height:1.46;color:var(--fg)}
 .wwatchfor b{display:block;font-size:.76rem;color:var(--acc);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
 
+/* watch track record */
+.wtabs{margin:18px 0 0}
+.tstack{display:flex;flex-direction:column;gap:20px;margin-top:20px}
+.tcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tcard{padding:16px 18px}
+.tcard .tl{color:var(--mute);font-size:.8rem;font-weight:600}
+.tcard .tv{font-size:clamp(1.7rem,5vw,2.25rem);font-weight:800;line-height:1.1;margin:4px 0;font-variant-numeric:tabular-nums}
+.tcard .ts{color:var(--mute);font-size:.8rem;line-height:1.35;font-variant-numeric:tabular-nums}
+.tgrid2{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.ttools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 14px}
+.ttools .search{max-width:260px;height:40px}
+.ttools .wsel{height:40px;font-size:.88rem}
+.tgame{border-top:1px solid var(--hair)}
+.tgame:last-child{border-bottom:1px solid var(--hair)}
+.tgame-hd{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:10px 14px;width:100%;text-align:left;background:none;border:0;padding:13px 6px;color:inherit;cursor:pointer}
+.tgame-hd:hover{background:linear-gradient(90deg,rgba(88,166,255,.07),transparent 75%)}
+.tgame-wk{font-size:.78rem;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums}
+.tgame-main{min-width:0}
+.tgame-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-weight:700;font-size:.96rem;font-variant-numeric:tabular-nums}
+.tgame-sub{color:var(--mute);font-size:.8rem;margin-top:2px;font-variant-numeric:tabular-nums}
+.tgame-rt{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px}
+.tgame-rt .pill{font-size:.74rem;padding:2px 8px;min-width:0}
+.tgame-body{padding:4px 8px 16px;display:flex;flex-direction:column;gap:12px}
+.tgame-body[hidden]{display:none}
+.tgame-stakes{background:var(--raise);border:1px solid var(--hair);border-radius:10px;padding:10px 13px;font-size:.86rem;line-height:1.45}
+.tgame-stakes b{color:var(--acc);font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;margin-right:6px}
+.tsides{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.tside{background:var(--raise);border:1px solid var(--hair);border-radius:11px;padding:12px 14px;font-size:.85rem}
+.tside-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;font-weight:800;font-size:.92rem;margin-bottom:8px}
+.tside-h .pill{font-size:.73rem;padding:2px 7px;min-width:0}
+.tside-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 12px;padding:6px 0;border-top:1px solid var(--hair);line-height:1.4}
+.tside-row span{color:var(--mute);font-size:.8rem}
+.tside-row .pill{font-size:.72rem;padding:2px 7px;min-width:0}
+.tcue-bar{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(60px,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--hair);font-size:.88rem;font-weight:600}
+.tcue-bar small{display:block;color:var(--mute);font-size:.76rem;font-weight:400}
+.tcue-bar .tr{height:8px;background:var(--hair);border-radius:4px;overflow:hidden}
+.tcue-bar .tr i{display:block;height:100%;border-radius:4px;background:var(--acc)}
+.mat-tbl th:nth-child(2),.mat-tbl td:nth-child(2){text-align:left;white-space:normal}
+
 @media(min-width:700px){
   .fig{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:center}
   .row{padding:14px 10px}
-  .wimp-grid{grid-template-columns:1fr 1fr}
+  .wimp-grid,.tsides{grid-template-columns:1fr 1fr}
 }
-@media(max-width:519px){.row .spark{display:none}.row{grid-template-columns:minmax(0,1fr) auto}.wversus{grid-template-columns:1fr}}
+@media(max-width:519px){.row .spark{display:none}.row{grid-template-columns:minmax(0,1fr) auto}.wversus,.tcards{grid-template-columns:1fr}.tgame-hd{grid-template-columns:44px minmax(0,1fr)}.tgame-rt{grid-column:2;justify-content:flex-start}}
 @media(min-width:980px){
   :root{--pad:32px}
   .hubcols{grid-template-columns:minmax(0,1fr) 400px;gap:36px;align-items:start}
   .watchcols{grid-template-columns:minmax(340px,.92fr) minmax(0,1.18fr);gap:28px;align-items:start}
   .wslate{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto;padding-right:4px}
+  .tcards{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tgrid2{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:start}
   .panel{display:block;position:sticky;top:76px;padding:22px}
   .panel h2{font-size:1.35rem;font-weight:800;letter-spacing:-.015em}
   .panel .sub{color:var(--mute);font-size:.93rem;margin:6px 0 16px}
@@ -1171,17 +1212,26 @@ WATCH = HEAD.replace("__TITLE__", "Why Watch · ddyno") + """
   <div>
     <p class="eyebrow" id="eyebrow">NFL Slate Guide</p>
     <h1 class="title">Why Watch<span id="subcount">Loading slate</span></h1>
-    <p class="lede">What makes a game compelling, how each outcome shifts the season, and which outcomes are worth trying to predict.</p>
+    <p class="lede">What makes a game compelling, how each outcome shifts the season, and how accurately Why Watch diagnoses games.</p>
+    <div class="seg wtabs" role="tablist" aria-label="Why Watch views">
+      <button role="tab" id="wt-slate" aria-selected="true" aria-controls="p-slate" type="button">Weekly Slate</button>
+      <button role="tab" id="wt-track" aria-selected="false" aria-controls="p-track" type="button">Track Record</button>
+    </div>
   </div>
-  <div class="wweek"><label for="wkSel">Week</label><select class="wsel" id="wkSel" aria-label="Select NFL week"></select></div>
+  <div class="wweek" id="wkWrap"><label for="wkSel">Week</label><select class="wsel" id="wkSel" aria-label="Select NFL week"></select></div>
 </div>
-<div class="tools">
-  <input class="search" id="wq" type="search" placeholder="Search team, QB, or angle" aria-label="Search games">
-  <div class="seg" id="wtags" role="group" aria-label="Filter games"></div>
+<div class="pane" id="p-slate" role="tabpanel" aria-labelledby="wt-slate">
+  <div class="tools">
+    <input class="search" id="wq" type="search" placeholder="Search team, QB, or scheme" aria-label="Search games">
+    <div class="seg" id="wtags" role="group" aria-label="Filter games"></div>
+  </div>
+  <div class="watchcols">
+    <section class="wslate" aria-label="Ranked games"><div class="sech"><span id="slateHead">Games ranked by interest</span><span id="slateCount"></span></div><div class="rows" id="wlist"></div></section>
+    <article class="wdetail" id="wdetail" aria-live="polite"><div class="card blk"><p class="empty">Loading game breakdown.</p></div></article>
+  </div>
 </div>
-<div class="watchcols">
-  <section class="wslate" aria-label="Ranked games"><div class="sech"><span id="slateHead">Games ranked by interest</span><span id="slateCount"></span></div><div class="rows" id="wlist"></div></section>
-  <article class="wdetail" id="wdetail" aria-live="polite"><div class="card blk"><p class="empty">Loading game breakdown.</p></div></article>
+<div class="pane" id="p-track" role="tabpanel" aria-labelledby="wt-track" hidden>
+  <div id="trackRoot"><div class="card blk" style="margin-top:20px"><p class="empty">Loading Why Watch verification track record.</p></div></div>
 </div>
 <footer id="wfoot">Playoff, division, and draft-order implications are estimated by simulating the remaining regular-season schedule from nflverse data.</footer>
 </div>
@@ -1493,9 +1543,238 @@ async function loadWeek(wk){
     $('wdetail').replaceChildren();
   }
 }
+let trackData=null,tWeek='All',tTier='All',tQuery='',tSchemeQ='',openGames=new Set();
+
+function setView(v,push){
+  const isTrack=v==='track';
+  $('wt-slate').setAttribute('aria-selected',!isTrack);
+  $('wt-track').setAttribute('aria-selected',isTrack);
+  $('p-slate').hidden=isTrack;
+  $('p-track').hidden=!isTrack;
+  $('wkWrap').style.display=isTrack?'none':'';
+  if(push){
+    const target=isTrack?'/watch/track':'/watch'+(slate&&slate.week!==slate.active_week?'?week='+slate.week:'');
+    if(location.pathname+location.search!==target)history.replaceState(null,'',target);
+  }
+  if(isTrack){
+    if(trackData){
+      $('subcount').textContent=trackData.games_graded+' games verified · Weeks '+trackData.weeks_evaluated[0]+'–'+trackData.weeks_evaluated[trackData.weeks_evaluated.length-1];
+    }else loadTrack();
+  }else if(slate){
+    $('subcount').textContent='Week '+slate.week+' · '+slate.games.length+' games ranked';
+  }
+}
+
+function drawTrack(){
+  const root=$('trackRoot');
+  if(!trackData){root.replaceChildren(el('div','card blk',null));return}
+  const S=trackData.summary;
+  const wrap=el('div','tstack');
+
+  /* 1. Headline 4-metric scorecard */
+  const cards=el('div','tcards');
+  const mkCard=(lbl,val,sub)=>{const c=el('div','card tcard');c.appendChild(el('div','tl',lbl));c.appendChild(el('div','tv',val));c.appendChild(el('div','ts',sub));cards.appendChild(c)};
+  mkCard('Scheme diagnosis held',S.scheme_hold_pct.toFixed(1)+'%',S.scheme_checks+' pregame offense & defense scheme checks across '+trackData.games_graded+' games');
+  mkCard('Style edge accuracy',S.edge_accuracy_pct.toFixed(1)+'%',S.edge_calls+' directional style-edge calls won the EPA/play battle');
+  mkCard('What-to-watch-for hit rate',S.cue_hit_pct.toFixed(1)+'%',S.cue_checks+' observable on-field cues graded strictly against game winners');
+  mkCard('Favorites & stakes',S.fav_win_pct.toFixed(1)+'%', 'Favorites won straight-up ('+S.fav_cover_pct.toFixed(1)+'% ATS) · '+S.high_stakes_upset_pct.toFixed(0)+'% upsets in top games');
+  wrap.appendChild(cards);
+
+  /* 2. Watch Tier Calibration + What-to-Watch-For Cues (2-col on desktop) */
+  const g2=el('div','tgrid2');
+
+  const tierCard=el('section','card blk');
+  tierCard.appendChild(el('h3',null,'How watch tiers actually played out'));
+  tierCard.appendChild(el('p','note','Walk-forward point-in-time test (Weeks '+trackData.weeks_evaluated[0]+'–'+trackData.weeks_evaluated[trackData.weeks_evaluated.length-1]+', using only prior weeks). A game “delivered” if it finished within 8 pts/OT, hit 50+ pts within 14, or saw a 5+ pt underdog win.'));
+  const tw=el('div','tw'),tbl=el('table'),hr=el('tr');
+  ['Tier','Games','Delivered','1-Score','Avg Margin','Avg Total','Upsets'].forEach(h=>hr.appendChild(el('th',null,h)));
+  tbl.appendChild(hr);
+  (trackData.tiers||[]).forEach(r=>{
+    const tr=el('tr');
+    const td0=el('td');td0.appendChild(el('span','pill '+tierCls(r.tier),r.tier));tr.appendChild(td0);
+    [String(r.games),r.delivered_pct.toFixed(0)+'%',r.one_score_pct.toFixed(0)+'%',r.avg_margin.toFixed(1),r.avg_total.toFixed(1),r.upset_pct.toFixed(0)+'%'].forEach(v=>tr.appendChild(el('td',null,v)));
+    tbl.appendChild(tr);
+  });
+  tw.appendChild(tbl);tierCard.appendChild(tw);
+  g2.appendChild(tierCard);
+
+  const cueCard=el('section','card blk');
+  cueCard.appendChild(el('h3',null,'“What to watch for” cue accuracy'));
+  const cn=el('p','note','Each matchup’s live viewing cue is tested strictly against winning the game—no EPA circularity. Shows overall hit rate and win rate when the offense hit its cue.');
+  cn.style.marginBottom='10px';cueCard.appendChild(cn);
+  (trackData.cues||[]).filter(c=>c.games>=3).forEach(c=>{
+    const row=el('div','tcue-bar');
+    const nm=el('div',null,c.cue_type);nm.appendChild(el('small',null,c.games+' checks · offense won '+c.when_triggered_pct.toFixed(0)+'% when cue hit'));row.appendChild(nm);
+    const tr=el('div','tr'),i=el('i');i.style.width=Math.max(4,c.hit_pct)+'%';if(c.hit_pct>=65)i.style.background='var(--up)';else if(c.hit_pct<55)i.style.background='var(--warn)';tr.appendChild(i);row.appendChild(tr);
+    row.appendChild(el('span','pill '+(c.hit_pct>=65?'up':c.hit_pct>=55?'strong':'flat'),c.hit_pct.toFixed(0)+'%'));
+    cueCard.appendChild(row);
+  });
+  g2.appendChild(cueCard);
+  wrap.appendChild(g2);
+
+  /* 3. Scheme-vs-Scheme 2026 Performance Matrix */
+  const matCard=el('section','card blk');
+  matCard.appendChild(el('h3',null,'Which schemes beat which in '+trackData.season));
+  matCard.appendChild(el('p','note','Real head-to-head results for pregame-diagnosed offensive schemes against opposing defensive schemes (minimum 2 games).'));
+  const mtTools=el('div','ttools');
+  const sq=el('input','search');sq.type='search';sq.placeholder='Filter by scheme (e.g. Blitz, Cover 2, Spread)';sq.value=tSchemeQ;
+  const matBody=el('div','tw');
+  const paintMatrix=()=>{
+    const q=tSchemeQ.trim().toLowerCase();
+    const rows=(trackData.scheme_matrix||[]).filter(r=>!q||(r.off_scheme+' '+r.def_scheme).toLowerCase().includes(q));
+    matBody.replaceChildren();
+    if(!rows.length){matBody.appendChild(el('p','note','No scheme pairings match that filter.'));return}
+    const t=el('table','mat-tbl'),h=el('tr');
+    ['Offensive scheme','Defensive scheme','Games','Off Win %','+EPA %','Avg EPA/play','Off PPG'].forEach(x=>h.appendChild(el('th',null,x)));
+    t.appendChild(h);
+    rows.forEach(r=>{
+      const tr=el('tr');
+      tr.appendChild(el('td',null,r.off_scheme));
+      tr.appendChild(el('td',null,r.def_scheme));
+      tr.appendChild(el('td',null,String(r.games)));
+      tr.appendChild(el('td',null,r.off_win_pct.toFixed(0)+'%'));
+      tr.appendChild(el('td',null,r.off_pos_epa_pct.toFixed(0)+'%'));
+      const eTd=el('td');eTd.appendChild(el('span','pill '+(r.avg_epa>=0.04?'up':r.avg_epa<=-0.04?'dn':'flat'),(r.avg_epa>0?'+':'')+r.avg_epa.toFixed(2)));tr.appendChild(eTd);
+      tr.appendChild(el('td',null,r.avg_pts.toFixed(1)));
+      t.appendChild(tr);
+    });
+    matBody.appendChild(t);
+  };
+  sq.oninput=()=>{tSchemeQ=sq.value;paintMatrix()};
+  mtTools.appendChild(sq);matCard.appendChild(mtTools);matCard.appendChild(matBody);paintMatrix();
+  wrap.appendChild(matCard);
+
+  /* 4. Verifiable Game-by-Game Audit Log */
+  const logCard=el('section','card blk');
+  logCard.appendChild(el('h3',null,'Game-by-game verification log'));
+  logCard.appendChild(el('p','note','Click any completed game to inspect what Why Watch diagnosed pregame versus how the schemes, stakes, and “what to watch for” cues actually played out.'));
+  const lTools=el('div','ttools');
+  const gq=el('input','search');gq.type='search';gq.placeholder='Search team or scheme';gq.value=tQuery;
+  const wkSel=el('select','wsel');wkSel.setAttribute('aria-label','Filter by week');
+  const oAllW=document.createElement('option');oAllW.value='All';oAllW.textContent='All weeks';wkSel.appendChild(oAllW);
+  [...(trackData.weeks_evaluated||[])].reverse().forEach(w=>{const o=document.createElement('option');o.value=String(w);o.textContent='Week '+w;wkSel.appendChild(o)});
+  wkSel.value=tWeek;
+  const trSel=el('select','wsel');trSel.setAttribute('aria-label','Filter by tier');
+  ['All','Must Watch','Strong Watch','Intriguing','Niche'].forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t==='All'?'All tiers':t;trSel.appendChild(o)});
+  trSel.value=tTier;
+  const cnt=el('span','note');
+  lTools.appendChild(gq);lTools.appendChild(wkSel);lTools.appendChild(trSel);lTools.appendChild(cnt);
+  logCard.appendChild(lTools);
+  const gList=el('div');logCard.appendChild(gList);
+
+  const paintLog=()=>{
+    const q=tQuery.trim().toLowerCase();
+    const gs=(trackData.games||[]).filter(g=>{
+      if(tWeek!=='All'&&String(g.week)!==tWeek)return false;
+      if(tTier!=='All'&&g.tier!==tTier)return false;
+      if(!q)return true;
+      const hay=[g.away_team,g.home_team,g.tier,g.stakes_pre,g.stakes_outcome,...(g.sides||[]).map(s=>s.off_scheme+' '+s.def_scheme+' '+s.cue.cue_type)].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+    cnt.textContent=gs.length+(gs.length===1?' game':' games');
+    gList.replaceChildren();
+    if(!gs.length){gList.appendChild(el('p','empty','No graded games match those filters.'));return}
+    gs.forEach(g=>{
+      const row=el('div','tgame');
+      const isOpen=openGames.has(g.game_id);
+      const hd=el('button','tgame-hd');hd.type='button';hd.setAttribute('aria-expanded',isOpen);
+      hd.appendChild(el('span','tgame-wk','Wk '+g.week));
+      const mn=el('div','tgame-main');
+      const tp=el('div','tgame-top');
+      tp.appendChild(dot(g.away_team));tp.appendChild(document.createTextNode(g.away_team+' '+g.away_score+' – '+g.home_score+' '+g.home_team));tp.appendChild(dot(g.home_team));
+      if(g.overtime)tp.appendChild(el('span','wtag','OT'));
+      mn.appendChild(tp);
+      const schHits=(g.sides||[]).reduce((a,s)=>a+(s.off_held?1:0)+(s.def_held?1:0),0);
+      const cueHits=(g.sides||[]).reduce((a,s)=>a+(s.cue.correct?1:0),0);
+      const subBits=['Pregame '+g.spread_label,'Score '+g.interest_score+'/100'];
+      if((g.sides||[]).length){subBits.push('Schemes '+schHits+'/4');subBits.push('Cues '+cueHits+'/2')}
+      mn.appendChild(el('div','tgame-sub',subBits.join(' · ')));
+      hd.appendChild(mn);
+      const rt=el('div','tgame-rt');
+      rt.appendChild(el('span','pill '+tierCls(g.tier),g.tier));
+      rt.appendChild(el('span','pill '+(g.delivered?'up':'flat'),g.delivered?'Delivered ✓':'Lopsided'));
+      hd.appendChild(rt);
+
+      const body=el('div','tgame-body');body.hidden=!isOpen;
+      const st=el('div','tgame-stakes');
+      st.appendChild(el('b',null,'Stakes'));
+      st.appendChild(document.createTextNode(g.stakes_pre+' → '+g.stakes_outcome));
+      body.appendChild(st);
+
+      if((g.sides||[]).length){
+        const sdGrid=el('div','tsides');
+        g.sides.forEach(s=>{
+          const box=el('div','tside');
+          const sh=el('div','tside-h');
+          const shL=el('span');shL.appendChild(dot(s.off_team));shL.appendChild(document.createTextNode(' When '+s.off_team+' had the ball'));
+          sh.appendChild(shL);
+          const eTxt=s.edge_hit===true?s.pred_edge+' ✓':s.edge_hit===false?s.pred_edge+' ✕':s.pred_edge;
+          sh.appendChild(el('span','pill '+(s.edge_hit===true?'up':s.edge_hit===false?'dn':'flat'),eTxt));
+          box.appendChild(sh);
+
+          const r1=el('div','tside-row');
+          r1.appendChild(el('div',null,s.off_team+' Off: '+s.off_scheme));
+          r1.appendChild(el('span',null,'Actual: '+s.off_actual));
+          r1.appendChild(el('span','pill '+(s.off_held?'up':'flat'),s.off_held?'Held ✓':'Shifted'));
+          box.appendChild(r1);
+
+          const r2=el('div','tside-row');
+          r2.appendChild(el('div',null,s.def_team+' Def: '+s.def_scheme));
+          r2.appendChild(el('span',null,'Actual: '+s.def_actual));
+          r2.appendChild(el('span','pill '+(s.def_held?'up':'flat'),s.def_held?'Held ✓':'Shifted'));
+          box.appendChild(r2);
+
+          const r3=el('div','tside-row');
+          const cL=el('div',null,'Cue ('+s.cue.cue_type+'): '+s.cue.rule);
+          cL.appendChild(el('span',null,' · Actual: '+s.cue.actual+' (Off EPA '+(s.actual_epa>0?'+':'')+s.actual_epa.toFixed(2)+')'));
+          r3.appendChild(cL);
+          r3.appendChild(el('span','pill '+(s.cue.correct?'up':'dn'),s.cue.correct?s.cue.verdict+' ✓':s.cue.verdict+' ✕'));
+          box.appendChild(r3);
+          sdGrid.appendChild(box);
+        });
+        body.appendChild(sdGrid);
+      }
+
+      hd.onclick=()=>{
+        if(openGames.has(g.game_id))openGames.delete(g.game_id);else openGames.add(g.game_id);
+        const nowOpen=openGames.has(g.game_id);
+        hd.setAttribute('aria-expanded',nowOpen);body.hidden=!nowOpen;
+      };
+      row.appendChild(hd);row.appendChild(body);gList.appendChild(row);
+    });
+  };
+  gq.oninput=()=>{tQuery=gq.value;paintLog()};
+  wkSel.onchange=()=>{tWeek=wkSel.value;paintLog()};
+  trSel.onchange=()=>{tTier=trSel.value;paintLog()};
+  paintLog();
+  wrap.appendChild(logCard);
+
+  root.replaceChildren(wrap);
+}
+
+async function loadTrack(){
+  try{
+    const r=await fetch('/api/watch/track');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    trackData=await r.json();
+    if(!$('p-track').hidden){
+      $('eyebrow').textContent='NFL · '+trackData.season+' Season · Walk-Forward Verification';
+      $('subcount').textContent=trackData.games_graded+' games verified · Weeks '+trackData.weeks_evaluated[0]+'–'+trackData.weeks_evaluated[trackData.weeks_evaluated.length-1];
+    }
+    drawTrack();
+  }catch(e){
+    $('trackRoot').replaceChildren(el('div','card blk',null));
+    $('trackRoot').firstChild.appendChild(el('p','empty','Could not load verification track record right now. Refresh to try again.'));
+  }
+}
+
+$('wt-slate').onclick=()=>setView('slate',true);
+$('wt-track').onclick=()=>setView('track',true);
 $('wq').addEventListener('input',drawList);
 $('wkSel').addEventListener('change',e=>loadWeek(e.target.value));
+const startTrack=location.pathname==='/watch/track'||location.hash==='#track';
 loadWeek(new URLSearchParams(location.search).get('week'));
+if(startTrack)setView('track',false);else loadTrack();
 </script></body></html>"""
 
 HUB = HUB.replace("__FIGJS__", FIGJS)
