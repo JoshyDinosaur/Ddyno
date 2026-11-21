@@ -5,6 +5,7 @@ FastAPI service behind ddyno.com. Hosts small ML models with slider inputs.
 - `main.py`: model registry, generic prediction API, pages. Also the NCR text demo.
 - `watch.py`: NFL Why Watch slate scoring, Monte Carlo outcome implications, scheme matchups, and prediction target links.
 - `track.py`: Point-in-time Why Watch verification scorecard, scheme-vs-scheme matrix, and game-by-game audit tracker.
+- `schemes.py`: Offensive and defensive scheme playbook guide, on-field examples, and chalkboard formation specs.
 - `ui.py`: HTML and CSS for the hub, the model page, the Why Watch page, and the NCR page.
 - `models/<slug>/`: one folder per model.
 

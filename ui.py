@@ -2,6 +2,9 @@
 
 One visual language for every page: dark surface, row-based lists, right-aligned tabular numbers,
 tinted change pills, hairline borders. Tokens live in :root. Pages only read the existing API."""
+import json
+
+import schemes
 
 FIGJS = r"""/* Sideline: Stardew-inspired pixel vignettes, one per current league leader.
    Generic football players (full pads, helmet, jersey number) and coaches in varied environments. */
@@ -770,6 +773,39 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
 .tcue-bar .tr i{display:block;height:100%;border-radius:4px;background:var(--acc)}
 .mat-tbl th:nth-child(2),.mat-tbl td:nth-child(2){text-align:left;white-space:normal}
 
+/* interactive scheme pills & playbook modal */
+button.wscheme{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--fg);font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;transition:border-color .14s ease,background .14s ease,transform .1s ease}
+button.wscheme:hover{border-color:var(--acc);background:rgba(88,166,255,.12);transform:translateY(-1px)}
+button.wscheme .sinfo{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--line);color:var(--acc);font-size:.66rem;font-weight:800;line-height:1}
+button.scheme-link{background:none;border:0;padding:0;color:var(--fg);font:inherit;font-weight:600;text-align:left;cursor:pointer;border-bottom:1px dashed var(--line)}
+button.scheme-link:hover{color:var(--acc);border-bottom-color:var(--acc)}
+.smodal{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;padding:12px;background:rgba(4,9,16,.76);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.smodal[hidden]{display:none}
+.ssheet{width:100%;max-width:620px;max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 24px 64px rgba(0,0,0,.6)}
+.shead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.shead h2{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-top:2px}
+.shead .stag{color:var(--mute);font-size:.88rem;margin-top:4px;line-height:1.4}
+.sclose{width:36px;height:36px;flex:none;border-radius:10px;border:1px solid var(--line);background:var(--raise);color:var(--fg);font-size:1.1rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sclose:hover{border-color:var(--acc);color:var(--acc)}
+.sboard{margin:14px 0 6px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0f1d17}
+.sboard svg{display:block;width:100%;height:auto}
+.sform-cap{font-size:.8rem;color:var(--mute);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 12px;margin-bottom:14px}
+.sleg{display:inline-flex;flex-wrap:wrap;gap:8px;font-size:.74rem;color:var(--mute)}
+.sleg span{display:inline-flex;align-items:center;gap:4px}
+.sleg i{display:inline-block;width:10px;height:3px;border-radius:2px}
+.ssec{margin-top:12px}
+.ssec h4{margin:0 0 4px;font-size:.78rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.03em}
+.ssec p{font-size:.91rem;line-height:1.5;color:var(--fg);opacity:.94}
+.sexample{margin-top:12px;padding:12px 14px;border-radius:11px;background:var(--raise);border:1px solid var(--hair);border-left:3px solid #f2c14e}
+.sexample h4{margin:0 0 4px;font-size:.78rem;font-weight:700;color:#f2c14e;text-transform:uppercase;letter-spacing:.03em}
+.sexample p{font-size:.89rem;line-height:1.5;color:var(--fg)}
+.sgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:12px}
+.sbox{background:var(--raise);border:1px solid var(--hair);border-radius:11px;padding:11px 13px}
+.sbox b{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
+.sbox.ok b{color:var(--up)}.sbox.cnt b{color:var(--down)}
+.sbox p{font-size:.86rem;line-height:1.45;color:var(--fg);opacity:.9}
+@media(min-width:640px){.smodal{align-items:center;padding:24px}.sgrid{grid-template-columns:1fr 1fr}}
+
 @media(min-width:700px){
   .fig{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:center}
   .row{padding:14px 10px}
@@ -1235,10 +1271,14 @@ WATCH = HEAD.replace("__TITLE__", "Why Watch · ddyno") + """
 </div>
 <footer id="wfoot">Playoff, division, and draft-order implications are estimated by simulating the remaining regular-season schedule from nflverse data.</footer>
 </div>
+<div class="smodal" id="smodal" role="dialog" aria-modal="true" aria-labelledby="smodalTitle" hidden><div class="ssheet" id="ssheet"></div></div>
 <script>__FIGJS__</script>
 <script>
+const SCHEMES=__SCHEMES__;
 const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const NS='http://www.w3.org/2000/svg';
+const sv=(n,at,tx)=>{const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;return e};
 const luma=h=>{const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return .299*r+.587*g+.114*b};
 const TCOL=tm=>{const p=Sideline.TEAM[tm];if(!p)return '#58a6ff';return luma(p[0])<40?p[1]:p[0]};
 const dot=tm=>{const s=el('i','tdot');s.style.background=TCOL(tm);return s};
@@ -1247,6 +1287,132 @@ const sg0=v=>(v>0?'+':v<0?'−':'')+Math.abs(Math.round(v));
 const wide=()=>matchMedia('(min-width:980px)').matches;
 const FILTERS=['All','High Leverage','Toss-ups','Shootouts','Divisional','Primetime'];
 let slate=null,tag='All',selId=null,branch='home';
+
+/* Playbook Chalkboard SVG Renderer */
+function drawPlaybookSVG(diag,side){
+  const s=sv('svg',{viewBox:'0 0 360 210',role:'img','aria-label':'Formation and play diagram'});
+  const defs=sv('defs',{});
+  const mkArrow=(id,col)=>{
+    const m=sv('marker',{id,viewBox:'0 0 10 10',refX:'7',refY:'5',markerWidth:'5.5',markerHeight:'5.5',orient:'auto-start-reverse'});
+    m.appendChild(sv('path',{d:'M1,1.5 L9,5 L1,8.5 Z',fill:col}));
+    defs.appendChild(m);
+  };
+  mkArrow('ar-pri','#f2c14e');mkArrow('ar-rt','#58a6ff');mkArrow('ar-fk','#f0883e');mkArrow('ar-blz','#ff7b72');mkArrow('ar-drp','#79c0ff');
+  s.appendChild(defs);
+
+  /* Turf stripes + yard lines + hash marks + LOS */
+  s.appendChild(sv('rect',{x:0,y:0,width:360,height:210,fill:'#0f1d17'}));
+  for(let y=22;y<202;y+=40)s.appendChild(sv('rect',{x:0,y,width:360,height:20,fill:'#13241c'}));
+  for(let y=22;y<=182;y+=20){
+    s.appendChild(sv('line',{x1:10,y1:y,x2:350,y2:y,stroke:'rgba(230,237,243,.09)','stroke-width':'1'}));
+    s.appendChild(sv('line',{x1:130,y1:y-3,x2:130,y2:y+3,stroke:'rgba(230,237,243,.16)','stroke-width':'1'}));
+    s.appendChild(sv('line',{x1:230,y1:y-3,x2:230,y2:y+3,stroke:'rgba(230,237,243,.16)','stroke-width':'1'}));
+  }
+  s.appendChild(sv('line',{x1:10,y1:122,x2:350,y2:122,stroke:'rgba(230,237,243,.34)','stroke-width':'1.4','stroke-dasharray':'5 4'}));
+  s.appendChild(sv('text',{x:14,y:118,fill:'rgba(230,237,243,.45)','font-size':'7.5','font-weight':'700'},'LOS'));
+
+  /* Coverage zones (if any) */
+  (diag.zones||[]).forEach(z=>{
+    s.appendChild(sv('ellipse',{cx:z.cx,cy:z.cy,rx:z.rx,ry:z.ry,fill:'rgba(88,166,255,.14)',stroke:'rgba(121,192,255,.45)','stroke-width':'1.1','stroke-dasharray':'4 3'}));
+    if(z.lbl)s.appendChild(sv('text',{x:z.cx,y:z.cy+3,fill:'rgba(195,228,255,.85)','font-size':'8.5','font-weight':'700','text-anchor':'middle'},z.lbl));
+  });
+
+  /* Routes, blocks, fakes, blitzes, and drops */
+  const RSTYLE={
+    primary:{col:'#f2c14e',w:'2.5',mark:'url(#ar-pri)'},
+    route:{col:'#58a6ff',w:'1.9',mark:'url(#ar-rt)'},
+    fake:{col:'#f0883e',w:'1.7',dash:'4 3',mark:'url(#ar-fk)'},
+    block:{col:'#3fb950',w:'1.8'},
+    blitz:{col:'#ff7b72',w:'2.3',mark:'url(#ar-blz)'},
+    drop:{col:'#79c0ff',w:'1.7',dash:'4 3',mark:'url(#ar-drp)'},
+  };
+  (diag.routes||[]).forEach(r=>{
+    const st=RSTYLE[r.kind]||RSTYLE.route;
+    const pts=r.pts||[];if(pts.length<2)return;
+    const d='M'+pts.map(p=>p[0]+','+p[1]).join(' L');
+    const at={d,fill:'none',stroke:st.col,'stroke-width':st.w,'stroke-linecap':'round','stroke-linejoin':'round'};
+    if(st.dash)at['stroke-dasharray']=st.dash;
+    if(st.mark)at['marker-end']=st.mark;
+    s.appendChild(sv('path',at));
+    if(r.kind==='block'){
+      const p1=pts[pts.length-2],p2=pts[pts.length-1],ang=Math.atan2(p2[1]-p1[1],p2[0]-p1[0])+Math.PI/2;
+      const dx=Math.cos(ang)*5,dy=Math.sin(ang)*5;
+      s.appendChild(sv('line',{x1:p2[0]-dx,y1:p2[1]-dy,x2:p2[0]+dx,y2:p2[1]+dy,stroke:st.col,'stroke-width':'2','stroke-linecap':'round'}));
+    }
+  });
+
+  /* Defense players */
+  const defFocus=side==='defense';
+  (diag.def||[]).forEach(([x,y,lbl])=>{
+    s.appendChild(sv('circle',{cx:x,cy:y,r:defFocus?'8.5':'7',fill:defFocus?'#2d171c':'rgba(22,27,34,.85)',stroke:defFocus?'#ff7b72':'rgba(230,237,243,.38)','stroke-width':defFocus?'1.7':'1.1'}));
+    s.appendChild(sv('text',{x,y:y+2.6,fill:defFocus?'#ffd3cf':'rgba(230,237,243,.58)','font-size':defFocus?'6.8':'6','font-weight':'700','text-anchor':'middle'},lbl));
+  });
+
+  /* Offense players */
+  const offFocus=side==='offense';
+  (diag.off||[]).forEach(([x,y,lbl,kind])=>{
+    if(kind==='ol'){
+      s.appendChild(sv('rect',{x:x-6.5,y:y-6.5,width:13,height:13,rx:lbl==='C'?'1.5':'3',fill:offFocus?'#142a42':'rgba(22,27,34,.8)',stroke:offFocus?'#58a6ff':'rgba(230,237,243,.34)','stroke-width':offFocus?'1.5':'1.1'}));
+    }else{
+      const fill=offFocus?(kind==='qb'?'#1f4d78':'#142a42'):'rgba(22,27,34,.8)';
+      const stk=offFocus?(kind==='qb'?'#f2c14e':'#58a6ff'):'rgba(230,237,243,.34)';
+      s.appendChild(sv('circle',{cx:x,cy:y,r:offFocus?'8.5':'7',fill,stroke:stk,'stroke-width':offFocus?'1.7':'1.1'}));
+    }
+    s.appendChild(sv('text',{x,y:y+2.5,fill:offFocus?'#e6edf3':'rgba(230,237,243,.55)','font-size':offFocus?'6.6':'5.8','font-weight':'700','text-anchor':'middle'},lbl));
+  });
+  return s;
+}
+
+function closeScheme(){
+  $('smodal').hidden=true;
+  document.body.style.overflow='';
+}
+function openScheme(name){
+  const sc=SCHEMES[name];if(!sc)return;
+  const sh=$('ssheet');sh.replaceChildren();
+  const hd=el('div','shead'),hl=el('div');
+  const ey=el('p','eyebrow',sc.side==='offense'?'Offensive Scheme Playbook':'Defensive Scheme Playbook');
+  if(sc.side==='defense')ey.style.color='var(--down)';
+  hl.appendChild(ey);
+  const h2=el('h2',null,name);h2.id='smodalTitle';hl.appendChild(h2);
+  hl.appendChild(el('p','stag',sc.tagline));
+  hd.appendChild(hl);
+  const cb=el('button','sclose','✕');cb.type='button';cb.setAttribute('aria-label','Close playbook');cb.onclick=closeScheme;
+  hd.appendChild(cb);sh.appendChild(hd);
+
+  if(sc.diagram){
+    const bd=el('div','sboard');bd.appendChild(drawPlaybookSVG(sc.diagram,sc.side));sh.appendChild(bd);
+    const cap=el('div','sform-cap');
+    cap.appendChild(el('span',null,sc.formation));
+    const leg=el('span','sleg');
+    const addL=(col,txt,dash)=>{const sp=el('span'),i=el('i');i.style.background=dash?'none':col;if(dash)i.style.borderTop='2px dashed '+col;sp.appendChild(i);sp.appendChild(document.createTextNode(txt));leg.appendChild(sp)};
+    if(sc.side==='offense'){addL('#f2c14e','Key target');addL('#58a6ff','Route');addL('#f0883e','Motion / fake',true);addL('#3fb950','Block')}
+    else{addL('#ff7b72','Rush / blitz');addL('#79c0ff','Zone / drop',true)}
+    cap.appendChild(leg);sh.appendChild(cap);
+  }
+
+  const s1=el('div','ssec');s1.appendChild(el('h4',null,'What this scheme entails'));s1.appendChild(el('p',null,sc.entails));sh.appendChild(s1);
+  const ex=el('div','sexample');ex.appendChild(el('h4',null,'How a play unfolds (example)'));ex.appendChild(el('p',null,sc.example));sh.appendChild(ex);
+  const gr=el('div','sgrid');
+  const b1=el('div','sbox ok');b1.appendChild(el('b',null,'When it works'));b1.appendChild(el('p',null,sc.works_when));gr.appendChild(b1);
+  const b2=el('div','sbox cnt');b2.appendChild(el('b',null,'How opponents counter it'));b2.appendChild(el('p',null,sc.counter));gr.appendChild(b2);
+  sh.appendChild(gr);
+
+  $('smodal').hidden=false;
+  document.body.style.overflow='hidden';
+  cb.focus();
+}
+function schemeBtn(name,label,cls){
+  if(!SCHEMES[name])return el('span',cls,label);
+  const b=el('button',cls);b.type='button';
+  b.appendChild(document.createTextNode(label));
+  if(cls==='wscheme')b.appendChild(el('span','sinfo','?'));
+  b.title='Tap for '+name+' explanation, on-field example, and formation diagram';
+  b.onclick=e=>{e.stopPropagation();openScheme(name)};
+  return b;
+}
+$('smodal').onclick=e=>{if(e.target===$('smodal'))closeScheme()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('smodal').hidden)closeScheme()});
 
 function slotLabel(g){
   if(g.finished)return 'Final · '+g.away.team+' '+g.away.score+'–'+g.home.score+' '+g.home.team;
@@ -1409,7 +1575,7 @@ function drawDetail(){
   if((g.style_matchups||[]).length){
     const stSec=el('section','card blk');
     stSec.appendChild(el('h3',null,'Matchup & play style'));
-    stSec.appendChild(el('p','note','How each offense’s scheme collides with the opposing defense, how both sides have fared in similar style matchups this season, and what to watch for live.'));
+    stSec.appendChild(el('p','note','Tap any scheme pill for its playbook breakdown, on-field example, and formation graphic.'));
     const slist=el('div','wstyles');
     g.style_matchups.forEach(m=>{
       const c=el('div','wstyle');
@@ -1420,9 +1586,9 @@ function drawDetail(){
       hd.appendChild(el('span','pill '+eCls,m.edge_label));
       c.appendChild(hd);
       const bar=el('div','wscheme-bar');
-      bar.appendChild(el('span','wscheme',m.off_team+' Off: '+m.off_scheme));
+      bar.appendChild(schemeBtn(m.off_scheme,m.off_team+' Off: '+m.off_scheme,'wscheme'));
       bar.appendChild(el('span','wscheme-vs','vs'));
-      bar.appendChild(el('span','wscheme',m.def_team+' Def: '+m.def_scheme));
+      bar.appendChild(schemeBtn(m.def_scheme,m.def_team+' Def: '+m.def_scheme,'wscheme'));
       c.appendChild(bar);
       c.appendChild(el('p','wstyle-clash',m.clash));
       if(m.track_record){
@@ -1629,8 +1795,8 @@ function drawTrack(){
     t.appendChild(h);
     rows.forEach(r=>{
       const tr=el('tr');
-      tr.appendChild(el('td',null,r.off_scheme));
-      tr.appendChild(el('td',null,r.def_scheme));
+      const td1=el('td');td1.appendChild(schemeBtn(r.off_scheme,r.off_scheme,'scheme-link'));tr.appendChild(td1);
+      const td2=el('td');td2.appendChild(schemeBtn(r.def_scheme,r.def_scheme,'scheme-link'));tr.appendChild(td2);
       tr.appendChild(el('td',null,String(r.games)));
       tr.appendChild(el('td',null,r.off_win_pct.toFixed(0)+'%'));
       tr.appendChild(el('td',null,r.off_pos_epa_pct.toFixed(0)+'%'));
@@ -1713,13 +1879,13 @@ function drawTrack(){
           box.appendChild(sh);
 
           const r1=el('div','tside-row');
-          r1.appendChild(el('div',null,s.off_team+' Off: '+s.off_scheme));
+          const r1L=el('div');r1L.appendChild(document.createTextNode(s.off_team+' Off: '));r1L.appendChild(schemeBtn(s.off_scheme,s.off_scheme,'scheme-link'));r1.appendChild(r1L);
           r1.appendChild(el('span',null,'Actual: '+s.off_actual));
           r1.appendChild(el('span','pill '+(s.off_held?'up':'flat'),s.off_held?'Held ✓':'Shifted'));
           box.appendChild(r1);
 
           const r2=el('div','tside-row');
-          r2.appendChild(el('div',null,s.def_team+' Def: '+s.def_scheme));
+          const r2L=el('div');r2L.appendChild(document.createTextNode(s.def_team+' Def: '));r2L.appendChild(schemeBtn(s.def_scheme,s.def_scheme,'scheme-link'));r2.appendChild(r2L);
           r2.appendChild(el('span',null,'Actual: '+s.def_actual));
           r2.appendChild(el('span','pill '+(s.def_held?'up':'flat'),s.def_held?'Held ✓':'Shifted'));
           box.appendChild(r2);
@@ -1779,5 +1945,5 @@ if(startTrack)setView('track',false);else loadTrack();
 
 HUB = HUB.replace("__FIGJS__", FIGJS)
 MODEL = MODEL.replace("__FIGJS__", FIGJS)
-WATCH = WATCH.replace("__FIGJS__", FIGJS)
+WATCH = WATCH.replace("__FIGJS__", FIGJS).replace("__SCHEMES__", json.dumps(schemes.SCHEMES))
 
