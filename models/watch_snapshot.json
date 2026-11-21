@@ -24,7 +24,7 @@
   18
  ],
  "n_sims": 2500,
- "updated": "2026-11-21 15:18 UTC",
+ "updated": "2026-11-21 16:43 UTC",
  "games": [
   {
    "game_id": "2026_11_MIN_SF",
@@ -55,12 +55,14 @@
     "papg": 14.0,
     "off_rank": 24,
     "def_rank": 1,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "High-Pressure Havoc Front",
     "qb": "Kirk Cousins",
     "coach": "Kevin O'Connell",
     "rest": 7,
     "score": null,
     "playoff_pct": 94.3,
-    "div_pct": 40.0
+    "div_pct": 40.3
    },
    "home": {
     "team": "SF",
@@ -75,6 +77,8 @@
     "papg": 21.8,
     "off_rank": 2,
     "def_rank": 12,
+    "off_scheme": "Explosive Play-Action & Balanced",
+    "def_scheme": "Two-High Anti-Explosive Shell",
     "qb": "Brock Purdy",
     "coach": "Kyle Shanahan",
     "rest": 7,
@@ -93,22 +97,44 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "MIN (7-2, 1st in NFC North) enters with 94% playoff odds; SF (8-1, 1st in NFC West) sits at 99%. With both clubs positioned near the top of the NFC, conference #1-seed bye odds swing by 71 percentage points. Division-title odds shift by 25 pts."
-    },
-    {
-     "label": "Matchup & Style",
-     "text": "Kirk Cousins vs. Brock Purdy at quarterback. MIN averages 19.6 PPG (#24 offense) and allows 14.0 (#1 defense), while SF scores 31.2 (#2) and allows 21.8 (#12). Classic strength-on-strength: SF's top-10 offense meets MIN's top-10 defense."
+     "text": "MIN (7-2, 1st in NFC North) enters with 94% playoff odds; SF (8-1, 1st in NFC West) sits at 99%. With both clubs positioned near the top of the NFC, conference #1-seed bye odds swing by 71 percentage points. Division-title odds shift by 26 pts."
     },
     {
      "label": "Context & Angles",
      "text": "Standalone Sunday night window (20:20 ET) at Estadio Banorte."
     }
    ],
+   "style_matchups": [
+    {
+     "title": "When MIN has the ball",
+     "off_team": "MIN",
+     "def_team": "SF",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Two-High Anti-Explosive Shell",
+     "edge_team": "SF",
+     "edge_label": "Edge: SF Def",
+     "clash": "Led by Kirk Cousins, MIN runs a Balanced Multiple Offense scheme (54% pass, 7.6-yd avg depth of target, 45% of passing yards after the catch). SF counters with a Two-High Anti-Explosive Shell defense (20% pressure rate, 16% tackles for loss on runs, allowing 6.9% explosive throws). Analytically, MIN's cleanest path runs through the passing game (pass net +0.01 EPA/db, rush net -0.25 EPA/carry).",
+     "track_record": "MIN vs. two-high / anti-explosive shells: 3-0 (3g), -0.05 EPA/play (season avg -0.10). SF def vs. balanced offenses: 3-0 (3g), allowing -0.01 EPA/play (season avg +0.00).",
+     "watch_for": "Watch early-down efficiency in the passing game: if MIN stays ahead of the chains and avoids negative plays, its play-calling stays balanced; SF wins by tightening up in the red zone and forcing 3rd-and-long throws."
+    },
+    {
+     "title": "When SF has the ball",
+     "off_team": "SF",
+     "def_team": "MIN",
+     "off_scheme": "Explosive Play-Action & Balanced",
+     "def_scheme": "High-Pressure Havoc Front",
+     "edge_team": "SF",
+     "edge_label": "Edge: SF Off",
+     "clash": "Led by Brock Purdy, SF runs an Explosive Play-Action & Balanced scheme (51% pass, 8.0-yd avg depth of target, 46% of passing yards after the catch, 12.5% explosive 20+ yd throws). MIN counters with a High-Pressure Havoc Front defense (41% pressure rate, 23% tackles for loss on runs, allowing 7.2% explosive throws). It's a strength-on-strength trench clash\u2014SF keeps a clean pocket (4.7% sack rate) against an aggressive pass rush.",
+     "track_record": "SF vs. high-pressure fronts: 3-0 (3g), +0.07 EPA/play (season avg +0.20). MIN def vs. explosive passing offenses: 4-1 (5g), allowing -0.12 EPA/play (season avg -0.12).",
+     "watch_for": "Watch whether MIN's blitzes and stunts force early checkdowns: if SF picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if MIN collapses the pocket without extra rushers, SF's rhythm stalls."
+    }
+   ],
    "drivers": [
     {
      "id": "leverage",
      "label": "Stakes & playoff leverage",
-     "points": 33.9,
+     "points": 34.0,
      "max": 34,
      "value": "\u00b171% #1-seed swing"
     },
@@ -147,20 +173,20 @@
      "base": {
       "playoff": 99.2,
       "div": 92.9,
-      "bye": 53.1,
+      "bye": 53.3,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 99.2,
        "div": 92.9,
-       "bye": 53.1,
+       "bye": 53.3,
        "top5": 0.0
       },
       "after": {
        "playoff": 99.8,
        "div": 95.4,
-       "bye": 70.0,
+       "bye": 70.2,
        "top5": 0.0
       },
       "delta": {
@@ -174,19 +200,19 @@
       "base": {
        "playoff": 99.2,
        "div": 92.9,
-       "bye": 53.1,
+       "bye": 53.3,
        "top5": 0.0
       },
       "after": {
        "playoff": 98.1,
        "div": 88.5,
-       "bye": 29.2,
+       "bye": 29.3,
        "top5": 0.0
       },
       "delta": {
        "playoff": -1.1,
        "div": -4.4,
-       "bye": -23.9,
+       "bye": -24.0,
        "top5": 0.0
       }
      }
@@ -195,41 +221,41 @@
      "team": "MIN",
      "base": {
       "playoff": 94.3,
-      "div": 40.0,
-      "bye": 19.3,
+      "div": 40.3,
+      "bye": 19.5,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 94.3,
-       "div": 40.0,
-       "bye": 19.3,
+       "div": 40.3,
+       "bye": 19.5,
        "top5": 0.0
       },
       "after": {
        "playoff": 91.4,
-       "div": 32.1,
-       "bye": 6.8,
+       "div": 32.3,
+       "bye": 6.9,
        "top5": 0.0
       },
       "delta": {
        "playoff": -2.9,
-       "div": -7.9,
-       "bye": -12.5,
+       "div": -8.0,
+       "bye": -12.6,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
        "playoff": 94.3,
-       "div": 40.0,
-       "bye": 19.3,
+       "div": 40.3,
+       "bye": 19.5,
        "top5": 0.0
       },
       "after": {
        "playoff": 98.3,
-       "div": 50.6,
-       "bye": 36.9,
+       "div": 50.9,
+       "bye": 37.1,
        "top5": 0.0
       },
       "delta": {
@@ -241,8 +267,8 @@
      }
     },
     "total_playoff_swing": 8.6,
-    "total_div_swing": 25.4,
-    "total_bye_swing": 70.9,
+    "total_div_swing": 25.5,
+    "total_bye_swing": 71.1,
     "total_draft_swing": 0.0,
     "branches": {
      "home": {
@@ -253,13 +279,13 @@
        "base": {
         "playoff": 99.2,
         "div": 92.9,
-        "bye": 53.1,
+        "bye": 53.3,
         "top5": 0.0
        },
        "after": {
         "playoff": 99.8,
         "div": 95.4,
-        "bye": 70.0,
+        "bye": 70.2,
         "top5": 0.0
        },
        "delta": {
@@ -272,20 +298,20 @@
       "away": {
        "base": {
         "playoff": 94.3,
-        "div": 40.0,
-        "bye": 19.3,
+        "div": 40.3,
+        "bye": 19.5,
         "top5": 0.0
        },
        "after": {
         "playoff": 91.4,
-        "div": 32.1,
-        "bye": 6.8,
+        "div": 32.3,
+        "bye": 6.9,
         "top5": 0.0
        },
        "delta": {
         "playoff": -2.9,
-        "div": -7.9,
-        "bye": -12.5,
+        "div": -8.0,
+        "bye": -12.6,
         "top5": 0.0
        }
       },
@@ -303,33 +329,33 @@
        "base": {
         "playoff": 99.2,
         "div": 92.9,
-        "bye": 53.1,
+        "bye": 53.3,
         "top5": 0.0
        },
        "after": {
         "playoff": 98.1,
         "div": 88.5,
-        "bye": 29.2,
+        "bye": 29.3,
         "top5": 0.0
        },
        "delta": {
         "playoff": -1.1,
         "div": -4.4,
-        "bye": -23.9,
+        "bye": -24.0,
         "top5": 0.0
        }
       },
       "away": {
        "base": {
         "playoff": 94.3,
-        "div": 40.0,
-        "bye": 19.3,
+        "div": 40.3,
+        "bye": 19.5,
         "top5": 0.0
        },
        "after": {
         "playoff": 98.3,
-        "div": 50.6,
-        "bye": 36.9,
+        "div": 50.9,
+        "bye": 37.1,
         "top5": 0.0
        },
        "delta": {
@@ -356,8 +382,8 @@
       "roots_for": "SF",
       "metric": "division",
       "swing": 10.3,
-      "if_home_playoff": 89.2,
-      "if_away_playoff": 89.3
+      "if_home_playoff": 89.0,
+      "if_away_playoff": 89.0
      },
      {
       "team": "CHI",
@@ -376,8 +402,8 @@
       "roots_for": "MIN",
       "metric": "division",
       "swing": 3.9,
-      "if_home_playoff": 44.8,
-      "if_away_playoff": 43.2
+      "if_home_playoff": 44.9,
+      "if_away_playoff": 43.3
      }
     ]
    },
@@ -386,7 +412,7 @@
      "category": "Winner & Margin",
      "title": "Who wins\u2014and whether SF holds control at halftime",
      "benchmark": "Pregame line: SF -3.5 (expected half ~11\u201312)",
-     "why": "Both clubs have strong postseason equity, so the #1-seed bye (71-pt swing) and division-title positioning (25-pt swing) are the real prize. Predict whether SF builds an early cushion or whether MIN keeps win probability live into the fourth quarter.",
+     "why": "Both clubs have strong postseason equity, so the #1-seed bye (71-pt swing) and division-title positioning (26-pt swing) are the real prize. Predict whether SF builds an early cushion or whether MIN keeps win probability live into the fourth quarter.",
      "model_slug": "nfl-halftime-win",
      "model_label": "Run in Halftime Win Model",
      "model_url": "/m/nfl-halftime-win?spread_line=3.5&home_h1_pts=12&away_h1_pts=11&game=MIN+%40+SF+%28Wk+11%29"
@@ -423,11 +449,11 @@
    "div_game": false,
    "stadium": "Ford Field",
    "roof": "dome",
-   "spread_line": 5.5,
-   "spread_label": "DET -5.5",
-   "total_line": 45.5,
-   "home_win_prob": 66,
-   "away_win_prob": 34,
+   "spread_line": 4.5,
+   "spread_label": "DET -4.5",
+   "total_line": 46.5,
+   "home_win_prob": 63,
+   "away_win_prob": 37,
    "away": {
     "team": "TB",
     "name": "Buccaneers",
@@ -441,12 +467,14 @@
     "papg": 19.8,
     "off_rank": 16,
     "def_rank": 6,
+    "off_scheme": "Run-First / Ground Control",
+    "def_scheme": "Ball-Hawk Shell Coverage",
     "qb": "Baker Mayfield",
     "coach": "Todd Bowles",
     "rest": 14,
     "score": null,
-    "playoff_pct": 48.8,
-    "div_pct": 48.5
+    "playoff_pct": 49.3,
+    "div_pct": 49.0
    },
    "home": {
     "team": "DET",
@@ -461,31 +489,55 @@
     "papg": 22.1,
     "off_rank": 6,
     "def_rank": 16,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "Aggressive Front / Boom-or-Bust",
     "qb": "Jared Goff",
     "coach": "Dan Campbell",
     "rest": 7,
     "score": null,
-    "playoff_pct": 89.3,
-    "div_pct": 35.0
+    "playoff_pct": 89.0,
+    "div_pct": 34.6
    },
-   "interest_score": 66,
+   "interest_score": 69,
    "tier": "Strong Watch",
    "tags": [
     "High Leverage"
    ],
-   "hook": "High-stakes swing game: 31-pt playoff leverage on a DET -5.5 line.",
+   "hook": "High-stakes swing game: 31-pt playoff leverage on a DET -4.5 line.",
    "why_watch": [
     {
      "label": "The Stakes",
      "text": "TB (3-6, 2nd in NFC South) enters with 49% playoff odds; DET (7-2, 2nd in NFC North) sits at 89%. This single result moves their combined playoff probability by 31 percentage points. Division-title odds shift by 32 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Baker Mayfield vs. Jared Goff at quarterback. TB averages 22.4 PPG (#16 offense) and allows 19.8 (#6 defense), while DET scores 28.6 (#6) and allows 22.1 (#16). Classic strength-on-strength: DET's top-10 offense meets TB's top-10 defense."
-    },
-    {
      "label": "Context & Angles",
      "text": "Rest edge to TB (14 days rest vs. 7). Recent form: DET is on a W5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When TB has the ball",
+     "off_team": "TB",
+     "def_team": "DET",
+     "off_scheme": "Run-First / Ground Control",
+     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "edge_team": "DET",
+     "edge_label": "Edge: DET Def",
+     "clash": "Led by Baker Mayfield, TB runs a Run-First / Ground Control scheme (48% pass, 7.5-yd avg depth of target, 60% of passing yards after the catch). DET counters with an Aggressive Front / Boom-or-Bust defense (28% pressure rate, 24% tackles for loss on runs, allowing 10.6% explosive throws). That creates a clear protection stress test: TB takes sacks on 10.1% of dropbacks against a front that disrupts timing relentlessly.",
+     "track_record": "TB vs. aggressive pressure fronts: 0-2 (2g), -0.18 EPA/play (season avg -0.08). DET def vs. run-first offenses: 1-1 (2g), allowing +0.07 EPA/play (season avg +0.03).",
+     "watch_for": "Watch 1st-down pass protection and quick outlets: for TB's style to work, they must stay out of 3rd-and-long and hold DET under 3 sacks. If DET wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+    },
+    {
+     "title": "When DET has the ball",
+     "off_team": "DET",
+     "def_team": "TB",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Ball-Hawk Shell Coverage",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Jared Goff, DET runs a Balanced Multiple Offense scheme (55% pass, 7.5-yd avg depth of target, 47% of passing yards after the catch). TB counters with a Ball-Hawk Shell Coverage defense (18% pressure rate, 22% tackles for loss on runs, allowing 6.8% explosive throws). TB relies on disciplined coverage and playmaking on the ball (23% INT/PBU rate) rather than heavy pass rush.",
+     "track_record": "DET vs. two-high / anti-explosive shells: 2-1 (3g), +0.01 EPA/play (season avg +0.10). TB def vs. balanced offenses: 0-1 (1g), allowing +0.00 EPA/play (season avg -0.12).",
+     "watch_for": "Watch quarterback decision-making over the middle: DET succeeds by protecting the football and taking underneath completions; TB's defense flips the game if disguised coverages bait even 1\u20132 turnover-worthy throws."
     }
    ],
    "drivers": [
@@ -499,16 +551,16 @@
     {
      "id": "competitiveness",
      "label": "Competitiveness (spread)",
-     "points": 12.2,
+     "points": 14.5,
      "max": 24,
-     "value": "DET -5.5"
+     "value": "DET -4.5"
     },
     {
      "id": "pace",
      "label": "Scoring pace & style",
-     "points": 10.4,
+     "points": 11.4,
      "max": 18,
-     "value": "45.5 O/U"
+     "value": "46.5 O/U"
     },
     {
      "id": "quality",
@@ -529,16 +581,16 @@
     "home": {
      "team": "DET",
      "base": {
-      "playoff": 89.3,
-      "div": 35.0,
-      "bye": 15.4,
+      "playoff": 89.0,
+      "div": 34.6,
+      "bye": 15.0,
       "top5": 0.0
      },
      "if_home": {
       "base": {
-       "playoff": 89.3,
-       "div": 35.0,
-       "bye": 15.4,
+       "playoff": 89.0,
+       "div": 34.6,
+       "bye": 15.0,
        "top5": 0.0
       },
       "after": {
@@ -548,17 +600,17 @@
        "top5": 0.0
       },
       "delta": {
-       "playoff": 5.0,
-       "div": 5.0,
-       "bye": 3.9,
+       "playoff": 5.3,
+       "div": 5.4,
+       "bye": 4.3,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
-       "playoff": 89.3,
-       "div": 35.0,
-       "bye": 15.4,
+       "playoff": 89.0,
+       "div": 34.6,
+       "bye": 15.0,
        "top5": 0.0
       },
       "after": {
@@ -568,9 +620,9 @@
        "top5": 0.0
       },
       "delta": {
-       "playoff": -8.3,
-       "div": -10.1,
-       "bye": -9.2,
+       "playoff": -8.0,
+       "div": -9.7,
+       "bye": -8.8,
        "top5": 0.0
       }
      }
@@ -578,17 +630,17 @@
     "away": {
      "team": "TB",
      "base": {
-      "playoff": 48.8,
-      "div": 48.5,
+      "playoff": 49.3,
+      "div": 49.0,
       "bye": 0.0,
-      "top5": 3.2
+      "top5": 3.0
      },
      "if_home": {
       "base": {
-       "playoff": 48.8,
-       "div": 48.5,
+       "playoff": 49.3,
+       "div": 49.0,
        "bye": 0.0,
-       "top5": 3.2
+       "top5": 3.0
       },
       "after": {
        "playoff": 42.6,
@@ -597,18 +649,18 @@
        "top5": 4.2
       },
       "delta": {
-       "playoff": -6.2,
-       "div": -6.1,
+       "playoff": -6.7,
+       "div": -6.6,
        "bye": 0.0,
-       "top5": 1.0
+       "top5": 1.2
       }
      },
      "if_away": {
       "base": {
-       "playoff": 48.8,
-       "div": 48.5,
+       "playoff": 49.3,
+       "div": 49.0,
        "bye": 0.0,
-       "top5": 3.2
+       "top5": 3.0
       },
       "after": {
        "playoff": 60.2,
@@ -617,10 +669,10 @@
        "top5": 1.0
       },
       "delta": {
-       "playoff": 11.4,
-       "div": 11.0,
+       "playoff": 10.9,
+       "div": 10.5,
        "bye": 0.0,
-       "top5": -2.2
+       "top5": -2.0
       }
      }
     },
@@ -635,9 +687,9 @@
       "label": "If DET wins",
       "home": {
        "base": {
-        "playoff": 89.3,
-        "div": 35.0,
-        "bye": 15.4,
+        "playoff": 89.0,
+        "div": 34.6,
+        "bye": 15.0,
         "top5": 0.0
        },
        "after": {
@@ -647,18 +699,18 @@
         "top5": 0.0
        },
        "delta": {
-        "playoff": 5.0,
-        "div": 5.0,
-        "bye": 3.9,
+        "playoff": 5.3,
+        "div": 5.4,
+        "bye": 4.3,
         "top5": 0.0
        }
       },
       "away": {
        "base": {
-        "playoff": 48.8,
-        "div": 48.5,
+        "playoff": 49.3,
+        "div": 49.0,
         "bye": 0.0,
-        "top5": 3.2
+        "top5": 3.0
        },
        "after": {
         "playoff": 42.6,
@@ -667,15 +719,15 @@
         "top5": 4.2
        },
        "delta": {
-        "playoff": -6.2,
-        "div": -6.1,
+        "playoff": -6.7,
+        "div": -6.6,
         "bye": 0.0,
-        "top5": 1.0
+        "top5": 1.2
        }
       },
       "notes": [
        "DET moves to 8-2; TB drops to 3-7.",
-       "Playoff odds shift to 94% (+5 pts) for DET and 43% (-6 pts) for TB.",
+       "Playoff odds shift to 94% (+5 pts) for DET and 43% (-7 pts) for TB.",
        "Counts as a NFC conference win for DET\u2014critical for wild-card tiebreakers."
       ]
      },
@@ -685,9 +737,9 @@
       "label": "If TB wins",
       "home": {
        "base": {
-        "playoff": 89.3,
-        "div": 35.0,
-        "bye": 15.4,
+        "playoff": 89.0,
+        "div": 34.6,
+        "bye": 15.0,
         "top5": 0.0
        },
        "after": {
@@ -697,18 +749,18 @@
         "top5": 0.0
        },
        "delta": {
-        "playoff": -8.3,
-        "div": -10.1,
-        "bye": -9.2,
+        "playoff": -8.0,
+        "div": -9.7,
+        "bye": -8.8,
         "top5": 0.0
        }
       },
       "away": {
        "base": {
-        "playoff": 48.8,
-        "div": 48.5,
+        "playoff": 49.3,
+        "div": 49.0,
         "bye": 0.0,
-        "top5": 3.2
+        "top5": 3.0
        },
        "after": {
         "playoff": 60.2,
@@ -717,17 +769,17 @@
         "top5": 1.0
        },
        "delta": {
-        "playoff": 11.4,
-        "div": 11.0,
+        "playoff": 10.9,
+        "div": 10.5,
         "bye": 0.0,
-        "top5": -2.2
+        "top5": -2.0
        }
       },
       "notes": [
        "TB moves to 4-6; DET drops to 7-3.",
        "Playoff odds shift to 60% (+11 pts) for TB and 81% (-8 pts) for DET.",
        "Counts as a NFC conference win for TB\u2014critical for wild-card tiebreakers.",
-       "Boosts TB's NFC South title odds to 60% (+11 pts)."
+       "Boosts TB's NFC South title odds to 60% (+10 pts)."
       ]
      }
     },
@@ -768,29 +820,29 @@
     {
      "category": "Winner & Margin",
      "title": "Who wins\u2014and whether DET holds control at halftime",
-     "benchmark": "Pregame line: DET -5.5 (expected half ~10\u201313)",
+     "benchmark": "Pregame line: DET -4.5 (expected half ~10\u201313)",
      "why": "A single result swings combined playoff odds by 31 percentage points and division odds by 32 pts. Predicting whether TB can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
      "model_slug": "nfl-halftime-win",
      "model_label": "Run in Halftime Win Model",
-     "model_url": "/m/nfl-halftime-win?spread_line=5.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
+     "model_url": "/m/nfl-halftime-win?spread_line=4.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
     },
     {
      "category": "Scoring & Pace",
-     "title": "Total points vs. 45.5 benchmark",
-     "benchmark": "Pregame total: 45.5 \u00b7 Half pace: 22.8 pts \u00b7 Dome/indoor",
-     "why": "The market expects a balanced 45.5-point game (23+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "title": "Total points vs. 46.5 benchmark",
+     "benchmark": "Pregame total: 46.5 \u00b7 Half pace: 23.2 pts \u00b7 Dome/indoor",
+     "why": "The market expects a balanced 46.5-point game (23+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
      "model_slug": "nfl-halftime-total",
      "model_label": "Run in Halftime Total Model",
-     "model_url": "/m/nfl-halftime-total?total_line=45.5&wind=0&home_h1_pts=13&away_h1_pts=10&compare=45.5&game=TB+%40+DET+%28Wk+11%29"
+     "model_url": "/m/nfl-halftime-total?total_line=46.5&wind=0&home_h1_pts=13&away_h1_pts=10&compare=46.5&game=TB+%40+DET+%28Wk+11%29"
     },
     {
      "category": "Live Over/Under & Script",
-     "title": "Second-half scoring probability around 45.5",
-     "benchmark": "Test live O/U at halftime using spread (DET -5.5) + pace",
-     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 45.5.",
+     "title": "Second-half scoring probability around 46.5",
+     "benchmark": "Test live O/U at halftime using spread (DET -4.5) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 46.5.",
      "model_slug": "nfl-halftime-ou-logit",
      "model_label": "Test Live O/U Classifier",
-     "model_url": "/m/nfl-halftime-ou-logit?total_line=45.5&spread_line=5.5&wind=0&line=45.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=46.5&spread_line=4.5&wind=0&line=46.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
     }
    ],
    "rank": 2
@@ -824,6 +876,8 @@
     "papg": 16.0,
     "off_rank": 4,
     "def_rank": 2,
+    "off_scheme": "Explosive Play-Action & Balanced",
+    "def_scheme": "Two-High Anti-Explosive Shell",
     "qb": "Trevor Lawrence",
     "coach": "Liam Coen",
     "rest": 7,
@@ -844,6 +898,8 @@
     "papg": 21.8,
     "off_rank": 14,
     "def_rank": 11,
+    "off_scheme": "Vertical Air-Yards Attack",
+    "def_scheme": "Ball-Hawk Shell Coverage",
     "qb": "J.J. McCarthy",
     "coach": "John Harbaugh",
     "rest": 10,
@@ -863,12 +919,34 @@
      "text": "JAX (7-2, 1st in AFC South) enters with 100% playoff odds; NYG (5-3-1, 1st in NFC East) sits at 75%. This single result moves their combined playoff probability by 18 percentage points. Division-title odds shift by 19 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Trevor Lawrence vs. J.J. McCarthy at quarterback. JAX averages 29.9 PPG (#4 offense) and allows 16.0 (#2 defense), while NYG scores 22.6 (#14) and allows 21.8 (#11)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Rest edge to NYG (10 days rest vs. 7). Recent form: JAX is on a W3 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When JAX has the ball",
+     "off_team": "JAX",
+     "def_team": "NYG",
+     "off_scheme": "Explosive Play-Action & Balanced",
+     "def_scheme": "Ball-Hawk Shell Coverage",
+     "edge_team": "JAX",
+     "edge_label": "Edge: JAX Off",
+     "clash": "Led by Trevor Lawrence, JAX runs an Explosive Play-Action & Balanced scheme (51% pass, 8.5-yd avg depth of target, 44% of passing yards after the catch, 12.6% explosive 20+ yd throws). NYG counters with a Ball-Hawk Shell Coverage defense (18% pressure rate, 14% tackles for loss on runs, allowing 7.0% explosive throws). JAX hunts vertical chunk plays, while NYG's shell is built to take away the deep shot and force long, patient drives.",
+     "track_record": "JAX vs. two-high / anti-explosive shells: 0-1 (1g), -0.03 EPA/play (season avg +0.15). NYG def vs. explosive passing offenses: 2-1-1 (4g), allowing +0.08 EPA/play (season avg -0.01).",
+     "watch_for": "Watch JAX's patience on underneath throws and early-down runs: if JAX takes the light-box yards and converts 3rd-and-short, NYG has to creep out of its shell; if JAX forces contested throws into bracket coverage, NYG's ball-hawks win the turnover battle."
+    },
+    {
+     "title": "When NYG has the ball",
+     "off_team": "NYG",
+     "def_team": "JAX",
+     "off_scheme": "Vertical Air-Yards Attack",
+     "def_scheme": "Two-High Anti-Explosive Shell",
+     "edge_team": "JAX",
+     "edge_label": "Edge: JAX Def",
+     "clash": "Led by J.J. McCarthy, NYG runs a Vertical Air-Yards Attack scheme (56% pass, 9.3-yd avg depth of target, 38% of passing yards after the catch). JAX counters with a Two-High Anti-Explosive Shell defense (22% pressure rate, 16% tackles for loss on runs, allowing 7.7% explosive throws). NYG hunts vertical chunk plays, while JAX's shell is built to take away the deep shot and force long, patient drives.",
+     "track_record": "NYG vs. two-high / anti-explosive shells: 0-1 (1g), -0.33 EPA/play (season avg +0.01). JAX def vs. vertical & explosive passing offenses: 1-1 (2g), allowing -0.01 EPA/play (season avg -0.09).",
+     "watch_for": "Watch NYG's patience on underneath throws and early-down runs: if NYG takes the light-box yards and converts 3rd-and-short, JAX has to creep out of its shell; if NYG forces contested throws into bracket coverage, JAX's ball-hawks win the turnover battle."
     }
    ],
    "drivers": [
@@ -963,14 +1041,14 @@
      "base": {
       "playoff": 99.6,
       "div": 98.7,
-      "bye": 18.7,
+      "bye": 18.6,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 99.6,
        "div": 98.7,
-       "bye": 18.7,
+       "bye": 18.6,
        "top5": 0.0
       },
       "after": {
@@ -982,7 +1060,7 @@
       "delta": {
        "playoff": -0.2,
        "div": -1.0,
-       "bye": -8.5,
+       "bye": -8.4,
        "top5": 0.0
       }
      },
@@ -990,13 +1068,13 @@
       "base": {
        "playoff": 99.6,
        "div": 98.7,
-       "bye": 18.7,
+       "bye": 18.6,
        "top5": 0.0
       },
       "after": {
        "playoff": 99.8,
        "div": 99.2,
-       "bye": 23.5,
+       "bye": 23.4,
        "top5": 0.0
       },
       "delta": {
@@ -1009,7 +1087,7 @@
     },
     "total_playoff_swing": 18.1,
     "total_div_swing": 18.9,
-    "total_bye_swing": 14.0,
+    "total_bye_swing": 13.9,
     "total_draft_swing": 0.0,
     "branches": {
      "home": {
@@ -1040,7 +1118,7 @@
        "base": {
         "playoff": 99.6,
         "div": 98.7,
-        "bye": 18.7,
+        "bye": 18.6,
         "top5": 0.0
        },
        "after": {
@@ -1052,7 +1130,7 @@
        "delta": {
         "playoff": -0.2,
         "div": -1.0,
-        "bye": -8.5,
+        "bye": -8.4,
         "top5": 0.0
        }
       },
@@ -1090,13 +1168,13 @@
        "base": {
         "playoff": 99.6,
         "div": 98.7,
-        "bye": 18.7,
+        "bye": 18.6,
         "top5": 0.0
        },
        "after": {
         "playoff": 99.8,
         "div": 99.2,
-        "bye": 23.5,
+        "bye": 23.4,
         "top5": 0.0
        },
        "delta": {
@@ -1205,12 +1283,14 @@
     "papg": 21.4,
     "off_rank": 3,
     "def_rank": 10,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Light-Box Coverage (Run Funnel)",
     "qb": "Joe Burrow",
     "coach": "Zac Taylor",
     "rest": 8,
     "score": null,
     "playoff_pct": 99.1,
-    "div_pct": 88.2
+    "div_pct": 88.4
    },
    "home": {
     "team": "WAS",
@@ -1225,6 +1305,8 @@
     "papg": 24.8,
     "off_rank": 21,
     "def_rank": 20,
+    "off_scheme": "Vertical Air-Yards Attack",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Jayden Daniels",
     "coach": "Dan Quinn",
     "rest": 11,
@@ -1245,12 +1327,34 @@
      "text": "CIN (7-2, 1st in AFC North) enters with 99% playoff odds; WAS (3-5-1, 3rd in NFC East) sits at 10%. Division-title odds shift by 18 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Joe Burrow vs. Jayden Daniels at quarterback. CIN averages 30.9 PPG (#3 offense) and allows 21.4 (#10 defense), while WAS scores 21.8 (#21) and allows 24.8 (#20)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Standalone Monday night window (20:15 ET) at Northwest Stadium. Rest edge to WAS (11 days rest vs. 8). Recent form: CIN is on a W5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When CIN has the ball",
+     "off_team": "CIN",
+     "def_team": "WAS",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "CIN",
+     "edge_label": "Edge: CIN Off",
+     "clash": "Led by Joe Burrow, CIN runs a High-Volume Spread Passing scheme (64% pass, 7.3-yd avg depth of target, 41% of passing yards after the catch). WAS counters with a Balanced Zone / Bend-Don't-Break defense (20% pressure rate, 19% tackles for loss on runs, allowing 8.7% explosive throws). CIN stresses zone spacing with high pass volume (64%), forcing WAS to tackle cleanly underneath and close throwing windows quickly.",
+     "track_record": "CIN vs. balanced zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.15). WAS def vs. pass-heavy spread offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.05).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: CIN's spread style wins when quick completions march down the field without stalling; WAS's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+    },
+    {
+     "title": "When WAS has the ball",
+     "off_team": "WAS",
+     "def_team": "CIN",
+     "off_scheme": "Vertical Air-Yards Attack",
+     "def_scheme": "Light-Box Coverage (Run Funnel)",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Jayden Daniels, WAS runs a Vertical Air-Yards Attack scheme (57% pass, 8.6-yd avg depth of target, 42% of passing yards after the catch). CIN counters with a Light-Box Coverage (Run Funnel) defense (24% pressure rate, 20% tackles for loss on runs, allowing 9.5% explosive throws). CIN can be vulnerable to vertical shots (9.5% explosive pass rate allowed), giving WAS room to attack downfield if protection holds.",
+     "track_record": "WAS vs. coverage-first defenses: 2-1-1 (4g), -0.01 EPA/play (season avg +0.00). CIN def vs. vertical & explosive passing offenses: 3-1 (4g), allowing +0.01 EPA/play (season avg +0.01).",
+     "watch_for": "Watch play-action and deep crossers: WAS wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; CIN survives by winning early downs and creating pressure before deep routes develop."
     }
    ],
    "drivers": [
@@ -1297,14 +1401,14 @@
       "playoff": 10.0,
       "div": 9.2,
       "bye": 0.0,
-      "top5": 5.0
+      "top5": 5.1
      },
      "if_home": {
       "base": {
        "playoff": 10.0,
        "div": 9.2,
        "bye": 0.0,
-       "top5": 5.0
+       "top5": 5.1
       },
       "after": {
        "playoff": 16.6,
@@ -1316,7 +1420,7 @@
        "playoff": 6.6,
        "div": 5.6,
        "bye": 0.0,
-       "top5": -4.1
+       "top5": -4.2
       }
      },
      "if_away": {
@@ -1324,13 +1428,13 @@
        "playoff": 10.0,
        "div": 9.2,
        "bye": 0.0,
-       "top5": 5.0
+       "top5": 5.1
       },
       "after": {
        "playoff": 6.6,
        "div": 6.4,
        "bye": 0.0,
-       "top5": 7.0
+       "top5": 7.1
       },
       "delta": {
        "playoff": -3.4,
@@ -1344,41 +1448,41 @@
      "team": "CIN",
      "base": {
       "playoff": 99.1,
-      "div": 88.2,
-      "bye": 13.7,
+      "div": 88.4,
+      "bye": 13.6,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 99.1,
-       "div": 88.2,
-       "bye": 13.7,
+       "div": 88.4,
+       "bye": 13.6,
        "top5": 0.0
       },
       "after": {
        "playoff": 98.5,
-       "div": 81.6,
+       "div": 81.8,
        "bye": 6.9,
        "top5": 0.0
       },
       "delta": {
        "playoff": -0.6,
        "div": -6.6,
-       "bye": -6.8,
+       "bye": -6.7,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
        "playoff": 99.1,
-       "div": 88.2,
-       "bye": 13.7,
+       "div": 88.4,
+       "bye": 13.6,
        "top5": 0.0
       },
       "after": {
        "playoff": 99.6,
-       "div": 91.0,
-       "bye": 16.9,
+       "div": 91.2,
+       "bye": 16.8,
        "top5": 0.0
       },
       "delta": {
@@ -1391,8 +1495,8 @@
     },
     "total_playoff_swing": 11.1,
     "total_div_swing": 17.8,
-    "total_bye_swing": 10.0,
-    "total_draft_swing": 6.1,
+    "total_bye_swing": 9.9,
+    "total_draft_swing": 6.2,
     "branches": {
      "home": {
       "winner": "WAS",
@@ -1403,7 +1507,7 @@
         "playoff": 10.0,
         "div": 9.2,
         "bye": 0.0,
-        "top5": 5.0
+        "top5": 5.1
        },
        "after": {
         "playoff": 16.6,
@@ -1415,26 +1519,26 @@
         "playoff": 6.6,
         "div": 5.6,
         "bye": 0.0,
-        "top5": -4.1
+        "top5": -4.2
        }
       },
       "away": {
        "base": {
         "playoff": 99.1,
-        "div": 88.2,
-        "bye": 13.7,
+        "div": 88.4,
+        "bye": 13.6,
         "top5": 0.0
        },
        "after": {
         "playoff": 98.5,
-        "div": 81.6,
+        "div": 81.8,
         "bye": 6.9,
         "top5": 0.0
        },
        "delta": {
         "playoff": -0.6,
         "div": -6.6,
-        "bye": -6.8,
+        "bye": -6.7,
         "top5": 0.0
        }
       },
@@ -1452,13 +1556,13 @@
         "playoff": 10.0,
         "div": 9.2,
         "bye": 0.0,
-        "top5": 5.0
+        "top5": 5.1
        },
        "after": {
         "playoff": 6.6,
         "div": 6.4,
         "bye": 0.0,
-        "top5": 7.0
+        "top5": 7.1
        },
        "delta": {
         "playoff": -3.4,
@@ -1470,14 +1574,14 @@
       "away": {
        "base": {
         "playoff": 99.1,
-        "div": 88.2,
-        "bye": 13.7,
+        "div": 88.4,
+        "bye": 13.6,
         "top5": 0.0
        },
        "after": {
         "playoff": 99.6,
-        "div": 91.0,
-        "bye": 16.9,
+        "div": 91.2,
+        "bye": 16.8,
         "top5": 0.0
        },
        "delta": {
@@ -1510,9 +1614,9 @@
       "record": "6-3",
       "roots_for": "WAS",
       "metric": "division",
-      "swing": 6.0,
-      "if_home_playoff": 79.4,
-      "if_away_playoff": 79.4
+      "swing": 5.9,
+      "if_home_playoff": 78.6,
+      "if_away_playoff": 78.6
      },
      {
       "team": "DAL",
@@ -1586,6 +1690,8 @@
     "papg": 28.9,
     "off_rank": 10,
     "def_rank": 32,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Fernando Mendoza",
     "coach": "Klint Kubiak",
     "rest": 7,
@@ -1606,12 +1712,14 @@
     "papg": 20.7,
     "off_rank": 19,
     "def_rank": 9,
+    "off_scheme": "Quick-Game & YAC Rhythm",
+    "def_scheme": "Light-Box Coverage (Run Funnel)",
     "qb": "Bo Nix",
     "coach": "Sean Payton",
     "rest": 14,
     "score": null,
-    "playoff_pct": 96.7,
-    "div_pct": 37.1
+    "playoff_pct": 96.8,
+    "div_pct": 37.9
    },
    "interest_score": 49,
    "tier": "Intriguing",
@@ -1626,19 +1734,41 @@
      "text": "LV (4-6, 3rd in AFC West) enters with 10% playoff odds; DEN (7-2, 2nd in AFC West) sits at 97%. This single result moves their combined playoff probability by 24 percentage points. Division-title odds shift by 22 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Fernando Mendoza vs. Bo Nix at quarterback. LV averages 25.1 PPG (#10 offense) and allows 28.9 (#32 defense), while DEN scores 22.0 (#19) and allows 20.7 (#9). Classic strength-on-strength: LV's top-10 offense tests DEN's top-10 defense."
-    },
-    {
      "label": "Context & Angles",
      "text": "First AFC West meeting of the season\u2014division wins double as primary tiebreakers. Rest edge to DEN (14 days rest vs. 7). Recent form: DEN is on a W5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When LV has the ball",
+     "off_team": "LV",
+     "def_team": "DEN",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Light-Box Coverage (Run Funnel)",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Fernando Mendoza, LV runs a Balanced Multiple Offense scheme (60% pass, 7.8-yd avg depth of target, 44% of passing yards after the catch). DEN counters with a Light-Box Coverage (Run Funnel) defense (29% pressure rate, 20% tackles for loss on runs, allowing 7.6% explosive throws). It's a strength-on-strength trench clash\u2014LV keeps a clean pocket (4.6% sack rate) against an aggressive pass rush.",
+     "track_record": "LV vs. coverage-first defenses: 0-3 (3g), -0.10 EPA/play (season avg -0.01). DEN def vs. balanced offenses: 2-1 (3g), allowing +0.09 EPA/play (season avg +0.01).",
+     "watch_for": "Watch whether DEN's blitzes and stunts force early checkdowns: if LV picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if DEN collapses the pocket without extra rushers, LV's rhythm stalls."
+    },
+    {
+     "title": "When DEN has the ball",
+     "off_team": "DEN",
+     "def_team": "LV",
+     "off_scheme": "Quick-Game & YAC Rhythm",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "DEN",
+     "edge_label": "Edge: DEN Off",
+     "clash": "Led by Bo Nix, DEN runs a Quick-Game & YAC Rhythm scheme (57% pass, 5.6-yd avg depth of target, 61% of passing yards after the catch). LV counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 12% tackles for loss on runs, allowing 10.5% explosive throws). DEN gets the ball out fast and asks playmakers to break tackles in space, testing LV's open-field tackling and flat defenders.",
+     "track_record": "DEN vs. balanced zone defenses: 4-2 (6g), +0.02 EPA/play (season avg -0.01). LV def vs. quick-game / YAC offenses: 0-1 (1g), allowing +0.11 EPA/play (season avg +0.09).",
+     "watch_for": "Watch tackling on screens, slants, and flat routes: DEN's offense succeeds when short throws turn into 10+ yard gains after the catch; LV wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
     }
    ],
    "drivers": [
     {
      "id": "leverage",
      "label": "Stakes & playoff leverage",
-     "points": 22.0,
+     "points": 22.1,
      "max": 34,
      "value": "\u00b124% PO swing"
     },
@@ -1675,48 +1805,48 @@
     "home": {
      "team": "DEN",
      "base": {
-      "playoff": 96.7,
-      "div": 37.1,
-      "bye": 7.7,
+      "playoff": 96.8,
+      "div": 37.9,
+      "bye": 8.0,
       "top5": 0.0
      },
      "if_home": {
       "base": {
-       "playoff": 96.7,
-       "div": 37.1,
-       "bye": 7.7,
+       "playoff": 96.8,
+       "div": 37.9,
+       "bye": 8.0,
        "top5": 0.0
       },
       "after": {
-       "playoff": 98.1,
-       "div": 42.2,
-       "bye": 9.3,
+       "playoff": 98.3,
+       "div": 43.1,
+       "bye": 9.7,
        "top5": 0.0
       },
       "delta": {
-       "playoff": 1.4,
-       "div": 5.1,
-       "bye": 1.6,
+       "playoff": 1.5,
+       "div": 5.2,
+       "bye": 1.7,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
-       "playoff": 96.7,
-       "div": 37.1,
-       "bye": 7.7,
+       "playoff": 96.8,
+       "div": 37.9,
+       "bye": 8.0,
        "top5": 0.0
       },
       "after": {
-       "playoff": 90.2,
-       "div": 21.3,
-       "bye": 1.9,
+       "playoff": 90.6,
+       "div": 21.9,
+       "bye": 2.0,
        "top5": 0.0
       },
       "delta": {
-       "playoff": -6.5,
-       "div": -15.8,
-       "bye": -5.8,
+       "playoff": -6.2,
+       "div": -16.0,
+       "bye": -6.0,
        "top5": 0.0
       }
      }
@@ -1770,9 +1900,9 @@
       }
      }
     },
-    "total_playoff_swing": 23.8,
-    "total_div_swing": 21.7,
-    "total_bye_swing": 7.4,
+    "total_playoff_swing": 23.6,
+    "total_div_swing": 22.0,
+    "total_bye_swing": 7.7,
     "total_draft_swing": 3.2,
     "branches": {
      "home": {
@@ -1781,21 +1911,21 @@
       "label": "If DEN wins",
       "home": {
        "base": {
-        "playoff": 96.7,
-        "div": 37.1,
-        "bye": 7.7,
+        "playoff": 96.8,
+        "div": 37.9,
+        "bye": 8.0,
         "top5": 0.0
        },
        "after": {
-        "playoff": 98.1,
-        "div": 42.2,
-        "bye": 9.3,
+        "playoff": 98.3,
+        "div": 43.1,
+        "bye": 9.7,
         "top5": 0.0
        },
        "delta": {
-        "playoff": 1.4,
-        "div": 5.1,
-        "bye": 1.6,
+        "playoff": 1.5,
+        "div": 5.2,
+        "bye": 1.7,
         "top5": 0.0
        }
       },
@@ -1821,7 +1951,7 @@
       },
       "notes": [
        "DEN moves to 8-2; LV drops to 4-7.",
-       "Playoff odds shift to 98% (+1 pts) for DEN and 6% (-3 pts) for LV.",
+       "Playoff odds shift to 98% (+2 pts) for DEN and 6% (-3 pts) for LV.",
        "Gives DEN the early head-to-head tiebreaker and a crucial division win in the AFC West."
       ]
      },
@@ -1831,21 +1961,21 @@
       "label": "If LV wins",
       "home": {
        "base": {
-        "playoff": 96.7,
-        "div": 37.1,
-        "bye": 7.7,
+        "playoff": 96.8,
+        "div": 37.9,
+        "bye": 8.0,
         "top5": 0.0
        },
        "after": {
-        "playoff": 90.2,
-        "div": 21.3,
-        "bye": 1.9,
+        "playoff": 90.6,
+        "div": 21.9,
+        "bye": 2.0,
         "top5": 0.0
        },
        "delta": {
-        "playoff": -6.5,
-        "div": -15.8,
-        "bye": -5.8,
+        "playoff": -6.2,
+        "div": -16.0,
+        "bye": -6.0,
         "top5": 0.0
        }
       },
@@ -1871,7 +2001,7 @@
       },
       "notes": [
        "LV moves to 5-6; DEN drops to 7-3.",
-       "Playoff odds shift to 22% (+12 pts) for LV and 90% (-6 pts) for DEN.",
+       "Playoff odds shift to 22% (+12 pts) for LV and 91% (-6 pts) for DEN.",
        "Gives LV the early head-to-head tiebreaker and a crucial division win in the AFC West."
       ]
      }
@@ -1883,7 +2013,7 @@
       "record": "7-2",
       "roots_for": "LV",
       "metric": "division",
-      "swing": 20.2,
+      "swing": 20.4,
       "if_home_playoff": 99.2,
       "if_away_playoff": 98.8
      },
@@ -1893,9 +2023,9 @@
       "record": "6-4",
       "roots_for": "DEN",
       "metric": "playoff",
-      "swing": 2.6,
+      "swing": 2.5,
       "if_home_playoff": 57.8,
-      "if_away_playoff": 55.2
+      "if_away_playoff": 55.3
      },
      {
       "team": "PIT",
@@ -1904,8 +2034,8 @@
       "roots_for": "DEN",
       "metric": "playoff",
       "swing": 2.1,
-      "if_home_playoff": 79.9,
-      "if_away_playoff": 77.8
+      "if_home_playoff": 79.1,
+      "if_away_playoff": 77.0
      }
     ]
    },
@@ -1941,6 +2071,413 @@
    "rank": 5
   },
   {
+   "game_id": "2026_11_BAL_CAR",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Bank of America Stadium",
+   "roof": "outdoors",
+   "spread_line": 3.0,
+   "spread_label": "CAR -3",
+   "total_line": 43.5,
+   "home_win_prob": 59,
+   "away_win_prob": 41,
+   "away": {
+    "team": "BAL",
+    "name": "Ravens",
+    "city": "Baltimore",
+    "conf": "AFC",
+    "div": "AFC North",
+    "record": "4-6",
+    "div_rank": 4,
+    "streak": "L5",
+    "ppg": 20.9,
+    "papg": 25.9,
+    "off_rank": 22,
+    "def_rank": 24,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "qb": "Tyler Huntley",
+    "coach": "Jesse Minter",
+    "rest": 6,
+    "score": null,
+    "playoff_pct": 3.4,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "CAR",
+    "name": "Panthers",
+    "city": "Carolina",
+    "conf": "NFC",
+    "div": "NFC South",
+    "record": "4-5",
+    "div_rank": 1,
+    "streak": "W1",
+    "ppg": 24.3,
+    "papg": 26.2,
+    "off_rank": 12,
+    "def_rank": 25,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Two-High Anti-Explosive Shell",
+    "qb": "Bryce Young",
+    "coach": "Dave Canales",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 38.7,
+    "div_pct": 38.1
+   },
+   "interest_score": 48,
+   "tier": "Intriguing",
+   "tags": [
+    "High Leverage",
+    "Toss-ups"
+   ],
+   "hook": "Real postseason leverage (20-pt combined playoff swing) between BAL (4-6) and CAR (4-5).",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "BAL (4-6, 4th in AFC North) enters with 3% playoff odds; CAR (4-5, 1st in NFC South) sits at 39%. This single result moves their combined playoff probability by 20 percentage points. Division-title odds shift by 15 pts."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Recent form: BAL is on a L5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When BAL has the ball",
+     "off_team": "BAL",
+     "def_team": "CAR",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Two-High Anti-Explosive Shell",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Tyler Huntley, BAL runs a Balanced Multiple Offense scheme (53% pass, 7.4-yd avg depth of target, 53% of passing yards after the catch). CAR counters with a Two-High Anti-Explosive Shell defense (16% pressure rate, 15% tackles for loss on runs, allowing 5.1% explosive throws). BAL gets the ball out fast and asks playmakers to break tackles in space, testing CAR's open-field tackling and flat defenders.",
+     "track_record": "BAL vs. two-high / anti-explosive shells: 0-1 (1g), -0.26 EPA/play (season avg +0.01). CAR def vs. balanced offenses: 1-2 (3g), allowing +0.05 EPA/play (season avg +0.02).",
+     "watch_for": "Watch tackling on screens, slants, and flat routes: BAL's offense succeeds when short throws turn into 10+ yard gains after the catch; CAR wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+    },
+    {
+     "title": "When CAR has the ball",
+     "off_team": "CAR",
+     "def_team": "BAL",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "CAR",
+     "edge_label": "Edge: CAR Off",
+     "clash": "Led by Bryce Young, CAR runs a High-Volume Spread Passing scheme (63% pass, 7.9-yd avg depth of target, 45% of passing yards after the catch). BAL counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 18% tackles for loss on runs, allowing 9.2% explosive throws). CAR stresses zone spacing with high pass volume (63%), forcing BAL to tackle cleanly underneath and close throwing windows quickly.",
+     "track_record": "CAR vs. balanced zone defenses: 1-1 (2g), -0.08 EPA/play (season avg +0.02). BAL def vs. pass-heavy spread offenses: 2-2 (4g), allowing +0.13 EPA/play (season avg +0.05).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: CAR's spread style wins when quick completions march down the field without stalling; BAL's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 15.6,
+     "max": 34,
+     "value": "\u00b120% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 18.1,
+     "max": 24,
+     "value": "CAR -3"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 8.5,
+     "max": 18,
+     "value": "43.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 3.9,
+     "max": 14,
+     "value": "4-6 vs 4-5"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 1.5,
+     "max": 10,
+     "value": "Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "CAR",
+     "base": {
+      "playoff": 38.7,
+      "div": 38.1,
+      "bye": 0.0,
+      "top5": 2.3
+     },
+     "if_home": {
+      "base": {
+       "playoff": 38.7,
+       "div": 38.1,
+       "bye": 0.0,
+       "top5": 2.3
+      },
+      "after": {
+       "playoff": 45.7,
+       "div": 44.9,
+       "bye": 0.0,
+       "top5": 0.7
+      },
+      "delta": {
+       "playoff": 7.0,
+       "div": 6.8,
+       "bye": 0.0,
+       "top5": -1.6
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 38.7,
+       "div": 38.1,
+       "bye": 0.0,
+       "top5": 2.3
+      },
+      "after": {
+       "playoff": 29.8,
+       "div": 29.6,
+       "bye": 0.0,
+       "top5": 5.0
+      },
+      "delta": {
+       "playoff": -8.9,
+       "div": -8.5,
+       "bye": 0.0,
+       "top5": 2.7
+      }
+     }
+    },
+    "away": {
+     "team": "BAL",
+     "base": {
+      "playoff": 3.4,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 8.4
+     },
+     "if_home": {
+      "base": {
+       "playoff": 3.4,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 8.4
+      },
+      "after": {
+       "playoff": 1.8,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 13.3
+      },
+      "delta": {
+       "playoff": -1.6,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 4.9
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 3.4,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 8.4
+      },
+      "after": {
+       "playoff": 5.6,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": 2.6
+      },
+      "delta": {
+       "playoff": 2.2,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": -5.8
+      }
+     }
+    },
+    "total_playoff_swing": 19.7,
+    "total_div_swing": 15.4,
+    "total_bye_swing": 0.0,
+    "total_draft_swing": 15.0,
+    "branches": {
+     "home": {
+      "winner": "CAR",
+      "loser": "BAL",
+      "label": "If CAR wins",
+      "home": {
+       "base": {
+        "playoff": 38.7,
+        "div": 38.1,
+        "bye": 0.0,
+        "top5": 2.3
+       },
+       "after": {
+        "playoff": 45.7,
+        "div": 44.9,
+        "bye": 0.0,
+        "top5": 0.7
+       },
+       "delta": {
+        "playoff": 7.0,
+        "div": 6.8,
+        "bye": 0.0,
+        "top5": -1.6
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 3.4,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 8.4
+       },
+       "after": {
+        "playoff": 1.8,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 13.3
+       },
+       "delta": {
+        "playoff": -1.6,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 4.9
+       }
+      },
+      "notes": [
+       "CAR moves to 5-5; BAL drops to 4-7.",
+       "Playoff odds shift to 46% (+7 pts) for CAR and 2% (-2 pts) for BAL."
+      ]
+     },
+     "away": {
+      "winner": "BAL",
+      "loser": "CAR",
+      "label": "If BAL wins",
+      "home": {
+       "base": {
+        "playoff": 38.7,
+        "div": 38.1,
+        "bye": 0.0,
+        "top5": 2.3
+       },
+       "after": {
+        "playoff": 29.8,
+        "div": 29.6,
+        "bye": 0.0,
+        "top5": 5.0
+       },
+       "delta": {
+        "playoff": -8.9,
+        "div": -8.5,
+        "bye": 0.0,
+        "top5": 2.7
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 3.4,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 8.4
+       },
+       "after": {
+        "playoff": 5.6,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": 2.6
+       },
+       "delta": {
+        "playoff": 2.2,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": -5.8
+       }
+      },
+      "notes": [
+       "BAL moves to 5-6; CAR drops to 4-6.",
+       "Playoff odds shift to 6% (+2 pts) for BAL and 30% (-9 pts) for CAR."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "TB",
+      "name": "Buccaneers",
+      "record": "3-6",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 10.9,
+      "if_home_playoff": 44.5,
+      "if_away_playoff": 55.1
+     },
+     {
+      "team": "NO",
+      "name": "Saints",
+      "record": "3-6",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 2.5,
+      "if_home_playoff": 6.8,
+      "if_away_playoff": 9.2
+     },
+     {
+      "team": "ATL",
+      "name": "Falcons",
+      "record": "3-7",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 1.9,
+      "if_home_playoff": 4.4,
+      "if_away_playoff": 6.2
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether CAR holds control at halftime",
+     "benchmark": "Pregame line: CAR -3 (expected half ~10\u201312)",
+     "why": "A single result swings combined playoff odds by 20 percentage points and division odds by 15 pts. Predicting whether BAL can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=3.0&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 43.5 benchmark",
+     "benchmark": "Pregame total: 43.5 \u00b7 Half pace: 21.8 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 43.5-point game (22+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=43.5&wind=6&home_h1_pts=12&away_h1_pts=10&compare=43.5&game=BAL+%40+CAR+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 43.5",
+     "benchmark": "Test live O/U at halftime using spread (CAR -3) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 43.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=43.5&spread_line=3.0&wind=6&line=43.5&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
+    }
+   ],
+   "rank": 6
+  },
+  {
    "game_id": "2026_11_NO_CHI",
    "week": 11,
    "gameday": "2026-11-22",
@@ -1969,12 +2506,14 @@
     "papg": 26.2,
     "off_rank": 15,
     "def_rank": 26,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Tyler Shough",
     "coach": "Kellen Moore",
     "rest": 7,
     "score": null,
-    "playoff_pct": 7.9,
-    "div_pct": 7.9
+    "playoff_pct": 7.8,
+    "div_pct": 7.8
    },
    "home": {
     "team": "CHI",
@@ -1989,12 +2528,14 @@
     "papg": 20.4,
     "off_rank": 7,
     "def_rank": 8,
+    "off_scheme": "Run-First / Ground Control",
+    "def_scheme": "Aggressive Front / Boom-or-Bust",
     "qb": "Caleb Williams",
     "coach": "Ben Johnson",
     "rest": 14,
     "score": null,
     "playoff_pct": 89.5,
-    "div_pct": 24.1
+    "div_pct": 24.3
    },
    "interest_score": 48,
    "tier": "Intriguing",
@@ -2009,12 +2550,34 @@
      "text": "NO (3-6, 3rd in NFC South) enters with 8% playoff odds; CHI (7-2, 3rd in NFC North) sits at 90%. This single result moves their combined playoff probability by 23 percentage points. Division-title odds shift by 21 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Tyler Shough vs. Caleb Williams at quarterback. NO averages 22.4 PPG (#15 offense) and allows 26.2 (#26 defense), while CHI scores 26.8 (#7) and allows 20.4 (#8)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Rest edge to CHI (14 days rest vs. 7). Recent form: CHI is on a W4 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When NO has the ball",
+     "off_team": "NO",
+     "def_team": "CHI",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Tyler Shough, NO runs a High-Volume Spread Passing scheme (62% pass, 7.4-yd avg depth of target, 43% of passing yards after the catch). CHI counters with an Aggressive Front / Boom-or-Bust defense (27% pressure rate, 25% tackles for loss on runs, allowing 10.0% explosive throws). It's a strength-on-strength trench clash\u2014NO keeps a clean pocket (6.3% sack rate) against an aggressive pass rush.",
+     "track_record": "NO vs. aggressive pressure fronts: 0-3 (3g), -0.09 EPA/play (season avg -0.03). CHI def vs. pass-heavy spread offenses: 2-1 (3g), allowing +0.08 EPA/play (season avg -0.02).",
+     "watch_for": "Watch whether CHI's blitzes and stunts force early checkdowns: if NO picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if CHI collapses the pocket without extra rushers, NO's rhythm stalls."
+    },
+    {
+     "title": "When CHI has the ball",
+     "off_team": "CHI",
+     "def_team": "NO",
+     "off_scheme": "Run-First / Ground Control",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "CHI",
+     "edge_label": "Edge: CHI Off",
+     "clash": "Led by Caleb Williams, CHI runs a Run-First / Ground Control scheme (52% pass, 7.6-yd avg depth of target, 52% of passing yards after the catch, 11.2% explosive 20+ yd throws). NO counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 15% tackles for loss on runs, allowing 11.0% explosive throws). NO can be vulnerable to vertical shots (11.0% explosive pass rate allowed), giving CHI room to attack downfield if protection holds.",
+     "track_record": "CHI vs. balanced zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.04). NO def vs. run-first offenses: 1-1 (2g), allowing +0.22 EPA/play (season avg +0.04).",
+     "watch_for": "Watch play-action and deep crossers: CHI wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; NO survives by winning early downs and creating pressure before deep routes develop."
     }
    ],
    "drivers": [
@@ -2059,26 +2622,26 @@
      "team": "CHI",
      "base": {
       "playoff": 89.5,
-      "div": 24.1,
+      "div": 24.3,
       "bye": 10.6,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 89.5,
-       "div": 24.1,
+       "div": 24.3,
        "bye": 10.6,
        "top5": 0.0
       },
       "after": {
        "playoff": 92.3,
-       "div": 26.1,
+       "div": 26.4,
        "bye": 12.2,
        "top5": 0.0
       },
       "delta": {
        "playoff": 2.8,
-       "div": 2.0,
+       "div": 2.1,
        "bye": 1.6,
        "top5": 0.0
       }
@@ -2086,19 +2649,19 @@
      "if_away": {
       "base": {
        "playoff": 89.5,
-       "div": 24.1,
+       "div": 24.3,
        "bye": 10.6,
        "top5": 0.0
       },
       "after": {
        "playoff": 78.5,
-       "div": 14.1,
+       "div": 14.2,
        "bye": 3.4,
        "top5": 0.0
       },
       "delta": {
        "playoff": -11.0,
-       "div": -10.0,
+       "div": -10.1,
        "bye": -7.2,
        "top5": 0.0
       }
@@ -2107,23 +2670,23 @@
     "away": {
      "team": "NO",
      "base": {
-      "playoff": 7.9,
-      "div": 7.9,
+      "playoff": 7.8,
+      "div": 7.8,
       "bye": 0.0,
-      "top5": 15.9
+      "top5": 16.0
      },
      "if_home": {
       "base": {
-       "playoff": 7.9,
-       "div": 7.9,
+       "playoff": 7.8,
+       "div": 7.8,
        "bye": 0.0,
-       "top5": 15.9
+       "top5": 16.0
       },
       "after": {
-       "playoff": 5.8,
-       "div": 5.8,
+       "playoff": 5.7,
+       "div": 5.7,
        "bye": 0.0,
-       "top5": 19.0
+       "top5": 19.1
       },
       "delta": {
        "playoff": -2.1,
@@ -2134,14 +2697,14 @@
      },
      "if_away": {
       "base": {
-       "playoff": 7.9,
-       "div": 7.9,
+       "playoff": 7.8,
+       "div": 7.8,
        "bye": 0.0,
-       "top5": 15.9
+       "top5": 16.0
       },
       "after": {
-       "playoff": 15.4,
-       "div": 15.0,
+       "playoff": 15.3,
+       "div": 14.9,
        "bye": 0.0,
        "top5": 5.1
       },
@@ -2149,14 +2712,14 @@
        "playoff": 7.5,
        "div": 7.1,
        "bye": 0.0,
-       "top5": -10.8
+       "top5": -10.9
       }
      }
     },
     "total_playoff_swing": 23.4,
-    "total_div_swing": 21.2,
+    "total_div_swing": 21.4,
     "total_bye_swing": 8.8,
-    "total_draft_swing": 13.9,
+    "total_draft_swing": 14.0,
     "branches": {
      "home": {
       "winner": "CHI",
@@ -2165,35 +2728,35 @@
       "home": {
        "base": {
         "playoff": 89.5,
-        "div": 24.1,
+        "div": 24.3,
         "bye": 10.6,
         "top5": 0.0
        },
        "after": {
         "playoff": 92.3,
-        "div": 26.1,
+        "div": 26.4,
         "bye": 12.2,
         "top5": 0.0
        },
        "delta": {
         "playoff": 2.8,
-        "div": 2.0,
+        "div": 2.1,
         "bye": 1.6,
         "top5": 0.0
        }
       },
       "away": {
        "base": {
-        "playoff": 7.9,
-        "div": 7.9,
+        "playoff": 7.8,
+        "div": 7.8,
         "bye": 0.0,
-        "top5": 15.9
+        "top5": 16.0
        },
        "after": {
-        "playoff": 5.8,
-        "div": 5.8,
+        "playoff": 5.7,
+        "div": 5.7,
         "bye": 0.0,
-        "top5": 19.0
+        "top5": 19.1
        },
        "delta": {
         "playoff": -2.1,
@@ -2214,33 +2777,33 @@
       "home": {
        "base": {
         "playoff": 89.5,
-        "div": 24.1,
+        "div": 24.3,
         "bye": 10.6,
         "top5": 0.0
        },
        "after": {
         "playoff": 78.5,
-        "div": 14.1,
+        "div": 14.2,
         "bye": 3.4,
         "top5": 0.0
        },
        "delta": {
         "playoff": -11.0,
-        "div": -10.0,
+        "div": -10.1,
         "bye": -7.2,
         "top5": 0.0
        }
       },
       "away": {
        "base": {
-        "playoff": 7.9,
-        "div": 7.9,
+        "playoff": 7.8,
+        "div": 7.8,
         "bye": 0.0,
-        "top5": 15.9
+        "top5": 16.0
        },
        "after": {
-        "playoff": 15.4,
-        "div": 15.0,
+        "playoff": 15.3,
+        "div": 14.9,
         "bye": 0.0,
         "top5": 5.1
        },
@@ -2248,7 +2811,7 @@
         "playoff": 7.5,
         "div": 7.1,
         "bye": 0.0,
-        "top5": -10.8
+        "top5": -10.9
        }
       },
       "notes": [
@@ -2266,8 +2829,8 @@
       "roots_for": "CHI",
       "metric": "division",
       "swing": 4.4,
-      "if_home_playoff": 49.7,
-      "if_away_playoff": 45.4
+      "if_home_playoff": 50.3,
+      "if_away_playoff": 45.9
      },
      {
       "team": "CAR",
@@ -2276,8 +2839,8 @@
       "roots_for": "CHI",
       "metric": "division",
       "swing": 3.8,
-      "if_home_playoff": 40.0,
-      "if_away_playoff": 36.4
+      "if_home_playoff": 39.6,
+      "if_away_playoff": 36.1
      },
      {
       "team": "MIN",
@@ -2285,7 +2848,7 @@
       "record": "7-2",
       "roots_for": "NO",
       "metric": "division",
-      "swing": 6.8,
+      "swing": 6.9,
       "if_home_playoff": 94.2,
       "if_away_playoff": 94.7
      }
@@ -2320,387 +2883,6 @@
      "model_url": "/m/nfl-halftime-game-types?home_h1_pts=15&away_h1_pts=9&game=NO+%40+CHI+%28Wk+11%29"
     }
    ],
-   "rank": 6
-  },
-  {
-   "game_id": "2026_11_BAL_CAR",
-   "week": 11,
-   "gameday": "2026-11-22",
-   "weekday": "Sunday",
-   "gametime": "13:00",
-   "primetime": false,
-   "finished": false,
-   "div_game": false,
-   "stadium": "Bank of America Stadium",
-   "roof": "outdoors",
-   "spread_line": 3.0,
-   "spread_label": "CAR -3",
-   "total_line": 43.5,
-   "home_win_prob": 59,
-   "away_win_prob": 41,
-   "away": {
-    "team": "BAL",
-    "name": "Ravens",
-    "city": "Baltimore",
-    "conf": "AFC",
-    "div": "AFC North",
-    "record": "4-6",
-    "div_rank": 4,
-    "streak": "L5",
-    "ppg": 20.9,
-    "papg": 25.9,
-    "off_rank": 22,
-    "def_rank": 24,
-    "qb": "Tyler Huntley",
-    "coach": "Jesse Minter",
-    "rest": 6,
-    "score": null,
-    "playoff_pct": 3.3,
-    "div_pct": 0.0
-   },
-   "home": {
-    "team": "CAR",
-    "name": "Panthers",
-    "city": "Carolina",
-    "conf": "NFC",
-    "div": "NFC South",
-    "record": "4-5",
-    "div_rank": 1,
-    "streak": "W1",
-    "ppg": 24.3,
-    "papg": 26.2,
-    "off_rank": 12,
-    "def_rank": 25,
-    "qb": "Bryce Young",
-    "coach": "Dave Canales",
-    "rest": 7,
-    "score": null,
-    "playoff_pct": 39.0,
-    "div_pct": 38.4
-   },
-   "interest_score": 47,
-   "tier": "Intriguing",
-   "tags": [
-    "High Leverage",
-    "Toss-ups"
-   ],
-   "hook": "Real postseason leverage (20-pt combined playoff swing) between BAL (4-6) and CAR (4-5).",
-   "why_watch": [
-    {
-     "label": "The Stakes",
-     "text": "BAL (4-6, 4th in AFC North) enters with 3% playoff odds; CAR (4-5, 1st in NFC South) sits at 39%. This single result moves their combined playoff probability by 20 percentage points. Division-title odds shift by 15 pts."
-    },
-    {
-     "label": "Matchup & Style",
-     "text": "Tyler Huntley vs. Bryce Young at quarterback. BAL averages 20.9 PPG (#22 offense) and allows 25.9 (#24 defense), while CAR scores 24.3 (#12) and allows 26.2 (#25)."
-    },
-    {
-     "label": "Context & Angles",
-     "text": "Recent form: BAL is on a L5 streak."
-    }
-   ],
-   "drivers": [
-    {
-     "id": "leverage",
-     "label": "Stakes & playoff leverage",
-     "points": 15.4,
-     "max": 34,
-     "value": "\u00b120% PO swing"
-    },
-    {
-     "id": "competitiveness",
-     "label": "Competitiveness (spread)",
-     "points": 18.1,
-     "max": 24,
-     "value": "CAR -3"
-    },
-    {
-     "id": "pace",
-     "label": "Scoring pace & style",
-     "points": 8.5,
-     "max": 18,
-     "value": "43.5 O/U"
-    },
-    {
-     "id": "quality",
-     "label": "Team quality & contrast",
-     "points": 3.9,
-     "max": 14,
-     "value": "4-6 vs 4-5"
-    },
-    {
-     "id": "context",
-     "label": "Rivalry & spotlight context",
-     "points": 1.5,
-     "max": 10,
-     "value": "Hot streak"
-    }
-   ],
-   "implications": {
-    "home": {
-     "team": "CAR",
-     "base": {
-      "playoff": 39.0,
-      "div": 38.4,
-      "bye": 0.0,
-      "top5": 2.3
-     },
-     "if_home": {
-      "base": {
-       "playoff": 39.0,
-       "div": 38.4,
-       "bye": 0.0,
-       "top5": 2.3
-      },
-      "after": {
-       "playoff": 45.9,
-       "div": 45.1,
-       "bye": 0.0,
-       "top5": 0.7
-      },
-      "delta": {
-       "playoff": 6.9,
-       "div": 6.7,
-       "bye": 0.0,
-       "top5": -1.6
-      }
-     },
-     "if_away": {
-      "base": {
-       "playoff": 39.0,
-       "div": 38.4,
-       "bye": 0.0,
-       "top5": 2.3
-      },
-      "after": {
-       "playoff": 30.2,
-       "div": 30.0,
-       "bye": 0.0,
-       "top5": 5.0
-      },
-      "delta": {
-       "playoff": -8.8,
-       "div": -8.4,
-       "bye": 0.0,
-       "top5": 2.7
-      }
-     }
-    },
-    "away": {
-     "team": "BAL",
-     "base": {
-      "playoff": 3.3,
-      "div": 0.0,
-      "bye": 0.0,
-      "top5": 8.4
-     },
-     "if_home": {
-      "base": {
-       "playoff": 3.3,
-       "div": 0.0,
-       "bye": 0.0,
-       "top5": 8.4
-      },
-      "after": {
-       "playoff": 1.8,
-       "div": 0.0,
-       "bye": 0.0,
-       "top5": 13.3
-      },
-      "delta": {
-       "playoff": -1.5,
-       "div": 0.0,
-       "bye": 0.0,
-       "top5": 4.9
-      }
-     },
-     "if_away": {
-      "base": {
-       "playoff": 3.3,
-       "div": 0.0,
-       "bye": 0.0,
-       "top5": 8.4
-      },
-      "after": {
-       "playoff": 5.6,
-       "div": 0.1,
-       "bye": 0.0,
-       "top5": 2.6
-      },
-      "delta": {
-       "playoff": 2.3,
-       "div": 0.1,
-       "bye": 0.0,
-       "top5": -5.8
-      }
-     }
-    },
-    "total_playoff_swing": 19.5,
-    "total_div_swing": 15.2,
-    "total_bye_swing": 0.0,
-    "total_draft_swing": 15.0,
-    "branches": {
-     "home": {
-      "winner": "CAR",
-      "loser": "BAL",
-      "label": "If CAR wins",
-      "home": {
-       "base": {
-        "playoff": 39.0,
-        "div": 38.4,
-        "bye": 0.0,
-        "top5": 2.3
-       },
-       "after": {
-        "playoff": 45.9,
-        "div": 45.1,
-        "bye": 0.0,
-        "top5": 0.7
-       },
-       "delta": {
-        "playoff": 6.9,
-        "div": 6.7,
-        "bye": 0.0,
-        "top5": -1.6
-       }
-      },
-      "away": {
-       "base": {
-        "playoff": 3.3,
-        "div": 0.0,
-        "bye": 0.0,
-        "top5": 8.4
-       },
-       "after": {
-        "playoff": 1.8,
-        "div": 0.0,
-        "bye": 0.0,
-        "top5": 13.3
-       },
-       "delta": {
-        "playoff": -1.5,
-        "div": 0.0,
-        "bye": 0.0,
-        "top5": 4.9
-       }
-      },
-      "notes": [
-       "CAR moves to 5-5; BAL drops to 4-7.",
-       "Playoff odds shift to 46% (+7 pts) for CAR and 2% (-1 pts) for BAL."
-      ]
-     },
-     "away": {
-      "winner": "BAL",
-      "loser": "CAR",
-      "label": "If BAL wins",
-      "home": {
-       "base": {
-        "playoff": 39.0,
-        "div": 38.4,
-        "bye": 0.0,
-        "top5": 2.3
-       },
-       "after": {
-        "playoff": 30.2,
-        "div": 30.0,
-        "bye": 0.0,
-        "top5": 5.0
-       },
-       "delta": {
-        "playoff": -8.8,
-        "div": -8.4,
-        "bye": 0.0,
-        "top5": 2.7
-       }
-      },
-      "away": {
-       "base": {
-        "playoff": 3.3,
-        "div": 0.0,
-        "bye": 0.0,
-        "top5": 8.4
-       },
-       "after": {
-        "playoff": 5.6,
-        "div": 0.1,
-        "bye": 0.0,
-        "top5": 2.6
-       },
-       "delta": {
-        "playoff": 2.3,
-        "div": 0.1,
-        "bye": 0.0,
-        "top5": -5.8
-       }
-      },
-      "notes": [
-       "BAL moves to 5-6; CAR drops to 4-6.",
-       "Playoff odds shift to 6% (+2 pts) for BAL and 30% (-9 pts) for CAR."
-      ]
-     }
-    },
-    "ripples": [
-     {
-      "team": "TB",
-      "name": "Buccaneers",
-      "record": "3-6",
-      "roots_for": "BAL",
-      "metric": "division",
-      "swing": 10.6,
-      "if_home_playoff": 44.2,
-      "if_away_playoff": 54.5
-     },
-     {
-      "team": "NO",
-      "name": "Saints",
-      "record": "3-6",
-      "roots_for": "BAL",
-      "metric": "division",
-      "swing": 2.5,
-      "if_home_playoff": 6.8,
-      "if_away_playoff": 9.3
-     },
-     {
-      "team": "ATL",
-      "name": "Falcons",
-      "record": "3-7",
-      "roots_for": "BAL",
-      "metric": "division",
-      "swing": 2.0,
-      "if_home_playoff": 4.5,
-      "if_away_playoff": 6.4
-     }
-    ]
-   },
-   "predict": [
-    {
-     "category": "Winner & Margin",
-     "title": "Who wins\u2014and whether CAR holds control at halftime",
-     "benchmark": "Pregame line: CAR -3 (expected half ~10\u201312)",
-     "why": "A single result swings combined playoff odds by 20 percentage points and division odds by 15 pts. Predicting whether BAL can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
-     "model_slug": "nfl-halftime-win",
-     "model_label": "Run in Halftime Win Model",
-     "model_url": "/m/nfl-halftime-win?spread_line=3.0&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
-    },
-    {
-     "category": "Scoring & Pace",
-     "title": "Total points vs. 43.5 benchmark",
-     "benchmark": "Pregame total: 43.5 \u00b7 Half pace: 21.8 pts \u00b7 Wind ~6 mph",
-     "why": "The market expects a balanced 43.5-point game (22+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
-     "model_slug": "nfl-halftime-total",
-     "model_label": "Run in Halftime Total Model",
-     "model_url": "/m/nfl-halftime-total?total_line=43.5&wind=6&home_h1_pts=12&away_h1_pts=10&compare=43.5&game=BAL+%40+CAR+%28Wk+11%29"
-    },
-    {
-     "category": "Live Over/Under & Script",
-     "title": "Second-half scoring probability around 43.5",
-     "benchmark": "Test live O/U at halftime using spread (CAR -3) + pace",
-     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 43.5.",
-     "model_slug": "nfl-halftime-ou-logit",
-     "model_label": "Test Live O/U Classifier",
-     "model_url": "/m/nfl-halftime-ou-logit?total_line=43.5&spread_line=3.0&wind=6&line=43.5&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
-    }
-   ],
    "rank": 7
   },
   {
@@ -2732,12 +2914,14 @@
     "papg": 20.2,
     "off_rank": 20,
     "def_rank": 7,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Aggressive Front / Boom-or-Bust",
     "qb": "Aaron Rodgers",
     "coach": "Mike McCarthy",
     "rest": 7,
     "score": null,
-    "playoff_pct": 79.4,
-    "div_pct": 7.1
+    "playoff_pct": 78.6,
+    "div_pct": 6.8
    },
    "home": {
     "team": "PHI",
@@ -2752,6 +2936,8 @@
     "papg": 24.6,
     "off_rank": 31,
     "def_rank": 19,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Joe Milton III",
     "coach": "Nick Sirianni",
     "rest": 14,
@@ -2772,19 +2958,41 @@
      "text": "PIT (6-3, 2nd in AFC North) enters with 79% playoff odds; PHI (2-7, 4th in NFC East) sits at 0%. This single result moves their combined playoff probability by 19 percentage points."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Aaron Rodgers vs. Joe Milton III at quarterback. PIT averages 22.0 PPG (#20 offense) and allows 20.2 (#7 defense), while PHI scores 16.4 (#31) and allows 24.6 (#19)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Rest edge to PHI (14 days rest vs. 7). Recent form: PHI is on a L7 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When PIT has the ball",
+     "off_team": "PIT",
+     "def_team": "PHI",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Aaron Rodgers, PIT runs a High-Volume Spread Passing scheme (62% pass, 7.4-yd avg depth of target, 61% of passing yards after the catch). PHI counters with a Balanced Zone / Bend-Don't-Break defense (17% pressure rate, 15% tackles for loss on runs, allowing 10.3% explosive throws). PIT stresses zone spacing with high pass volume (62%), forcing PHI to tackle cleanly underneath and close throwing windows quickly.",
+     "track_record": "PIT vs. balanced zone defenses: 1-0 (1g), -0.14 EPA/play (season avg -0.02). PHI def vs. pass-heavy spread offenses: 1-2 (3g), allowing +0.13 EPA/play (season avg +0.06).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: PIT's spread style wins when quick completions march down the field without stalling; PHI's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+    },
+    {
+     "title": "When PHI has the ball",
+     "off_team": "PHI",
+     "def_team": "PIT",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "edge_team": "PIT",
+     "edge_label": "Edge: PIT Def",
+     "clash": "Led by Joe Milton III, PHI runs a High-Volume Spread Passing scheme (61% pass, 7.2-yd avg depth of target, 41% of passing yards after the catch). PIT counters with an Aggressive Front / Boom-or-Bust defense (24% pressure rate, 25% tackles for loss on runs, allowing 9.9% explosive throws). PIT can be vulnerable to vertical shots (9.9% explosive pass rate allowed), giving PHI room to attack downfield if protection holds.",
+     "track_record": "PHI vs. aggressive pressure fronts: 0-1 (1g), -0.15 EPA/play (season avg -0.10). PIT def vs. pass-heavy spread offenses: 2-1 (3g), allowing +0.21 EPA/play (season avg -0.00).",
+     "watch_for": "Watch play-action and deep crossers: PHI wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; PIT survives by winning early downs and creating pressure before deep routes develop."
     }
    ],
    "drivers": [
     {
      "id": "leverage",
      "label": "Stakes & playoff leverage",
-     "points": 12.5,
+     "points": 12.7,
      "max": 34,
      "value": "\u00b119% PO swing"
     },
@@ -2824,26 +3032,26 @@
       "playoff": 0.1,
       "div": 0.1,
       "bye": 0.0,
-      "top5": 53.2
+      "top5": 53.3
      },
      "if_home": {
       "base": {
        "playoff": 0.1,
        "div": 0.1,
        "bye": 0.0,
-       "top5": 53.2
+       "top5": 53.3
       },
       "after": {
        "playoff": 0.3,
        "div": 0.3,
        "bye": 0.0,
-       "top5": 37.2
+       "top5": 37.4
       },
       "delta": {
        "playoff": 0.2,
        "div": 0.2,
        "bye": 0.0,
-       "top5": -16.0
+       "top5": -15.9
       }
      },
      "if_away": {
@@ -2851,7 +3059,7 @@
        "playoff": 0.1,
        "div": 0.1,
        "bye": 0.0,
-       "top5": 53.2
+       "top5": 53.3
       },
       "after": {
        "playoff": 0.0,
@@ -2863,63 +3071,63 @@
        "playoff": -0.1,
        "div": -0.1,
        "bye": 0.0,
-       "top5": 11.6
+       "top5": 11.5
       }
      }
     },
     "away": {
      "team": "PIT",
      "base": {
-      "playoff": 79.4,
-      "div": 7.1,
+      "playoff": 78.6,
+      "div": 6.8,
       "bye": 0.4,
       "top5": 0.0
      },
      "if_home": {
       "base": {
-       "playoff": 79.4,
-       "div": 7.1,
+       "playoff": 78.6,
+       "div": 6.8,
        "bye": 0.4,
        "top5": 0.0
       },
       "after": {
-       "playoff": 68.0,
-       "div": 3.8,
-       "bye": 0.2,
+       "playoff": 67.0,
+       "div": 3.6,
+       "bye": 0.1,
        "top5": 0.0
       },
       "delta": {
-       "playoff": -11.4,
-       "div": -3.3,
-       "bye": -0.2,
+       "playoff": -11.6,
+       "div": -3.2,
+       "bye": -0.3,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
-       "playoff": 79.4,
-       "div": 7.1,
+       "playoff": 78.6,
+       "div": 6.8,
        "bye": 0.4,
        "top5": 0.0
       },
       "after": {
-       "playoff": 86.3,
-       "div": 9.6,
+       "playoff": 85.7,
+       "div": 9.3,
        "bye": 0.6,
        "top5": 0.0
       },
       "delta": {
-       "playoff": 6.9,
+       "playoff": 7.1,
        "div": 2.5,
        "bye": 0.2,
        "top5": 0.0
       }
      }
     },
-    "total_playoff_swing": 18.6,
-    "total_div_swing": 6.1,
-    "total_bye_swing": 0.4,
-    "total_draft_swing": 27.6,
+    "total_playoff_swing": 19.0,
+    "total_div_swing": 6.0,
+    "total_bye_swing": 0.5,
+    "total_draft_swing": 27.4,
     "branches": {
      "home": {
       "winner": "PHI",
@@ -2930,44 +3138,44 @@
         "playoff": 0.1,
         "div": 0.1,
         "bye": 0.0,
-        "top5": 53.2
+        "top5": 53.3
        },
        "after": {
         "playoff": 0.3,
         "div": 0.3,
         "bye": 0.0,
-        "top5": 37.2
+        "top5": 37.4
        },
        "delta": {
         "playoff": 0.2,
         "div": 0.2,
         "bye": 0.0,
-        "top5": -16.0
+        "top5": -15.9
        }
       },
       "away": {
        "base": {
-        "playoff": 79.4,
-        "div": 7.1,
+        "playoff": 78.6,
+        "div": 6.8,
         "bye": 0.4,
         "top5": 0.0
        },
        "after": {
-        "playoff": 68.0,
-        "div": 3.8,
-        "bye": 0.2,
+        "playoff": 67.0,
+        "div": 3.6,
+        "bye": 0.1,
         "top5": 0.0
        },
        "delta": {
-        "playoff": -11.4,
-        "div": -3.3,
-        "bye": -0.2,
+        "playoff": -11.6,
+        "div": -3.2,
+        "bye": -0.3,
         "top5": 0.0
        }
       },
       "notes": [
        "PHI moves to 3-7; PIT drops to 6-4.",
-       "Playoff odds shift to 0% (+0 pts) for PHI and 68% (-11 pts) for PIT."
+       "Playoff odds shift to 0% (+0 pts) for PHI and 67% (-12 pts) for PIT."
       ]
      },
      "away": {
@@ -2979,7 +3187,7 @@
         "playoff": 0.1,
         "div": 0.1,
         "bye": 0.0,
-        "top5": 53.2
+        "top5": 53.3
        },
        "after": {
         "playoff": 0.0,
@@ -2991,24 +3199,24 @@
         "playoff": -0.1,
         "div": -0.1,
         "bye": 0.0,
-        "top5": 11.6
+        "top5": 11.5
        }
       },
       "away": {
        "base": {
-        "playoff": 79.4,
-        "div": 7.1,
+        "playoff": 78.6,
+        "div": 6.8,
         "bye": 0.4,
         "top5": 0.0
        },
        "after": {
-        "playoff": 86.3,
-        "div": 9.6,
+        "playoff": 85.7,
+        "div": 9.3,
         "bye": 0.6,
         "top5": 0.0
        },
        "delta": {
-        "playoff": 6.9,
+        "playoff": 7.1,
         "div": 2.5,
         "bye": 0.2,
         "top5": 0.0
@@ -3028,8 +3236,8 @@
       "record": "6-4",
       "roots_for": "PHI",
       "metric": "playoff",
-      "swing": 4.4,
-      "if_home_playoff": 59.8,
+      "swing": 4.5,
+      "if_home_playoff": 60.0,
       "if_away_playoff": 55.5
      },
      {
@@ -3039,8 +3247,8 @@
       "roots_for": "PHI",
       "metric": "playoff",
       "swing": 5.0,
-      "if_home_playoff": 28.0,
-      "if_away_playoff": 23.0
+      "if_home_playoff": 28.1,
+      "if_away_playoff": 23.2
      },
      {
       "team": "NE",
@@ -3048,9 +3256,9 @@
       "record": "5-5",
       "roots_for": "PHI",
       "metric": "playoff",
-      "swing": 4.8,
-      "if_home_playoff": 34.2,
-      "if_away_playoff": 29.4
+      "swing": 4.9,
+      "if_home_playoff": 34.5,
+      "if_away_playoff": 29.6
      }
     ]
    },
@@ -3114,6 +3322,8 @@
     "papg": 26.6,
     "off_rank": 28,
     "def_rank": 28,
+    "off_scheme": "Short Rhythm & Possession",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Cam Ward",
     "coach": "Robert Saleh",
     "rest": 7,
@@ -3134,6 +3344,8 @@
     "papg": 28.2,
     "off_rank": 5,
     "def_rank": 30,
+    "off_scheme": "Vertical Spread Passing",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Dak Prescott",
     "coach": "Brian Schottenheimer",
     "rest": 7,
@@ -3153,12 +3365,34 @@
      "text": "Both teams sit on the outside of the playoff race (TEN 0%, DAL 17%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 26 points."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Cam Ward vs. Dak Prescott at quarterback. TEN averages 18.6 PPG (#28 offense) and allows 26.6 (#28 defense), while DAL scores 28.6 (#5) and allows 28.2 (#30)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Recent form: TEN is on a L3 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When TEN has the ball",
+     "off_team": "TEN",
+     "def_team": "DAL",
+     "off_scheme": "Short Rhythm & Possession",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "TEN",
+     "edge_label": "Edge: TEN Off",
+     "clash": "Led by Cam Ward, TEN runs a Short Rhythm & Possession scheme (59% pass, 6.8-yd avg depth of target, 51% of passing yards after the catch). DAL counters with a Balanced Zone / Bend-Don't-Break defense (22% pressure rate, 15% tackles for loss on runs, allowing 10.5% explosive throws). DAL can be vulnerable to vertical shots (10.5% explosive pass rate allowed), giving TEN room to attack downfield if protection holds.",
+     "track_record": "TEN vs. balanced zone defenses: 0-2 (2g), -0.01 EPA/play (season avg -0.04). DAL def vs. short-rhythm / YAC offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.12).",
+     "watch_for": "Watch play-action and deep crossers: TEN wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; DAL survives by winning early downs and creating pressure before deep routes develop."
+    },
+    {
+     "title": "When DAL has the ball",
+     "off_team": "DAL",
+     "def_team": "TEN",
+     "off_scheme": "Vertical Spread Passing",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "DAL",
+     "edge_label": "Edge: DAL Off",
+     "clash": "Led by Dak Prescott, DAL runs a Vertical Spread Passing scheme (61% pass, 8.7-yd avg depth of target, 36% of passing yards after the catch). TEN counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 16% tackles for loss on runs, allowing 11.7% explosive throws). DAL stresses zone spacing with high pass volume (61%), forcing TEN to tackle cleanly underneath and close throwing windows quickly.",
+     "track_record": "DAL vs. balanced zone defenses: 2-4 (6g), +0.13 EPA/play (season avg +0.11). TEN def vs. pass-heavy spread offenses: 0-2 (2g), allowing +0.11 EPA/play (season avg +0.08).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: DAL's spread style wins when quick completions march down the field without stalling; TEN's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
     }
    ],
    "drivers": [
@@ -3238,13 +3472,13 @@
        "playoff": 8.4,
        "div": 8.0,
        "bye": 0.0,
-       "top5": 5.7
+       "top5": 5.8
       },
       "delta": {
        "playoff": -8.5,
        "div": -8.1,
        "bye": 0.0,
-       "top5": 3.7
+       "top5": 3.8
       }
      }
     },
@@ -3300,7 +3534,7 @@
     "total_playoff_swing": 11.5,
     "total_div_swing": 10.9,
     "total_bye_swing": 0.0,
-    "total_draft_swing": 26.2,
+    "total_draft_swing": 26.3,
     "branches": {
      "home": {
       "winner": "DAL",
@@ -3366,13 +3600,13 @@
         "playoff": 8.4,
         "div": 8.0,
         "bye": 0.0,
-        "top5": 5.7
+        "top5": 5.8
        },
        "delta": {
         "playoff": -8.5,
         "div": -8.1,
         "bye": 0.0,
-        "top5": 3.7
+        "top5": 3.8
        }
       },
       "away": {
@@ -3484,6 +3718,8 @@
     "papg": 25.4,
     "off_rank": 25,
     "def_rank": 22,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Geno Smith",
     "coach": "Aaron Glenn",
     "rest": 7,
@@ -3504,6 +3740,8 @@
     "papg": 26.6,
     "off_rank": 32,
     "def_rank": 27,
+    "off_scheme": "Run-Heavy / Play-Action",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Justin Herbert",
     "coach": "Jim Harbaugh",
     "rest": 6,
@@ -3523,12 +3761,34 @@
      "text": "Both teams sit on the outside of the playoff race (NYJ 0%, LAC 0%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 50 points."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Geno Smith vs. Justin Herbert at quarterback. NYJ averages 19.4 PPG (#25 offense) and allows 25.4 (#22 defense), while LAC scores 16.0 (#32) and allows 26.6 (#27)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Recent form: NYJ is on a L5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When NYJ has the ball",
+     "off_team": "NYJ",
+     "def_team": "LAC",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Geno Smith, NYJ runs a Balanced Multiple Offense scheme (58% pass, 7.8-yd avg depth of target, 46% of passing yards after the catch). LAC counters with a Balanced Zone / Bend-Don't-Break defense (24% pressure rate, 13% tackles for loss on runs, allowing 9.6% explosive throws). LAC can be vulnerable to vertical shots (9.6% explosive pass rate allowed), giving NYJ room to attack downfield if protection holds.",
+     "track_record": "NYJ vs. balanced zone defenses: 1-2 (3g), +0.02 EPA/play (season avg -0.01). LAC def vs. balanced offenses: 0-4 (4g), allowing +0.01 EPA/play (season avg +0.00).",
+     "watch_for": "Watch play-action and deep crossers: NYJ wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; LAC survives by winning early downs and creating pressure before deep routes develop."
+    },
+    {
+     "title": "When LAC has the ball",
+     "off_team": "LAC",
+     "def_team": "NYJ",
+     "off_scheme": "Run-Heavy / Play-Action",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "NYJ",
+     "edge_label": "Edge: NYJ Def",
+     "clash": "Led by Justin Herbert, LAC runs a Run-Heavy / Play-Action scheme (53% pass, 7.5-yd avg depth of target, 46% of passing yards after the catch). NYJ counters with a Balanced Zone / Bend-Don't-Break defense (24% pressure rate, 14% tackles for loss on runs, allowing 8.9% explosive throws). Analytically, LAC's cleanest path runs through the passing game (pass net -0.03 EPA/db, rush net -0.17 EPA/carry).",
+     "track_record": "LAC vs. balanced zone defenses: 0-3 (3g), -0.25 EPA/play (season avg -0.16). NYJ def vs. run-first offenses: 0-3 (3g), allowing +0.18 EPA/play (season avg +0.06).",
+     "watch_for": "Watch early-down efficiency in the passing game: if LAC stays ahead of the chains and avoids negative plays, its play-calling stays balanced; NYJ wins by tightening up in the red zone and forcing 3rd-and-long throws."
     }
    ],
    "drivers": [
@@ -3624,20 +3884,20 @@
       "playoff": 0.2,
       "div": 0.0,
       "bye": 0.0,
-      "top5": 46.7
+      "top5": 46.8
      },
      "if_home": {
       "base": {
        "playoff": 0.2,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 46.7
+       "top5": 46.8
       },
       "after": {
        "playoff": 0.0,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 58.8
+       "top5": 58.9
       },
       "delta": {
        "playoff": -0.2,
@@ -3651,13 +3911,13 @@
        "playoff": 0.2,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 46.7
+       "top5": 46.8
       },
       "after": {
        "playoff": 0.4,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 28.9
+       "top5": 29.0
       },
       "delta": {
        "playoff": 0.2,
@@ -3701,13 +3961,13 @@
         "playoff": 0.2,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 46.7
+        "top5": 46.8
        },
        "after": {
         "playoff": 0.0,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 58.8
+        "top5": 58.9
        },
        "delta": {
         "playoff": -0.2,
@@ -3751,13 +4011,13 @@
         "playoff": 0.2,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 46.7
+        "top5": 46.8
        },
        "after": {
         "playoff": 0.4,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 28.9
+        "top5": 29.0
        },
        "delta": {
         "playoff": 0.2,
@@ -3835,6 +4095,8 @@
     "papg": 24.9,
     "off_rank": 30,
     "def_rank": 21,
+    "off_scheme": "Run-First / Ground Control",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Kyle McCord",
     "coach": "Jeff Hafley",
     "rest": 7,
@@ -3855,6 +4117,8 @@
     "papg": 22.1,
     "off_rank": 1,
     "def_rank": 15,
+    "off_scheme": "Explosive Play-Action & Balanced",
+    "def_scheme": "Pass-Rush Pressure Front",
     "qb": "Josh Allen",
     "coach": "Joe Brady",
     "rest": 7,
@@ -3875,12 +4139,34 @@
      "text": "MIA (1-8, 4th in AFC East) enters with 0% playoff odds; BUF (8-1, 1st in AFC East) sits at 100%. With both clubs positioned near the top of the AFC, conference #1-seed bye odds swing by 26 percentage points."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Kyle McCord vs. Josh Allen at quarterback. MIA averages 16.4 PPG (#30 offense) and allows 24.9 (#21 defense), while BUF scores 31.9 (#1) and allows 22.1 (#15)."
-    },
-    {
      "label": "Context & Angles",
      "text": "First AFC East meeting of the season\u2014division wins double as primary tiebreakers. Recent form: MIA is on a L3 streak and BUF is on a W5 streak."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When MIA has the ball",
+     "off_team": "MIA",
+     "def_team": "BUF",
+     "off_scheme": "Run-First / Ground Control",
+     "def_scheme": "Pass-Rush Pressure Front",
+     "edge_team": "",
+     "edge_label": "Even style clash",
+     "clash": "Led by Kyle McCord, MIA runs a Run-First / Ground Control scheme (53% pass, 9.4-yd avg depth of target, 46% of passing yards after the catch). BUF counters with a Pass-Rush Pressure Front defense (27% pressure rate, 19% tackles for loss on runs, allowing 9.7% explosive throws). That creates a clear protection stress test: MIA takes sacks on 10.0% of dropbacks against a front that disrupts timing relentlessly.",
+     "track_record": "MIA vs. high-pressure fronts: 0-4 (4g), -0.12 EPA/play (season avg -0.06). BUF def vs. run-first offenses: 2-0 (2g), allowing -0.24 EPA/play (season avg -0.00).",
+     "watch_for": "Watch 1st-down pass protection and quick outlets: for MIA's style to work, they must stay out of 3rd-and-long and hold BUF under 3 sacks. If BUF wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+    },
+    {
+     "title": "When BUF has the ball",
+     "off_team": "BUF",
+     "def_team": "MIA",
+     "off_scheme": "Explosive Play-Action & Balanced",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "BUF",
+     "edge_label": "Edge: BUF Off",
+     "clash": "Led by Josh Allen, BUF runs an Explosive Play-Action & Balanced scheme (48% pass, 9.1-yd avg depth of target, 50% of passing yards after the catch, 13.6% explosive 20+ yd throws). MIA counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 14% tackles for loss on runs, allowing 9.9% explosive throws). MIA can be vulnerable to vertical shots (9.9% explosive pass rate allowed), giving BUF room to attack downfield if protection holds.",
+     "track_record": "BUF vs. balanced zone defenses: 1-0 (1g), +0.25 EPA/play (season avg +0.14). MIA def vs. explosive passing offenses: 0-3 (3g), allowing +0.20 EPA/play (season avg +0.05).",
+     "watch_for": "Watch play-action and deep crossers: BUF wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; MIA survives by winning early downs and creating pressure before deep routes develop."
     }
    ],
    "drivers": [
@@ -3926,20 +4212,20 @@
      "base": {
       "playoff": 99.9,
       "div": 99.3,
-      "bye": 45.9,
+      "bye": 45.8,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 99.9,
        "div": 99.3,
-       "bye": 45.9,
+       "bye": 45.8,
        "top5": 0.0
       },
       "after": {
        "playoff": 99.9,
        "div": 99.4,
-       "bye": 49.1,
+       "bye": 49.0,
        "top5": 0.0
       },
       "delta": {
@@ -3953,7 +4239,7 @@
       "base": {
        "playoff": 99.9,
        "div": 99.3,
-       "bye": 45.9,
+       "bye": 45.8,
        "top5": 0.0
       },
       "after": {
@@ -3965,7 +4251,7 @@
       "delta": {
        "playoff": -0.4,
        "div": -0.7,
-       "bye": -23.3,
+       "bye": -23.2,
        "top5": 0.0
       }
      }
@@ -4021,7 +4307,7 @@
     },
     "total_playoff_swing": 0.4,
     "total_div_swing": 0.8,
-    "total_bye_swing": 26.5,
+    "total_bye_swing": 26.4,
     "total_draft_swing": 19.6,
     "branches": {
      "home": {
@@ -4032,13 +4318,13 @@
        "base": {
         "playoff": 99.9,
         "div": 99.3,
-        "bye": 45.9,
+        "bye": 45.8,
         "top5": 0.0
        },
        "after": {
         "playoff": 99.9,
         "div": 99.4,
-        "bye": 49.1,
+        "bye": 49.0,
         "top5": 0.0
        },
        "delta": {
@@ -4081,7 +4367,7 @@
        "base": {
         "playoff": 99.9,
         "div": 99.3,
-        "bye": 45.9,
+        "bye": 45.8,
         "top5": 0.0
        },
        "after": {
@@ -4093,7 +4379,7 @@
        "delta": {
         "playoff": -0.4,
         "div": -0.7,
-        "bye": -23.3,
+        "bye": -23.2,
         "top5": 0.0
        }
       },
@@ -4152,7 +4438,7 @@
       "metric": "#1-seed bye",
       "swing": 5.2,
       "if_home_playoff": 99.0,
-      "if_away_playoff": 99.0
+      "if_away_playoff": 99.1
      }
     ]
    },
@@ -4198,11 +4484,11 @@
    "div_game": false,
    "stadium": "GEHA Field at Arrowhead Stadium",
    "roof": "outdoors",
-   "spread_line": 16.5,
-   "spread_label": "KC -16.5",
+   "spread_line": 15.5,
+   "spread_label": "KC -15.5",
    "total_line": 40.5,
-   "home_win_prob": 89,
-   "away_win_prob": 11,
+   "home_win_prob": 88,
+   "away_win_prob": 12,
    "away": {
     "team": "ARI",
     "name": "Cardinals",
@@ -4216,6 +4502,8 @@
     "papg": 28.9,
     "off_rank": 29,
     "def_rank": 31,
+    "off_scheme": "High-Volume Spread Passing",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Gardner Minshew",
     "coach": "Mike LaFleur",
     "rest": 7,
@@ -4236,31 +4524,55 @@
     "papg": 17.3,
     "off_rank": 8,
     "def_rank": 3,
+    "off_scheme": "Quick-Game & YAC Rhythm",
+    "def_scheme": "Run-Stuffing Pass Funnel",
     "qb": "Patrick Mahomes",
     "coach": "Andy Reid",
     "rest": 7,
     "score": null,
     "playoff_pct": 99.0,
-    "div_pct": 62.7
+    "div_pct": 61.9
    },
    "interest_score": 22,
    "tier": "Niche",
    "tags": [
     "High Leverage"
    ],
-   "hook": "KC -16.5 mismatch; watch whether ARI keeps it live past halftime.",
+   "hook": "KC -15.5 mismatch; watch whether ARI keeps it live past halftime.",
    "why_watch": [
     {
      "label": "The Stakes",
      "text": "ARI (3-7, 4th in NFC West) enters with 0% playoff odds; KC (7-2, 1st in AFC West) sits at 99%. Division-title odds shift by 18 pts."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Gardner Minshew vs. Patrick Mahomes at quarterback. ARI averages 18.4 PPG (#29 offense) and allows 28.9 (#31 defense), while KC scores 26.3 (#8) and allows 17.3 (#3)."
+     "label": "Context & Angles",
+     "text": "Played at GEHA Field at Arrowhead Stadium (outdoors). Market line is KC -15.5 with a 40.5 total."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When ARI has the ball",
+     "off_team": "ARI",
+     "def_team": "KC",
+     "off_scheme": "High-Volume Spread Passing",
+     "def_scheme": "Run-Stuffing Pass Funnel",
+     "edge_team": "KC",
+     "edge_label": "Edge: KC Def",
+     "clash": "Led by Gardner Minshew, ARI runs a High-Volume Spread Passing scheme (63% pass, 7.2-yd avg depth of target, 43% of passing yards after the catch). KC counters with a Run-Stuffing Pass Funnel defense (18% pressure rate, 22% tackles for loss on runs, allowing 8.2% explosive throws). Analytically, ARI's cleanest path runs through the passing game (pass net -0.12 EPA/db, rush net -0.13 EPA/carry).",
+     "track_record": "ARI vs. run-stuffing fronts: 0-3 (3g), -0.13 EPA/play (season avg -0.05). KC def vs. pass-heavy spread offenses: 1-0 (1g), allowing +0.04 EPA/play (season avg -0.07).",
+     "watch_for": "Watch early-down efficiency in the passing game: if ARI stays ahead of the chains and avoids negative plays, its play-calling stays balanced; KC wins by tightening up in the red zone and forcing 3rd-and-long throws."
     },
     {
-     "label": "Context & Angles",
-     "text": "Played at GEHA Field at Arrowhead Stadium (outdoors). Market line is KC -16.5 with a 40.5 total."
+     "title": "When KC has the ball",
+     "off_team": "KC",
+     "def_team": "ARI",
+     "off_scheme": "Quick-Game & YAC Rhythm",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "KC",
+     "edge_label": "Edge: KC Off",
+     "clash": "Led by Patrick Mahomes, KC runs a Quick-Game & YAC Rhythm scheme (56% pass, 6.0-yd avg depth of target, 65% of passing yards after the catch). ARI counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 15% tackles for loss on runs, allowing 10.6% explosive throws). KC gets the ball out fast and asks playmakers to break tackles in space, testing ARI's open-field tackling and flat defenders.",
+     "track_record": "KC vs. balanced zone defenses: 1-0 (1g), +0.11 EPA/play (season avg +0.11). ARI def vs. quick-game / YAC offenses: 0-1 (1g), allowing +0.14 EPA/play (season avg +0.09).",
+     "watch_for": "Watch tackling on screens, slants, and flat routes: KC's offense succeeds when short throws turn into 10+ yard gains after the catch; ARI wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
     }
    ],
    "drivers": [
@@ -4274,9 +4586,9 @@
     {
      "id": "competitiveness",
      "label": "Competitiveness (spread)",
-     "points": 0.9,
+     "points": 1.1,
      "max": 24,
-     "value": "KC -16.5"
+     "value": "KC -15.5"
     },
     {
      "id": "pace",
@@ -4305,47 +4617,47 @@
      "team": "KC",
      "base": {
       "playoff": 99.0,
-      "div": 62.7,
-      "bye": 13.6,
+      "div": 61.9,
+      "bye": 13.5,
       "top5": 0.0
      },
      "if_home": {
       "base": {
        "playoff": 99.0,
-       "div": 62.7,
-       "bye": 13.6,
+       "div": 61.9,
+       "bye": 13.5,
        "top5": 0.0
       },
       "after": {
-       "playoff": 99.2,
-       "div": 64.6,
+       "playoff": 99.3,
+       "div": 64.1,
        "bye": 14.8,
        "top5": 0.0
       },
       "delta": {
-       "playoff": 0.2,
-       "div": 1.9,
-       "bye": 1.2,
+       "playoff": 0.3,
+       "div": 2.2,
+       "bye": 1.3,
        "top5": 0.0
       }
      },
      "if_away": {
       "base": {
        "playoff": 99.0,
-       "div": 62.7,
-       "bye": 13.6,
+       "div": 61.9,
+       "bye": 13.5,
        "top5": 0.0
       },
       "after": {
        "playoff": 97.2,
-       "div": 46.2,
+       "div": 45.6,
        "bye": 5.6,
        "top5": 0.0
       },
       "delta": {
        "playoff": -1.8,
-       "div": -16.5,
-       "bye": -8.0,
+       "div": -16.3,
+       "bye": -7.9,
        "top5": 0.0
       }
      }
@@ -4356,14 +4668,14 @@
       "playoff": 0.0,
       "div": 0.0,
       "bye": 0.0,
-      "top5": 37.7
+      "top5": 37.3
      },
      "if_home": {
       "base": {
        "playoff": 0.0,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 37.7
+       "top5": 37.3
       },
       "after": {
        "playoff": 0.0,
@@ -4375,7 +4687,7 @@
        "playoff": 0.0,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 2.7
+       "top5": 3.1
       }
      },
      "if_away": {
@@ -4383,7 +4695,7 @@
        "playoff": 0.0,
        "div": 0.0,
        "bye": 0.0,
-       "top5": 37.7
+       "top5": 37.3
       },
       "after": {
        "playoff": 0.0,
@@ -4395,12 +4707,12 @@
        "playoff": 0.0,
        "div": 0.0,
        "bye": 0.0,
-       "top5": -21.4
+       "top5": -21.0
       }
      }
     },
-    "total_playoff_swing": 2.0,
-    "total_div_swing": 18.4,
+    "total_playoff_swing": 2.1,
+    "total_div_swing": 18.5,
     "total_bye_swing": 9.2,
     "total_draft_swing": 24.1,
     "branches": {
@@ -4411,20 +4723,20 @@
       "home": {
        "base": {
         "playoff": 99.0,
-        "div": 62.7,
-        "bye": 13.6,
+        "div": 61.9,
+        "bye": 13.5,
         "top5": 0.0
        },
        "after": {
-        "playoff": 99.2,
-        "div": 64.6,
+        "playoff": 99.3,
+        "div": 64.1,
         "bye": 14.8,
         "top5": 0.0
        },
        "delta": {
-        "playoff": 0.2,
-        "div": 1.9,
-        "bye": 1.2,
+        "playoff": 0.3,
+        "div": 2.2,
+        "bye": 1.3,
         "top5": 0.0
        }
       },
@@ -4433,7 +4745,7 @@
         "playoff": 0.0,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 37.7
+        "top5": 37.3
        },
        "after": {
         "playoff": 0.0,
@@ -4445,7 +4757,7 @@
         "playoff": 0.0,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 2.7
+        "top5": 3.1
        }
       },
       "notes": [
@@ -4459,20 +4771,20 @@
       "home": {
        "base": {
         "playoff": 99.0,
-        "div": 62.7,
-        "bye": 13.6,
+        "div": 61.9,
+        "bye": 13.5,
         "top5": 0.0
        },
        "after": {
         "playoff": 97.2,
-        "div": 46.2,
+        "div": 45.6,
         "bye": 5.6,
         "top5": 0.0
        },
        "delta": {
         "playoff": -1.8,
-        "div": -16.5,
-        "bye": -8.0,
+        "div": -16.3,
+        "bye": -7.9,
         "top5": 0.0
        }
       },
@@ -4481,7 +4793,7 @@
         "playoff": 0.0,
         "div": 0.0,
         "bye": 0.0,
-        "top5": 37.7
+        "top5": 37.3
        },
        "after": {
         "playoff": 0.0,
@@ -4493,7 +4805,7 @@
         "playoff": 0.0,
         "div": 0.0,
         "bye": 0.0,
-        "top5": -21.4
+        "top5": -21.0
        }
       },
       "notes": [
@@ -4508,9 +4820,9 @@
       "record": "7-2",
       "roots_for": "ARI",
       "metric": "division",
-      "swing": 18.0,
-      "if_home_playoff": 96.7,
-      "if_away_playoff": 96.7
+      "swing": 18.2,
+      "if_home_playoff": 96.8,
+      "if_away_playoff": 96.8
      },
      {
       "team": "JAX",
@@ -4528,9 +4840,9 @@
       "record": "8-1",
       "roots_for": "ARI",
       "metric": "#1-seed bye",
-      "swing": 2.9,
+      "swing": 2.8,
       "if_home_playoff": 99.9,
-      "if_away_playoff": 99.9
+      "if_away_playoff": 100.0
      }
     ]
    },
@@ -4538,7 +4850,7 @@
     {
      "category": "Winner & Margin",
      "title": "Who wins\u2014and whether KC holds control at halftime",
-     "benchmark": "Pregame line: KC -16.5 (expected half ~6\u201314)",
+     "benchmark": "Pregame line: KC -15.5 (expected half ~6\u201314)",
      "why": "A single result swings combined playoff odds by 2 percentage points and division odds by 18 pts. Predicting whether ARI can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
      "model_slug": "nfl-halftime-win",
      "model_label": "Run in Halftime Win Model",
@@ -4556,8 +4868,8 @@
     {
      "category": "Game Script & Blowout Risk",
      "title": "Does KC cruise early, or does ARI drag this into a live second half?",
-     "benchmark": "Upset alert if ARI is within 3 pts at half (spread KC -16.5)",
-     "why": "With a heavy KC -16.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "benchmark": "Upset alert if ARI is within 3 pts at half (spread KC -15.5)",
+     "why": "With a heavy KC -15.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
      "model_slug": "nfl-halftime-game-types",
      "model_label": "Classify Halftime Game Type",
      "model_url": "/m/nfl-halftime-game-types?home_h1_pts=14&away_h1_pts=6&game=ARI+%40+KC+%28Wk+11%29"
@@ -4594,6 +4906,8 @@
     "papg": 27.0,
     "off_rank": 26,
     "def_rank": 29,
+    "off_scheme": "Balanced Multiple Offense",
+    "def_scheme": "Balanced Zone / Bend-Don't-Break",
     "qb": "Daniel Jones",
     "coach": "Shane Steichen",
     "rest": 4,
@@ -4614,11 +4928,13 @@
     "papg": 22.2,
     "off_rank": 9,
     "def_rank": 17,
+    "off_scheme": "Vertical Air-Yards Attack",
+    "def_scheme": "Aggressive Front / Boom-or-Bust",
     "qb": "C.J. Stroud",
     "coach": "DeMeco Ryans",
     "rest": 4,
     "score": 26,
-    "playoff_pct": 25.2,
+    "playoff_pct": 25.4,
     "div_pct": 1.3
    },
    "interest_score": 27,
@@ -4634,19 +4950,41 @@
      "text": "IND (3-8, 3rd in AFC South) vs. HOU (4-6, 2nd in AFC South)."
     },
     {
-     "label": "Matchup & Style",
-     "text": "Daniel Jones vs. C.J. Stroud at quarterback. IND averages 19.2 PPG (#26 offense) and allows 27.0 (#29 defense), while HOU scores 25.9 (#9) and allows 22.2 (#17)."
-    },
-    {
      "label": "Context & Angles",
      "text": "Divisional rematch: IND won Week 3 (HOU 17\u201319 IND), putting a season sweep and head-to-head tiebreaker on the line. Standalone Thursday night window (20:15 ET) at Reliant Stadium."
+    }
+   ],
+   "style_matchups": [
+    {
+     "title": "When IND has the ball",
+     "off_team": "IND",
+     "def_team": "HOU",
+     "off_scheme": "Balanced Multiple Offense",
+     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "edge_team": "HOU",
+     "edge_label": "Edge: HOU Def",
+     "clash": "Led by Daniel Jones, IND runs a Balanced Multiple Offense scheme (56% pass, 7.6-yd avg depth of target, 53% of passing yards after the catch). HOU counters with an Aggressive Front / Boom-or-Bust defense (28% pressure rate, 24% tackles for loss on runs, allowing 11.0% explosive throws). It's a strength-on-strength trench clash\u2014IND keeps a clean pocket (7.3% sack rate) against an aggressive pass rush.",
+     "track_record": "Head-to-head (Wk 3): IND produced -0.09 EPA/play (235 pass yds, 89 rush yds, 4 sacks taken) against HOU. IND vs. aggressive pressure fronts: 1-1 (2g), -0.08 EPA/play (season avg -0.12). HOU def vs. balanced offenses: 1-3 (4g), allowing -0.05 EPA/play (season avg -0.02).",
+     "watch_for": "Watch whether HOU's blitzes and stunts force early checkdowns: if IND picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if HOU collapses the pocket without extra rushers, IND's rhythm stalls."
+    },
+    {
+     "title": "When HOU has the ball",
+     "off_team": "HOU",
+     "def_team": "IND",
+     "off_scheme": "Vertical Air-Yards Attack",
+     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "edge_team": "HOU",
+     "edge_label": "Edge: HOU Off",
+     "clash": "Led by C.J. Stroud, HOU runs a Vertical Air-Yards Attack scheme (59% pass, 9.3-yd avg depth of target, 39% of passing yards after the catch, 10.6% explosive 20+ yd throws). IND counters with a Balanced Zone / Bend-Don't-Break defense (22% pressure rate, 12% tackles for loss on runs, allowing 11.1% explosive throws). IND can be vulnerable to vertical shots (11.1% explosive pass rate allowed), giving HOU room to attack downfield if protection holds.",
+     "track_record": "Head-to-head (Wk 3): HOU produced -0.07 EPA/play (167 pass yds, 70 rush yds, 3 sacks taken) against IND. HOU vs. balanced zone defenses: 1-2 (3g), +0.08 EPA/play (season avg +0.04). IND def vs. vertical & explosive passing offenses: 3-3 (6g), allowing +0.01 EPA/play (season avg +0.03).",
+     "watch_for": "Watch play-action and deep crossers: HOU wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; IND survives by winning early downs and creating pressure before deep routes develop."
     }
    ],
    "drivers": [
     {
      "id": "leverage",
      "label": "Stakes & playoff leverage",
-     "points": 4.4,
+     "points": 4.5,
      "max": 34,
      "value": "Completed game"
     },

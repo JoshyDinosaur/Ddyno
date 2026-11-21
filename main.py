@@ -606,7 +606,7 @@ def leaders(page: str = "hub"):
 
 # ------------------------------------------------------------- game watch & implications
 WATCH_REFRESH_SECONDS = 6 * 3600
-WATCH = {"data": None, "rows": None, "weeks": {}, "live": False}
+WATCH = {"data": None, "rows": None, "team_rows": None, "weeks": {}, "live": False}
 WATCH_NOTES = ROOT / "models" / "watch_notes.json"
 
 
@@ -616,6 +616,7 @@ def _refresh_watch_forever():
             bundle = watch.build_all_weeks_cache(notes_path=WATCH_NOTES)
             WATCH["data"] = bundle["active"]
             WATCH["rows"] = bundle["rows"]
+            WATCH["team_rows"] = bundle["team_rows"]
             WATCH["weeks"] = {bundle["active"]["week"]: bundle["active"]}
             WATCH["live"] = True
         except Exception as e:                           # keep snapshot / previous refresh; retry later
@@ -642,7 +643,10 @@ def api_watch(week: int | None = None):
     if week in WATCH["weeks"]:
         return {**WATCH["weeks"][week], "live": WATCH["live"]}
     if WATCH["rows"] is not None and week in data.get("available_weeks", []):
-        computed = watch.build_watch_data(week=week, season=data["season"], notes_path=WATCH_NOTES, raw_rows=WATCH["rows"])
+        computed = watch.build_watch_data(
+            week=week, season=data["season"], notes_path=WATCH_NOTES,
+            raw_rows=WATCH["rows"], team_rows=WATCH["team_rows"],
+        )
         WATCH["weeks"][week] = computed
         return {**computed, "live": WATCH["live"]}
     raise HTTPException(404, f"Week {week} is not available right now.")

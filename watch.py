@@ -21,6 +21,7 @@ from pathlib import Path
 import numpy as np
 
 NFLVERSE_SCHEDULE = "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
+NFLVERSE_TEAM_WEEK = "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_week_{season}.csv"
 
 # Conference, division, and display names for all 32 NFL teams (nflverse abbreviations).
 TEAMS: dict[str, dict[str, str]] = {
@@ -124,6 +125,391 @@ def _fetch_schedule_rows(url: str = NFLVERSE_SCHEDULE) -> list[dict[str, str]]:
     req = urllib.request.Request(url, headers={"User-Agent": "ddyno"})
     with urllib.request.urlopen(req, timeout=45) as r:
         return list(csv.DictReader(io.TextIOWrapper(r, encoding="utf-8", newline="")))
+
+
+def _fetch_team_week_rows(season: int) -> list[dict[str, str]]:
+    """Fetch per-team weekly offensive/defensive stats (~120 KB) for scheme & style analysis."""
+    url = NFLVERSE_TEAM_WEEK.format(season=season)
+    req = urllib.request.Request(url, headers={"User-Agent": "ddyno"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return [x for x in csv.DictReader(io.TextIOWrapper(r, encoding="utf-8", newline="")) if x.get("season_type") == "REG"]
+    except Exception:
+        return []
+
+
+def _num0(row: dict[str, str], key: str) -> float:
+    return _opt_float(row.get(key)) or 0.0
+
+
+def _compute_style_profiles(
+    team_rows: list[dict[str, str]],
+    finished_games: list[dict],
+) -> tuple[dict[str, dict], dict[tuple[str, str], list[dict]]]:
+    """Derive each team's offensive & defensive play style and game-by-game matchup logs."""
+    if not team_rows:
+        return {}, {}
+
+    # Outcome map by (game_id, team) -> 'W'/'L'/'T'
+    outcome_by_gt: dict[tuple[str, str], str] = {}
+    for g in finished_games:
+        hs, as_ = g["home_score"], g["away_score"]
+        if hs is None or as_ is None:
+            continue
+        if hs > as_:
+            outcome_by_gt[(g["game_id"], g["home_team"])] = "W"
+            outcome_by_gt[(g["game_id"], g["away_team"])] = "L"
+        elif as_ > hs:
+            outcome_by_gt[(g["game_id"], g["away_team"])] = "W"
+            outcome_by_gt[(g["game_id"], g["home_team"])] = "L"
+        else:
+            outcome_by_gt[(g["game_id"], g["home_team"])] = "T"
+            outcome_by_gt[(g["game_id"], g["away_team"])] = "T"
+
+    by_game: dict[str, dict[str, dict[str, str]]] = {}
+    for r in team_rows:
+        by_game.setdefault(r["game_id"], {})[r["team"]] = r
+
+    raw: dict[str, dict[str, float]] = {}
+    game_logs: dict[str, list[dict]] = {t: [] for t in TEAM_LIST}
+    h2h_logs: dict[tuple[str, str], list[dict]] = {}
+
+    for r in team_rows:
+        t = r.get("team", "")
+        opp_t = r.get("opponent_team", "")
+        gid = r.get("game_id", "")
+        opp = by_game.get(gid, {}).get(opp_t)
+        if t not in TEAMS or opp_t not in TEAMS or not opp:
+            continue
+        a = raw.setdefault(t, {k: 0.0 for k in (
+            "g", "att", "comp", "py", "air", "yac", "p20", "pepa", "sacks_s", "ints",
+            "car", "ry", "r10", "repa",
+            "o_att", "o_sacks_s", "o_py", "o_air", "o_yac", "o_p20", "o_pepa",
+            "o_car", "o_ry", "o_r10", "o_repa",
+            "dsacks", "dqbh", "dtfl", "dint", "dpd", "dff",
+        )})
+        att, sacks_s = _num0(r, "attempts"), _num0(r, "sacks_suffered")
+        py, air, yac, p20 = _num0(r, "passing_yards"), _num0(r, "passing_air_yards"), _num0(r, "passing_yards_after_catch"), _num0(r, "passing_20")
+        pepa, ints = _num0(r, "passing_epa"), _num0(r, "passing_interceptions")
+        car, ry, r10, repa = _num0(r, "carries"), _num0(r, "rushing_yards"), _num0(r, "rushing_10"), _num0(r, "rushing_epa")
+
+        o_att, o_sacks_s = _num0(opp, "attempts"), _num0(opp, "sacks_suffered")
+        o_py, o_air, o_yac, o_p20 = _num0(opp, "passing_yards"), _num0(opp, "passing_air_yards"), _num0(opp, "passing_yards_after_catch"), _num0(opp, "passing_20")
+        o_pepa = _num0(opp, "passing_epa")
+        o_car, o_ry, o_r10, o_repa = _num0(opp, "carries"), _num0(opp, "rushing_yards"), _num0(opp, "rushing_10"), _num0(opp, "rushing_epa")
+
+        dsacks, dqbh = _num0(r, "def_sacks"), _num0(r, "def_qb_hits")
+        dtfl, dint, dpd, dff = _num0(r, "def_tackles_for_loss"), _num0(r, "def_interceptions"), _num0(r, "def_pass_defended"), _num0(r, "def_fumbles_forced")
+
+        a["g"] += 1
+        a["att"] += att; a["comp"] += _num0(r, "completions"); a["py"] += py; a["air"] += air; a["yac"] += yac
+        a["p20"] += p20; a["pepa"] += pepa; a["sacks_s"] += sacks_s; a["ints"] += ints
+        a["car"] += car; a["ry"] += ry; a["r10"] += r10; a["repa"] += repa
+        a["o_att"] += o_att; a["o_sacks_s"] += o_sacks_s; a["o_py"] += o_py; a["o_air"] += o_air; a["o_yac"] += o_yac
+        a["o_p20"] += o_p20; a["o_pepa"] += o_pepa; a["o_car"] += o_car; a["o_ry"] += o_ry; a["o_r10"] += o_r10; a["o_repa"] += o_repa
+        a["dsacks"] += dsacks; a["dqbh"] += dqbh; a["dtfl"] += dtfl; a["dint"] += dint; a["dpd"] += dpd; a["dff"] += dff
+
+        db = max(1.0, att + sacks_s)
+        plays = max(1.0, db + car)
+        odb = max(1.0, o_att + o_sacks_s)
+        oplays = max(1.0, odb + o_car)
+        res = outcome_by_gt.get((gid, t), "")
+        wk = _opt_int(r.get("week")) or 0
+        entry = {
+            "game_id": gid, "week": wk, "opp": opp_t, "res": res,
+            "off_epa": (pepa + repa) / plays, "pass_epa": pepa / db, "rush_epa": repa / max(1.0, car),
+            "py": py, "ry": ry, "sacks_s": sacks_s, "p20": p20,
+            "def_epa_allowed": (o_pepa + o_repa) / oplays, "def_pass_epa": o_pepa / odb, "def_rush_epa": o_repa / max(1.0, o_car),
+            "dsacks": dsacks, "dqbh": dqbh, "dtfl": dtfl, "o_p20": o_p20,
+        }
+        game_logs[t].append(entry)
+        h2h_logs.setdefault((t, opp_t), []).append(entry)
+
+    if len(raw) < 16:
+        return {}, {}
+
+    # Compute per-team rate metrics
+    metrics: dict[str, dict[str, float]] = {}
+    for t, a in raw.items():
+        db = max(1.0, a["att"] + a["sacks_s"])
+        plays = max(1.0, db + a["car"])
+        odb = max(1.0, a["o_att"] + a["o_sacks_s"])
+        oplays = max(1.0, odb + a["o_car"])
+        metrics[t] = {
+            "pass_rate": db / plays,
+            "adot": a["air"] / max(1.0, a["att"]),
+            "yac_share": a["yac"] / max(1.0, a["py"]),
+            "exp_pass_rate": a["p20"] / max(1.0, a["att"]),
+            "chunk_rush_rate": a["r10"] / max(1.0, a["car"]),
+            "pass_epa": a["pepa"] / db,
+            "rush_epa": a["repa"] / max(1.0, a["car"]),
+            "off_epa": (a["pepa"] + a["repa"]) / plays,
+            "sack_rate": a["sacks_s"] / db,
+            "int_rate": a["ints"] / max(1.0, a["att"]),
+            "pressure_rate": (a["dsacks"] + a["dqbh"]) / odb,
+            "def_sack_rate": a["dsacks"] / odb,
+            "tfl_rate": a["dtfl"] / max(1.0, a["o_car"]),
+            "ballhawk_rate": (a["dint"] + a["dpd"]) / max(1.0, a["o_att"]),
+            "havoc_rate": (a["dsacks"] + a["dtfl"] + a["dint"] + a["dff"]) / oplays,
+            "opp_exp_pass_rate": a["o_p20"] / max(1.0, a["o_att"]),
+            "opp_adot": a["o_air"] / max(1.0, a["o_att"]),
+            "opp_yac_share": a["o_yac"] / max(1.0, a["o_py"]),
+            "opp_pass_epa": a["o_pepa"] / odb,
+            "opp_rush_epa": a["o_repa"] / max(1.0, a["o_car"]),
+            "def_epa_allowed": (a["o_pepa"] + a["o_repa"]) / oplays,
+        }
+
+    # League-wide z-scores & top-10 style buckets
+    keys = list(next(iter(metrics.values())).keys())
+    league_mean = {k: float(np.mean([metrics[t][k] for t in metrics])) for k in keys}
+    league_std = {k: max(1e-6, float(np.std([metrics[t][k] for t in metrics]))) for k in keys}
+    z = {t: {k: (metrics[t][k] - league_mean[k]) / league_std[k] for k in keys} for t in metrics}
+
+    def top_set(key: str, n: int = 10, reverse: bool = True) -> set[str]:
+        return set(sorted(metrics.keys(), key=lambda t: metrics[t][key], reverse=reverse)[:n])
+
+    buckets = {
+        # Defense buckets (for querying how an offense fares against them)
+        "high_pressure": top_set("pressure_rate", 10, True),
+        "anti_explosive": top_set("opp_exp_pass_rate", 10, False),
+        "run_stuffer": top_set("tfl_rate", 10, True),
+        "ballhawk_cov": top_set("opp_pass_epa", 10, False),
+        "soft_front": top_set("pressure_rate", 12, False),
+        # Offense buckets (for querying how a defense fares against them)
+        "pass_heavy": top_set("pass_rate", 10, True),
+        "run_first": top_set("pass_rate", 10, False),
+        "vertical_exp": top_set("exp_pass_rate", 10, True) | top_set("adot", 8, True),
+        "yac_quick": top_set("yac_share", 10, True),
+        "balanced_off": set(sorted(metrics.keys(), key=lambda t: abs(z[t]["pass_rate"]))[:12]),
+    }
+
+    styles: dict[str, dict] = {}
+    for t in metrics:
+        m, zt = metrics[t], z[t]
+
+        # Classify offensive play style
+        if zt["pass_rate"] >= 0.85 and zt["adot"] >= 0.35:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "air_vertical", "Vertical Spread Passing", "pass_heavy", "pass-heavy spread offenses"
+        elif zt["pass_rate"] >= 0.8:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "spread_pass", "High-Volume Spread Passing", "pass_heavy", "pass-heavy spread offenses"
+        elif zt["exp_pass_rate"] >= 0.85 and zt["pass_epa"] >= 0.4:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "explosive_balanced", "Explosive Play-Action & Balanced", "vertical_exp", "explosive passing offenses"
+        elif zt["pass_rate"] <= -0.8 and (zt["rush_epa"] >= 0.15 or zt["chunk_rush_rate"] >= 0.25):
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "ground_control", "Run-First / Ground Control", "run_first", "run-first offenses"
+        elif zt["pass_rate"] <= -0.75:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "run_first", "Run-Heavy / Play-Action", "run_first", "run-first offenses"
+        elif zt["adot"] >= 0.8 and zt["yac_share"] <= -0.25:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "vertical_air", "Vertical Air-Yards Attack", "vertical_exp", "vertical & explosive passing offenses"
+        elif zt["yac_share"] >= 0.8:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "yac_rhythm", "Quick-Game & YAC Rhythm", "yac_quick", "quick-game / YAC offenses"
+        elif zt["adot"] <= -0.55:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "short_rhythm", "Short Rhythm & Possession", "yac_quick", "short-rhythm / YAC offenses"
+        else:
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "balanced_multiple", "Balanced Multiple Offense", "balanced_off", "balanced offenses"
+
+        # Classify defensive play style
+        if zt["tfl_rate"] >= 0.7 and zt["opp_exp_pass_rate"] >= 0.4:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "aggressive_front", "Aggressive Front / Boom-or-Bust", "high_pressure", "aggressive pressure fronts"
+        elif zt["pressure_rate"] >= 0.9 and zt["havoc_rate"] >= 0.5:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_havoc", "High-Pressure Havoc Front", "high_pressure", "high-pressure fronts"
+        elif zt["opp_exp_pass_rate"] <= -0.65 and zt["ballhawk_rate"] >= 0.65:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "ballhawk_shell", "Ball-Hawk Shell Coverage", "anti_explosive", "two-high / anti-explosive shells"
+        elif zt["opp_exp_pass_rate"] <= -0.6 and zt["pressure_rate"] <= 0.35:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "two_high_shell", "Two-High Anti-Explosive Shell", "anti_explosive", "two-high / anti-explosive shells"
+        elif zt["tfl_rate"] >= 0.65 and zt["opp_rush_epa"] <= -0.15:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "run_stuff_funnel", "Run-Stuffing Pass Funnel", "run_stuffer", "run-stuffing fronts"
+        elif zt["opp_pass_epa"] <= -0.45 and zt["opp_rush_epa"] >= 0.2:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "light_box_cov", "Light-Box Coverage (Run Funnel)", "ballhawk_cov", "coverage-first defenses"
+        elif zt["pressure_rate"] >= 0.6:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_front", "Pass-Rush Pressure Front", "high_pressure", "high-pressure fronts"
+        else:
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "balanced_zone", "Balanced Zone / Bend-Don't-Break", "soft_front", "balanced zone defenses"
+
+        styles[t] = {
+            "metrics": m,
+            "z": zt,
+            "off_key": off_key, "off_label": off_lbl,
+            "off_bucket": off_bucket, "off_bucket_label": off_bucket_lbl,
+            "def_key": def_key, "def_label": def_lbl,
+            "def_bucket": def_bucket, "def_bucket_label": def_bucket_lbl,
+            "logs": game_logs.get(t, []),
+            "buckets": buckets,
+        }
+
+    return styles, h2h_logs
+
+
+def _split_summary(logs: list[dict], opp_set: set[str], side: str) -> dict | None:
+    """Summarize a team's record and efficiency against a specific opponent style bucket."""
+    hits = [x for x in logs if x["opp"] in opp_set]
+    if not hits:
+        return None
+    w = sum(1 for x in hits if x["res"] == "W")
+    l = sum(1 for x in hits if x["res"] == "L")
+    t = sum(1 for x in hits if x["res"] == "T")
+    if side == "off":
+        epa = float(np.mean([x["off_epa"] for x in hits]))
+        pepa = float(np.mean([x["pass_epa"] for x in hits]))
+        repa = float(np.mean([x["rush_epa"] for x in hits]))
+    else:
+        epa = float(np.mean([x["def_epa_allowed"] for x in hits]))
+        pepa = float(np.mean([x["def_pass_epa"] for x in hits]))
+        repa = float(np.mean([x["def_rush_epa"] for x in hits]))
+    return {"n": len(hits), "record": _fmt_rec(w, l, t), "epa": epa, "pass_epa": pepa, "rush_epa": repa}
+
+
+def _one_side_matchup(
+    off_team: str,
+    def_team: str,
+    qb_name: str,
+    styles: dict[str, dict],
+    h2h_logs: dict[tuple[str, str], list[dict]],
+    before_week: int,
+) -> dict:
+    """Build an analytical scheme clash, style track record, and 'what to watch for' cue for one side."""
+    os_ = styles[off_team]
+    ds_ = styles[def_team]
+    om, dm = os_["metrics"], ds_["metrics"]
+    oz, dz = os_["z"], ds_["z"]
+    buckets = os_["buckets"]
+
+    # Analytical efficiency balance (+ favors offense, - favors defense)
+    pass_net = om["pass_epa"] + dm["opp_pass_epa"]
+    rush_net = om["rush_epa"] + dm["opp_rush_epa"]
+    overall_net = om["pass_rate"] * pass_net + (1.0 - om["pass_rate"]) * rush_net
+    if overall_net >= 0.07:
+        edge_team, edge_label = off_team, f"Edge: {off_team} Off"
+    elif overall_net <= -0.07:
+        edge_team, edge_label = def_team, f"Edge: {def_team} Def"
+    else:
+        edge_team, edge_label = "", "Even style clash"
+
+    # Build the analytical clash description (scheme + key numbers, no PPG rankings)
+    _art = lambda s: "an" if s[:1].lower() in "aeiou" else "a"
+    qb_prefix = f"Led by {qb_name}, " if qb_name else ""
+    off_desc = (
+        f"{qb_prefix}{off_team} runs {_art(os_['off_label'])} {os_['off_label']} scheme "
+        f"({om['pass_rate'] * 100:.0f}% pass, {om['adot']:.1f}-yd avg depth of target, "
+        f"{om['yac_share'] * 100:.0f}% of passing yards after the catch"
+        + (f", {om['exp_pass_rate'] * 100:.1f}% explosive 20+ yd throws" if oz["exp_pass_rate"] >= 0.5 else "")
+        + ")."
+    )
+    def_desc = (
+        f"{def_team} counters with {_art(ds_['def_label'])} {ds_['def_label']} defense "
+        f"({dm['pressure_rate'] * 100:.0f}% pressure rate, {dm['tfl_rate'] * 100:.0f}% tackles for loss on runs, "
+        f"allowing {dm['opp_exp_pass_rate'] * 100:.1f}% explosive throws)."
+    )
+
+    # Identify the primary tactical tension & 'what to watch for' win condition
+    if dz["pressure_rate"] >= 0.65 and oz["sack_rate"] >= 0.35:
+        clash = f"{off_desc} {def_desc} That creates a clear protection stress test: {off_team} takes sacks on {om['sack_rate'] * 100:.1f}% of dropbacks against a front that disrupts timing relentlessly."
+        watch_for = (
+            f"Watch 1st-down pass protection and quick outlets: for {off_team}'s style to work, they must stay out of 3rd-and-long and hold {def_team} under 3 sacks. "
+            f"If {def_team} wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+        )
+    elif dz["pressure_rate"] >= 0.65:
+        clash = f"{off_desc} {def_desc} It's a strength-on-strength trench clash—{off_team} keeps a clean pocket ({om['sack_rate'] * 100:.1f}% sack rate) against an aggressive pass rush."
+        watch_for = (
+            f"Watch whether {def_team}'s blitzes and stunts force early checkdowns: if {off_team} picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; "
+            f"if {def_team} collapses the pocket without extra rushers, {off_team}'s rhythm stalls."
+        )
+    elif ds_["def_key"] in ("two_high_shell", "ballhawk_shell") and os_["off_key"] in ("vertical_air", "explosive_balanced", "air_vertical"):
+        clash = f"{off_desc} {def_desc} {off_team} hunts vertical chunk plays, while {def_team}'s shell is built to take away the deep shot and force long, patient drives."
+        watch_for = (
+            f"Watch {off_team}'s patience on underneath throws and early-down runs: if {off_team} takes the light-box yards and converts 3rd-and-short, {def_team} has to creep out of its shell; "
+            f"if {off_team} forces contested throws into bracket coverage, {def_team}'s ball-hawks win the turnover battle."
+        )
+    elif os_["off_key"] in ("spread_pass", "air_vertical") and ds_["def_key"] in ("balanced_zone", "light_box_cov", "two_high_shell"):
+        clash = f"{off_desc} {def_desc} {off_team} stresses zone spacing with high pass volume ({om['pass_rate'] * 100:.0f}%), forcing {def_team} to tackle cleanly underneath and close throwing windows quickly."
+        watch_for = (
+            f"Watch 3rd-down passing windows and red-zone conversion: {off_team}'s spread style wins when quick completions march down the field without stalling; "
+            f"{def_team}'s zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+        )
+    elif ds_["def_key"] == "ballhawk_shell":
+        clash = f"{off_desc} {def_desc} {def_team} relies on disciplined coverage and playmaking on the ball ({dm['ballhawk_rate'] * 100:.0f}% INT/PBU rate) rather than heavy pass rush."
+        watch_for = (
+            f"Watch quarterback decision-making over the middle: {off_team} succeeds by protecting the football and taking underneath completions; "
+            f"{def_team}'s defense flips the game if disguised coverages bait even 1–2 turnover-worthy throws."
+        )
+    elif os_["off_key"] in ("ground_control", "run_first") and ds_["def_key"] in ("run_stuff_funnel", "aggressive_front", "pressure_havoc"):
+        clash = f"{off_desc} {def_desc} Both sides want to dictate the line of scrimmage—{off_team} leans on physical rushing, while {def_team} shoots gaps to blow up plays behind the sticks."
+        watch_for = (
+            f"Watch yards before contact on 1st down: if {off_team} stays on schedule (4+ yards on early carries), play-action opens the middle of the field; "
+            f"if {def_team} stacks TFLs and turns {off_team} one-dimensional, the pass defense takes control."
+        )
+    elif os_["off_key"] == "yac_rhythm" or oz["yac_share"] >= 0.65:
+        clash = f"{off_desc} {def_desc} {off_team} gets the ball out fast and asks playmakers to break tackles in space, testing {def_team}'s open-field tackling and flat defenders."
+        watch_for = (
+            f"Watch tackling on screens, slants, and flat routes: {off_team}'s offense succeeds when short throws turn into 10+ yard gains after the catch; "
+            f"{def_team} wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+        )
+    elif dm["opp_exp_pass_rate"] >= 0.095:
+        clash = f"{off_desc} {def_desc} {def_team} can be vulnerable to vertical shots ({dm['opp_exp_pass_rate'] * 100:.1f}% explosive pass rate allowed), giving {off_team} room to attack downfield if protection holds."
+        watch_for = (
+            f"Watch play-action and deep crossers: {off_team} wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; "
+            f"{def_team} survives by winning early downs and creating pressure before deep routes develop."
+        )
+    else:
+        fav_path = "the passing game" if pass_net >= rush_net else "the ground game"
+        clash = f"{off_desc} {def_desc} Analytically, {off_team}'s cleanest path runs through {fav_path} (pass net {pass_net:+.2f} EPA/db, rush net {rush_net:+.2f} EPA/carry)."
+        watch_for = (
+            f"Watch early-down efficiency in {fav_path}: if {off_team} stays ahead of the chains and avoids negative plays, its play-calling stays balanced; "
+            f"{def_team} wins by tightening up in the red zone and forcing 3rd-and-long throws."
+        )
+
+    # Historical 2026 track record against this exact style (excluding games after before_week if browsing past weeks)
+    off_logs = [x for x in os_["logs"] if x["week"] < before_week] or os_["logs"]
+    def_logs = [x for x in ds_["logs"] if x["week"] < before_week] or ds_["logs"]
+    off_vs = _split_summary(off_logs, buckets[ds_["def_bucket"]], "off")
+    def_vs = _split_summary(def_logs, buckets[os_["off_bucket"]], "def")
+
+    track_bits = []
+    # Head-to-head style meeting earlier this season if any
+    prior_h2h = [x for x in h2h_logs.get((off_team, def_team), []) if x["week"] < before_week]
+    if prior_h2h:
+        pm = prior_h2h[-1]
+        track_bits.append(
+            f"Head-to-head (Wk {pm['week']}): {off_team} produced {pm['off_epa']:+.2f} EPA/play "
+            f"({int(pm['py'])} pass yds, {int(pm['ry'])} rush yds, {int(pm['sacks_s'])} sacks taken) against {def_team}."
+        )
+    if off_vs:
+        track_bits.append(
+            f"{off_team} vs. {ds_['def_bucket_label']}: {off_vs['record']} ({off_vs['n']}g), "
+            f"{off_vs['epa']:+.2f} EPA/play (season avg {om['off_epa']:+.2f})."
+        )
+    if def_vs:
+        track_bits.append(
+            f"{def_team} def vs. {os_['off_bucket_label']}: {def_vs['record']} ({def_vs['n']}g), "
+            f"allowing {def_vs['epa']:+.2f} EPA/play (season avg {dm['def_epa_allowed']:+.2f})."
+        )
+
+    return {
+        "title": f"When {off_team} has the ball",
+        "off_team": off_team,
+        "def_team": def_team,
+        "off_scheme": os_["off_label"],
+        "def_scheme": ds_["def_label"],
+        "edge_team": edge_team,
+        "edge_label": edge_label,
+        "clash": clash,
+        "track_record": " ".join(track_bits) if track_bits else f"First real test of this style pairing in {off_team}'s and {def_team}'s schedule.",
+        "watch_for": watch_for,
+    }
+
+
+def _build_style_matchups(
+    g: dict,
+    styles: dict[str, dict],
+    h2h_logs: dict[tuple[str, str], list[dict]],
+) -> list[dict]:
+    """Return both sides of the ball (away offense vs home defense, home offense vs away defense)."""
+    away, home = g["away_team"], g["home_team"]
+    if away not in styles or home not in styles:
+        return []
+    return [
+        _one_side_matchup(away, home, g.get("away_qb_name") or "", styles, h2h_logs, g["week"]),
+        _one_side_matchup(home, away, g.get("home_qb_name") or "", styles, h2h_logs, g["week"]),
+    ]
 
 
 def _eval_league(
@@ -545,26 +931,7 @@ def _build_why_watch(
         )
     notes.append({"label": "The Stakes", "text": stakes_text})
 
-    # Bullet 2: Matchup & Style
-    qb_txt = (
-        f"{g['away_qb_name']} vs. {g['home_qb_name']} at quarterback. "
-        if g.get("away_qb_name") and g.get("home_qb_name") else ""
-    )
-    style_bits = [
-        f"{qb_txt}{away} averages {ap['ppg']:.1f} PPG (#{ap['off_rank']} offense) and allows {ap['papg']:.1f} (#{ap['def_rank']} defense), "
-        f"while {home} scores {hp['ppg']:.1f} (#{hp['off_rank']}) and allows {hp['papg']:.1f} (#{hp['def_rank']})."
-    ]
-    if ap["off_rank"] <= 10 and hp["def_rank"] <= 10:
-        style_bits.append(f"Classic strength-on-strength: {away}'s top-10 offense tests {home}'s top-10 defense.")
-    elif hp["off_rank"] <= 10 and ap["def_rank"] <= 10:
-        style_bits.append(f"Classic strength-on-strength: {home}'s top-10 offense meets {away}'s top-10 defense.")
-    elif ap["off_rank"] <= 10 and hp["off_rank"] <= 10:
-        style_bits.append("Two top-10 scoring offenses collide, putting red-zone efficiency and explosive plays at center stage.")
-    elif ap["def_rank"] <= 10 and hp["def_rank"] <= 10:
-        style_bits.append("Two top-10 defenses limit easy yards—turnovers and field position carry outsized weight.")
-    notes.append({"label": "Matchup & Style", "text": " ".join(style_bits)})
-
-    # Bullet 3: Context / Edge / Rematch / Rest
+    # Bullet 2: Context / Edge / Rematch / Rest
     ctx_bits = []
     if g["div_game"]:
         if prior_meetings:
@@ -656,6 +1023,7 @@ def build_watch_data(
     n_sims: int = 2500,
     notes_path: Path | None = None,
     raw_rows: list[dict[str, str]] | None = None,
+    team_rows: list[dict[str, str]] | None = None,
 ) -> dict:
     """Build the complete Why Watch dataset for one week (defaults to active week)."""
     rows = raw_rows if raw_rows is not None else _fetch_schedule_rows()
@@ -728,8 +1096,10 @@ def build_watch_data(
     remaining_all = [g for g in games if not g["finished"]]
     through_week = max((g["week"] for g in finished_all), default=0)
 
-    # Team profiles from all completed games
+    # Team profiles from all completed games + scheme/play-style profiles from weekly team stats
     profiles = _compute_team_profiles(finished_all)
+    t_rows = team_rows if team_rows is not None else _fetch_team_week_rows(season)
+    styles, h2h_logs = _compute_style_profiles(t_rows, finished_all)
 
     # Optional manual editorial notes (models/watch_notes.json)
     editorial: dict[str, dict] = {}
@@ -1016,6 +1386,7 @@ def build_watch_data(
             tags.append("Primetime")
 
         hook, why_notes = _build_why_watch(g, hp, ap, imp, drivers, prior)
+        style_matchups = _build_style_matchups(g, styles, h2h_logs)
         targets = _prediction_targets(g, hp, ap, imp, drivers_by_id)
 
         # Optional custom editorial override from models/watch_notes.json
@@ -1027,6 +1398,7 @@ def build_watch_data(
                 why_notes.insert(0, {"label": "Editor's Note", "text": ed["note"]})
 
         home_wp_mkt = round(_spread_to_prob(proj_spread) * 100)
+        a_st, h_st = styles.get(away, {}), styles.get(home, {})
         analyzed.append({
             "game_id": g["game_id"],
             "week": g["week"],
@@ -1048,6 +1420,7 @@ def build_watch_data(
                 "record": ap["record"], "div_rank": ap["div_rank"], "streak": ap["streak"],
                 "ppg": round(ap["ppg"], 1), "papg": round(ap["papg"], 1),
                 "off_rank": ap["off_rank"], "def_rank": ap["def_rank"],
+                "off_scheme": a_st.get("off_label", ""), "def_scheme": a_st.get("def_label", ""),
                 "qb": g["away_qb_name"], "coach": g["away_coach"], "rest": g["away_rest"],
                 "score": g["away_score"],
                 "playoff_pct": round(float(base_odds["playoff"][a_i] * 100), 1),
@@ -1058,6 +1431,7 @@ def build_watch_data(
                 "record": hp["record"], "div_rank": hp["div_rank"], "streak": hp["streak"],
                 "ppg": round(hp["ppg"], 1), "papg": round(hp["papg"], 1),
                 "off_rank": hp["off_rank"], "def_rank": hp["def_rank"],
+                "off_scheme": h_st.get("off_label", ""), "def_scheme": h_st.get("def_label", ""),
                 "qb": g["home_qb_name"], "coach": g["home_coach"], "rest": g["home_rest"],
                 "score": g["home_score"],
                 "playoff_pct": round(float(base_odds["playoff"][h_i] * 100), 1),
@@ -1068,6 +1442,7 @@ def build_watch_data(
             "tags": tags,
             "hook": hook,
             "why_watch": why_notes,
+            "style_matchups": style_matchups,
             "drivers": drivers,
             "implications": imp,
             "predict": targets,
@@ -1091,7 +1466,16 @@ def build_watch_data(
 
 
 def build_all_weeks_cache(n_sims: int = 2500, notes_path: Path | None = None) -> dict:
-    """Fetch schedule once and compute the active week plus keep raw rows for on-demand week switches."""
+    """Fetch schedule + weekly team stats once and keep rows for on-demand week switches."""
     rows = _fetch_schedule_rows()
-    active_data = build_watch_data(week=None, n_sims=n_sims, notes_path=notes_path, raw_rows=rows)
-    return {"active": active_data, "rows": rows}
+    reg_seasons = sorted(
+        {_opt_int(r.get("season")) for r in rows if r.get("game_type") == "REG" and _opt_int(r.get("season")) is not None},
+        reverse=True,
+    )
+    active_season = next(
+        (s for s in reg_seasons if any(r.get("season") == str(s) and r.get("game_type") == "REG" and r.get("result") not in ("", "NA", None) for r in rows)),
+        reg_seasons[0],
+    )
+    team_rows = _fetch_team_week_rows(active_season)
+    active_data = build_watch_data(week=None, season=active_season, n_sims=n_sims, notes_path=notes_path, raw_rows=rows, team_rows=team_rows)
+    return {"active": active_data, "rows": rows, "team_rows": team_rows}

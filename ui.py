@@ -713,6 +713,19 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
 .wpred p{font-size:.89rem;color:var(--fg);opacity:.88;line-height:1.45}
 .wpred-act{margin-top:12px;display:flex;align-items:center;gap:10px}
 .btn.sm{min-height:36px;padding:0 14px;font-size:.86rem;border-radius:9px}
+.wstyles{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.wstyle{background:var(--raise);border:1px solid var(--hair);border-radius:12px;padding:14px 16px}
+.wstyle-hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.wstyle-hd h4{margin:0;display:flex;align-items:center;gap:7px;font-size:.98rem;font-weight:800}
+.wstyle-hd .pill{font-size:.75rem;padding:2px 8px;min-width:0}
+.wscheme-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:10px;font-size:.8rem;font-weight:600}
+.wscheme{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:3px 9px;color:var(--fg)}
+.wscheme-vs{color:var(--mute);font-size:.76rem;font-weight:700;text-transform:uppercase}
+.wstyle-clash{font-size:.9rem;line-height:1.48;color:var(--fg);opacity:.92}
+.wtrack{margin-top:10px;padding:8px 11px;border-radius:8px;background:var(--card);border:1px solid var(--hair);font-size:.82rem;color:var(--mute);line-height:1.45;font-variant-numeric:tabular-nums}
+.wtrack b{color:var(--fg);font-weight:600}
+.wwatchfor{margin-top:10px;padding:9px 12px;border-left:3px solid var(--acc);border-radius:0 8px 8px 0;background:rgba(88,166,255,.07);font-size:.87rem;line-height:1.46;color:var(--fg)}
+.wwatchfor b{display:block;font-size:.76rem;color:var(--acc);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
 
 @media(min-width:700px){
   .fig{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:center}
@@ -1191,7 +1204,7 @@ function filtered(){
   return slate.games.filter(g=>{
     if(tag!=='All'&&!(g.tags||[]).includes(tag))return false;
     if(!q)return true;
-    const hay=[g.away.team,g.away.city,g.away.name,g.away.qb,g.home.team,g.home.city,g.home.name,g.home.qb,g.hook,(g.tags||[]).join(' ')].join(' ').toLowerCase();
+    const hay=[g.away.team,g.away.city,g.away.name,g.away.qb,g.away.off_scheme||'',g.away.def_scheme||'',g.home.team,g.home.city,g.home.name,g.home.qb,g.home.off_scheme||'',g.home.def_scheme||'',g.hook,(g.tags||[]).join(' ')].join(' ').toLowerCase();
     return hay.includes(q);
   });
 }
@@ -1298,9 +1311,9 @@ function drawDetail(){
     card.appendChild(sh);
     const m1=[];
     if(tm.qb)m1.push('QB '+tm.qb);
-    m1.push('Off #'+tm.off_rank+' ('+tm.ppg+' PPG)');
-    m1.push('Def #'+tm.def_rank+' ('+tm.papg+' PA)');
-    card.appendChild(el('div','sm',m1.join(' · ')));
+    if(tm.off_scheme)m1.push('Off: '+tm.off_scheme);
+    if(tm.def_scheme)m1.push('Def: '+tm.def_scheme);
+    if(m1.length)card.appendChild(el('div','sm',m1.join(' · ')));
     const m2=['Playoff odds '+Math.round(tm.playoff_pct)+'%','Div '+Math.round(tm.div_pct)+'%'];
     if(tm.streak&&tm.streak!=='—')m2.push('Streak '+tm.streak);
     if(tm.rest)m2.push(tm.rest+'d rest');
@@ -1310,7 +1323,7 @@ function drawDetail(){
   hero.appendChild(vs);
   box.appendChild(hero);
 
-  /* 2. Why It's Interesting (Depth + Drivers) */
+  /* 2. Why It's Interesting (Stakes, Context + Drivers) */
   const why=el('section','card blk');
   why.appendChild(el('h3',null,'Why this game is worth watching'));
   const notes=el('div','wnotes');
@@ -1330,6 +1343,44 @@ function drawDetail(){
     why.appendChild(r);
   });
   box.appendChild(why);
+
+  /* 3. Matchup & Play Style (Schemes, Analytical Clash, Track Record, What to Watch For) */
+  if((g.style_matchups||[]).length){
+    const stSec=el('section','card blk');
+    stSec.appendChild(el('h3',null,'Matchup & play style'));
+    stSec.appendChild(el('p','note','How each offense’s scheme collides with the opposing defense, how both sides have fared in similar style matchups this season, and what to watch for live.'));
+    const slist=el('div','wstyles');
+    g.style_matchups.forEach(m=>{
+      const c=el('div','wstyle');
+      const hd=el('div','wstyle-hd'),h4=el('h4');
+      h4.appendChild(dot(m.off_team));h4.appendChild(document.createTextNode(m.title));
+      hd.appendChild(h4);
+      const eCls=m.edge_team===m.off_team?'up':m.edge_team===m.def_team?'strong':'flat';
+      hd.appendChild(el('span','pill '+eCls,m.edge_label));
+      c.appendChild(hd);
+      const bar=el('div','wscheme-bar');
+      bar.appendChild(el('span','wscheme',m.off_team+' Off: '+m.off_scheme));
+      bar.appendChild(el('span','wscheme-vs','vs'));
+      bar.appendChild(el('span','wscheme',m.def_team+' Def: '+m.def_scheme));
+      c.appendChild(bar);
+      c.appendChild(el('p','wstyle-clash',m.clash));
+      if(m.track_record){
+        const tr=el('div','wtrack');
+        tr.appendChild(el('b',null,'2026 style track record: '));
+        tr.appendChild(document.createTextNode(m.track_record));
+        c.appendChild(tr);
+      }
+      if(m.watch_for){
+        const wf=el('div','wwatchfor');
+        wf.appendChild(el('b',null,'What to watch for'));
+        wf.appendChild(document.createTextNode(m.watch_for));
+        c.appendChild(wf);
+      }
+      slist.appendChild(c);
+    });
+    stSec.appendChild(slist);
+    box.appendChild(stSec);
+  }
 
   /* 3. Implications of the Outcomes */
   if(g.implications){
