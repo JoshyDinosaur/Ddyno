@@ -287,43 +287,43 @@ def _compute_style_profiles(
     for t in metrics:
         m, zt = metrics[t], z[t]
 
-        # Classify offensive play style
+        # Classify offensive play style into recognizable football schemes
         if zt["pass_rate"] >= 0.85 and zt["adot"] >= 0.35:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "air_vertical", "Vertical Spread Passing", "pass_heavy", "pass-heavy spread offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "air_vertical", "Air Raid / Spread Offense", "pass_heavy", "Air Raid / Spread offenses"
         elif zt["pass_rate"] >= 0.8:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "spread_pass", "High-Volume Spread Passing", "pass_heavy", "pass-heavy spread offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "spread_pass", "Spread Passing Offense", "pass_heavy", "Spread Passing offenses"
         elif zt["exp_pass_rate"] >= 0.85 and zt["pass_epa"] >= 0.4:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "explosive_balanced", "Explosive Play-Action & Balanced", "vertical_exp", "explosive passing offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "explosive_balanced", "West Coast Play-Action", "vertical_exp", "explosive Play-Action & vertical offenses"
         elif zt["pass_rate"] <= -0.8 and (zt["rush_epa"] >= 0.15 or zt["chunk_rush_rate"] >= 0.25):
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "ground_control", "Run-First / Ground Control", "run_first", "run-first offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "ground_control", "Power Run / Ground-and-Pound", "run_first", "Power Run offenses"
         elif zt["pass_rate"] <= -0.75:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "run_first", "Run-Heavy / Play-Action", "run_first", "run-first offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "run_first", "Run-Heavy Play-Action", "run_first", "run-heavy offenses"
         elif zt["adot"] >= 0.8 and zt["yac_share"] <= -0.25:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "vertical_air", "Vertical Air-Yards Attack", "vertical_exp", "vertical & explosive passing offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "vertical_air", "Run-and-Gun / Vertical Attack", "vertical_exp", "Run-and-Gun / vertical offenses"
         elif zt["yac_share"] >= 0.8:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "yac_rhythm", "Quick-Game & YAC Rhythm", "yac_quick", "quick-game / YAC offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "yac_rhythm", "West Coast Quick Game (YAC)", "yac_quick", "West Coast Quick Game offenses"
         elif zt["adot"] <= -0.55:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "short_rhythm", "Short Rhythm & Possession", "yac_quick", "short-rhythm / YAC offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "short_rhythm", "Ball-Control Short Game", "yac_quick", "short-game possession offenses"
         else:
-            off_key, off_lbl, off_bucket, off_bucket_lbl = "balanced_multiple", "Balanced Multiple Offense", "balanced_off", "balanced offenses"
+            off_key, off_lbl, off_bucket, off_bucket_lbl = "balanced_multiple", "Pro-Style Offense", "balanced_off", "Pro-Style offenses"
 
-        # Classify defensive play style
+        # Classify defensive play style into recognizable football defenses
         if zt["tfl_rate"] >= 0.7 and zt["opp_exp_pass_rate"] >= 0.4:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "aggressive_front", "Aggressive Front / Boom-or-Bust", "high_pressure", "aggressive pressure fronts"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "aggressive_front", "Aggressive Man-Blitz (Boom-or-Bust)", "high_pressure", "Blitz & aggressive pressure defenses"
         elif zt["pressure_rate"] >= 0.9 and zt["havoc_rate"] >= 0.5:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_havoc", "High-Pressure Havoc Front", "high_pressure", "high-pressure fronts"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_havoc", "Blitz-Heavy / Pressure Defense", "high_pressure", "Blitz-Heavy defenses"
         elif zt["opp_exp_pass_rate"] <= -0.65 and zt["ballhawk_rate"] >= 0.65:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "ballhawk_shell", "Ball-Hawk Shell Coverage", "anti_explosive", "two-high / anti-explosive shells"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "ballhawk_shell", "Ball-Hawk Zone / Cover 3", "anti_explosive", "Cover 2 / Cover 3 shell defenses"
         elif zt["opp_exp_pass_rate"] <= -0.6 and zt["pressure_rate"] <= 0.35:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "two_high_shell", "Two-High Anti-Explosive Shell", "anti_explosive", "two-high / anti-explosive shells"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "two_high_shell", "Cover 2 / Two-High Shell", "anti_explosive", "Cover 2 / Two-High defenses"
         elif zt["tfl_rate"] >= 0.65 and zt["opp_rush_epa"] <= -0.15:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "run_stuff_funnel", "Run-Stuffing Pass Funnel", "run_stuffer", "run-stuffing fronts"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "run_stuff_funnel", "Stacked-Box Run Defense", "run_stuffer", "Stacked-Box run defenses"
         elif zt["opp_pass_epa"] <= -0.45 and zt["opp_rush_epa"] >= 0.2:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "light_box_cov", "Light-Box Coverage (Run Funnel)", "ballhawk_cov", "coverage-first defenses"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "light_box_cov", "Nickel / Light-Box Coverage", "ballhawk_cov", "coverage-first Nickel defenses"
         elif zt["pressure_rate"] >= 0.6:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_front", "Pass-Rush Pressure Front", "high_pressure", "high-pressure fronts"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "pressure_front", "Pass-Rush / Front-Four Pressure", "high_pressure", "heavy pass-rush defenses"
         else:
-            def_key, def_lbl, def_bucket, def_bucket_lbl = "balanced_zone", "Balanced Zone / Bend-Don't-Break", "soft_front", "balanced zone defenses"
+            def_key, def_lbl, def_bucket, def_bucket_lbl = "balanced_zone", "Bend-Don't-Break Zone", "soft_front", "Bend-Don't-Break Zone defenses"
 
         styles[t] = {
             "metrics": m,
@@ -365,8 +365,10 @@ def _one_side_matchup(
     styles: dict[str, dict],
     h2h_logs: dict[tuple[str, str], list[dict]],
     before_week: int,
+    off_spread: float | None,
+    off_win_prob: int,
 ) -> dict:
-    """Build an analytical scheme clash, style track record, and 'what to watch for' cue for one side."""
+    """Build an analytical scheme clash tied to the spread/win%, track record, and 'what to watch for'."""
     os_ = styles[off_team]
     ds_ = styles[def_team]
     om, dm = os_["metrics"], ds_["metrics"]
@@ -384,77 +386,116 @@ def _one_side_matchup(
     else:
         edge_team, edge_label = "", "Even style clash"
 
-    # Build the analytical clash description (scheme + key numbers, no PPG rankings)
+    # Format spread context for this offense (off_spread > 0 means off_team is favored)
+    if off_spread is None or abs(off_spread) < 0.25:
+        mkt_tag = f"on a pick'em line ({off_win_prob}% implied win prob)"
+        cover_cue = f"swing this coin flip ({off_win_prob}% win prob)"
+    elif off_spread > 0:
+        sp_s = f"{off_spread:.1f}".rstrip("0").rstrip(".")
+        mkt_tag = f"as a -{sp_s} favorite ({off_win_prob}% implied win prob)"
+        cover_cue = f"cover the -{sp_s} spread"
+    else:
+        sp_s = f"{abs(off_spread):.1f}".rstrip("0").rstrip(".")
+        mkt_tag = f"as a +{sp_s} underdog ({off_win_prob}% implied win prob)"
+        cover_cue = f"stay inside +{sp_s} and threaten the upset"
+
     _art = lambda s: "an" if s[:1].lower() in "aeiou" else "a"
-    qb_prefix = f"Led by {qb_name}, " if qb_name else ""
+    qb_prefix = f"With {qb_name} at QB, " if qb_name else ""
     off_desc = (
-        f"{qb_prefix}{off_team} runs {_art(os_['off_label'])} {os_['off_label']} scheme "
-        f"({om['pass_rate'] * 100:.0f}% pass, {om['adot']:.1f}-yd avg depth of target, "
-        f"{om['yac_share'] * 100:.0f}% of passing yards after the catch"
-        + (f", {om['exp_pass_rate'] * 100:.1f}% explosive 20+ yd throws" if oz["exp_pass_rate"] >= 0.5 else "")
+        f"{qb_prefix}{off_team} runs {_art(os_['off_label'])} {os_['off_label']} "
+        f"({om['pass_rate'] * 100:.0f}% pass, {om['adot']:.1f}-yd depth of target, "
+        f"{om['yac_share'] * 100:.0f}% YAC"
+        + (f", {om['exp_pass_rate'] * 100:.1f}% explosive 20+ yd plays" if oz["exp_pass_rate"] >= 0.5 else "")
         + ")."
     )
     def_desc = (
-        f"{def_team} counters with {_art(ds_['def_label'])} {ds_['def_label']} defense "
-        f"({dm['pressure_rate'] * 100:.0f}% pressure rate, {dm['tfl_rate'] * 100:.0f}% tackles for loss on runs, "
-        f"allowing {dm['opp_exp_pass_rate'] * 100:.1f}% explosive throws)."
+        f"{def_team} answers with {_art(ds_['def_label'])} {ds_['def_label']} "
+        f"({dm['pressure_rate'] * 100:.0f}% pressure rate, {dm['tfl_rate'] * 100:.0f}% run TFLs, "
+        f"{dm['opp_exp_pass_rate'] * 100:.1f}% explosive passes allowed)."
     )
 
-    # Identify the primary tactical tension & 'what to watch for' win condition
+    # Identify primary tactical tension & correlate with the market spread / win%
     if dz["pressure_rate"] >= 0.65 and oz["sack_rate"] >= 0.35:
-        clash = f"{off_desc} {def_desc} That creates a clear protection stress test: {off_team} takes sacks on {om['sack_rate'] * 100:.1f}% of dropbacks against a front that disrupts timing relentlessly."
+        clash = (
+            f"{off_desc} {def_desc} Entering {mkt_tag}, this is a protection stress test: "
+            f"{off_team} takes sacks on {om['sack_rate'] * 100:.1f}% of dropbacks against a front built to wreck timing."
+        )
         watch_for = (
-            f"Watch 1st-down pass protection and quick outlets: for {off_team}'s style to work, they must stay out of 3rd-and-long and hold {def_team} under 3 sacks. "
-            f"If {def_team} wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+            f"Watch 1st-down protection and hot routes: to {cover_cue}, {off_team} has to avoid 3rd-and-long and hold {def_team} under 3 sacks. "
+            f"If {def_team}'s blitzes win early downs, the defensive front dictates the game."
         )
     elif dz["pressure_rate"] >= 0.65:
-        clash = f"{off_desc} {def_desc} It's a strength-on-strength trench clash—{off_team} keeps a clean pocket ({om['sack_rate'] * 100:.1f}% sack rate) against an aggressive pass rush."
+        clash = (
+            f"{off_desc} {def_desc} Priced {mkt_tag}, this strength-on-strength trench clash pits "
+            f"{off_team}'s clean pocket ({om['sack_rate'] * 100:.1f}% sack rate) directly against {def_team}'s relentless rush."
+        )
         watch_for = (
-            f"Watch whether {def_team}'s blitzes and stunts force early checkdowns: if {off_team} picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; "
-            f"if {def_team} collapses the pocket without extra rushers, {off_team}'s rhythm stalls."
+            f"Watch blitz pickup and intermediate crossers: if {off_team} handles the rush and attacks voids behind the blitz, it has the firepower to {cover_cue}; "
+            f"if {def_team} gets home with four rushers, {off_team}'s explosive plays dry up."
         )
     elif ds_["def_key"] in ("two_high_shell", "ballhawk_shell") and os_["off_key"] in ("vertical_air", "explosive_balanced", "air_vertical"):
-        clash = f"{off_desc} {def_desc} {off_team} hunts vertical chunk plays, while {def_team}'s shell is built to take away the deep shot and force long, patient drives."
+        clash = (
+            f"{off_desc} {def_desc} Coming in {mkt_tag}, {off_team}'s vertical shots run right into a shell designed "
+            f"to cap deep throws and force patient, 10-play drives."
+        )
         watch_for = (
-            f"Watch {off_team}'s patience on underneath throws and early-down runs: if {off_team} takes the light-box yards and converts 3rd-and-short, {def_team} has to creep out of its shell; "
-            f"if {off_team} forces contested throws into bracket coverage, {def_team}'s ball-hawks win the turnover battle."
+            f"Watch whether {off_team} stays patient underneath: taking light-box runs and short completions is the path to {cover_cue}, "
+            f"while forcing deep throws into bracket coverage plays straight into {def_team}'s ball-hawks."
         )
     elif os_["off_key"] in ("spread_pass", "air_vertical") and ds_["def_key"] in ("balanced_zone", "light_box_cov", "two_high_shell"):
-        clash = f"{off_desc} {def_desc} {off_team} stresses zone spacing with high pass volume ({om['pass_rate'] * 100:.0f}%), forcing {def_team} to tackle cleanly underneath and close throwing windows quickly."
+        clash = (
+            f"{off_desc} {def_desc} Priced {mkt_tag}, {off_team}'s {om['pass_rate'] * 100:.0f}% pass rate stretches zone spacing horizontally, "
+            f"testing whether {def_team} can rally to tackles and hold up in the red zone."
+        )
         watch_for = (
-            f"Watch 3rd-down passing windows and red-zone conversion: {off_team}'s spread style wins when quick completions march down the field without stalling; "
-            f"{def_team}'s zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+            f"Watch 3rd-down passing windows and red-zone touchdowns: if {off_team}'s Spread scheme turns quick throws into touchdowns, they can {cover_cue}; "
+            f"{def_team}'s zone wins by keeping everything in front and forcing field goals."
         )
     elif ds_["def_key"] == "ballhawk_shell":
-        clash = f"{off_desc} {def_desc} {def_team} relies on disciplined coverage and playmaking on the ball ({dm['ballhawk_rate'] * 100:.0f}% INT/PBU rate) rather than heavy pass rush."
+        clash = (
+            f"{off_desc} {def_desc} With {off_team} entering {mkt_tag}, {def_team} relies on disciplined coverage and ball disruption "
+            f"({dm['ballhawk_rate'] * 100:.0f}% INT/PBU rate) rather than heavy blitzing."
+        )
         watch_for = (
-            f"Watch quarterback decision-making over the middle: {off_team} succeeds by protecting the football and taking underneath completions; "
-            f"{def_team}'s defense flips the game if disguised coverages bait even 1–2 turnover-worthy throws."
+            f"Watch ball security over the middle: clean, turnover-free drives let {off_team} {cover_cue}, "
+            f"while even one disguised-zone takeaway flips the win probability sharply toward {def_team}."
         )
     elif os_["off_key"] in ("ground_control", "run_first") and ds_["def_key"] in ("run_stuff_funnel", "aggressive_front", "pressure_havoc"):
-        clash = f"{off_desc} {def_desc} Both sides want to dictate the line of scrimmage—{off_team} leans on physical rushing, while {def_team} shoots gaps to blow up plays behind the sticks."
+        clash = (
+            f"{off_desc} {def_desc} With {off_team} coming in {mkt_tag}, both sides want to control the line of scrimmage—"
+            f"{off_team} leans on physical rushing while {def_team} shoots gaps for backfield stops."
+        )
         watch_for = (
-            f"Watch yards before contact on 1st down: if {off_team} stays on schedule (4+ yards on early carries), play-action opens the middle of the field; "
-            f"if {def_team} stacks TFLs and turns {off_team} one-dimensional, the pass defense takes control."
+            f"Watch early-down yards before contact: staying ahead of the chains (4+ yds on 1st down) unlocks play-action to {cover_cue}; "
+            f"if {def_team} stacks TFLs and forces 3rd-and-long, {off_team}'s game plan breaks."
         )
     elif os_["off_key"] == "yac_rhythm" or oz["yac_share"] >= 0.65:
-        clash = f"{off_desc} {def_desc} {off_team} gets the ball out fast and asks playmakers to break tackles in space, testing {def_team}'s open-field tackling and flat defenders."
+        clash = (
+            f"{off_desc} {def_desc} Entering {mkt_tag}, {off_team} gets the ball out fast to playmakers in space "
+            f"({om['yac_share'] * 100:.0f}% YAC), putting {def_team}'s open-field tackling under the microscope."
+        )
         watch_for = (
-            f"Watch tackling on screens, slants, and flat routes: {off_team}'s offense succeeds when short throws turn into 10+ yard gains after the catch; "
-            f"{def_team} wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+            f"Watch missed tackles on screens, slants, and flats: turning short throws into 10+ yard chunks is how {off_team} can {cover_cue}; "
+            f"{def_team} wins by rallying downhill and forcing tight throws past the sticks."
         )
     elif dm["opp_exp_pass_rate"] >= 0.095:
-        clash = f"{off_desc} {def_desc} {def_team} can be vulnerable to vertical shots ({dm['opp_exp_pass_rate'] * 100:.1f}% explosive pass rate allowed), giving {off_team} room to attack downfield if protection holds."
+        clash = (
+            f"{off_desc} {def_desc} With {off_team} priced {mkt_tag}, {def_team}'s vulnerability to big plays "
+            f"({dm['opp_exp_pass_rate'] * 100:.1f}% explosive pass rate allowed) gives {off_team} real upside downfield."
+        )
         watch_for = (
-            f"Watch play-action and deep crossers: {off_team} wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; "
-            f"{def_team} survives by winning early downs and creating pressure before deep routes develop."
+            f"Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for {off_team} to {cover_cue}; "
+            f"{def_team} keeps control if its front disrupts timing before deep routes develop."
         )
     else:
         fav_path = "the passing game" if pass_net >= rush_net else "the ground game"
-        clash = f"{off_desc} {def_desc} Analytically, {off_team}'s cleanest path runs through {fav_path} (pass net {pass_net:+.2f} EPA/db, rush net {rush_net:+.2f} EPA/carry)."
+        clash = (
+            f"{off_desc} {def_desc} Entering {mkt_tag}, {off_team}'s strongest analytical edge runs through {fav_path} "
+            f"(pass net {pass_net:+.2f} EPA/db, rush net {rush_net:+.2f} EPA/carry)."
+        )
         watch_for = (
-            f"Watch early-down efficiency in {fav_path}: if {off_team} stays ahead of the chains and avoids negative plays, its play-calling stays balanced; "
-            f"{def_team} wins by tightening up in the red zone and forcing 3rd-and-long throws."
+            f"Watch early-down success in {fav_path}: staying on schedule without negative plays lets {off_team} {cover_cue}; "
+            f"{def_team}'s defense wins by stiffening in the red zone and forcing long 3rd downs."
         )
 
     # Historical 2026 track record against this exact style (excluding games after before_week if browsing past weeks)
@@ -464,13 +505,12 @@ def _one_side_matchup(
     def_vs = _split_summary(def_logs, buckets[os_["off_bucket"]], "def")
 
     track_bits = []
-    # Head-to-head style meeting earlier this season if any
     prior_h2h = [x for x in h2h_logs.get((off_team, def_team), []) if x["week"] < before_week]
     if prior_h2h:
         pm = prior_h2h[-1]
         track_bits.append(
-            f"Head-to-head (Wk {pm['week']}): {off_team} produced {pm['off_epa']:+.2f} EPA/play "
-            f"({int(pm['py'])} pass yds, {int(pm['ry'])} rush yds, {int(pm['sacks_s'])} sacks taken) against {def_team}."
+            f"Head-to-head (Wk {pm['week']}): {off_team} posted {pm['off_epa']:+.2f} EPA/play "
+            f"({int(pm['py'])} pass yds, {int(pm['ry'])} rush yds, {int(pm['sacks_s'])} sacks taken) vs. {def_team}."
         )
     if off_vs:
         track_bits.append(
@@ -501,15 +541,217 @@ def _build_style_matchups(
     g: dict,
     styles: dict[str, dict],
     h2h_logs: dict[tuple[str, str], list[dict]],
+    proj_spread: float,
+    home_win_prob: int,
 ) -> list[dict]:
     """Return both sides of the ball (away offense vs home defense, home offense vs away defense)."""
     away, home = g["away_team"], g["home_team"]
     if away not in styles or home not in styles:
         return []
+    sp = g["spread_line"] if g["spread_line"] is not None else proj_spread
     return [
-        _one_side_matchup(away, home, g.get("away_qb_name") or "", styles, h2h_logs, g["week"]),
-        _one_side_matchup(home, away, g.get("home_qb_name") or "", styles, h2h_logs, g["week"]),
+        _one_side_matchup(away, home, g.get("away_qb_name") or "", styles, h2h_logs, g["week"], -sp if sp is not None else None, 100 - home_win_prob),
+        _one_side_matchup(home, away, g.get("home_qb_name") or "", styles, h2h_logs, g["week"], sp, home_win_prob),
     ]
+
+
+def _compute_coach_profiles(all_rows: list[dict[str, str]], season: int) -> dict[str, dict]:
+    """Compute career and active-season head-coach records (overall, 1-score, ATS, fav/dog) from games.csv."""
+    coaches: dict[str, dict] = {}
+    for r in all_rows:
+        if r.get("game_type") != "REG":
+            continue
+        res = _opt_float(r.get("result"))
+        if res is None:
+            continue
+        s = _opt_int(r.get("season"))
+        if s is None or s > season:
+            continue
+        sp = _opt_float(r.get("spread_line"))
+        is_cur = (s == season)
+        for side, sign in (("home", 1.0), ("away", -1.0)):
+            name = (r.get(f"{side}_coach") or "").strip()
+            if not name:
+                continue
+            d = coaches.setdefault(name, {
+                "name": name, "seasons": set(),
+                "w": 0, "l": 0, "t": 0, "c1_w": 0, "c1_l": 0,
+                "fav_w": 0, "fav_l": 0, "dog_w": 0, "dog_l": 0,
+                "ats_w": 0, "ats_l": 0,
+                "cur_w": 0, "cur_l": 0, "cur_t": 0, "cur_c1_w": 0, "cur_c1_l": 0,
+                "cur_ats_w": 0, "cur_ats_l": 0, "cur_diff": 0.0,
+            })
+            d["seasons"].add(s)
+            m = sign * res
+            if m > 0:
+                d["w"] += 1
+                if is_cur: d["cur_w"] += 1
+            elif m < 0:
+                d["l"] += 1
+                if is_cur: d["cur_l"] += 1
+            else:
+                d["t"] += 1
+                if is_cur: d["cur_t"] += 1
+            if is_cur:
+                d["cur_diff"] += m
+            if abs(m) <= 8.0:
+                if m > 0:
+                    d["c1_w"] += 1
+                    if is_cur: d["cur_c1_w"] += 1
+                elif m < 0:
+                    d["c1_l"] += 1
+                    if is_cur: d["cur_c1_l"] += 1
+            if sp is not None:
+                c_sp = sign * sp
+                if c_sp > 0.2:
+                    if m > 0: d["fav_w"] += 1
+                    elif m < 0: d["fav_l"] += 1
+                elif c_sp < -0.2:
+                    if m > 0: d["dog_w"] += 1
+                    elif m < 0: d["dog_l"] += 1
+                if m - c_sp > 0:
+                    d["ats_w"] += 1
+                    if is_cur: d["cur_ats_w"] += 1
+                elif m - c_sp < 0:
+                    d["ats_l"] += 1
+                    if is_cur: d["cur_ats_l"] += 1
+    for d in coaches.values():
+        d["n_seasons"] = len(d["seasons"])
+    return coaches
+
+
+def _coach_sentence(
+    coach: str,
+    team: str,
+    style: dict,
+    cstats: dict | None,
+    is_fav: bool,
+    used_angles: set[str],
+) -> str:
+    """Return one crisp, varied sentence highlighting what stands out most about a head coach."""
+    if not coach:
+        return f"{team}'s staff leans on its {style.get('off_label', 'balanced')} identity."
+    off_lbl = style.get("off_label") or "Pro-Style Offense"
+    def_lbl = style.get("def_label") or "base zone defense"
+    _a = lambda s: ("an " if s[:1].lower() in "aeiou" else "a ") + s
+    m = style.get("metrics") or {}
+    z = style.get("z") or {}
+
+    if not cstats:
+        return f"{coach} ({team}) leans on {_a(off_lbl)} paired with {_a(def_lbl)}."
+
+    cur_rec = _fmt_rec(cstats["cur_w"], cstats["cur_l"], cstats["cur_t"])
+    car_rec = _fmt_rec(cstats["w"], cstats["l"], cstats["t"])
+    yrs = cstats["n_seasons"]
+    c1_n = cstats["c1_w"] + cstats["c1_l"]
+    c1_cur_n = cstats["cur_c1_w"] + cstats["cur_c1_l"]
+    ats_cur_n = cstats["cur_ats_w"] + cstats["cur_ats_l"]
+    fav_n = cstats["fav_w"] + cstats["fav_l"]
+    dog_n = cstats["dog_w"] + cstats["dog_l"]
+
+    # Score candidate standout angles for this coach so each coach gets its most distinctive note
+    candidates: list[tuple[float, str, str]] = []
+
+    # 1. Standout 1-score / clutch track record (career or current season)
+    if c1_cur_n >= 4 and (cstats["cur_c1_w"] / c1_cur_n >= 0.75 or cstats["cur_c1_w"] / c1_cur_n <= 0.25):
+        tone = "thrives in tight finishes" if cstats["cur_c1_w"] > cstats["cur_c1_l"] else "has struggled to close out tight games"
+        car_extra = f" ({cstats['c1_w']}-{cstats['c1_l']} career)" if yrs >= 3 and c1_n >= 15 else ""
+        candidates.append((
+            9.5 if cstats["cur_c1_w"] >= 5 or cstats["cur_c1_l"] >= 5 else 8.2,
+            "one_score",
+            f"{coach} ({team}, {cur_rec}) {tone} at {cstats['cur_c1_w']}-{cstats['cur_c1_l']} in one-score games this season{car_extra}, leaning on {_a(off_lbl)} and {_a(def_lbl)}.",
+        ))
+    elif yrs >= 3 and c1_n >= 20 and cstats["c1_w"] / c1_n >= 0.62:
+        candidates.append((
+            8.8,
+            "one_score",
+            f"{coach} ({team}, {cur_rec}) has built a {cstats['c1_w']}-{cstats['c1_l']} career mark in one-score games while dialing up {_a(def_lbl)} and {_a(off_lbl)}.",
+        ))
+
+    # 2. Dominant as favorite or gritty as underdog (contextual to this game's role!)
+    if is_fav and fav_n >= 12 and cstats["fav_w"] / fav_n >= 0.67:
+        candidates.append((
+            8.6,
+            "fav_dog",
+            f"{coach} ({team}, {cur_rec}) is {cstats['fav_w']}-{cstats['fav_l']} in his career when favored and pairs {_a(off_lbl)} with {_a(def_lbl)} to close out games he's expected to win.",
+        ))
+    elif (not is_fav) and dog_n >= 12 and cstats["dog_w"] / dog_n >= 0.42:
+        candidates.append((
+            8.4,
+            "fav_dog",
+            f"{coach} ({team}, {cur_rec}) has been a live underdog at {cstats['dog_w']}-{cstats['dog_l']} straight-up in that role, leaning on {_a(def_lbl)} to keep games in reach.",
+        ))
+
+    # 3. Sharp ATS cover rate this season (outperforming or underperforming market expectations)
+    if ats_cur_n >= 7 and (cstats["cur_ats_w"] >= 6 or cstats["cur_ats_l"] >= 6):
+        if cstats["cur_ats_w"] >= 6:
+            candidates.append((
+                8.3,
+                "ats",
+                f"{coach} ({team}, {cur_rec}) has consistently outperformed market expectations at {cstats['cur_ats_w']}-{cstats['cur_ats_l']} against the spread this year behind {_a(off_lbl)}.",
+            ))
+        else:
+            candidates.append((
+                7.6,
+                "ats",
+                f"{coach} ({team}, {cur_rec}) has lagged market expectations at {cstats['cur_ats_w']}-{cstats['cur_ats_l']} against the spread, looking to spark {_a(off_lbl)} that hasn't consistently finished drives.",
+            ))
+
+    # 4. First- or second-year coach making an early identity stamp
+    if yrs <= 2:
+        if cstats["cur_w"] >= cstats["cur_l"] + 2:
+            candidates.append((
+                8.5,
+                "new_hc",
+                f"In year {yrs}, {coach} ({team}) is off to a {car_rec} start ({cur_rec} this season), quickly establishing {_a(off_lbl)} and {_a(def_lbl)}.",
+            ))
+        else:
+            candidates.append((
+                7.2,
+                "new_hc",
+                f"First-cycle head coach {coach} ({team}, {cur_rec}) is installing {_a(off_lbl)} while leaning on {_a(def_lbl)} through a {car_rec} early tenure.",
+            ))
+
+    # 5. Long-tenured veteran track record
+    if yrs >= 8:
+        candidates.append((
+            8.0,
+            "veteran",
+            f"Veteran head coach {coach} ({car_rec} across {yrs} seasons, {cur_rec} in 2026) brings {_a(off_lbl)} and {_a(def_lbl)} into this matchup.",
+        ))
+
+    # 6. Signature schematic extreme (highest-z offensive or defensive tendency)
+    if z.get("pressure_rate", 0) >= 0.9:
+        candidates.append((
+            7.9,
+            "scheme_extreme",
+            f"{coach} ({team}, {cur_rec}) hangs his hat on {_a(def_lbl)} ({m['pressure_rate'] * 100:.0f}% pressure rate) designed to force quarterbacks off script.",
+        ))
+    elif z.get("pass_rate", 0) >= 0.85:
+        candidates.append((
+            7.9,
+            "scheme_extreme",
+            f"{coach} ({team}, {cur_rec}) puts the game in his quarterback's hands with {_a(off_lbl)} ({m['pass_rate'] * 100:.0f}% pass rate).",
+        ))
+    elif z.get("exp_pass_rate", 0) >= 0.8:
+        candidates.append((
+            7.9,
+            "scheme_extreme",
+            f"{coach} ({team}, {cur_rec}) scripts explosive chunk plays through {_a(off_lbl)} ({m['exp_pass_rate'] * 100:.1f}% 20+ yd pass rate).",
+        ))
+
+    # Fallback
+    candidates.append((
+        5.0,
+        "fallback",
+        f"{coach} ({team}, {cur_rec}; {car_rec} career) pairs {_a(off_lbl)} with {_a(def_lbl)} ({cstats['cur_diff']:+.0f} point differential this season).",
+    ))
+
+    # Prefer highest-scoring unused angle so the two coaches read differently
+    candidates.sort(key=lambda x: (-x[0]))
+    chosen = next((c for c in candidates if c[1] not in used_angles), candidates[0])
+    used_angles.add(chosen[1])
+    return chosen[2]
 
 
 def _eval_league(
@@ -843,6 +1085,39 @@ def _prediction_targets(
     return [t1, t2, t3]
 
 
+def _team_stakes_sentence(team: str, prof: dict, team_imp: dict, is_home: bool) -> str:
+    """One concise sentence on what this team gains with a win and loses with a loss."""
+    win_b = team_imp["if_home"]["after"] if is_home else team_imp["if_away"]["after"]
+    loss_b = team_imp["if_away"]["after"] if is_home else team_imp["if_home"]["after"]
+
+    po_sw = abs(win_b["playoff"] - loss_b["playoff"])
+    div_sw = abs(win_b["div"] - loss_b["div"])
+    bye_sw = abs(win_b["bye"] - loss_b["bye"])
+    draft_sw = abs(loss_b["top5"] - win_b["top5"])
+
+    # Pick the single biggest prize/risk for this team (keep to 1-2 clean percentages)
+    if bye_sw >= 18 and bye_sw >= po_sw:
+        extra = f" and boosts {prof['div']} odds to {win_b['div']:.0f}%" if div_sw >= 12 and win_b["div"] < 92 else ""
+        tail = "keeps them firmly in control of the top seed" if is_home else f"puts them squarely in the {prof['conf']} #1-seed hunt"
+        return (
+            f"For {team}, a win jumps #1-seed bye odds to {win_b['bye']:.0f}%{extra}, "
+            f"while a loss drops them to {loss_b['bye']:.0f}% (a win {tail})."
+        )
+    if po_sw >= 10:
+        if loss_b["playoff"] <= 10:
+            return f"A win keeps {team}'s playoff pulse alive at {win_b['playoff']:.0f}%, while a loss virtually ends their run ({loss_b['playoff']:.0f}%)."
+        if div_sw >= 14:
+            return f"A win lifts {team} to {win_b['playoff']:.0f}% playoff odds ({win_b['div']:.0f}% for the {prof['div']}), while a loss drops them to {loss_b['playoff']:.0f}%."
+        return f"A win pushes {team}'s playoff odds up to {win_b['playoff']:.0f}%, while a loss drops them back to {loss_b['playoff']:.0f}%."
+    if div_sw >= 12:
+        return f"A win strengthens {team}'s hold on the {prof['div']} at {win_b['div']:.0f}%, while a loss tightens the division race to {loss_b['div']:.0f}%."
+    if draft_sw >= 12 and win_b["playoff"] < 10:
+        return f"With playoffs out of reach, a loss lifts {team} to {loss_b['top5']:.0f}% for a top-5 draft pick, while a win drops them to {win_b['top5']:.0f}%."
+    if win_b["playoff"] >= 90:
+        return f"{team} is already in strong playoff shape ({win_b['playoff']:.0f}%), playing to protect seeding and avoid letting a winnable game slip."
+    return f"{team} ({prof['record']}) has modest standings leverage here ({win_b['playoff']:.0f}% with a win vs. {loss_b['playoff']:.0f}% with a loss), playing primarily for momentum and tiebreakers."
+
+
 def _build_why_watch(
     g: dict,
     hp: dict,
@@ -850,8 +1125,10 @@ def _build_why_watch(
     imp: dict | None,
     drivers: list[dict],
     prior_meetings: list[dict],
+    styles: dict[str, dict],
+    coaches: dict[str, dict],
 ) -> tuple[str, list[dict]]:
-    """Build a crisp 1-line hook and 3 structured 'Why Watch' depth points."""
+    """Build a crisp 1-line hook plus 'The Stakes' (gain vs loss) and 'Coach Breakdown'."""
     home, away = g["home_team"], g["away_team"]
     spread = g["spread_line"]
     proj_spread = spread if spread is not None else (hp["rating"] - ap["rating"] + 1.8)
@@ -894,76 +1171,33 @@ def _build_why_watch(
     else:
         hook = f"{_fmt_spread(spread, home, away)} mismatch; watch whether {away if proj_spread > 0 else home} keeps it live past halftime."
 
-    # Detailed 3-bullet "Why Watch" breakdown
     notes = []
 
-    # Bullet 1: Stakes
+    # 1. The Stakes: what each team stands to gain with a win and lose with a loss
     if imp:
-        h_po, a_po = imp["home"]["base"]["playoff"], imp["away"]["base"]["playoff"]
-        if po_swing >= 12 or div_swing >= 15 or bye_swing >= 10:
-            bits = [
-                f"{away} ({ap['record']}, {_ordinal(ap['div_rank'])} in {ap['div']}) enters with {a_po:.0f}% playoff odds; "
-                f"{home} ({hp['record']}, {_ordinal(hp['div_rank'])} in {hp['div']}) sits at {h_po:.0f}%."
-            ]
-            if bye_swing >= 25:
-                bits.append(f"With both clubs positioned near the top of the {hp['conf']}, conference #1-seed bye odds swing by {bye_swing:.0f} percentage points.")
-            if po_swing >= 12:
-                bits.append(f"This single result moves their combined playoff probability by {po_swing:.0f} percentage points.")
-            if div_swing >= 15:
-                bits.append(f"Division-title odds shift by {div_swing:.0f} pts.")
-            elif 10 <= bye_swing < 25:
-                bits.append(f"Conference #1-seed bye odds swing by {bye_swing:.0f} pts.")
-            stakes_text = " ".join(bits)
-        elif draft_swing >= 18:
-            stakes_text = (
-                f"Both teams sit on the outside of the playoff race ({away} {a_po:.0f}%, {home} {h_po:.0f}%), "
-                f"making draft position the primary consequence—this outcome swings top-5 draft-pick odds by {draft_swing:.0f} points."
-            )
-        else:
-            stakes_text = (
-                f"{away} ({ap['record']}, {a_po:.0f}% playoff odds) faces {home} ({hp['record']}, {h_po:.0f}% playoff odds). "
-                f"Overall playoff leverage is modest ({po_swing:.0f}-pt combined swing), so watch for momentum and margin signals."
-            )
+        stakes_lines = [
+            _team_stakes_sentence(away, ap, imp["away"], is_home=False),
+            _team_stakes_sentence(home, hp, imp["home"], is_home=True),
+        ]
+        notes.append({"label": "The Stakes", "text": " ".join(stakes_lines), "lines": stakes_lines})
     else:
         stakes_text = (
             f"{away} ({ap['record']}, {_ordinal(ap['div_rank'])} in {ap['div']}) vs. "
             f"{home} ({hp['record']}, {_ordinal(hp['div_rank'])} in {hp['div']})."
         )
-    notes.append({"label": "The Stakes", "text": stakes_text})
+        notes.append({"label": "The Stakes", "text": stakes_text})
 
-    # Bullet 2: Context / Edge / Rematch / Rest
-    ctx_bits = []
-    if g["div_game"]:
-        if prior_meetings:
-            pm = prior_meetings[-1]
-            pm_w = pm["home_team"] if pm["home_score"] > pm["away_score"] else pm["away_team"]
-            ctx_bits.append(
-                f"Divisional rematch: {pm_w} won Week {pm['week']} ({pm['away_team']} {pm['away_score']}–{pm['home_score']} {pm['home_team']}), "
-                f"putting a season sweep and head-to-head tiebreaker on the line."
-            )
-        else:
-            ctx_bits.append(f"First {TEAMS[home]['div']} meeting of the season—division wins double as primary tiebreakers.")
-    if g.get("primetime"):
-        ctx_bits.append(f"Standalone {g['weekday']} night window ({g['gametime']} ET) at {g['stadium'] or home}.")
-    h_rest, a_rest = g.get("home_rest"), g.get("away_rest")
-    if h_rest and a_rest and abs(h_rest - a_rest) >= 3:
-        rested = home if h_rest > a_rest else away
-        ctx_bits.append(f"Rest edge to {rested} ({max(h_rest, a_rest)} days rest vs. {min(h_rest, a_rest)}).")
-    if hp["streak_len"] >= 3 or ap["streak_len"] >= 3:
-        parts = []
-        if ap["streak_len"] >= 3:
-            parts.append(f"{away} is on a {ap['streak']} streak")
-        if hp["streak_len"] >= 3:
-            parts.append(f"{home} is on a {hp['streak']} streak")
-        ctx_bits.append("Recent form: " + " and ".join(parts) + ".")
-    if not ctx_bits:
-        roof = g.get("roof") or "outdoors"
-        ctx_bits.append(
-            f"Played at {g['stadium'] or home} ({'indoors' if roof in ('dome', 'closed') else roof}). "
-            f"Market line is {_fmt_spread(spread, home, away)}"
-            + (f" with a {total:.1f} total." if total is not None else ".")
-        )
-    notes.append({"label": "Context & Angles", "text": " ".join(ctx_bits)})
+    # 2. Coach Breakdown: one distinct sentence per head coach (style + standout track record)
+    used_angles: set[str] = set()
+    away_fav = proj_spread < 0
+    home_fav = proj_spread >= 0
+    a_coach_line = _coach_sentence(g.get("away_coach") or "", away, styles.get(away, {}), coaches.get(g.get("away_coach") or ""), away_fav, used_angles)
+    h_coach_line = _coach_sentence(g.get("home_coach") or "", home, styles.get(home, {}), coaches.get(g.get("home_coach") or ""), home_fav, used_angles)
+    notes.append({
+        "label": "Coach Breakdown",
+        "text": f"{a_coach_line} {h_coach_line}",
+        "lines": [a_coach_line, h_coach_line],
+    })
 
     return hook, notes
 
@@ -1096,10 +1330,11 @@ def build_watch_data(
     remaining_all = [g for g in games if not g["finished"]]
     through_week = max((g["week"] for g in finished_all), default=0)
 
-    # Team profiles from all completed games + scheme/play-style profiles from weekly team stats
+    # Team profiles from all completed games + scheme/play-style & coach profiles
     profiles = _compute_team_profiles(finished_all)
     t_rows = team_rows if team_rows is not None else _fetch_team_week_rows(season)
     styles, h2h_logs = _compute_style_profiles(t_rows, finished_all)
+    coaches = _compute_coach_profiles(rows, season)
 
     # Optional manual editorial notes (models/watch_notes.json)
     editorial: dict[str, dict] = {}
@@ -1385,8 +1620,9 @@ def build_watch_data(
         if g["primetime"]:
             tags.append("Primetime")
 
-        hook, why_notes = _build_why_watch(g, hp, ap, imp, drivers, prior)
-        style_matchups = _build_style_matchups(g, styles, h2h_logs)
+        home_wp_mkt = round(_spread_to_prob(proj_spread) * 100)
+        hook, why_notes = _build_why_watch(g, hp, ap, imp, drivers, prior, styles, coaches)
+        style_matchups = _build_style_matchups(g, styles, h2h_logs, proj_spread, home_wp_mkt)
         targets = _prediction_targets(g, hp, ap, imp, drivers_by_id)
 
         # Optional custom editorial override from models/watch_notes.json
@@ -1397,7 +1633,6 @@ def build_watch_data(
             if ed.get("note"):
                 why_notes.insert(0, {"label": "Editor's Note", "text": ed["note"]})
 
-        home_wp_mkt = round(_spread_to_prob(proj_spread) * 100)
         a_st, h_st = styles.get(away, {}), styles.get(home, {})
         analyzed.append({
             "game_id": g["game_id"],

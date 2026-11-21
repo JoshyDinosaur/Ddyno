@@ -24,7 +24,7 @@
   18
  ],
  "n_sims": 2500,
- "updated": "2026-11-21 16:43 UTC",
+ "updated": "2026-11-21 17:01 UTC",
  "games": [
   {
    "game_id": "2026_11_MIN_SF",
@@ -55,8 +55,8 @@
     "papg": 14.0,
     "off_rank": 24,
     "def_rank": 1,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "High-Pressure Havoc Front",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Blitz-Heavy / Pressure Defense",
     "qb": "Kirk Cousins",
     "coach": "Kevin O'Connell",
     "rest": 7,
@@ -77,8 +77,8 @@
     "papg": 21.8,
     "off_rank": 2,
     "def_rank": 12,
-    "off_scheme": "Explosive Play-Action & Balanced",
-    "def_scheme": "Two-High Anti-Explosive Shell",
+    "off_scheme": "West Coast Play-Action",
+    "def_scheme": "Cover 2 / Two-High Shell",
     "qb": "Brock Purdy",
     "coach": "Kyle Shanahan",
     "rest": 7,
@@ -97,11 +97,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "MIN (7-2, 1st in NFC North) enters with 94% playoff odds; SF (8-1, 1st in NFC West) sits at 99%. With both clubs positioned near the top of the NFC, conference #1-seed bye odds swing by 71 percentage points. Division-title odds shift by 26 pts."
+     "text": "For MIN, a win jumps #1-seed bye odds to 37% and boosts NFC North odds to 51%, while a loss drops them to 7% (a win puts them squarely in the NFC #1-seed hunt). For SF, a win jumps #1-seed bye odds to 70%, while a loss drops them to 29% (a win keeps them firmly in control of the top seed).",
+     "lines": [
+      "For MIN, a win jumps #1-seed bye odds to 37% and boosts NFC North odds to 51%, while a loss drops them to 7% (a win puts them squarely in the NFC #1-seed hunt).",
+      "For SF, a win jumps #1-seed bye odds to 70%, while a loss drops them to 29% (a win keeps them firmly in control of the top seed)."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Standalone Sunday night window (20:20 ET) at Estadio Banorte."
+     "label": "Coach Breakdown",
+     "text": "Kevin O'Connell (MIN, 7-2) has been a live underdog at 14-18 straight-up in that role, leaning on a Blitz-Heavy / Pressure Defense to keep games in reach. Kyle Shanahan (SF, 8-1) has consistently outperformed market expectations at 6-3 against the spread this year behind a West Coast Play-Action.",
+     "lines": [
+      "Kevin O'Connell (MIN, 7-2) has been a live underdog at 14-18 straight-up in that role, leaning on a Blitz-Heavy / Pressure Defense to keep games in reach.",
+      "Kyle Shanahan (SF, 8-1) has consistently outperformed market expectations at 6-3 against the spread this year behind a West Coast Play-Action."
+     ]
     }
    ],
    "style_matchups": [
@@ -109,25 +117,25 @@
      "title": "When MIN has the ball",
      "off_team": "MIN",
      "def_team": "SF",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Two-High Anti-Explosive Shell",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Cover 2 / Two-High Shell",
      "edge_team": "SF",
      "edge_label": "Edge: SF Def",
-     "clash": "Led by Kirk Cousins, MIN runs a Balanced Multiple Offense scheme (54% pass, 7.6-yd avg depth of target, 45% of passing yards after the catch). SF counters with a Two-High Anti-Explosive Shell defense (20% pressure rate, 16% tackles for loss on runs, allowing 6.9% explosive throws). Analytically, MIN's cleanest path runs through the passing game (pass net +0.01 EPA/db, rush net -0.25 EPA/carry).",
-     "track_record": "MIN vs. two-high / anti-explosive shells: 3-0 (3g), -0.05 EPA/play (season avg -0.10). SF def vs. balanced offenses: 3-0 (3g), allowing -0.01 EPA/play (season avg +0.00).",
-     "watch_for": "Watch early-down efficiency in the passing game: if MIN stays ahead of the chains and avoids negative plays, its play-calling stays balanced; SF wins by tightening up in the red zone and forcing 3rd-and-long throws."
+     "clash": "With Kirk Cousins at QB, MIN runs a Pro-Style Offense (54% pass, 7.6-yd depth of target, 45% YAC). SF answers with a Cover 2 / Two-High Shell (20% pressure rate, 16% run TFLs, 6.9% explosive passes allowed). Entering as a +3.5 underdog (40% implied win prob), MIN's strongest analytical edge runs through the passing game (pass net +0.01 EPA/db, rush net -0.25 EPA/carry).",
+     "track_record": "MIN vs. Cover 2 / Two-High defenses: 3-0 (3g), -0.05 EPA/play (season avg -0.10). SF def vs. Pro-Style offenses: 3-0 (3g), allowing -0.01 EPA/play (season avg +0.00).",
+     "watch_for": "Watch early-down success in the passing game: staying on schedule without negative plays lets MIN stay inside +3.5 and threaten the upset; SF's defense wins by stiffening in the red zone and forcing long 3rd downs."
     },
     {
      "title": "When SF has the ball",
      "off_team": "SF",
      "def_team": "MIN",
-     "off_scheme": "Explosive Play-Action & Balanced",
-     "def_scheme": "High-Pressure Havoc Front",
+     "off_scheme": "West Coast Play-Action",
+     "def_scheme": "Blitz-Heavy / Pressure Defense",
      "edge_team": "SF",
      "edge_label": "Edge: SF Off",
-     "clash": "Led by Brock Purdy, SF runs an Explosive Play-Action & Balanced scheme (51% pass, 8.0-yd avg depth of target, 46% of passing yards after the catch, 12.5% explosive 20+ yd throws). MIN counters with a High-Pressure Havoc Front defense (41% pressure rate, 23% tackles for loss on runs, allowing 7.2% explosive throws). It's a strength-on-strength trench clash\u2014SF keeps a clean pocket (4.7% sack rate) against an aggressive pass rush.",
-     "track_record": "SF vs. high-pressure fronts: 3-0 (3g), +0.07 EPA/play (season avg +0.20). MIN def vs. explosive passing offenses: 4-1 (5g), allowing -0.12 EPA/play (season avg -0.12).",
-     "watch_for": "Watch whether MIN's blitzes and stunts force early checkdowns: if SF picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if MIN collapses the pocket without extra rushers, SF's rhythm stalls."
+     "clash": "With Brock Purdy at QB, SF runs a West Coast Play-Action (51% pass, 8.0-yd depth of target, 46% YAC, 12.5% explosive 20+ yd plays). MIN answers with a Blitz-Heavy / Pressure Defense (41% pressure rate, 23% run TFLs, 7.2% explosive passes allowed). Priced as a -3.5 favorite (60% implied win prob), this strength-on-strength trench clash pits SF's clean pocket (4.7% sack rate) directly against MIN's relentless rush.",
+     "track_record": "SF vs. Blitz-Heavy defenses: 3-0 (3g), +0.07 EPA/play (season avg +0.20). MIN def vs. explosive Play-Action & vertical offenses: 4-1 (5g), allowing -0.12 EPA/play (season avg -0.12).",
+     "watch_for": "Watch blitz pickup and intermediate crossers: if SF handles the rush and attacks voids behind the blitz, it has the firepower to cover the -3.5 spread; if MIN gets home with four rushers, SF's explosive plays dry up."
     }
    ],
    "drivers": [
@@ -467,8 +475,8 @@
     "papg": 19.8,
     "off_rank": 16,
     "def_rank": 6,
-    "off_scheme": "Run-First / Ground Control",
-    "def_scheme": "Ball-Hawk Shell Coverage",
+    "off_scheme": "Power Run / Ground-and-Pound",
+    "def_scheme": "Ball-Hawk Zone / Cover 3",
     "qb": "Baker Mayfield",
     "coach": "Todd Bowles",
     "rest": 14,
@@ -489,8 +497,8 @@
     "papg": 22.1,
     "off_rank": 6,
     "def_rank": 16,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "Aggressive Front / Boom-or-Bust",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
     "qb": "Jared Goff",
     "coach": "Dan Campbell",
     "rest": 7,
@@ -507,11 +515,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "TB (3-6, 2nd in NFC South) enters with 49% playoff odds; DET (7-2, 2nd in NFC North) sits at 89%. This single result moves their combined playoff probability by 31 percentage points. Division-title odds shift by 32 pts."
+     "text": "A win lifts TB to 60% playoff odds (60% for the NFC South), while a loss drops them to 43%. A win lifts DET to 94% playoff odds (40% for the NFC North), while a loss drops them to 81%.",
+     "lines": [
+      "A win lifts TB to 60% playoff odds (60% for the NFC South), while a loss drops them to 43%.",
+      "A win lifts DET to 94% playoff odds (40% for the NFC North), while a loss drops them to 81%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Rest edge to TB (14 days rest vs. 7). Recent form: DET is on a W5 streak."
+     "label": "Coach Breakdown",
+     "text": "Todd Bowles (TB, 3-6) has struggled to close out tight games at 1-6 in one-score games this season (34-47 career), leaning on a Power Run / Ground-and-Pound and a Ball-Hawk Zone / Cover 3. Dan Campbell (DET, 7-2) is 42-12 in his career when favored and pairs a Pro-Style Offense with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win.",
+     "lines": [
+      "Todd Bowles (TB, 3-6) has struggled to close out tight games at 1-6 in one-score games this season (34-47 career), leaning on a Power Run / Ground-and-Pound and a Ball-Hawk Zone / Cover 3.",
+      "Dan Campbell (DET, 7-2) is 42-12 in his career when favored and pairs a Pro-Style Offense with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win."
+     ]
     }
    ],
    "style_matchups": [
@@ -519,25 +535,25 @@
      "title": "When TB has the ball",
      "off_team": "TB",
      "def_team": "DET",
-     "off_scheme": "Run-First / Ground Control",
-     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "off_scheme": "Power Run / Ground-and-Pound",
+     "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
      "edge_team": "DET",
      "edge_label": "Edge: DET Def",
-     "clash": "Led by Baker Mayfield, TB runs a Run-First / Ground Control scheme (48% pass, 7.5-yd avg depth of target, 60% of passing yards after the catch). DET counters with an Aggressive Front / Boom-or-Bust defense (28% pressure rate, 24% tackles for loss on runs, allowing 10.6% explosive throws). That creates a clear protection stress test: TB takes sacks on 10.1% of dropbacks against a front that disrupts timing relentlessly.",
-     "track_record": "TB vs. aggressive pressure fronts: 0-2 (2g), -0.18 EPA/play (season avg -0.08). DET def vs. run-first offenses: 1-1 (2g), allowing +0.07 EPA/play (season avg +0.03).",
-     "watch_for": "Watch 1st-down pass protection and quick outlets: for TB's style to work, they must stay out of 3rd-and-long and hold DET under 3 sacks. If DET wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+     "clash": "With Baker Mayfield at QB, TB runs a Power Run / Ground-and-Pound (48% pass, 7.5-yd depth of target, 60% YAC). DET answers with an Aggressive Man-Blitz (Boom-or-Bust) (28% pressure rate, 24% run TFLs, 10.6% explosive passes allowed). Entering as a +4.5 underdog (37% implied win prob), this is a protection stress test: TB takes sacks on 10.1% of dropbacks against a front built to wreck timing.",
+     "track_record": "TB vs. Blitz & aggressive pressure defenses: 0-2 (2g), -0.18 EPA/play (season avg -0.08). DET def vs. Power Run offenses: 1-1 (2g), allowing +0.07 EPA/play (season avg +0.03).",
+     "watch_for": "Watch 1st-down protection and hot routes: to stay inside +4.5 and threaten the upset, TB has to avoid 3rd-and-long and hold DET under 3 sacks. If DET's blitzes win early downs, the defensive front dictates the game."
     },
     {
      "title": "When DET has the ball",
      "off_team": "DET",
      "def_team": "TB",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Ball-Hawk Shell Coverage",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Ball-Hawk Zone / Cover 3",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Jared Goff, DET runs a Balanced Multiple Offense scheme (55% pass, 7.5-yd avg depth of target, 47% of passing yards after the catch). TB counters with a Ball-Hawk Shell Coverage defense (18% pressure rate, 22% tackles for loss on runs, allowing 6.8% explosive throws). TB relies on disciplined coverage and playmaking on the ball (23% INT/PBU rate) rather than heavy pass rush.",
-     "track_record": "DET vs. two-high / anti-explosive shells: 2-1 (3g), +0.01 EPA/play (season avg +0.10). TB def vs. balanced offenses: 0-1 (1g), allowing +0.00 EPA/play (season avg -0.12).",
-     "watch_for": "Watch quarterback decision-making over the middle: DET succeeds by protecting the football and taking underneath completions; TB's defense flips the game if disguised coverages bait even 1\u20132 turnover-worthy throws."
+     "clash": "With Jared Goff at QB, DET runs a Pro-Style Offense (55% pass, 7.5-yd depth of target, 47% YAC). TB answers with a Ball-Hawk Zone / Cover 3 (18% pressure rate, 22% run TFLs, 6.8% explosive passes allowed). With DET entering as a -4.5 favorite (63% implied win prob), TB relies on disciplined coverage and ball disruption (23% INT/PBU rate) rather than heavy blitzing.",
+     "track_record": "DET vs. Cover 2 / Cover 3 shell defenses: 2-1 (3g), +0.01 EPA/play (season avg +0.10). TB def vs. Pro-Style offenses: 0-1 (1g), allowing +0.00 EPA/play (season avg -0.12).",
+     "watch_for": "Watch ball security over the middle: clean, turnover-free drives let DET cover the -4.5 spread, while even one disguised-zone takeaway flips the win probability sharply toward TB."
     }
    ],
    "drivers": [
@@ -876,8 +892,8 @@
     "papg": 16.0,
     "off_rank": 4,
     "def_rank": 2,
-    "off_scheme": "Explosive Play-Action & Balanced",
-    "def_scheme": "Two-High Anti-Explosive Shell",
+    "off_scheme": "West Coast Play-Action",
+    "def_scheme": "Cover 2 / Two-High Shell",
     "qb": "Trevor Lawrence",
     "coach": "Liam Coen",
     "rest": 7,
@@ -898,8 +914,8 @@
     "papg": 21.8,
     "off_rank": 14,
     "def_rank": 11,
-    "off_scheme": "Vertical Air-Yards Attack",
-    "def_scheme": "Ball-Hawk Shell Coverage",
+    "off_scheme": "Run-and-Gun / Vertical Attack",
+    "def_scheme": "Ball-Hawk Zone / Cover 3",
     "qb": "J.J. McCarthy",
     "coach": "John Harbaugh",
     "rest": 10,
@@ -916,11 +932,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "JAX (7-2, 1st in AFC South) enters with 100% playoff odds; NYG (5-3-1, 1st in NFC East) sits at 75%. This single result moves their combined playoff probability by 18 percentage points. Division-title odds shift by 19 pts."
+     "text": "JAX is already in strong playoff shape (100%), playing to protect seeding and avoid letting a winnable game slip. A win lifts NYG to 88% playoff odds (87% for the NFC East), while a loss drops them to 70%.",
+     "lines": [
+      "JAX is already in strong playoff shape (100%), playing to protect seeding and avoid letting a winnable game slip.",
+      "A win lifts NYG to 88% playoff odds (87% for the NFC East), while a loss drops them to 70%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Rest edge to NYG (10 days rest vs. 7). Recent form: JAX is on a W3 streak."
+     "label": "Coach Breakdown",
+     "text": "Liam Coen (JAX, 7-2) is 14-2 in his career when favored and pairs a West Coast Play-Action with a Cover 2 / Two-High Shell to close out games he's expected to win. John Harbaugh (NYG, 5-3-1) has consistently outperformed market expectations at 6-3 against the spread this year behind a Run-and-Gun / Vertical Attack.",
+     "lines": [
+      "Liam Coen (JAX, 7-2) is 14-2 in his career when favored and pairs a West Coast Play-Action with a Cover 2 / Two-High Shell to close out games he's expected to win.",
+      "John Harbaugh (NYG, 5-3-1) has consistently outperformed market expectations at 6-3 against the spread this year behind a Run-and-Gun / Vertical Attack."
+     ]
     }
    ],
    "style_matchups": [
@@ -928,25 +952,25 @@
      "title": "When JAX has the ball",
      "off_team": "JAX",
      "def_team": "NYG",
-     "off_scheme": "Explosive Play-Action & Balanced",
-     "def_scheme": "Ball-Hawk Shell Coverage",
+     "off_scheme": "West Coast Play-Action",
+     "def_scheme": "Ball-Hawk Zone / Cover 3",
      "edge_team": "JAX",
      "edge_label": "Edge: JAX Off",
-     "clash": "Led by Trevor Lawrence, JAX runs an Explosive Play-Action & Balanced scheme (51% pass, 8.5-yd avg depth of target, 44% of passing yards after the catch, 12.6% explosive 20+ yd throws). NYG counters with a Ball-Hawk Shell Coverage defense (18% pressure rate, 14% tackles for loss on runs, allowing 7.0% explosive throws). JAX hunts vertical chunk plays, while NYG's shell is built to take away the deep shot and force long, patient drives.",
-     "track_record": "JAX vs. two-high / anti-explosive shells: 0-1 (1g), -0.03 EPA/play (season avg +0.15). NYG def vs. explosive passing offenses: 2-1-1 (4g), allowing +0.08 EPA/play (season avg -0.01).",
-     "watch_for": "Watch JAX's patience on underneath throws and early-down runs: if JAX takes the light-box yards and converts 3rd-and-short, NYG has to creep out of its shell; if JAX forces contested throws into bracket coverage, NYG's ball-hawks win the turnover battle."
+     "clash": "With Trevor Lawrence at QB, JAX runs a West Coast Play-Action (51% pass, 8.5-yd depth of target, 44% YAC, 12.6% explosive 20+ yd plays). NYG answers with a Ball-Hawk Zone / Cover 3 (18% pressure rate, 14% run TFLs, 7.0% explosive passes allowed). Coming in as a -6 favorite (67% implied win prob), JAX's vertical shots run right into a shell designed to cap deep throws and force patient, 10-play drives.",
+     "track_record": "JAX vs. Cover 2 / Cover 3 shell defenses: 0-1 (1g), -0.03 EPA/play (season avg +0.15). NYG def vs. explosive Play-Action & vertical offenses: 2-1-1 (4g), allowing +0.08 EPA/play (season avg -0.01).",
+     "watch_for": "Watch whether JAX stays patient underneath: taking light-box runs and short completions is the path to cover the -6 spread, while forcing deep throws into bracket coverage plays straight into NYG's ball-hawks."
     },
     {
      "title": "When NYG has the ball",
      "off_team": "NYG",
      "def_team": "JAX",
-     "off_scheme": "Vertical Air-Yards Attack",
-     "def_scheme": "Two-High Anti-Explosive Shell",
+     "off_scheme": "Run-and-Gun / Vertical Attack",
+     "def_scheme": "Cover 2 / Two-High Shell",
      "edge_team": "JAX",
      "edge_label": "Edge: JAX Def",
-     "clash": "Led by J.J. McCarthy, NYG runs a Vertical Air-Yards Attack scheme (56% pass, 9.3-yd avg depth of target, 38% of passing yards after the catch). JAX counters with a Two-High Anti-Explosive Shell defense (22% pressure rate, 16% tackles for loss on runs, allowing 7.7% explosive throws). NYG hunts vertical chunk plays, while JAX's shell is built to take away the deep shot and force long, patient drives.",
-     "track_record": "NYG vs. two-high / anti-explosive shells: 0-1 (1g), -0.33 EPA/play (season avg +0.01). JAX def vs. vertical & explosive passing offenses: 1-1 (2g), allowing -0.01 EPA/play (season avg -0.09).",
-     "watch_for": "Watch NYG's patience on underneath throws and early-down runs: if NYG takes the light-box yards and converts 3rd-and-short, JAX has to creep out of its shell; if NYG forces contested throws into bracket coverage, JAX's ball-hawks win the turnover battle."
+     "clash": "With J.J. McCarthy at QB, NYG runs a Run-and-Gun / Vertical Attack (56% pass, 9.3-yd depth of target, 38% YAC). JAX answers with a Cover 2 / Two-High Shell (22% pressure rate, 16% run TFLs, 7.7% explosive passes allowed). Coming in as a +6 underdog (33% implied win prob), NYG's vertical shots run right into a shell designed to cap deep throws and force patient, 10-play drives.",
+     "track_record": "NYG vs. Cover 2 / Two-High defenses: 0-1 (1g), -0.33 EPA/play (season avg +0.01). JAX def vs. Run-and-Gun / vertical offenses: 1-1 (2g), allowing -0.01 EPA/play (season avg -0.09).",
+     "watch_for": "Watch whether NYG stays patient underneath: taking light-box runs and short completions is the path to stay inside +6 and threaten the upset, while forcing deep throws into bracket coverage plays straight into JAX's ball-hawks."
     }
    ],
    "drivers": [
@@ -1283,8 +1307,8 @@
     "papg": 21.4,
     "off_rank": 3,
     "def_rank": 10,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Light-Box Coverage (Run Funnel)",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Nickel / Light-Box Coverage",
     "qb": "Joe Burrow",
     "coach": "Zac Taylor",
     "rest": 8,
@@ -1305,8 +1329,8 @@
     "papg": 24.8,
     "off_rank": 21,
     "def_rank": 20,
-    "off_scheme": "Vertical Air-Yards Attack",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Run-and-Gun / Vertical Attack",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Jayden Daniels",
     "coach": "Dan Quinn",
     "rest": 11,
@@ -1324,11 +1348,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "CIN (7-2, 1st in AFC North) enters with 99% playoff odds; WAS (3-5-1, 3rd in NFC East) sits at 10%. Division-title odds shift by 18 pts."
+     "text": "CIN is already in strong playoff shape (100%), playing to protect seeding and avoid letting a winnable game slip. A win keeps WAS's playoff pulse alive at 17%, while a loss virtually ends their run (7%).",
+     "lines": [
+      "CIN is already in strong playoff shape (100%), playing to protect seeding and avoid letting a winnable game slip.",
+      "A win keeps WAS's playoff pulse alive at 17%, while a loss virtually ends their run (7%)."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Standalone Monday night window (20:15 ET) at Northwest Stadium. Rest edge to WAS (11 days rest vs. 8). Recent form: CIN is on a W5 streak."
+     "label": "Coach Breakdown",
+     "text": "Veteran head coach Zac Taylor (59-65-1 across 8 seasons, 7-2 in 2026) brings a Spread Passing Offense and a Nickel / Light-Box Coverage into this matchup. Dan Quinn (WAS, 3-5-1; 63-64-1 career) pairs a Run-and-Gun / Vertical Attack with a Bend-Don't-Break Zone (-27 point differential this season).",
+     "lines": [
+      "Veteran head coach Zac Taylor (59-65-1 across 8 seasons, 7-2 in 2026) brings a Spread Passing Offense and a Nickel / Light-Box Coverage into this matchup.",
+      "Dan Quinn (WAS, 3-5-1; 63-64-1 career) pairs a Run-and-Gun / Vertical Attack with a Bend-Don't-Break Zone (-27 point differential this season)."
+     ]
     }
    ],
    "style_matchups": [
@@ -1336,25 +1368,25 @@
      "title": "When CIN has the ball",
      "off_team": "CIN",
      "def_team": "WAS",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "CIN",
      "edge_label": "Edge: CIN Off",
-     "clash": "Led by Joe Burrow, CIN runs a High-Volume Spread Passing scheme (64% pass, 7.3-yd avg depth of target, 41% of passing yards after the catch). WAS counters with a Balanced Zone / Bend-Don't-Break defense (20% pressure rate, 19% tackles for loss on runs, allowing 8.7% explosive throws). CIN stresses zone spacing with high pass volume (64%), forcing WAS to tackle cleanly underneath and close throwing windows quickly.",
-     "track_record": "CIN vs. balanced zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.15). WAS def vs. pass-heavy spread offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.05).",
-     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: CIN's spread style wins when quick completions march down the field without stalling; WAS's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+     "clash": "With Joe Burrow at QB, CIN runs a Spread Passing Offense (64% pass, 7.3-yd depth of target, 41% YAC). WAS answers with a Bend-Don't-Break Zone (20% pressure rate, 19% run TFLs, 8.7% explosive passes allowed). Priced as a -6 favorite (67% implied win prob), CIN's 64% pass rate stretches zone spacing horizontally, testing whether WAS can rally to tackles and hold up in the red zone.",
+     "track_record": "CIN vs. Bend-Don't-Break Zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.15). WAS def vs. Spread Passing offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.05).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone touchdowns: if CIN's Spread scheme turns quick throws into touchdowns, they can cover the -6 spread; WAS's zone wins by keeping everything in front and forcing field goals."
     },
     {
      "title": "When WAS has the ball",
      "off_team": "WAS",
      "def_team": "CIN",
-     "off_scheme": "Vertical Air-Yards Attack",
-     "def_scheme": "Light-Box Coverage (Run Funnel)",
+     "off_scheme": "Run-and-Gun / Vertical Attack",
+     "def_scheme": "Nickel / Light-Box Coverage",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Jayden Daniels, WAS runs a Vertical Air-Yards Attack scheme (57% pass, 8.6-yd avg depth of target, 42% of passing yards after the catch). CIN counters with a Light-Box Coverage (Run Funnel) defense (24% pressure rate, 20% tackles for loss on runs, allowing 9.5% explosive throws). CIN can be vulnerable to vertical shots (9.5% explosive pass rate allowed), giving WAS room to attack downfield if protection holds.",
-     "track_record": "WAS vs. coverage-first defenses: 2-1-1 (4g), -0.01 EPA/play (season avg +0.00). CIN def vs. vertical & explosive passing offenses: 3-1 (4g), allowing +0.01 EPA/play (season avg +0.01).",
-     "watch_for": "Watch play-action and deep crossers: WAS wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; CIN survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Jayden Daniels at QB, WAS runs a Run-and-Gun / Vertical Attack (57% pass, 8.6-yd depth of target, 42% YAC). CIN answers with a Nickel / Light-Box Coverage (24% pressure rate, 20% run TFLs, 9.5% explosive passes allowed). With WAS priced as a +6 underdog (33% implied win prob), CIN's vulnerability to big plays (9.5% explosive pass rate allowed) gives WAS real upside downfield.",
+     "track_record": "WAS vs. coverage-first Nickel defenses: 2-1-1 (4g), -0.01 EPA/play (season avg +0.00). CIN def vs. Run-and-Gun / vertical offenses: 3-1 (4g), allowing +0.01 EPA/play (season avg +0.01).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for WAS to stay inside +6 and threaten the upset; CIN keeps control if its front disrupts timing before deep routes develop."
     }
    ],
    "drivers": [
@@ -1690,8 +1722,8 @@
     "papg": 28.9,
     "off_rank": 10,
     "def_rank": 32,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Fernando Mendoza",
     "coach": "Klint Kubiak",
     "rest": 7,
@@ -1712,8 +1744,8 @@
     "papg": 20.7,
     "off_rank": 19,
     "def_rank": 9,
-    "off_scheme": "Quick-Game & YAC Rhythm",
-    "def_scheme": "Light-Box Coverage (Run Funnel)",
+    "off_scheme": "West Coast Quick Game (YAC)",
+    "def_scheme": "Nickel / Light-Box Coverage",
     "qb": "Bo Nix",
     "coach": "Sean Payton",
     "rest": 14,
@@ -1731,11 +1763,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "LV (4-6, 3rd in AFC West) enters with 10% playoff odds; DEN (7-2, 2nd in AFC West) sits at 97%. This single result moves their combined playoff probability by 24 percentage points. Division-title odds shift by 22 pts."
+     "text": "A win keeps LV's playoff pulse alive at 22%, while a loss virtually ends their run (6%). A win strengthens DEN's hold on the AFC West at 43%, while a loss tightens the division race to 22%.",
+     "lines": [
+      "A win keeps LV's playoff pulse alive at 22%, while a loss virtually ends their run (6%).",
+      "A win strengthens DEN's hold on the AFC West at 43%, while a loss tightens the division race to 22%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "First AFC West meeting of the season\u2014division wins double as primary tiebreakers. Rest edge to DEN (14 days rest vs. 7). Recent form: DEN is on a W5 streak."
+     "label": "Coach Breakdown",
+     "text": "Klint Kubiak (LV, 4-6) has consistently outperformed market expectations at 6-4 against the spread this year behind a Pro-Style Offense. Sean Payton (DEN, 7-2) thrives in tight finishes at 6-0 in one-score games this season (85-63 career), leaning on a West Coast Quick Game (YAC) and a Nickel / Light-Box Coverage.",
+     "lines": [
+      "Klint Kubiak (LV, 4-6) has consistently outperformed market expectations at 6-4 against the spread this year behind a Pro-Style Offense.",
+      "Sean Payton (DEN, 7-2) thrives in tight finishes at 6-0 in one-score games this season (85-63 career), leaning on a West Coast Quick Game (YAC) and a Nickel / Light-Box Coverage."
+     ]
     }
    ],
    "style_matchups": [
@@ -1743,25 +1783,25 @@
      "title": "When LV has the ball",
      "off_team": "LV",
      "def_team": "DEN",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Light-Box Coverage (Run Funnel)",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Nickel / Light-Box Coverage",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Fernando Mendoza, LV runs a Balanced Multiple Offense scheme (60% pass, 7.8-yd avg depth of target, 44% of passing yards after the catch). DEN counters with a Light-Box Coverage (Run Funnel) defense (29% pressure rate, 20% tackles for loss on runs, allowing 7.6% explosive throws). It's a strength-on-strength trench clash\u2014LV keeps a clean pocket (4.6% sack rate) against an aggressive pass rush.",
-     "track_record": "LV vs. coverage-first defenses: 0-3 (3g), -0.10 EPA/play (season avg -0.01). DEN def vs. balanced offenses: 2-1 (3g), allowing +0.09 EPA/play (season avg +0.01).",
-     "watch_for": "Watch whether DEN's blitzes and stunts force early checkdowns: if LV picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if DEN collapses the pocket without extra rushers, LV's rhythm stalls."
+     "clash": "With Fernando Mendoza at QB, LV runs a Pro-Style Offense (60% pass, 7.8-yd depth of target, 44% YAC). DEN answers with a Nickel / Light-Box Coverage (29% pressure rate, 20% run TFLs, 7.6% explosive passes allowed). Priced as a +10.5 underdog (22% implied win prob), this strength-on-strength trench clash pits LV's clean pocket (4.6% sack rate) directly against DEN's relentless rush.",
+     "track_record": "LV vs. coverage-first Nickel defenses: 0-3 (3g), -0.10 EPA/play (season avg -0.01). DEN def vs. Pro-Style offenses: 2-1 (3g), allowing +0.09 EPA/play (season avg +0.01).",
+     "watch_for": "Watch blitz pickup and intermediate crossers: if LV handles the rush and attacks voids behind the blitz, it has the firepower to stay inside +10.5 and threaten the upset; if DEN gets home with four rushers, LV's explosive plays dry up."
     },
     {
      "title": "When DEN has the ball",
      "off_team": "DEN",
      "def_team": "LV",
-     "off_scheme": "Quick-Game & YAC Rhythm",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "West Coast Quick Game (YAC)",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "DEN",
      "edge_label": "Edge: DEN Off",
-     "clash": "Led by Bo Nix, DEN runs a Quick-Game & YAC Rhythm scheme (57% pass, 5.6-yd avg depth of target, 61% of passing yards after the catch). LV counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 12% tackles for loss on runs, allowing 10.5% explosive throws). DEN gets the ball out fast and asks playmakers to break tackles in space, testing LV's open-field tackling and flat defenders.",
-     "track_record": "DEN vs. balanced zone defenses: 4-2 (6g), +0.02 EPA/play (season avg -0.01). LV def vs. quick-game / YAC offenses: 0-1 (1g), allowing +0.11 EPA/play (season avg +0.09).",
-     "watch_for": "Watch tackling on screens, slants, and flat routes: DEN's offense succeeds when short throws turn into 10+ yard gains after the catch; LV wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+     "clash": "With Bo Nix at QB, DEN runs a West Coast Quick Game (YAC) (57% pass, 5.6-yd depth of target, 61% YAC). LV answers with a Bend-Don't-Break Zone (25% pressure rate, 12% run TFLs, 10.5% explosive passes allowed). Entering as a -10.5 favorite (78% implied win prob), DEN gets the ball out fast to playmakers in space (61% YAC), putting LV's open-field tackling under the microscope.",
+     "track_record": "DEN vs. Bend-Don't-Break Zone defenses: 4-2 (6g), +0.02 EPA/play (season avg -0.01). LV def vs. West Coast Quick Game offenses: 0-1 (1g), allowing +0.11 EPA/play (season avg +0.09).",
+     "watch_for": "Watch missed tackles on screens, slants, and flats: turning short throws into 10+ yard chunks is how DEN can cover the -10.5 spread; LV wins by rallying downhill and forcing tight throws past the sticks."
     }
    ],
    "drivers": [
@@ -2099,8 +2139,8 @@
     "papg": 25.9,
     "off_rank": 22,
     "def_rank": 24,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Tyler Huntley",
     "coach": "Jesse Minter",
     "rest": 6,
@@ -2121,8 +2161,8 @@
     "papg": 26.2,
     "off_rank": 12,
     "def_rank": 25,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Two-High Anti-Explosive Shell",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Cover 2 / Two-High Shell",
     "qb": "Bryce Young",
     "coach": "Dave Canales",
     "rest": 7,
@@ -2140,11 +2180,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "BAL (4-6, 4th in AFC North) enters with 3% playoff odds; CAR (4-5, 1st in NFC South) sits at 39%. This single result moves their combined playoff probability by 20 percentage points. Division-title odds shift by 15 pts."
+     "text": "BAL (4-6) has modest standings leverage here (6% with a win vs. 2% with a loss), playing primarily for momentum and tiebreakers. A win lifts CAR to 46% playoff odds (45% for the NFC South), while a loss drops them to 30%.",
+     "lines": [
+      "BAL (4-6) has modest standings leverage here (6% with a win vs. 2% with a loss), playing primarily for momentum and tiebreakers.",
+      "A win lifts CAR to 46% playoff odds (45% for the NFC South), while a loss drops them to 30%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Recent form: BAL is on a L5 streak."
+     "label": "Coach Breakdown",
+     "text": "Jesse Minter (BAL, 4-6) has lagged market expectations at 2-7 against the spread, looking to spark a Pro-Style Offense that hasn't consistently finished drives. Dave Canales (CAR, 4-5) puts the game in his quarterback's hands with a Spread Passing Offense (63% pass rate).",
+     "lines": [
+      "Jesse Minter (BAL, 4-6) has lagged market expectations at 2-7 against the spread, looking to spark a Pro-Style Offense that hasn't consistently finished drives.",
+      "Dave Canales (CAR, 4-5) puts the game in his quarterback's hands with a Spread Passing Offense (63% pass rate)."
+     ]
     }
    ],
    "style_matchups": [
@@ -2152,25 +2200,25 @@
      "title": "When BAL has the ball",
      "off_team": "BAL",
      "def_team": "CAR",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Two-High Anti-Explosive Shell",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Cover 2 / Two-High Shell",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Tyler Huntley, BAL runs a Balanced Multiple Offense scheme (53% pass, 7.4-yd avg depth of target, 53% of passing yards after the catch). CAR counters with a Two-High Anti-Explosive Shell defense (16% pressure rate, 15% tackles for loss on runs, allowing 5.1% explosive throws). BAL gets the ball out fast and asks playmakers to break tackles in space, testing CAR's open-field tackling and flat defenders.",
-     "track_record": "BAL vs. two-high / anti-explosive shells: 0-1 (1g), -0.26 EPA/play (season avg +0.01). CAR def vs. balanced offenses: 1-2 (3g), allowing +0.05 EPA/play (season avg +0.02).",
-     "watch_for": "Watch tackling on screens, slants, and flat routes: BAL's offense succeeds when short throws turn into 10+ yard gains after the catch; CAR wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+     "clash": "With Tyler Huntley at QB, BAL runs a Pro-Style Offense (53% pass, 7.4-yd depth of target, 53% YAC). CAR answers with a Cover 2 / Two-High Shell (16% pressure rate, 15% run TFLs, 5.1% explosive passes allowed). Entering as a +3 underdog (41% implied win prob), BAL gets the ball out fast to playmakers in space (53% YAC), putting CAR's open-field tackling under the microscope.",
+     "track_record": "BAL vs. Cover 2 / Two-High defenses: 0-1 (1g), -0.26 EPA/play (season avg +0.01). CAR def vs. Pro-Style offenses: 1-2 (3g), allowing +0.05 EPA/play (season avg +0.02).",
+     "watch_for": "Watch missed tackles on screens, slants, and flats: turning short throws into 10+ yard chunks is how BAL can stay inside +3 and threaten the upset; CAR wins by rallying downhill and forcing tight throws past the sticks."
     },
     {
      "title": "When CAR has the ball",
      "off_team": "CAR",
      "def_team": "BAL",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "CAR",
      "edge_label": "Edge: CAR Off",
-     "clash": "Led by Bryce Young, CAR runs a High-Volume Spread Passing scheme (63% pass, 7.9-yd avg depth of target, 45% of passing yards after the catch). BAL counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 18% tackles for loss on runs, allowing 9.2% explosive throws). CAR stresses zone spacing with high pass volume (63%), forcing BAL to tackle cleanly underneath and close throwing windows quickly.",
-     "track_record": "CAR vs. balanced zone defenses: 1-1 (2g), -0.08 EPA/play (season avg +0.02). BAL def vs. pass-heavy spread offenses: 2-2 (4g), allowing +0.13 EPA/play (season avg +0.05).",
-     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: CAR's spread style wins when quick completions march down the field without stalling; BAL's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+     "clash": "With Bryce Young at QB, CAR runs a Spread Passing Offense (63% pass, 7.9-yd depth of target, 45% YAC). BAL answers with a Bend-Don't-Break Zone (25% pressure rate, 18% run TFLs, 9.2% explosive passes allowed). Priced as a -3 favorite (59% implied win prob), CAR's 63% pass rate stretches zone spacing horizontally, testing whether BAL can rally to tackles and hold up in the red zone.",
+     "track_record": "CAR vs. Bend-Don't-Break Zone defenses: 1-1 (2g), -0.08 EPA/play (season avg +0.02). BAL def vs. Spread Passing offenses: 2-2 (4g), allowing +0.13 EPA/play (season avg +0.05).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone touchdowns: if CAR's Spread scheme turns quick throws into touchdowns, they can cover the -3 spread; BAL's zone wins by keeping everything in front and forcing field goals."
     }
    ],
    "drivers": [
@@ -2506,8 +2554,8 @@
     "papg": 26.2,
     "off_rank": 15,
     "def_rank": 26,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Tyler Shough",
     "coach": "Kellen Moore",
     "rest": 7,
@@ -2528,8 +2576,8 @@
     "papg": 20.4,
     "off_rank": 7,
     "def_rank": 8,
-    "off_scheme": "Run-First / Ground Control",
-    "def_scheme": "Aggressive Front / Boom-or-Bust",
+    "off_scheme": "Power Run / Ground-and-Pound",
+    "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
     "qb": "Caleb Williams",
     "coach": "Ben Johnson",
     "rest": 14,
@@ -2547,11 +2595,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "NO (3-6, 3rd in NFC South) enters with 8% playoff odds; CHI (7-2, 3rd in NFC North) sits at 90%. This single result moves their combined playoff probability by 23 percentage points. Division-title odds shift by 21 pts."
+     "text": "NO (3-6) has modest standings leverage here (15% with a win vs. 6% with a loss), playing primarily for momentum and tiebreakers. A win pushes CHI's playoff odds up to 92%, while a loss drops them back to 78%.",
+     "lines": [
+      "NO (3-6) has modest standings leverage here (15% with a win vs. 6% with a loss), playing primarily for momentum and tiebreakers.",
+      "A win pushes CHI's playoff odds up to 92%, while a loss drops them back to 78%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Rest edge to CHI (14 days rest vs. 7). Recent form: CHI is on a W4 streak."
+     "label": "Coach Breakdown",
+     "text": "Kellen Moore (NO, 3-6) puts the game in his quarterback's hands with a Spread Passing Offense (62% pass rate). Ben Johnson (CHI, 7-2) is 11-3 in his career when favored and pairs a Power Run / Ground-and-Pound with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win.",
+     "lines": [
+      "Kellen Moore (NO, 3-6) puts the game in his quarterback's hands with a Spread Passing Offense (62% pass rate).",
+      "Ben Johnson (CHI, 7-2) is 11-3 in his career when favored and pairs a Power Run / Ground-and-Pound with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win."
+     ]
     }
    ],
    "style_matchups": [
@@ -2559,25 +2615,25 @@
      "title": "When NO has the ball",
      "off_team": "NO",
      "def_team": "CHI",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Tyler Shough, NO runs a High-Volume Spread Passing scheme (62% pass, 7.4-yd avg depth of target, 43% of passing yards after the catch). CHI counters with an Aggressive Front / Boom-or-Bust defense (27% pressure rate, 25% tackles for loss on runs, allowing 10.0% explosive throws). It's a strength-on-strength trench clash\u2014NO keeps a clean pocket (6.3% sack rate) against an aggressive pass rush.",
-     "track_record": "NO vs. aggressive pressure fronts: 0-3 (3g), -0.09 EPA/play (season avg -0.03). CHI def vs. pass-heavy spread offenses: 2-1 (3g), allowing +0.08 EPA/play (season avg -0.02).",
-     "watch_for": "Watch whether CHI's blitzes and stunts force early checkdowns: if NO picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if CHI collapses the pocket without extra rushers, NO's rhythm stalls."
+     "clash": "With Tyler Shough at QB, NO runs a Spread Passing Offense (62% pass, 7.4-yd depth of target, 43% YAC). CHI answers with an Aggressive Man-Blitz (Boom-or-Bust) (27% pressure rate, 25% run TFLs, 10.0% explosive passes allowed). Priced as a +11.5 underdog (20% implied win prob), this strength-on-strength trench clash pits NO's clean pocket (6.3% sack rate) directly against CHI's relentless rush.",
+     "track_record": "NO vs. Blitz & aggressive pressure defenses: 0-3 (3g), -0.09 EPA/play (season avg -0.03). CHI def vs. Spread Passing offenses: 2-1 (3g), allowing +0.08 EPA/play (season avg -0.02).",
+     "watch_for": "Watch blitz pickup and intermediate crossers: if NO handles the rush and attacks voids behind the blitz, it has the firepower to stay inside +11.5 and threaten the upset; if CHI gets home with four rushers, NO's explosive plays dry up."
     },
     {
      "title": "When CHI has the ball",
      "off_team": "CHI",
      "def_team": "NO",
-     "off_scheme": "Run-First / Ground Control",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Power Run / Ground-and-Pound",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "CHI",
      "edge_label": "Edge: CHI Off",
-     "clash": "Led by Caleb Williams, CHI runs a Run-First / Ground Control scheme (52% pass, 7.6-yd avg depth of target, 52% of passing yards after the catch, 11.2% explosive 20+ yd throws). NO counters with a Balanced Zone / Bend-Don't-Break defense (25% pressure rate, 15% tackles for loss on runs, allowing 11.0% explosive throws). NO can be vulnerable to vertical shots (11.0% explosive pass rate allowed), giving CHI room to attack downfield if protection holds.",
-     "track_record": "CHI vs. balanced zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.04). NO def vs. run-first offenses: 1-1 (2g), allowing +0.22 EPA/play (season avg +0.04).",
-     "watch_for": "Watch play-action and deep crossers: CHI wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; NO survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Caleb Williams at QB, CHI runs a Power Run / Ground-and-Pound (52% pass, 7.6-yd depth of target, 52% YAC, 11.2% explosive 20+ yd plays). NO answers with a Bend-Don't-Break Zone (25% pressure rate, 15% run TFLs, 11.0% explosive passes allowed). With CHI priced as a -11.5 favorite (80% implied win prob), NO's vulnerability to big plays (11.0% explosive pass rate allowed) gives CHI real upside downfield.",
+     "track_record": "CHI vs. Bend-Don't-Break Zone defenses: 3-0 (3g), +0.10 EPA/play (season avg +0.04). NO def vs. Power Run offenses: 1-1 (2g), allowing +0.22 EPA/play (season avg +0.04).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for CHI to cover the -11.5 spread; NO keeps control if its front disrupts timing before deep routes develop."
     }
    ],
    "drivers": [
@@ -2914,8 +2970,8 @@
     "papg": 20.2,
     "off_rank": 20,
     "def_rank": 7,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Aggressive Front / Boom-or-Bust",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
     "qb": "Aaron Rodgers",
     "coach": "Mike McCarthy",
     "rest": 7,
@@ -2936,8 +2992,8 @@
     "papg": 24.6,
     "off_rank": 31,
     "def_rank": 19,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Joe Milton III",
     "coach": "Nick Sirianni",
     "rest": 14,
@@ -2955,11 +3011,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "PIT (6-3, 2nd in AFC North) enters with 79% playoff odds; PHI (2-7, 4th in NFC East) sits at 0%. This single result moves their combined playoff probability by 19 percentage points."
+     "text": "A win pushes PIT's playoff odds up to 86%, while a loss drops them back to 67%. With playoffs out of reach, a loss lifts PHI to 65% for a top-5 draft pick, while a win drops them to 37%.",
+     "lines": [
+      "A win pushes PIT's playoff odds up to 86%, while a loss drops them back to 67%.",
+      "With playoffs out of reach, a loss lifts PHI to 65% for a top-5 draft pick, while a win drops them to 37%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Rest edge to PHI (14 days rest vs. 7). Recent form: PHI is on a L7 streak."
+     "label": "Coach Breakdown",
+     "text": "Mike McCarthy (PIT, 6-3) is 144-48 in his career when favored and pairs a Spread Passing Offense with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win. Nick Sirianni (PHI, 2-7) has built a 35-17 career mark in one-score games while dialing up a Bend-Don't-Break Zone and a Spread Passing Offense.",
+     "lines": [
+      "Mike McCarthy (PIT, 6-3) is 144-48 in his career when favored and pairs a Spread Passing Offense with an Aggressive Man-Blitz (Boom-or-Bust) to close out games he's expected to win.",
+      "Nick Sirianni (PHI, 2-7) has built a 35-17 career mark in one-score games while dialing up a Bend-Don't-Break Zone and a Spread Passing Offense."
+     ]
     }
    ],
    "style_matchups": [
@@ -2967,25 +3031,25 @@
      "title": "When PIT has the ball",
      "off_team": "PIT",
      "def_team": "PHI",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Aaron Rodgers, PIT runs a High-Volume Spread Passing scheme (62% pass, 7.4-yd avg depth of target, 61% of passing yards after the catch). PHI counters with a Balanced Zone / Bend-Don't-Break defense (17% pressure rate, 15% tackles for loss on runs, allowing 10.3% explosive throws). PIT stresses zone spacing with high pass volume (62%), forcing PHI to tackle cleanly underneath and close throwing windows quickly.",
-     "track_record": "PIT vs. balanced zone defenses: 1-0 (1g), -0.14 EPA/play (season avg -0.02). PHI def vs. pass-heavy spread offenses: 1-2 (3g), allowing +0.13 EPA/play (season avg +0.06).",
-     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: PIT's spread style wins when quick completions march down the field without stalling; PHI's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+     "clash": "With Aaron Rodgers at QB, PIT runs a Spread Passing Offense (62% pass, 7.4-yd depth of target, 61% YAC). PHI answers with a Bend-Don't-Break Zone (17% pressure rate, 15% run TFLs, 10.3% explosive passes allowed). Priced as a -3.5 favorite (60% implied win prob), PIT's 62% pass rate stretches zone spacing horizontally, testing whether PHI can rally to tackles and hold up in the red zone.",
+     "track_record": "PIT vs. Bend-Don't-Break Zone defenses: 1-0 (1g), -0.14 EPA/play (season avg -0.02). PHI def vs. Spread Passing offenses: 1-2 (3g), allowing +0.13 EPA/play (season avg +0.06).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone touchdowns: if PIT's Spread scheme turns quick throws into touchdowns, they can cover the -3.5 spread; PHI's zone wins by keeping everything in front and forcing field goals."
     },
     {
      "title": "When PHI has the ball",
      "off_team": "PHI",
      "def_team": "PIT",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
      "edge_team": "PIT",
      "edge_label": "Edge: PIT Def",
-     "clash": "Led by Joe Milton III, PHI runs a High-Volume Spread Passing scheme (61% pass, 7.2-yd avg depth of target, 41% of passing yards after the catch). PIT counters with an Aggressive Front / Boom-or-Bust defense (24% pressure rate, 25% tackles for loss on runs, allowing 9.9% explosive throws). PIT can be vulnerable to vertical shots (9.9% explosive pass rate allowed), giving PHI room to attack downfield if protection holds.",
-     "track_record": "PHI vs. aggressive pressure fronts: 0-1 (1g), -0.15 EPA/play (season avg -0.10). PIT def vs. pass-heavy spread offenses: 2-1 (3g), allowing +0.21 EPA/play (season avg -0.00).",
-     "watch_for": "Watch play-action and deep crossers: PHI wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; PIT survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Joe Milton III at QB, PHI runs a Spread Passing Offense (61% pass, 7.2-yd depth of target, 41% YAC). PIT answers with an Aggressive Man-Blitz (Boom-or-Bust) (24% pressure rate, 25% run TFLs, 9.9% explosive passes allowed). With PHI priced as a +3.5 underdog (40% implied win prob), PIT's vulnerability to big plays (9.9% explosive pass rate allowed) gives PHI real upside downfield.",
+     "track_record": "PHI vs. Blitz & aggressive pressure defenses: 0-1 (1g), -0.15 EPA/play (season avg -0.10). PIT def vs. Spread Passing offenses: 2-1 (3g), allowing +0.21 EPA/play (season avg -0.00).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for PHI to stay inside +3.5 and threaten the upset; PIT keeps control if its front disrupts timing before deep routes develop."
     }
    ],
    "drivers": [
@@ -3322,8 +3386,8 @@
     "papg": 26.6,
     "off_rank": 28,
     "def_rank": 28,
-    "off_scheme": "Short Rhythm & Possession",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Ball-Control Short Game",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Cam Ward",
     "coach": "Robert Saleh",
     "rest": 7,
@@ -3344,8 +3408,8 @@
     "papg": 28.2,
     "off_rank": 5,
     "def_rank": 30,
-    "off_scheme": "Vertical Spread Passing",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Air Raid / Spread Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Dak Prescott",
     "coach": "Brian Schottenheimer",
     "rest": 7,
@@ -3362,11 +3426,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "Both teams sit on the outside of the playoff race (TEN 0%, DAL 17%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 26 points."
+     "text": "With playoffs out of reach, a loss lifts TEN to 88% for a top-5 draft pick, while a win drops them to 67%. A win keeps DAL's playoff pulse alive at 20%, while a loss virtually ends their run (8%).",
+     "lines": [
+      "With playoffs out of reach, a loss lifts TEN to 88% for a top-5 draft pick, while a win drops them to 67%.",
+      "A win keeps DAL's playoff pulse alive at 20%, while a loss virtually ends their run (8%)."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Recent form: TEN is on a L3 streak."
+     "label": "Coach Breakdown",
+     "text": "Robert Saleh (TEN, 1-8) has struggled to close out tight games at 1-5 in one-score games this season (16-27 career), leaning on a Ball-Control Short Game and a Bend-Don't-Break Zone. Brian Schottenheimer (DAL, 4-6) puts the game in his quarterback's hands with an Air Raid / Spread Offense (61% pass rate).",
+     "lines": [
+      "Robert Saleh (TEN, 1-8) has struggled to close out tight games at 1-5 in one-score games this season (16-27 career), leaning on a Ball-Control Short Game and a Bend-Don't-Break Zone.",
+      "Brian Schottenheimer (DAL, 4-6) puts the game in his quarterback's hands with an Air Raid / Spread Offense (61% pass rate)."
+     ]
     }
    ],
    "style_matchups": [
@@ -3374,25 +3446,25 @@
      "title": "When TEN has the ball",
      "off_team": "TEN",
      "def_team": "DAL",
-     "off_scheme": "Short Rhythm & Possession",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Ball-Control Short Game",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "TEN",
      "edge_label": "Edge: TEN Off",
-     "clash": "Led by Cam Ward, TEN runs a Short Rhythm & Possession scheme (59% pass, 6.8-yd avg depth of target, 51% of passing yards after the catch). DAL counters with a Balanced Zone / Bend-Don't-Break defense (22% pressure rate, 15% tackles for loss on runs, allowing 10.5% explosive throws). DAL can be vulnerable to vertical shots (10.5% explosive pass rate allowed), giving TEN room to attack downfield if protection holds.",
-     "track_record": "TEN vs. balanced zone defenses: 0-2 (2g), -0.01 EPA/play (season avg -0.04). DAL def vs. short-rhythm / YAC offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.12).",
-     "watch_for": "Watch play-action and deep crossers: TEN wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; DAL survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Cam Ward at QB, TEN runs a Ball-Control Short Game (59% pass, 6.8-yd depth of target, 51% YAC). DAL answers with a Bend-Don't-Break Zone (22% pressure rate, 15% run TFLs, 10.5% explosive passes allowed). With TEN priced as a +7.5 underdog (29% implied win prob), DAL's vulnerability to big plays (10.5% explosive pass rate allowed) gives TEN real upside downfield.",
+     "track_record": "TEN vs. Bend-Don't-Break Zone defenses: 0-2 (2g), -0.01 EPA/play (season avg -0.04). DAL def vs. short-game possession offenses: 1-2 (3g), allowing +0.03 EPA/play (season avg +0.12).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for TEN to stay inside +7.5 and threaten the upset; DAL keeps control if its front disrupts timing before deep routes develop."
     },
     {
      "title": "When DAL has the ball",
      "off_team": "DAL",
      "def_team": "TEN",
-     "off_scheme": "Vertical Spread Passing",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Air Raid / Spread Offense",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "DAL",
      "edge_label": "Edge: DAL Off",
-     "clash": "Led by Dak Prescott, DAL runs a Vertical Spread Passing scheme (61% pass, 8.7-yd avg depth of target, 36% of passing yards after the catch). TEN counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 16% tackles for loss on runs, allowing 11.7% explosive throws). DAL stresses zone spacing with high pass volume (61%), forcing TEN to tackle cleanly underneath and close throwing windows quickly.",
-     "track_record": "DAL vs. balanced zone defenses: 2-4 (6g), +0.13 EPA/play (season avg +0.11). TEN def vs. pass-heavy spread offenses: 0-2 (2g), allowing +0.11 EPA/play (season avg +0.08).",
-     "watch_for": "Watch 3rd-down passing windows and red-zone conversion: DAL's spread style wins when quick completions march down the field without stalling; TEN's zone wins by rallying to tackles in bounds, avoiding explosive busts, and forcing field goals."
+     "clash": "With Dak Prescott at QB, DAL runs an Air Raid / Spread Offense (61% pass, 8.7-yd depth of target, 36% YAC). TEN answers with a Bend-Don't-Break Zone (21% pressure rate, 16% run TFLs, 11.7% explosive passes allowed). Priced as a -7.5 favorite (71% implied win prob), DAL's 61% pass rate stretches zone spacing horizontally, testing whether TEN can rally to tackles and hold up in the red zone.",
+     "track_record": "DAL vs. Bend-Don't-Break Zone defenses: 2-4 (6g), +0.13 EPA/play (season avg +0.11). TEN def vs. Air Raid / Spread offenses: 0-2 (2g), allowing +0.11 EPA/play (season avg +0.08).",
+     "watch_for": "Watch 3rd-down passing windows and red-zone touchdowns: if DAL's Spread scheme turns quick throws into touchdowns, they can cover the -7.5 spread; TEN's zone wins by keeping everything in front and forcing field goals."
     }
    ],
    "drivers": [
@@ -3718,8 +3790,8 @@
     "papg": 25.4,
     "off_rank": 25,
     "def_rank": 22,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Geno Smith",
     "coach": "Aaron Glenn",
     "rest": 7,
@@ -3740,8 +3812,8 @@
     "papg": 26.6,
     "off_rank": 32,
     "def_rank": 27,
-    "off_scheme": "Run-Heavy / Play-Action",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Run-Heavy Play-Action",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Justin Herbert",
     "coach": "Jim Harbaugh",
     "rest": 6,
@@ -3758,11 +3830,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "Both teams sit on the outside of the playoff race (NYJ 0%, LAC 0%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 50 points."
+     "text": "With playoffs out of reach, a loss lifts NYJ to 59% for a top-5 draft pick, while a win drops them to 29%. With playoffs out of reach, a loss lifts LAC to 91% for a top-5 draft pick, while a win drops them to 71%.",
+     "lines": [
+      "With playoffs out of reach, a loss lifts NYJ to 59% for a top-5 draft pick, while a win drops them to 29%.",
+      "With playoffs out of reach, a loss lifts LAC to 91% for a top-5 draft pick, while a win drops them to 71%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Recent form: NYJ is on a L5 streak."
+     "label": "Coach Breakdown",
+     "text": "Aaron Glenn (NYJ, 2-8) has struggled to close out tight games at 1-5 in one-score games this season, leaning on a Pro-Style Offense and a Bend-Don't-Break Zone. Jim Harbaugh (LAC, 1-8) is 55-21 in his career when favored and pairs a Run-Heavy Play-Action with a Bend-Don't-Break Zone to close out games he's expected to win.",
+     "lines": [
+      "Aaron Glenn (NYJ, 2-8) has struggled to close out tight games at 1-5 in one-score games this season, leaning on a Pro-Style Offense and a Bend-Don't-Break Zone.",
+      "Jim Harbaugh (LAC, 1-8) is 55-21 in his career when favored and pairs a Run-Heavy Play-Action with a Bend-Don't-Break Zone to close out games he's expected to win."
+     ]
     }
    ],
    "style_matchups": [
@@ -3770,25 +3850,25 @@
      "title": "When NYJ has the ball",
      "off_team": "NYJ",
      "def_team": "LAC",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Geno Smith, NYJ runs a Balanced Multiple Offense scheme (58% pass, 7.8-yd avg depth of target, 46% of passing yards after the catch). LAC counters with a Balanced Zone / Bend-Don't-Break defense (24% pressure rate, 13% tackles for loss on runs, allowing 9.6% explosive throws). LAC can be vulnerable to vertical shots (9.6% explosive pass rate allowed), giving NYJ room to attack downfield if protection holds.",
-     "track_record": "NYJ vs. balanced zone defenses: 1-2 (3g), +0.02 EPA/play (season avg -0.01). LAC def vs. balanced offenses: 0-4 (4g), allowing +0.01 EPA/play (season avg +0.00).",
-     "watch_for": "Watch play-action and deep crossers: NYJ wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; LAC survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Geno Smith at QB, NYJ runs a Pro-Style Offense (58% pass, 7.8-yd depth of target, 46% YAC). LAC answers with a Bend-Don't-Break Zone (24% pressure rate, 13% run TFLs, 9.6% explosive passes allowed). With NYJ priced as a +3 underdog (41% implied win prob), LAC's vulnerability to big plays (9.6% explosive pass rate allowed) gives NYJ real upside downfield.",
+     "track_record": "NYJ vs. Bend-Don't-Break Zone defenses: 1-2 (3g), +0.02 EPA/play (season avg -0.01). LAC def vs. Pro-Style offenses: 0-4 (4g), allowing +0.01 EPA/play (season avg +0.00).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for NYJ to stay inside +3 and threaten the upset; LAC keeps control if its front disrupts timing before deep routes develop."
     },
     {
      "title": "When LAC has the ball",
      "off_team": "LAC",
      "def_team": "NYJ",
-     "off_scheme": "Run-Heavy / Play-Action",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Run-Heavy Play-Action",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "NYJ",
      "edge_label": "Edge: NYJ Def",
-     "clash": "Led by Justin Herbert, LAC runs a Run-Heavy / Play-Action scheme (53% pass, 7.5-yd avg depth of target, 46% of passing yards after the catch). NYJ counters with a Balanced Zone / Bend-Don't-Break defense (24% pressure rate, 14% tackles for loss on runs, allowing 8.9% explosive throws). Analytically, LAC's cleanest path runs through the passing game (pass net -0.03 EPA/db, rush net -0.17 EPA/carry).",
-     "track_record": "LAC vs. balanced zone defenses: 0-3 (3g), -0.25 EPA/play (season avg -0.16). NYJ def vs. run-first offenses: 0-3 (3g), allowing +0.18 EPA/play (season avg +0.06).",
-     "watch_for": "Watch early-down efficiency in the passing game: if LAC stays ahead of the chains and avoids negative plays, its play-calling stays balanced; NYJ wins by tightening up in the red zone and forcing 3rd-and-long throws."
+     "clash": "With Justin Herbert at QB, LAC runs a Run-Heavy Play-Action (53% pass, 7.5-yd depth of target, 46% YAC). NYJ answers with a Bend-Don't-Break Zone (24% pressure rate, 14% run TFLs, 8.9% explosive passes allowed). Entering as a -3 favorite (59% implied win prob), LAC's strongest analytical edge runs through the passing game (pass net -0.03 EPA/db, rush net -0.17 EPA/carry).",
+     "track_record": "LAC vs. Bend-Don't-Break Zone defenses: 0-3 (3g), -0.25 EPA/play (season avg -0.16). NYJ def vs. run-heavy offenses: 0-3 (3g), allowing +0.18 EPA/play (season avg +0.06).",
+     "watch_for": "Watch early-down success in the passing game: staying on schedule without negative plays lets LAC cover the -3 spread; NYJ's defense wins by stiffening in the red zone and forcing long 3rd downs."
     }
    ],
    "drivers": [
@@ -4095,8 +4175,8 @@
     "papg": 24.9,
     "off_rank": 30,
     "def_rank": 21,
-    "off_scheme": "Run-First / Ground Control",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Power Run / Ground-and-Pound",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Kyle McCord",
     "coach": "Jeff Hafley",
     "rest": 7,
@@ -4117,8 +4197,8 @@
     "papg": 22.1,
     "off_rank": 1,
     "def_rank": 15,
-    "off_scheme": "Explosive Play-Action & Balanced",
-    "def_scheme": "Pass-Rush Pressure Front",
+    "off_scheme": "West Coast Play-Action",
+    "def_scheme": "Pass-Rush / Front-Four Pressure",
     "qb": "Josh Allen",
     "coach": "Joe Brady",
     "rest": 7,
@@ -4136,11 +4216,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "MIA (1-8, 4th in AFC East) enters with 0% playoff odds; BUF (8-1, 1st in AFC East) sits at 100%. With both clubs positioned near the top of the AFC, conference #1-seed bye odds swing by 26 percentage points."
+     "text": "With playoffs out of reach, a loss lifts MIA to 88% for a top-5 draft pick, while a win drops them to 68%. For BUF, a win jumps #1-seed bye odds to 49%, while a loss drops them to 23% (a win keeps them firmly in control of the top seed).",
+     "lines": [
+      "With playoffs out of reach, a loss lifts MIA to 88% for a top-5 draft pick, while a win drops them to 68%.",
+      "For BUF, a win jumps #1-seed bye odds to 49%, while a loss drops them to 23% (a win keeps them firmly in control of the top seed)."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "First AFC East meeting of the season\u2014division wins double as primary tiebreakers. Recent form: MIA is on a L3 streak and BUF is on a W5 streak."
+     "label": "Coach Breakdown",
+     "text": "Jeff Hafley (MIA, 1-8) has struggled to close out tight games at 1-4 in one-score games this season, leaning on a Power Run / Ground-and-Pound and a Bend-Don't-Break Zone. In year 1, Joe Brady (BUF) is off to a 8-1 start (8-1 this season), quickly establishing a West Coast Play-Action and a Pass-Rush / Front-Four Pressure.",
+     "lines": [
+      "Jeff Hafley (MIA, 1-8) has struggled to close out tight games at 1-4 in one-score games this season, leaning on a Power Run / Ground-and-Pound and a Bend-Don't-Break Zone.",
+      "In year 1, Joe Brady (BUF) is off to a 8-1 start (8-1 this season), quickly establishing a West Coast Play-Action and a Pass-Rush / Front-Four Pressure."
+     ]
     }
    ],
    "style_matchups": [
@@ -4148,25 +4236,25 @@
      "title": "When MIA has the ball",
      "off_team": "MIA",
      "def_team": "BUF",
-     "off_scheme": "Run-First / Ground Control",
-     "def_scheme": "Pass-Rush Pressure Front",
+     "off_scheme": "Power Run / Ground-and-Pound",
+     "def_scheme": "Pass-Rush / Front-Four Pressure",
      "edge_team": "",
      "edge_label": "Even style clash",
-     "clash": "Led by Kyle McCord, MIA runs a Run-First / Ground Control scheme (53% pass, 9.4-yd avg depth of target, 46% of passing yards after the catch). BUF counters with a Pass-Rush Pressure Front defense (27% pressure rate, 19% tackles for loss on runs, allowing 9.7% explosive throws). That creates a clear protection stress test: MIA takes sacks on 10.0% of dropbacks against a front that disrupts timing relentlessly.",
-     "track_record": "MIA vs. high-pressure fronts: 0-4 (4g), -0.12 EPA/play (season avg -0.06). BUF def vs. run-first offenses: 2-0 (2g), allowing -0.24 EPA/play (season avg -0.00).",
-     "watch_for": "Watch 1st-down pass protection and quick outlets: for MIA's style to work, they must stay out of 3rd-and-long and hold BUF under 3 sacks. If BUF wins early-down run stops and forces obvious passing downs, its pressure package takes over."
+     "clash": "With Kyle McCord at QB, MIA runs a Power Run / Ground-and-Pound (53% pass, 9.4-yd depth of target, 46% YAC). BUF answers with a Pass-Rush / Front-Four Pressure (27% pressure rate, 19% run TFLs, 9.7% explosive passes allowed). Entering as a +16.5 underdog (11% implied win prob), this is a protection stress test: MIA takes sacks on 10.0% of dropbacks against a front built to wreck timing.",
+     "track_record": "MIA vs. heavy pass-rush defenses: 0-4 (4g), -0.12 EPA/play (season avg -0.06). BUF def vs. Power Run offenses: 2-0 (2g), allowing -0.24 EPA/play (season avg -0.00).",
+     "watch_for": "Watch 1st-down protection and hot routes: to stay inside +16.5 and threaten the upset, MIA has to avoid 3rd-and-long and hold BUF under 3 sacks. If BUF's blitzes win early downs, the defensive front dictates the game."
     },
     {
      "title": "When BUF has the ball",
      "off_team": "BUF",
      "def_team": "MIA",
-     "off_scheme": "Explosive Play-Action & Balanced",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "West Coast Play-Action",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "BUF",
      "edge_label": "Edge: BUF Off",
-     "clash": "Led by Josh Allen, BUF runs an Explosive Play-Action & Balanced scheme (48% pass, 9.1-yd avg depth of target, 50% of passing yards after the catch, 13.6% explosive 20+ yd throws). MIA counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 14% tackles for loss on runs, allowing 9.9% explosive throws). MIA can be vulnerable to vertical shots (9.9% explosive pass rate allowed), giving BUF room to attack downfield if protection holds.",
-     "track_record": "BUF vs. balanced zone defenses: 1-0 (1g), +0.25 EPA/play (season avg +0.14). MIA def vs. explosive passing offenses: 0-3 (3g), allowing +0.20 EPA/play (season avg +0.05).",
-     "watch_for": "Watch play-action and deep crossers: BUF wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; MIA survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With Josh Allen at QB, BUF runs a West Coast Play-Action (48% pass, 9.1-yd depth of target, 50% YAC, 13.6% explosive 20+ yd plays). MIA answers with a Bend-Don't-Break Zone (21% pressure rate, 14% run TFLs, 9.9% explosive passes allowed). With BUF priced as a -16.5 favorite (89% implied win prob), MIA's vulnerability to big plays (9.9% explosive pass rate allowed) gives BUF real upside downfield.",
+     "track_record": "BUF vs. Bend-Don't-Break Zone defenses: 1-0 (1g), +0.25 EPA/play (season avg +0.14). MIA def vs. explosive Play-Action & vertical offenses: 0-3 (3g), allowing +0.20 EPA/play (season avg +0.05).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for BUF to cover the -16.5 spread; MIA keeps control if its front disrupts timing before deep routes develop."
     }
    ],
    "drivers": [
@@ -4502,8 +4590,8 @@
     "papg": 28.9,
     "off_rank": 29,
     "def_rank": 31,
-    "off_scheme": "High-Volume Spread Passing",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Spread Passing Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Gardner Minshew",
     "coach": "Mike LaFleur",
     "rest": 7,
@@ -4524,8 +4612,8 @@
     "papg": 17.3,
     "off_rank": 8,
     "def_rank": 3,
-    "off_scheme": "Quick-Game & YAC Rhythm",
-    "def_scheme": "Run-Stuffing Pass Funnel",
+    "off_scheme": "West Coast Quick Game (YAC)",
+    "def_scheme": "Stacked-Box Run Defense",
     "qb": "Patrick Mahomes",
     "coach": "Andy Reid",
     "rest": 7,
@@ -4542,11 +4630,19 @@
    "why_watch": [
     {
      "label": "The Stakes",
-     "text": "ARI (3-7, 4th in NFC West) enters with 0% playoff odds; KC (7-2, 1st in AFC West) sits at 99%. Division-title odds shift by 18 pts."
+     "text": "With playoffs out of reach, a loss lifts ARI to 40% for a top-5 draft pick, while a win drops them to 16%. A win strengthens KC's hold on the AFC West at 64%, while a loss tightens the division race to 46%.",
+     "lines": [
+      "With playoffs out of reach, a loss lifts ARI to 40% for a top-5 draft pick, while a win drops them to 16%.",
+      "A win strengthens KC's hold on the AFC West at 64%, while a loss tightens the division race to 46%."
+     ]
     },
     {
-     "label": "Context & Angles",
-     "text": "Played at GEHA Field at Arrowhead Stadium (outdoors). Market line is KC -15.5 with a 40.5 total."
+     "label": "Coach Breakdown",
+     "text": "Mike LaFleur (ARI, 3-7) puts the game in his quarterback's hands with a Spread Passing Offense (63% pass rate). Andy Reid (KC, 7-2) is 230-87 in his career when favored and pairs a West Coast Quick Game (YAC) with a Stacked-Box Run Defense to close out games he's expected to win.",
+     "lines": [
+      "Mike LaFleur (ARI, 3-7) puts the game in his quarterback's hands with a Spread Passing Offense (63% pass rate).",
+      "Andy Reid (KC, 7-2) is 230-87 in his career when favored and pairs a West Coast Quick Game (YAC) with a Stacked-Box Run Defense to close out games he's expected to win."
+     ]
     }
    ],
    "style_matchups": [
@@ -4554,25 +4650,25 @@
      "title": "When ARI has the ball",
      "off_team": "ARI",
      "def_team": "KC",
-     "off_scheme": "High-Volume Spread Passing",
-     "def_scheme": "Run-Stuffing Pass Funnel",
+     "off_scheme": "Spread Passing Offense",
+     "def_scheme": "Stacked-Box Run Defense",
      "edge_team": "KC",
      "edge_label": "Edge: KC Def",
-     "clash": "Led by Gardner Minshew, ARI runs a High-Volume Spread Passing scheme (63% pass, 7.2-yd avg depth of target, 43% of passing yards after the catch). KC counters with a Run-Stuffing Pass Funnel defense (18% pressure rate, 22% tackles for loss on runs, allowing 8.2% explosive throws). Analytically, ARI's cleanest path runs through the passing game (pass net -0.12 EPA/db, rush net -0.13 EPA/carry).",
-     "track_record": "ARI vs. run-stuffing fronts: 0-3 (3g), -0.13 EPA/play (season avg -0.05). KC def vs. pass-heavy spread offenses: 1-0 (1g), allowing +0.04 EPA/play (season avg -0.07).",
-     "watch_for": "Watch early-down efficiency in the passing game: if ARI stays ahead of the chains and avoids negative plays, its play-calling stays balanced; KC wins by tightening up in the red zone and forcing 3rd-and-long throws."
+     "clash": "With Gardner Minshew at QB, ARI runs a Spread Passing Offense (63% pass, 7.2-yd depth of target, 43% YAC). KC answers with a Stacked-Box Run Defense (18% pressure rate, 22% run TFLs, 8.2% explosive passes allowed). Entering as a +15.5 underdog (12% implied win prob), ARI's strongest analytical edge runs through the passing game (pass net -0.12 EPA/db, rush net -0.13 EPA/carry).",
+     "track_record": "ARI vs. Stacked-Box run defenses: 0-3 (3g), -0.13 EPA/play (season avg -0.05). KC def vs. Spread Passing offenses: 1-0 (1g), allowing +0.04 EPA/play (season avg -0.07).",
+     "watch_for": "Watch early-down success in the passing game: staying on schedule without negative plays lets ARI stay inside +15.5 and threaten the upset; KC's defense wins by stiffening in the red zone and forcing long 3rd downs."
     },
     {
      "title": "When KC has the ball",
      "off_team": "KC",
      "def_team": "ARI",
-     "off_scheme": "Quick-Game & YAC Rhythm",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "West Coast Quick Game (YAC)",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "KC",
      "edge_label": "Edge: KC Off",
-     "clash": "Led by Patrick Mahomes, KC runs a Quick-Game & YAC Rhythm scheme (56% pass, 6.0-yd avg depth of target, 65% of passing yards after the catch). ARI counters with a Balanced Zone / Bend-Don't-Break defense (21% pressure rate, 15% tackles for loss on runs, allowing 10.6% explosive throws). KC gets the ball out fast and asks playmakers to break tackles in space, testing ARI's open-field tackling and flat defenders.",
-     "track_record": "KC vs. balanced zone defenses: 1-0 (1g), +0.11 EPA/play (season avg +0.11). ARI def vs. quick-game / YAC offenses: 0-1 (1g), allowing +0.14 EPA/play (season avg +0.09).",
-     "watch_for": "Watch tackling on screens, slants, and flat routes: KC's offense succeeds when short throws turn into 10+ yard gains after the catch; ARI wins by rallying downhill, keeping everything in front, and forcing tight-window throws past the sticks."
+     "clash": "With Patrick Mahomes at QB, KC runs a West Coast Quick Game (YAC) (56% pass, 6.0-yd depth of target, 65% YAC). ARI answers with a Bend-Don't-Break Zone (21% pressure rate, 15% run TFLs, 10.6% explosive passes allowed). Entering as a -15.5 favorite (88% implied win prob), KC gets the ball out fast to playmakers in space (65% YAC), putting ARI's open-field tackling under the microscope.",
+     "track_record": "KC vs. Bend-Don't-Break Zone defenses: 1-0 (1g), +0.11 EPA/play (season avg +0.11). ARI def vs. West Coast Quick Game offenses: 0-1 (1g), allowing +0.14 EPA/play (season avg +0.09).",
+     "watch_for": "Watch missed tackles on screens, slants, and flats: turning short throws into 10+ yard chunks is how KC can cover the -15.5 spread; ARI wins by rallying downhill and forcing tight throws past the sticks."
     }
    ],
    "drivers": [
@@ -4906,8 +5002,8 @@
     "papg": 27.0,
     "off_rank": 26,
     "def_rank": 29,
-    "off_scheme": "Balanced Multiple Offense",
-    "def_scheme": "Balanced Zone / Bend-Don't-Break",
+    "off_scheme": "Pro-Style Offense",
+    "def_scheme": "Bend-Don't-Break Zone",
     "qb": "Daniel Jones",
     "coach": "Shane Steichen",
     "rest": 4,
@@ -4928,8 +5024,8 @@
     "papg": 22.2,
     "off_rank": 9,
     "def_rank": 17,
-    "off_scheme": "Vertical Air-Yards Attack",
-    "def_scheme": "Aggressive Front / Boom-or-Bust",
+    "off_scheme": "Run-and-Gun / Vertical Attack",
+    "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
     "qb": "C.J. Stroud",
     "coach": "DeMeco Ryans",
     "rest": 4,
@@ -4950,8 +5046,12 @@
      "text": "IND (3-8, 3rd in AFC South) vs. HOU (4-6, 2nd in AFC South)."
     },
     {
-     "label": "Context & Angles",
-     "text": "Divisional rematch: IND won Week 3 (HOU 17\u201319 IND), putting a season sweep and head-to-head tiebreaker on the line. Standalone Thursday night window (20:15 ET) at Reliant Stadium."
+     "label": "Coach Breakdown",
+     "text": "Shane Steichen (IND, 3-8) has lagged market expectations at 5-6 against the spread, looking to spark a Pro-Style Offense that hasn't consistently finished drives. DeMeco Ryans (HOU, 4-6) has struggled to close out tight games at 1-5 in one-score games this season (22-18 career), leaning on a Run-and-Gun / Vertical Attack and an Aggressive Man-Blitz (Boom-or-Bust).",
+     "lines": [
+      "Shane Steichen (IND, 3-8) has lagged market expectations at 5-6 against the spread, looking to spark a Pro-Style Offense that hasn't consistently finished drives.",
+      "DeMeco Ryans (HOU, 4-6) has struggled to close out tight games at 1-5 in one-score games this season (22-18 career), leaning on a Run-and-Gun / Vertical Attack and an Aggressive Man-Blitz (Boom-or-Bust)."
+     ]
     }
    ],
    "style_matchups": [
@@ -4959,25 +5059,25 @@
      "title": "When IND has the ball",
      "off_team": "IND",
      "def_team": "HOU",
-     "off_scheme": "Balanced Multiple Offense",
-     "def_scheme": "Aggressive Front / Boom-or-Bust",
+     "off_scheme": "Pro-Style Offense",
+     "def_scheme": "Aggressive Man-Blitz (Boom-or-Bust)",
      "edge_team": "HOU",
      "edge_label": "Edge: HOU Def",
-     "clash": "Led by Daniel Jones, IND runs a Balanced Multiple Offense scheme (56% pass, 7.6-yd avg depth of target, 53% of passing yards after the catch). HOU counters with an Aggressive Front / Boom-or-Bust defense (28% pressure rate, 24% tackles for loss on runs, allowing 11.0% explosive throws). It's a strength-on-strength trench clash\u2014IND keeps a clean pocket (7.3% sack rate) against an aggressive pass rush.",
-     "track_record": "Head-to-head (Wk 3): IND produced -0.09 EPA/play (235 pass yds, 89 rush yds, 4 sacks taken) against HOU. IND vs. aggressive pressure fronts: 1-1 (2g), -0.08 EPA/play (season avg -0.12). HOU def vs. balanced offenses: 1-3 (4g), allowing -0.05 EPA/play (season avg -0.02).",
-     "watch_for": "Watch whether HOU's blitzes and stunts force early checkdowns: if IND picks up pressure and hits intermediate windows behind the rush, big chunk plays open up; if HOU collapses the pocket without extra rushers, IND's rhythm stalls."
+     "clash": "With Daniel Jones at QB, IND runs a Pro-Style Offense (56% pass, 7.6-yd depth of target, 53% YAC). HOU answers with an Aggressive Man-Blitz (Boom-or-Bust) (28% pressure rate, 24% run TFLs, 11.0% explosive passes allowed). Priced as a +12.5 underdog (18% implied win prob), this strength-on-strength trench clash pits IND's clean pocket (7.3% sack rate) directly against HOU's relentless rush.",
+     "track_record": "Head-to-head (Wk 3): IND posted -0.09 EPA/play (235 pass yds, 89 rush yds, 4 sacks taken) vs. HOU. IND vs. Blitz & aggressive pressure defenses: 1-1 (2g), -0.08 EPA/play (season avg -0.12). HOU def vs. Pro-Style offenses: 1-3 (4g), allowing -0.05 EPA/play (season avg -0.02).",
+     "watch_for": "Watch blitz pickup and intermediate crossers: if IND handles the rush and attacks voids behind the blitz, it has the firepower to stay inside +12.5 and threaten the upset; if HOU gets home with four rushers, IND's explosive plays dry up."
     },
     {
      "title": "When HOU has the ball",
      "off_team": "HOU",
      "def_team": "IND",
-     "off_scheme": "Vertical Air-Yards Attack",
-     "def_scheme": "Balanced Zone / Bend-Don't-Break",
+     "off_scheme": "Run-and-Gun / Vertical Attack",
+     "def_scheme": "Bend-Don't-Break Zone",
      "edge_team": "HOU",
      "edge_label": "Edge: HOU Off",
-     "clash": "Led by C.J. Stroud, HOU runs a Vertical Air-Yards Attack scheme (59% pass, 9.3-yd avg depth of target, 39% of passing yards after the catch, 10.6% explosive 20+ yd throws). IND counters with a Balanced Zone / Bend-Don't-Break defense (22% pressure rate, 12% tackles for loss on runs, allowing 11.1% explosive throws). IND can be vulnerable to vertical shots (11.1% explosive pass rate allowed), giving HOU room to attack downfield if protection holds.",
-     "track_record": "Head-to-head (Wk 3): HOU produced -0.07 EPA/play (167 pass yds, 70 rush yds, 3 sacks taken) against IND. HOU vs. balanced zone defenses: 1-2 (3g), +0.08 EPA/play (season avg +0.04). IND def vs. vertical & explosive passing offenses: 3-3 (6g), allowing +0.01 EPA/play (season avg +0.03).",
-     "watch_for": "Watch play-action and deep crossers: HOU wins this matchup by generating 3+ plays of 20+ yards and punishing single-high looks; IND survives by winning early downs and creating pressure before deep routes develop."
+     "clash": "With C.J. Stroud at QB, HOU runs a Run-and-Gun / Vertical Attack (59% pass, 9.3-yd depth of target, 39% YAC, 10.6% explosive 20+ yd plays). IND answers with a Bend-Don't-Break Zone (22% pressure rate, 12% run TFLs, 11.1% explosive passes allowed). With HOU priced as a -12.5 favorite (82% implied win prob), IND's vulnerability to big plays (11.1% explosive pass rate allowed) gives HOU real upside downfield.",
+     "track_record": "Head-to-head (Wk 3): HOU posted -0.07 EPA/play (167 pass yds, 70 rush yds, 3 sacks taken) vs. IND. HOU vs. Bend-Don't-Break Zone defenses: 1-2 (3g), +0.08 EPA/play (season avg +0.04). IND def vs. Run-and-Gun / vertical offenses: 3-3 (6g), allowing +0.01 EPA/play (season avg +0.03).",
+     "watch_for": "Watch play-action and vertical crossers: generating 3+ gains of 20+ yards is the clearest way for HOU to cover the -12.5 spread; IND keeps control if its front disrupts timing before deep routes develop."
     }
    ],
    "drivers": [

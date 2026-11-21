@@ -676,11 +676,15 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
 .wside .sh{display:flex;align-items:center;gap:7px;font-weight:800;font-size:.98rem}
 .wside .sh small{margin-left:auto;color:var(--mute);font-weight:600;font-variant-numeric:tabular-nums}
 .wside .sm{color:var(--mute);font-size:.8rem;margin-top:4px;line-height:1.4;font-variant-numeric:tabular-nums}
+.wside .sranks{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;font-size:.78rem;font-weight:600;font-variant-numeric:tabular-nums}
+.wside .srank{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--fg)}
+.wside .srank span{color:var(--mute);font-weight:500}
 .wfinal{margin-top:14px;padding:12px 14px;border-radius:11px;background:var(--raise);border:1px solid var(--line);font-weight:700;font-size:1rem;font-variant-numeric:tabular-nums}
 .wnotes{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
 .wnote{padding-left:12px;border-left:2px solid var(--line)}
-.wnote b{display:block;font-size:.82rem;color:var(--acc);margin-bottom:2px}
+.wnote b{display:block;font-size:.82rem;color:var(--acc);margin-bottom:3px}
 .wnote p{font-size:.93rem;line-height:1.48;color:var(--fg)}
+.wnote p+p{margin-top:6px}
 .wdrv{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(60px,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--hair);font-size:.9rem;font-weight:600}
 .wdrv small{display:block;color:var(--mute);font-size:.78rem;font-weight:400}
 .wdrv .tr{height:8px;background:var(--hair);border-radius:4px;overflow:hidden}
@@ -1309,12 +1313,16 @@ function drawDetail(){
     sh.appendChild(dot(tm.team));sh.appendChild(document.createTextNode(tm.team+' ('+tm.record+')'));
     sh.appendChild(el('small',null,(idx?'Home':'Away')+' · '+tm.div));
     card.appendChild(sh);
+    const rks=el('div','sranks');
+    const mkRk=(lbl,num,sub)=>{const s=el('span','srank',lbl+' #'+num+' ');s.appendChild(el('span',null,'('+sub+')'));return s};
+    rks.appendChild(mkRk('Off',tm.off_rank,tm.ppg+' PPG'));
+    rks.appendChild(mkRk('Def',tm.def_rank,tm.papg+' PA'));
+    card.appendChild(rks);
     const m1=[];
     if(tm.qb)m1.push('QB '+tm.qb);
-    if(tm.off_scheme)m1.push('Off: '+tm.off_scheme);
-    if(tm.def_scheme)m1.push('Def: '+tm.def_scheme);
+    if(tm.coach)m1.push('HC '+tm.coach);
     if(m1.length)card.appendChild(el('div','sm',m1.join(' · ')));
-    const m2=['Playoff odds '+Math.round(tm.playoff_pct)+'%','Div '+Math.round(tm.div_pct)+'%'];
+    const m2=['Playoff '+Math.round(tm.playoff_pct)+'%','Div '+Math.round(tm.div_pct)+'%'];
     if(tm.streak&&tm.streak!=='—')m2.push('Streak '+tm.streak);
     if(tm.rest)m2.push(tm.rest+'d rest');
     card.appendChild(el('div','sm',m2.join(' · ')));
@@ -1323,12 +1331,15 @@ function drawDetail(){
   hero.appendChild(vs);
   box.appendChild(hero);
 
-  /* 2. Why It's Interesting (Stakes, Context + Drivers) */
+  /* 2. Why It's Interesting (The Stakes, Coach Breakdown + Drivers) */
   const why=el('section','card blk');
   why.appendChild(el('h3',null,'Why this game is worth watching'));
   const notes=el('div','wnotes');
   (g.why_watch||[]).forEach(n=>{
-    const d=el('div','wnote');d.appendChild(el('b',null,n.label));d.appendChild(el('p',null,n.text));notes.appendChild(d);
+    const d=el('div','wnote');d.appendChild(el('b',null,n.label));
+    const ls=(n.lines&&n.lines.length)?n.lines:[n.text];
+    ls.forEach(line=>d.appendChild(el('p',null,line)));
+    notes.appendChild(d);
   });
   why.appendChild(notes);
   const dh=el('p','note','Interest score breakdown ('+g.interest_score+' / 100 across five measurable factors):');dh.style.marginBottom='8px';why.appendChild(dh);
