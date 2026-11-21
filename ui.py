@@ -462,6 +462,10 @@ background:rgba(13,17,23,.82);-webkit-backdrop-filter:saturate(1.4) blur(14px);b
 .brand i{width:10px;height:10px;border-radius:3px;background:var(--acc);display:block}
 .crumb{color:var(--mute);font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .crumb:before{content:"/";margin-right:10px;color:var(--line)}
+.nav{margin-left:auto;display:inline-flex;align-items:center;gap:4px;flex:none}
+.nav a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:9px;color:var(--mute);text-decoration:none;font-size:.92rem;font-weight:600;white-space:nowrap}
+.nav a:hover{color:var(--fg);background:var(--card)}
+.nav a.on{color:var(--fg);background:var(--raise);box-shadow:inset 0 0 0 1px var(--line)}
 .wrap{max-width:1200px;margin:0 auto;padding:28px var(--pad) 72px}
 .title{font-size:clamp(2rem,6vw,2.6rem);line-height:1.08;font-weight:800;letter-spacing:-.025em}
 .title span{display:block;color:var(--mute)}
@@ -628,14 +632,99 @@ textarea{width:100%;min-height:120px;background:var(--card);color:var(--fg);bord
 .ex{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--hair);padding:12px 4px;min-height:46px;color:var(--fg)}
 .ex:hover{background:linear-gradient(90deg,rgba(88,166,255,.07),transparent 70%)}
 
+/* pre-filled model context banner */
+.from-watch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin-top:14px;padding:10px 14px;border-radius:11px;background:rgba(88,166,255,.09);border:1px solid rgba(88,166,255,.28);font-size:.88rem}
+.from-watch[hidden]{display:none}
+.from-watch b{color:var(--fg)}
+.from-watch a{font-weight:600;text-decoration:none}
+
+/* watch page */
+.whead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px 24px}
+.wweek{display:inline-flex;align-items:center;gap:8px;flex:none}
+.wweek label{color:var(--mute);font-size:.84rem;font-weight:600}
+.wsel{height:42px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:inherit;font-weight:600;padding:0 12px}
+.watchcols{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+.wrow{display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:start;gap:12px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--hair);padding:14px 8px;color:inherit;cursor:pointer}
+.wrow:hover,.wrow.sel{background:linear-gradient(90deg,rgba(88,166,255,.08),transparent 78%)}
+.wrow.sel{box-shadow:inset 3px 0 0 var(--acc)}
+.wrank{font-size:.86rem;font-weight:700;color:var(--mute);padding-top:3px;font-variant-numeric:tabular-nums}
+.wmatch{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+.wmatch .rec{font-weight:500;font-size:.82rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.tdot{display:inline-block;width:9px;height:9px;border-radius:3px;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.wmeta{color:var(--mute);font-size:.8rem;margin-top:2px;font-variant-numeric:tabular-nums}
+.whook{color:var(--fg);opacity:.86;font-size:.88rem;margin-top:5px;line-height:1.38}
+.wscore{text-align:right;min-width:86px;flex:none}
+.wscore .sc{font-size:1.35rem;font-weight:800;line-height:1.05;font-variant-numeric:tabular-nums}
+.wscore .sc small{font-size:.76rem;color:var(--mute);font-weight:500}
+.wscore .pill{margin-top:5px;font-size:.74rem;padding:2px 7px;min-width:0}
+.wscore .wlev{display:block;margin-top:4px;font-size:.72rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.pill.must{background:rgba(63,185,80,.18);color:var(--up)}
+.pill.strong{background:rgba(88,166,255,.18);color:var(--acc)}
+.pill.mid{background:rgba(210,153,34,.16);color:var(--warn)}
+.wdetail{min-width:0;scroll-margin-top:72px;display:flex;flex-direction:column;gap:16px}
+.wbanner{padding:20px 22px}
+.wbanner-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.wteams{display:flex;flex-direction:column;gap:4px;min-width:0}
+.wteams h2{font-size:clamp(1.45rem,4vw,1.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.wsub{color:var(--mute);font-size:.88rem;margin-top:2px}
+.wscore-big{text-align:right;flex:none}
+.wscore-big .big{font-size:clamp(2.4rem,8vw,3.1rem);margin:0}
+.wtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.wtag{font-size:.76rem;font-weight:600;color:var(--mute);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+.wversus{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+.wside{background:var(--raise);border:1px solid var(--hair);border-radius:11px;padding:12px 14px}
+.wside .sh{display:flex;align-items:center;gap:7px;font-weight:800;font-size:.98rem}
+.wside .sh small{margin-left:auto;color:var(--mute);font-weight:600;font-variant-numeric:tabular-nums}
+.wside .sm{color:var(--mute);font-size:.8rem;margin-top:4px;line-height:1.4;font-variant-numeric:tabular-nums}
+.wfinal{margin-top:14px;padding:12px 14px;border-radius:11px;background:var(--raise);border:1px solid var(--line);font-weight:700;font-size:1rem;font-variant-numeric:tabular-nums}
+.wnotes{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.wnote{padding-left:12px;border-left:2px solid var(--line)}
+.wnote b{display:block;font-size:.82rem;color:var(--acc);margin-bottom:2px}
+.wnote p{font-size:.93rem;line-height:1.48;color:var(--fg)}
+.wdrv{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(60px,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--hair);font-size:.9rem;font-weight:600}
+.wdrv small{display:block;color:var(--mute);font-size:.78rem;font-weight:400}
+.wdrv .tr{height:8px;background:var(--hair);border-radius:4px;overflow:hidden}
+.wdrv .tr i{display:block;height:100%;border-radius:4px;background:var(--acc)}
+.wdrv .pts{font-variant-numeric:tabular-nums;color:var(--fg);font-size:.88rem;min-width:56px;text-align:right}
+.wdrv .pts span{color:var(--mute);font-weight:400}
+.wimp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.wimp-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.wimp-box{background:var(--raise);border:1px solid var(--hair);border-radius:11px;padding:13px 14px}
+.wimp-box h4{margin:0 0 8px;display:flex;align-items:center;gap:7px;font-size:.95rem;font-weight:800}
+.wimp-box h4 .pill{margin-left:auto;font-size:.74rem;padding:2px 7px;min-width:0}
+.wmetric{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--hair);font-size:.88rem;font-variant-numeric:tabular-nums}
+.wmetric:first-of-type{border-top:0}
+.wmetric .ml{color:var(--mute)}
+.wmetric .mv{font-weight:700}
+.wmetric .mv s{color:var(--mute);text-decoration:none;font-weight:500;margin-right:4px}
+.wmetric .pill{font-size:.76rem;padding:2px 7px;min-width:54px}
+.wbullets{margin:14px 0 0;padding-left:18px;font-size:.91rem;line-height:1.48}
+.wbullets li{margin-bottom:6px}
+.wripples{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair)}
+.wripples h4{margin:0 0 6px;font-size:.8rem;color:var(--mute);font-weight:700}
+.wrip{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;font-size:.86rem;border-top:1px solid var(--hair)}
+.wrip:first-of-type{border-top:0}
+.wpreds{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.wpred{background:var(--raise);border:1px solid var(--hair);border-radius:12px;padding:14px 16px}
+.wpred-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 10px;margin-bottom:6px}
+.wpred-cat{font-size:.75rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.03em}
+.wpred-bench{font-size:.78rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.wpred h4{margin:0 0 6px;font-size:1rem;font-weight:700;line-height:1.3}
+.wpred p{font-size:.89rem;color:var(--fg);opacity:.88;line-height:1.45}
+.wpred-act{margin-top:12px;display:flex;align-items:center;gap:10px}
+.btn.sm{min-height:36px;padding:0 14px;font-size:.86rem;border-radius:9px}
+
 @media(min-width:700px){
   .fig{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:center}
   .row{padding:14px 10px}
+  .wimp-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:519px){.row .spark{display:none}.row{grid-template-columns:minmax(0,1fr) auto}}
+@media(max-width:519px){.row .spark{display:none}.row{grid-template-columns:minmax(0,1fr) auto}.wversus{grid-template-columns:1fr}}
 @media(min-width:980px){
   :root{--pad:32px}
   .hubcols{grid-template-columns:minmax(0,1fr) 400px;gap:36px;align-items:start}
+  .watchcols{grid-template-columns:minmax(340px,.92fr) minmax(0,1.18fr);gap:28px;align-items:start}
+  .wslate{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto;padding-right:4px}
   .panel{display:block;position:sticky;top:76px;padding:22px}
   .panel h2{font-size:1.35rem;font-weight:800;letter-spacing:-.015em}
   .panel .sub{color:var(--mute);font-size:.93rem;margin:6px 0 16px}
@@ -660,7 +749,7 @@ HEAD = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>__TITLE__</title><style>""" + CSS + """</style></head><body>"""
 
 HUB = HEAD.replace("__TITLE__", "ddyno") + """
-<header class="top"><a class="brand" href="/"><i></i>ddyno</a></header>
+<header class="top"><a class="brand" href="/"><i></i>ddyno</a><nav class="nav" aria-label="Primary"><a href="/" class="on">Models</a><a href="/watch">Why Watch</a></nav></header>
 <div class="wrap">
 <h1 class="title">Models<span id="count">Loading</span></h1>
 <p class="lede">Set the inputs, press Dyno, and see what each model predicts and why.</p>
@@ -705,7 +794,7 @@ function row(m){
   if(meta){const st=stat(meta);a.appendChild(spark(st));
     const v=el('span','val',st.value);v.appendChild(el('small',null,st.unit));rt.appendChild(v);
     const p=st.pill?el('span','pill flat',st.pill):el('span','pill '+(Math.abs(st.diff)<0.05?'flat':st.good?'up':'dn'),sg(st.diff)+st.suffix);if(!st.pill)p.title='Compared with the best other method';rt.appendChild(p);
-  }else{a.appendChild(el('span','spark'));rt.appendChild(el('span','pill flat','Demo'))}
+  }else{a.appendChild(el('span','spark'));rt.appendChild(el('span','pill '+(m.slug==='watch'?'strong':'flat'),m.slug==='watch'?'Slate':'Demo'))}
   a.appendChild(rt);
   a.addEventListener('mouseenter',()=>{if(wide())pick(m.slug)});a.addEventListener('focus',()=>{if(wide())pick(m.slug)});
   return a;
@@ -718,7 +807,7 @@ function draw(){
   if(!show.length){const e=el('p','empty','No models match that search.');const b=el('button','btn ghost','Clear search');b.onclick=()=>{$('q').value='';cat='All';draw()};
     list.appendChild(e);list.appendChild(b);return}
   cats.forEach(c=>{const ms=show.filter(m=>m.category===c);if(!ms.length)return;
-    const g=el('section','group'),h=el('div','sech');h.appendChild(el('span',null,c));h.appendChild(el('span',null,ms.length+(ms.length===1?' model':' models')));
+    const g=el('section','group'),h=el('div','sech');h.appendChild(el('span',null,c));h.appendChild(el('span',null,ms.length+(ms.length===1?' item':' items')));
     const r=el('div','rows');ms.forEach(m=>r.appendChild(row(m)));g.appendChild(h);g.appendChild(r);list.appendChild(g)});
 }
 function pick(slug){
@@ -738,7 +827,7 @@ function panel(){
     const kv=(k,v)=>{const d=el('div','kv');d.appendChild(el('span',null,k));d.appendChild(el('b',null,v));p.appendChild(d)};
     kv('Inputs you set',meta.features.length);kv('Trained on',meta.card.n_games.toLocaleString()+' games');kv('Seasons',meta.card.seasons[0]+' to '+meta.card.seasons[1]);kv('Last trained',meta.card.trained_on);
   }
-  const b=el('a','btn','Open model');b.href=m.url;p.appendChild(b);
+  const b=el('a','btn',meta?'Open model':m.slug==='watch'?'Open Why Watch':'Open demo');b.href=m.url;p.appendChild(b);
 }
 function preview(slug,meta,box){
   const paint=r=>{if(!box.isConnected)return;box.replaceChildren();
@@ -767,9 +856,9 @@ fetch('/api/models').then(r=>r.json()).then(d=>{
 </script></body></html>"""
 
 MODEL = HEAD.replace("__TITLE__", "__NAME__ · ddyno") + """
-<header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb" id="crumb"></span></header>
+<header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb" id="crumb"></span><nav class="nav" aria-label="Primary"><a href="/" class="on">Models</a><a href="/watch">Why Watch</a></nav></header>
 <div class="wrap">
-<div class="mhead"><div><p class="eyebrow" id="cat"></p><h1 class="title" id="name">__NAME__</h1><p class="lede" id="summary"></p></div>
+<div class="mhead"><div><p class="eyebrow" id="cat"></p><h1 class="title" id="name">__NAME__</h1><p class="lede" id="summary"></p><div class="from-watch" id="fromWatch" hidden></div></div>
 <div class="sideline" id="sideline" hidden></div></div>
 <div class="cols">
   <section class="inputs card" id="inputs" aria-label="Inputs">
@@ -1010,6 +1099,14 @@ async function run(user){
   btn.disabled=false;btn.textContent='Dyno';
 }
 fetch('/api/models/'+SLUG).then(r=>r.ok?r.json():Promise.reject()).then(m=>{meta=m;build();
+  const qs=new URLSearchParams(location.search);
+  let loaded=0;
+  qs.forEach((v,k)=>{if(ctl[k]){const n=parseFloat(v);if(!isNaN(n)){ctl[k](n);loaded++}}});
+  if(lineInput&&qs.has('compare')){const cv=parseFloat(qs.get('compare'));if(!isNaN(cv)){lineInput.value=cv;loaded++}}
+  const gm=qs.get('game');
+  if(gm){const fw=$('fromWatch');const msg=el('span');msg.appendChild(document.createTextNode('Pre-loaded pregame context for '));msg.appendChild(el('b',null,gm));
+    if(loaded)msg.appendChild(document.createTextNode(' ('+loaded+' inputs set)'));
+    const bk=el('a',null,'← Back to Why Watch');bk.href='/watch';fw.replaceChildren(msg,bk);fw.hidden=false}
   $('dyno').onclick=()=>run(true);
   $('mini').onclick=()=>{tab('pred');$('out').scrollIntoView({behavior:'smooth',block:'start'})};
   $('reset').onclick=()=>{meta.features.forEach(f=>ctl[f.name](f.default));(meta.controls||[]).forEach(c=>ctl[c.name](c.default));if(meta.target.cutoff)cut=meta.target.cutoff.default;if(lineInput)lineInput.value='';run(false)};
@@ -1018,7 +1115,7 @@ fetch('/api/models/'+SLUG).then(r=>r.ok?r.json():Promise.reject()).then(m=>{meta
 </script></body></html>"""
 
 NCR = HEAD.replace("__TITLE__", "NCR Classifier · ddyno") + """
-<header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb">Manufacturing</span></header>
+<header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb">Manufacturing</span><nav class="nav" aria-label="Primary"><a href="/" class="on">Models</a><a href="/watch">Why Watch</a></nav></header>
 <div class="wrap" style="max-width:820px">
 <div class="mhead"><p class="eyebrow">Manufacturing</p><h1 class="title">NCR Classifier</h1>
 <p class="lede">Paste a non-conformance description and get the likely flaw category. Demo model: TF-IDF and logistic regression trained on a small synthetic set.</p></div>
@@ -1050,5 +1147,296 @@ async function run(){
 go.onclick=run;
 </script></body></html>"""
 
+WATCH = HEAD.replace("__TITLE__", "Why Watch · ddyno") + """
+<header class="top"><a class="brand" href="/"><i></i>ddyno</a><span class="crumb">Why Watch</span><nav class="nav" aria-label="Primary"><a href="/">Models</a><a href="/watch" class="on">Why Watch</a></nav></header>
+<div class="wrap">
+<div class="whead">
+  <div>
+    <p class="eyebrow" id="eyebrow">NFL Slate Guide</p>
+    <h1 class="title">Why Watch<span id="subcount">Loading slate</span></h1>
+    <p class="lede">What makes a game compelling, how each outcome shifts the season, and which outcomes are worth trying to predict.</p>
+  </div>
+  <div class="wweek"><label for="wkSel">Week</label><select class="wsel" id="wkSel" aria-label="Select NFL week"></select></div>
+</div>
+<div class="tools">
+  <input class="search" id="wq" type="search" placeholder="Search team, QB, or angle" aria-label="Search games">
+  <div class="seg" id="wtags" role="group" aria-label="Filter games"></div>
+</div>
+<div class="watchcols">
+  <section class="wslate" aria-label="Ranked games"><div class="sech"><span id="slateHead">Games ranked by interest</span><span id="slateCount"></span></div><div class="rows" id="wlist"></div></section>
+  <article class="wdetail" id="wdetail" aria-live="polite"><div class="card blk"><p class="empty">Loading game breakdown.</p></div></article>
+</div>
+<footer id="wfoot">Playoff, division, and draft-order implications are estimated by simulating the remaining regular-season schedule from nflverse data.</footer>
+</div>
+<script>__FIGJS__</script>
+<script>
+const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const luma=h=>{const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return .299*r+.587*g+.114*b};
+const TCOL=tm=>{const p=Sideline.TEAM[tm];if(!p)return '#58a6ff';return luma(p[0])<40?p[1]:p[0]};
+const dot=tm=>{const s=el('i','tdot');s.style.background=TCOL(tm);return s};
+const tierCls=t=>t==='Must Watch'?'must':t==='Strong Watch'?'strong':t==='Intriguing'?'mid':'flat';
+const sg0=v=>(v>0?'+':v<0?'−':'')+Math.abs(Math.round(v));
+const wide=()=>matchMedia('(min-width:980px)').matches;
+const FILTERS=['All','High Leverage','Toss-ups','Shootouts','Divisional','Primetime'];
+let slate=null,tag='All',selId=null,branch='home';
+
+function slotLabel(g){
+  if(g.finished)return 'Final · '+g.away.team+' '+g.away.score+'–'+g.home.score+' '+g.home.team;
+  return (g.weekday?g.weekday.slice(0,3)+' ':'')+(g.gametime?g.gametime+' ET':'TBD');
+}
+function filtered(){
+  if(!slate)return [];
+  const q=$('wq').value.trim().toLowerCase();
+  return slate.games.filter(g=>{
+    if(tag!=='All'&&!(g.tags||[]).includes(tag))return false;
+    if(!q)return true;
+    const hay=[g.away.team,g.away.city,g.away.name,g.away.qb,g.home.team,g.home.city,g.home.name,g.home.qb,g.hook,(g.tags||[]).join(' ')].join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+}
+function drawFilters(){
+  $('wtags').replaceChildren(...FILTERS.map(f=>{
+    const b=el('button',null,f);b.type='button';b.setAttribute('aria-pressed',f===tag);
+    b.onclick=()=>{tag=f;drawList()};return b;
+  }));
+}
+function drawList(){
+  drawFilters();
+  const list=$('wlist'),gs=filtered();
+  $('slateCount').textContent=gs.length+(gs.length===1?' game':' games');
+  list.replaceChildren();
+  if(!gs.length){
+    const e=el('p','empty','No games match that filter.');
+    const b=el('button','btn ghost','Clear filter');b.type='button';b.onclick=()=>{$('wq').value='';tag='All';drawList()};
+    list.appendChild(e);list.appendChild(b);return;
+  }
+  if(!gs.some(g=>g.game_id===selId))selId=gs[0].game_id;
+  gs.forEach(g=>{
+    const b=el('button','wrow'+(g.game_id===selId?' sel':''));b.type='button';b.dataset.id=g.game_id;
+    b.appendChild(el('span','wrank','#'+g.rank));
+    const mid=el('div');
+    const mt=el('div','wmatch');
+    mt.appendChild(dot(g.away.team));mt.appendChild(document.createTextNode(g.away.team));
+    mt.appendChild(el('span','rec',g.away.record));
+    mt.appendChild(el('span','rec','@'));
+    mt.appendChild(dot(g.home.team));mt.appendChild(document.createTextNode(g.home.team));
+    mt.appendChild(el('span','rec',g.home.record));
+    mid.appendChild(mt);
+    const lineBits=[slotLabel(g),g.spread_label];
+    if(g.total_line!=null)lineBits.push('O/U '+g.total_line);
+    mid.appendChild(el('div','wmeta',lineBits.join(' · ')));
+    mid.appendChild(el('p','whook',g.hook));
+    b.appendChild(mid);
+    const rt=el('div','wscore');
+    const sc=el('div','sc',String(g.interest_score));sc.appendChild(el('small',null,'/100'));rt.appendChild(sc);
+    rt.appendChild(el('span','pill '+tierCls(g.tier),g.tier));
+    const lev=g.drivers&&g.drivers[0]?g.drivers[0].value:'';
+    if(lev)rt.appendChild(el('span','wlev',lev));
+    b.appendChild(rt);
+    b.onclick=()=>{
+      selId=g.game_id;branch='home';
+      document.querySelectorAll('.wrow').forEach(r=>r.classList.toggle('sel',r.dataset.id===selId));
+      drawDetail();
+      if(!wide())$('wdetail').scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    list.appendChild(b);
+  });
+  drawDetail();
+}
+function metricRow(label,baseVal,afterVal,deltaVal){
+  const r=el('div','wmetric');
+  r.appendChild(el('span','ml',label));
+  const mv=el('span','mv');
+  mv.appendChild(el('s',null,Math.round(baseVal)+'% →'));
+  mv.appendChild(document.createTextNode(Math.round(afterVal)+'%'));
+  r.appendChild(mv);
+  const tiny=Math.abs(deltaVal)<0.5;
+  r.appendChild(el('span','pill '+(tiny?'flat':deltaVal>0?'up':'dn'),tiny?'0 pts':sg0(deltaVal)+' pts'));
+  return r;
+}
+function drawDetail(){
+  const box=$('wdetail');
+  const g=slate&&slate.games.find(x=>x.game_id===selId);
+  if(!g){box.replaceChildren(el('div','card blk',null));return}
+  box.replaceChildren();
+
+  /* 1. Matchup Hero Banner */
+  const hero=el('section','card wbanner');
+  const top=el('div','wbanner-top');
+  const lt=el('div','wteams');
+  lt.appendChild(el('p','eyebrow','Rank #'+g.rank+' of '+slate.games.length+' · Week '+g.week));
+  lt.appendChild(el('h2',null,g.away.city+' '+g.away.name+' @ '+g.home.city+' '+g.home.name));
+  const subBits=[slotLabel(g),g.stadium||g.home.city,g.spread_label];
+  if(g.total_line!=null)subBits.push('Total '+g.total_line);
+  lt.appendChild(el('p','wsub',subBits.join(' · ')));
+  top.appendChild(lt);
+  const rt=el('div','wscore-big');
+  const big=el('div','big',String(g.interest_score));big.appendChild(el('small',null,'/100'));rt.appendChild(big);
+  rt.appendChild(el('span','pill '+tierCls(g.tier),g.tier));
+  top.appendChild(rt);
+  hero.appendChild(top);
+
+  if((g.tags||[]).length){
+    const tg=el('div','wtags');g.tags.forEach(t=>tg.appendChild(el('span','wtag',t)));hero.appendChild(tg);
+  }
+  if(g.finished){
+    hero.appendChild(el('div','wfinal','Final Score: '+g.away.team+' '+g.away.score+' — '+g.home.team+' '+g.home.score));
+  }else{
+    const duo=el('div','duo');duo.style.marginTop='14px';
+    const d1=el('div'),s1=el('span');s1.appendChild(dot(g.away.team));s1.appendChild(document.createTextNode(g.away.team+' implied win'));d1.appendChild(s1);d1.appendChild(el('b',null,g.away_win_prob+'%'));
+    const d2=el('div','r'),s2=el('span');s2.appendChild(document.createTextNode(g.home.team+' implied win'));s2.appendChild(dot(g.home.team));d2.appendChild(s2);d2.appendChild(el('b',null,g.home_win_prob+'%'));
+    duo.appendChild(d1);duo.appendChild(d2);hero.appendChild(duo);
+    const sp=el('div','split'),bar=el('i');bar.style.width=g.away_win_prob+'%';bar.style.background=TCOL(g.away.team);sp.style.background=TCOL(g.home.team);sp.appendChild(bar);hero.appendChild(sp);
+  }
+
+  const vs=el('div','wversus');
+  [g.away,g.home].forEach((tm,idx)=>{
+    const card=el('div','wside'),sh=el('div','sh');
+    sh.appendChild(dot(tm.team));sh.appendChild(document.createTextNode(tm.team+' ('+tm.record+')'));
+    sh.appendChild(el('small',null,(idx?'Home':'Away')+' · '+tm.div));
+    card.appendChild(sh);
+    const m1=[];
+    if(tm.qb)m1.push('QB '+tm.qb);
+    m1.push('Off #'+tm.off_rank+' ('+tm.ppg+' PPG)');
+    m1.push('Def #'+tm.def_rank+' ('+tm.papg+' PA)');
+    card.appendChild(el('div','sm',m1.join(' · ')));
+    const m2=['Playoff odds '+Math.round(tm.playoff_pct)+'%','Div '+Math.round(tm.div_pct)+'%'];
+    if(tm.streak&&tm.streak!=='—')m2.push('Streak '+tm.streak);
+    if(tm.rest)m2.push(tm.rest+'d rest');
+    card.appendChild(el('div','sm',m2.join(' · ')));
+    vs.appendChild(card);
+  });
+  hero.appendChild(vs);
+  box.appendChild(hero);
+
+  /* 2. Why It's Interesting (Depth + Drivers) */
+  const why=el('section','card blk');
+  why.appendChild(el('h3',null,'Why this game is worth watching'));
+  const notes=el('div','wnotes');
+  (g.why_watch||[]).forEach(n=>{
+    const d=el('div','wnote');d.appendChild(el('b',null,n.label));d.appendChild(el('p',null,n.text));notes.appendChild(d);
+  });
+  why.appendChild(notes);
+  const dh=el('p','note','Interest score breakdown ('+g.interest_score+' / 100 across five measurable factors):');dh.style.marginBottom='8px';why.appendChild(dh);
+  (g.drivers||[]).forEach(d=>{
+    const r=el('div','wdrv');
+    const nm=el('div',null,d.label);nm.appendChild(el('small',null,d.value));r.appendChild(nm);
+    const tr=el('div','tr'),i=el('i');i.style.width=Math.max(3,Math.min(100,d.points/d.max*100))+'%';
+    if(d.id==='leverage')i.style.background='var(--up)';
+    else if(d.id==='pace')i.style.background='var(--down)';
+    tr.appendChild(i);r.appendChild(tr);
+    const pt=el('div','pts',d.points.toFixed(1));pt.appendChild(el('span',null,'/'+d.max));r.appendChild(pt);
+    why.appendChild(r);
+  });
+  box.appendChild(why);
+
+  /* 3. Implications of the Outcomes */
+  if(g.implications){
+    const imp=g.implications,sec=el('section','card blk');
+    const hd=el('div','wimp-head');
+    const hleft=el('div');
+    hleft.appendChild(el('h3',null,'Implications of the outcomes'));
+    hleft.appendChild(el('p','note','Toggle each winner to see how playoff, division, #1-seed, and draft odds shift.'));
+    hd.appendChild(hleft);
+    const seg=el('div','seg');seg.setAttribute('role','group');seg.setAttribute('aria-label','Outcome scenario');
+    [['away','If '+g.away.team+' wins'],['home','If '+g.home.team+' wins']].forEach(([k,lbl])=>{
+      const bt=el('button',null,lbl);bt.type='button';bt.setAttribute('aria-pressed',branch===k);
+      bt.onclick=()=>{branch=k;drawDetail()};seg.appendChild(bt);
+    });
+    hd.appendChild(seg);
+    sec.appendChild(hd);
+
+    const br=imp.branches[branch];
+    const grid=el('div','wimp-grid');
+    [['away',g.away,br.away],['home',g.home,br.home]].forEach(([sideKey,tm,st])=>{
+      const isW=br.winner===tm.team;
+      const c=el('div','wimp-box'),h4=el('h4');
+      h4.appendChild(dot(tm.team));h4.appendChild(document.createTextNode(tm.team+' '+tm.name));
+      h4.appendChild(el('span','pill '+(isW?'up':'dn'),isW?'Wins':'Loses'));
+      c.appendChild(h4);
+      c.appendChild(metricRow('Playoff odds',st.base.playoff,st.after.playoff,st.delta.playoff));
+      c.appendChild(metricRow('Win '+tm.div,st.base.div,st.after.div,st.delta.div));
+      const showBye=Math.max(st.base.bye,st.after.bye,imp[sideKey].if_home.after.bye,imp[sideKey].if_away.after.bye)>=1;
+      if(showBye)c.appendChild(metricRow('#1 seed (bye)',st.base.bye,st.after.bye,st.delta.bye));
+      const showDraft=Math.max(st.base.top5,st.after.top5,imp[sideKey].if_home.after.top5,imp[sideKey].if_away.after.top5)>=5;
+      if(showDraft)c.appendChild(metricRow('Top-5 draft pick',st.base.top5,st.after.top5,st.delta.top5));
+      grid.appendChild(c);
+    });
+    sec.appendChild(grid);
+
+    if((br.notes||[]).length){
+      const ul=el('ul','wbullets');br.notes.forEach(t=>ul.appendChild(el('li',null,t)));sec.appendChild(ul);
+    }
+    if((imp.ripples||[]).length){
+      const rp=el('div','wripples');rp.appendChild(el('h4',null,'Who else in the conference cares (ripple effects)'));
+      imp.ripples.forEach(r=>{
+        const row=el('div','wrip'),l=el('span');
+        l.appendChild(dot(r.team));l.appendChild(document.createTextNode(' '+r.team+' ('+r.record+') roots for '+r.roots_for));
+        row.appendChild(l);
+        row.appendChild(el('span','pill '+(r.roots_for===br.winner?'up':'dn'),(r.roots_for===br.winner?'+':'−')+r.swing.toFixed(1)+' pts '+r.metric));
+        rp.appendChild(row);
+      });
+      sec.appendChild(rp);
+    }
+    box.appendChild(sec);
+  }
+
+  /* 4. What Outcomes to Try & Predict */
+  const pred=el('section','card blk');
+  pred.appendChild(el('h3',null,'Outcomes to try and predict'));
+  pred.appendChild(el('p','note','Different stakes hinge on different outcomes. Each card maps this game’s implications to a concrete forecast and opens a ddyno model pre-loaded with this game’s lines.'));
+  const plist=el('div','wpreds');
+  (g.predict||[]).forEach(p=>{
+    const c=el('div','wpred');
+    const pt=el('div','wpred-top');
+    pt.appendChild(el('span','wpred-cat',p.category));
+    pt.appendChild(el('span','wpred-bench',p.benchmark));
+    c.appendChild(pt);
+    c.appendChild(el('h4',null,p.title));
+    c.appendChild(el('p',null,p.why));
+    const act=el('div','wpred-act');
+    const a=el('a','btn sm',p.model_label+' →');a.href=p.model_url;act.appendChild(a);
+    c.appendChild(act);
+    plist.appendChild(c);
+  });
+  pred.appendChild(plist);
+  box.appendChild(pred);
+}
+
+async function loadWeek(wk){
+  const url='/api/watch'+(wk!=null?'?week='+encodeURIComponent(wk):'');
+  try{
+    const r=await fetch(url);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    slate=await r.json();
+    $('eyebrow').textContent='NFL · '+slate.season+' Season · Through Week '+slate.through_week;
+    $('subcount').textContent='Week '+slate.week+' · '+slate.games.length+' games ranked';
+    $('slateHead').textContent='Week '+slate.week+' ranked by interest';
+    const sel=$('wkSel');
+    if(!sel.options.length){
+      (slate.available_weeks||[slate.week]).forEach(w=>{
+        const o=document.createElement('option');o.value=w;o.textContent='Week '+w+(w===slate.active_week?' (current)':'');
+        sel.appendChild(o);
+      });
+    }
+    sel.value=String(slate.week);
+    selId=slate.games.length?slate.games[0].game_id:null;
+    branch='home';
+    $('wfoot').textContent='Playoff, division, and draft-order implications come from '+slate.n_sims.toLocaleString()+' remaining-season simulations using nflverse schedules (updated '+slate.updated+').';
+    drawList();
+  }catch(e){
+    $('subcount').textContent='Unavailable';
+    $('wlist').replaceChildren(el('p','empty','Could not load the slate right now. Refresh to try again.'));
+    $('wdetail').replaceChildren();
+  }
+}
+$('wq').addEventListener('input',drawList);
+$('wkSel').addEventListener('change',e=>loadWeek(e.target.value));
+loadWeek(new URLSearchParams(location.search).get('week'));
+</script></body></html>"""
+
 HUB = HUB.replace("__FIGJS__", FIGJS)
 MODEL = MODEL.replace("__FIGJS__", FIGJS)
+WATCH = WATCH.replace("__FIGJS__", FIGJS)
+

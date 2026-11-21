@@ -1,0 +1,4715 @@
+{
+ "season": 2026,
+ "week": 11,
+ "active_week": 11,
+ "through_week": 11,
+ "available_weeks": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18
+ ],
+ "n_sims": 2500,
+ "updated": "2026-11-21 15:18 UTC",
+ "games": [
+  {
+   "game_id": "2026_11_MIN_SF",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "20:20",
+   "primetime": true,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Estadio Banorte",
+   "roof": "outdoors",
+   "spread_line": 3.5,
+   "spread_label": "SF -3.5",
+   "total_line": 46.5,
+   "home_win_prob": 60,
+   "away_win_prob": 40,
+   "away": {
+    "team": "MIN",
+    "name": "Vikings",
+    "city": "Minnesota",
+    "conf": "NFC",
+    "div": "NFC North",
+    "record": "7-2",
+    "div_rank": 1,
+    "streak": "W1",
+    "ppg": 19.6,
+    "papg": 14.0,
+    "off_rank": 24,
+    "def_rank": 1,
+    "qb": "Kirk Cousins",
+    "coach": "Kevin O'Connell",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 94.3,
+    "div_pct": 40.0
+   },
+   "home": {
+    "team": "SF",
+    "name": "49ers",
+    "city": "San Francisco",
+    "conf": "NFC",
+    "div": "NFC West",
+    "record": "8-1",
+    "div_rank": 1,
+    "streak": "W2",
+    "ppg": 31.2,
+    "papg": 21.8,
+    "off_rank": 2,
+    "def_rank": 12,
+    "qb": "Brock Purdy",
+    "coach": "Kyle Shanahan",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 99.2,
+    "div_pct": 92.9
+   },
+   "interest_score": 82,
+   "tier": "Must Watch",
+   "tags": [
+    "High Leverage",
+    "Toss-ups",
+    "Primetime"
+   ],
+   "hook": "NFC #1-seed showdown: 71-pt swing in first-round bye odds on a SF -3.5 line.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "MIN (7-2, 1st in NFC North) enters with 94% playoff odds; SF (8-1, 1st in NFC West) sits at 99%. With both clubs positioned near the top of the NFC, conference #1-seed bye odds swing by 71 percentage points. Division-title odds shift by 25 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Kirk Cousins vs. Brock Purdy at quarterback. MIN averages 19.6 PPG (#24 offense) and allows 14.0 (#1 defense), while SF scores 31.2 (#2) and allows 21.8 (#12). Classic strength-on-strength: SF's top-10 offense meets MIN's top-10 defense."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Standalone Sunday night window (20:20 ET) at Estadio Banorte."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 33.9,
+     "max": 34,
+     "value": "\u00b171% #1-seed swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 16.9,
+     "max": 24,
+     "value": "SF -3.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 11.4,
+     "max": 18,
+     "value": "46.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 14.0,
+     "max": 14,
+     "value": "7-2 vs 8-1"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 6.0,
+     "max": 10,
+     "value": "Division leaders \u00b7 Sun night"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "SF",
+     "base": {
+      "playoff": 99.2,
+      "div": 92.9,
+      "bye": 53.1,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 99.2,
+       "div": 92.9,
+       "bye": 53.1,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.8,
+       "div": 95.4,
+       "bye": 70.0,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 0.6,
+       "div": 2.5,
+       "bye": 16.9,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 99.2,
+       "div": 92.9,
+       "bye": 53.1,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 98.1,
+       "div": 88.5,
+       "bye": 29.2,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -1.1,
+       "div": -4.4,
+       "bye": -23.9,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "MIN",
+     "base": {
+      "playoff": 94.3,
+      "div": 40.0,
+      "bye": 19.3,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 94.3,
+       "div": 40.0,
+       "bye": 19.3,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 91.4,
+       "div": 32.1,
+       "bye": 6.8,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -2.9,
+       "div": -7.9,
+       "bye": -12.5,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 94.3,
+       "div": 40.0,
+       "bye": 19.3,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 98.3,
+       "div": 50.6,
+       "bye": 36.9,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 4.0,
+       "div": 10.6,
+       "bye": 17.6,
+       "top5": 0.0
+      }
+     }
+    },
+    "total_playoff_swing": 8.6,
+    "total_div_swing": 25.4,
+    "total_bye_swing": 70.9,
+    "total_draft_swing": 0.0,
+    "branches": {
+     "home": {
+      "winner": "SF",
+      "loser": "MIN",
+      "label": "If SF wins",
+      "home": {
+       "base": {
+        "playoff": 99.2,
+        "div": 92.9,
+        "bye": 53.1,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.8,
+        "div": 95.4,
+        "bye": 70.0,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 0.6,
+        "div": 2.5,
+        "bye": 16.9,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 94.3,
+        "div": 40.0,
+        "bye": 19.3,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 91.4,
+        "div": 32.1,
+        "bye": 6.8,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -2.9,
+        "div": -7.9,
+        "bye": -12.5,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "SF moves to 9-1; MIN drops to 7-3.",
+       "Counts as a NFC conference win for SF\u2014critical for wild-card tiebreakers.",
+       "Pushes SF's #1-seed bye chance to 70% (+17 pts)."
+      ]
+     },
+     "away": {
+      "winner": "MIN",
+      "loser": "SF",
+      "label": "If MIN wins",
+      "home": {
+       "base": {
+        "playoff": 99.2,
+        "div": 92.9,
+        "bye": 53.1,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 98.1,
+        "div": 88.5,
+        "bye": 29.2,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -1.1,
+        "div": -4.4,
+        "bye": -23.9,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 94.3,
+        "div": 40.0,
+        "bye": 19.3,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 98.3,
+        "div": 50.6,
+        "bye": 36.9,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 4.0,
+        "div": 10.6,
+        "bye": 17.6,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "MIN moves to 8-2; SF drops to 8-2.",
+       "Playoff odds shift to 98% (+4 pts) for MIN and 98% (-1 pts) for SF.",
+       "Counts as a NFC conference win for MIN\u2014critical for wild-card tiebreakers.",
+       "Boosts MIN's NFC North title odds to 51% (+11 pts).",
+       "Pushes MIN's #1-seed bye chance to 37% (+18 pts)."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "DET",
+      "name": "Lions",
+      "record": "7-2",
+      "roots_for": "SF",
+      "metric": "division",
+      "swing": 10.3,
+      "if_home_playoff": 89.2,
+      "if_away_playoff": 89.3
+     },
+     {
+      "team": "CHI",
+      "name": "Bears",
+      "record": "7-2",
+      "roots_for": "SF",
+      "metric": "division",
+      "swing": 7.6,
+      "if_home_playoff": 89.6,
+      "if_away_playoff": 89.4
+     },
+     {
+      "team": "SEA",
+      "name": "Seahawks",
+      "record": "6-4",
+      "roots_for": "MIN",
+      "metric": "division",
+      "swing": 3.9,
+      "if_home_playoff": 44.8,
+      "if_away_playoff": 43.2
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether SF holds control at halftime",
+     "benchmark": "Pregame line: SF -3.5 (expected half ~11\u201312)",
+     "why": "Both clubs have strong postseason equity, so the #1-seed bye (71-pt swing) and division-title positioning (25-pt swing) are the real prize. Predict whether SF builds an early cushion or whether MIN keeps win probability live into the fourth quarter.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=3.5&home_h1_pts=12&away_h1_pts=11&game=MIN+%40+SF+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 46.5 benchmark",
+     "benchmark": "Pregame total: 46.5 \u00b7 Half pace: 23.2 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 46.5-point game (23+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=46.5&wind=6&home_h1_pts=12&away_h1_pts=11&compare=46.5&game=MIN+%40+SF+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 46.5",
+     "benchmark": "Test live O/U at halftime using spread (SF -3.5) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 46.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=46.5&spread_line=3.5&wind=6&line=46.5&home_h1_pts=12&away_h1_pts=11&game=MIN+%40+SF+%28Wk+11%29"
+    }
+   ],
+   "rank": 1
+  },
+  {
+   "game_id": "2026_11_TB_DET",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Ford Field",
+   "roof": "dome",
+   "spread_line": 5.5,
+   "spread_label": "DET -5.5",
+   "total_line": 45.5,
+   "home_win_prob": 66,
+   "away_win_prob": 34,
+   "away": {
+    "team": "TB",
+    "name": "Buccaneers",
+    "city": "Tampa Bay",
+    "conf": "NFC",
+    "div": "NFC South",
+    "record": "3-6",
+    "div_rank": 2,
+    "streak": "L1",
+    "ppg": 22.4,
+    "papg": 19.8,
+    "off_rank": 16,
+    "def_rank": 6,
+    "qb": "Baker Mayfield",
+    "coach": "Todd Bowles",
+    "rest": 14,
+    "score": null,
+    "playoff_pct": 48.8,
+    "div_pct": 48.5
+   },
+   "home": {
+    "team": "DET",
+    "name": "Lions",
+    "city": "Detroit",
+    "conf": "NFC",
+    "div": "NFC North",
+    "record": "7-2",
+    "div_rank": 2,
+    "streak": "W5",
+    "ppg": 28.6,
+    "papg": 22.1,
+    "off_rank": 6,
+    "def_rank": 16,
+    "qb": "Jared Goff",
+    "coach": "Dan Campbell",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 89.3,
+    "div_pct": 35.0
+   },
+   "interest_score": 66,
+   "tier": "Strong Watch",
+   "tags": [
+    "High Leverage"
+   ],
+   "hook": "High-stakes swing game: 31-pt playoff leverage on a DET -5.5 line.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "TB (3-6, 2nd in NFC South) enters with 49% playoff odds; DET (7-2, 2nd in NFC North) sits at 89%. This single result moves their combined playoff probability by 31 percentage points. Division-title odds shift by 32 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Baker Mayfield vs. Jared Goff at quarterback. TB averages 22.4 PPG (#16 offense) and allows 19.8 (#6 defense), while DET scores 28.6 (#6) and allows 22.1 (#16). Classic strength-on-strength: DET's top-10 offense meets TB's top-10 defense."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Rest edge to TB (14 days rest vs. 7). Recent form: DET is on a W5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 30.8,
+     "max": 34,
+     "value": "\u00b131% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 12.2,
+     "max": 24,
+     "value": "DET -5.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 10.4,
+     "max": 18,
+     "value": "45.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 9.5,
+     "max": 14,
+     "value": "3-6 vs 7-2"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 3.0,
+     "max": 10,
+     "value": "Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "DET",
+     "base": {
+      "playoff": 89.3,
+      "div": 35.0,
+      "bye": 15.4,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 89.3,
+       "div": 35.0,
+       "bye": 15.4,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 94.3,
+       "div": 40.0,
+       "bye": 19.3,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 5.0,
+       "div": 5.0,
+       "bye": 3.9,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 89.3,
+       "div": 35.0,
+       "bye": 15.4,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 81.0,
+       "div": 24.9,
+       "bye": 6.2,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -8.3,
+       "div": -10.1,
+       "bye": -9.2,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "TB",
+     "base": {
+      "playoff": 48.8,
+      "div": 48.5,
+      "bye": 0.0,
+      "top5": 3.2
+     },
+     "if_home": {
+      "base": {
+       "playoff": 48.8,
+       "div": 48.5,
+       "bye": 0.0,
+       "top5": 3.2
+      },
+      "after": {
+       "playoff": 42.6,
+       "div": 42.4,
+       "bye": 0.0,
+       "top5": 4.2
+      },
+      "delta": {
+       "playoff": -6.2,
+       "div": -6.1,
+       "bye": 0.0,
+       "top5": 1.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 48.8,
+       "div": 48.5,
+       "bye": 0.0,
+       "top5": 3.2
+      },
+      "after": {
+       "playoff": 60.2,
+       "div": 59.5,
+       "bye": 0.0,
+       "top5": 1.0
+      },
+      "delta": {
+       "playoff": 11.4,
+       "div": 11.0,
+       "bye": 0.0,
+       "top5": -2.2
+      }
+     }
+    },
+    "total_playoff_swing": 30.9,
+    "total_div_swing": 32.2,
+    "total_bye_swing": 13.1,
+    "total_draft_swing": 3.2,
+    "branches": {
+     "home": {
+      "winner": "DET",
+      "loser": "TB",
+      "label": "If DET wins",
+      "home": {
+       "base": {
+        "playoff": 89.3,
+        "div": 35.0,
+        "bye": 15.4,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 94.3,
+        "div": 40.0,
+        "bye": 19.3,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 5.0,
+        "div": 5.0,
+        "bye": 3.9,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 48.8,
+        "div": 48.5,
+        "bye": 0.0,
+        "top5": 3.2
+       },
+       "after": {
+        "playoff": 42.6,
+        "div": 42.4,
+        "bye": 0.0,
+        "top5": 4.2
+       },
+       "delta": {
+        "playoff": -6.2,
+        "div": -6.1,
+        "bye": 0.0,
+        "top5": 1.0
+       }
+      },
+      "notes": [
+       "DET moves to 8-2; TB drops to 3-7.",
+       "Playoff odds shift to 94% (+5 pts) for DET and 43% (-6 pts) for TB.",
+       "Counts as a NFC conference win for DET\u2014critical for wild-card tiebreakers."
+      ]
+     },
+     "away": {
+      "winner": "TB",
+      "loser": "DET",
+      "label": "If TB wins",
+      "home": {
+       "base": {
+        "playoff": 89.3,
+        "div": 35.0,
+        "bye": 15.4,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 81.0,
+        "div": 24.9,
+        "bye": 6.2,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -8.3,
+        "div": -10.1,
+        "bye": -9.2,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 48.8,
+        "div": 48.5,
+        "bye": 0.0,
+        "top5": 3.2
+       },
+       "after": {
+        "playoff": 60.2,
+        "div": 59.5,
+        "bye": 0.0,
+        "top5": 1.0
+       },
+       "delta": {
+        "playoff": 11.4,
+        "div": 11.0,
+        "bye": 0.0,
+        "top5": -2.2
+       }
+      },
+      "notes": [
+       "TB moves to 4-6; DET drops to 7-3.",
+       "Playoff odds shift to 60% (+11 pts) for TB and 81% (-8 pts) for DET.",
+       "Counts as a NFC conference win for TB\u2014critical for wild-card tiebreakers.",
+       "Boosts TB's NFC South title odds to 60% (+11 pts)."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "CAR",
+      "name": "Panthers",
+      "record": "4-5",
+      "roots_for": "DET",
+      "metric": "division",
+      "swing": 11.6,
+      "if_home_playoff": 42.8,
+      "if_away_playoff": 32.1
+     },
+     {
+      "team": "MIN",
+      "name": "Vikings",
+      "record": "7-2",
+      "roots_for": "TB",
+      "metric": "division",
+      "swing": 9.7,
+      "if_home_playoff": 94.2,
+      "if_away_playoff": 94.6
+     },
+     {
+      "team": "NO",
+      "name": "Saints",
+      "record": "3-6",
+      "roots_for": "DET",
+      "metric": "division",
+      "swing": 3.2,
+      "if_home_playoff": 9.1,
+      "if_away_playoff": 6.0
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether DET holds control at halftime",
+     "benchmark": "Pregame line: DET -5.5 (expected half ~10\u201313)",
+     "why": "A single result swings combined playoff odds by 31 percentage points and division odds by 32 pts. Predicting whether TB can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=5.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 45.5 benchmark",
+     "benchmark": "Pregame total: 45.5 \u00b7 Half pace: 22.8 pts \u00b7 Dome/indoor",
+     "why": "The market expects a balanced 45.5-point game (23+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=45.5&wind=0&home_h1_pts=13&away_h1_pts=10&compare=45.5&game=TB+%40+DET+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 45.5",
+     "benchmark": "Test live O/U at halftime using spread (DET -5.5) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 45.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=45.5&spread_line=5.5&wind=0&line=45.5&home_h1_pts=13&away_h1_pts=10&game=TB+%40+DET+%28Wk+11%29"
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "game_id": "2026_11_JAX_NYG",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "MetLife Stadium",
+   "roof": "outdoors",
+   "spread_line": -6.0,
+   "spread_label": "JAX -6",
+   "total_line": 46.5,
+   "home_win_prob": 33,
+   "away_win_prob": 67,
+   "away": {
+    "team": "JAX",
+    "name": "Jaguars",
+    "city": "Jacksonville",
+    "conf": "AFC",
+    "div": "AFC South",
+    "record": "7-2",
+    "div_rank": 1,
+    "streak": "W3",
+    "ppg": 29.9,
+    "papg": 16.0,
+    "off_rank": 4,
+    "def_rank": 2,
+    "qb": "Trevor Lawrence",
+    "coach": "Liam Coen",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 99.6,
+    "div_pct": 98.7
+   },
+   "home": {
+    "team": "NYG",
+    "name": "Giants",
+    "city": "New York",
+    "conf": "NFC",
+    "div": "NFC East",
+    "record": "5-3-1",
+    "div_rank": 1,
+    "streak": "L1",
+    "ppg": 22.6,
+    "papg": 21.8,
+    "off_rank": 14,
+    "def_rank": 11,
+    "qb": "J.J. McCarthy",
+    "coach": "John Harbaugh",
+    "rest": 10,
+    "score": null,
+    "playoff_pct": 75.3,
+    "div_pct": 74.6
+   },
+   "interest_score": 60,
+   "tier": "Strong Watch",
+   "tags": [
+    "High Leverage"
+   ],
+   "hook": "Real postseason leverage (18-pt combined playoff swing) between JAX (7-2) and NYG (5-3-1).",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "JAX (7-2, 1st in AFC South) enters with 100% playoff odds; NYG (5-3-1, 1st in NFC East) sits at 75%. This single result moves their combined playoff probability by 18 percentage points. Division-title odds shift by 19 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Trevor Lawrence vs. J.J. McCarthy at quarterback. JAX averages 29.9 PPG (#4 offense) and allows 16.0 (#2 defense), while NYG scores 22.6 (#14) and allows 21.8 (#11)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Rest edge to NYG (10 days rest vs. 7). Recent form: JAX is on a W3 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 20.0,
+     "max": 34,
+     "value": "\u00b118% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 11.1,
+     "max": 24,
+     "value": "JAX -6"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 11.4,
+     "max": 18,
+     "value": "46.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 10.6,
+     "max": 14,
+     "value": "7-2 vs 5-3-1"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 6.5,
+     "max": 10,
+     "value": "Division leaders \u00b7 Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "NYG",
+     "base": {
+      "playoff": 75.3,
+      "div": 74.6,
+      "bye": 0.3,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 75.3,
+       "div": 74.6,
+       "bye": 0.3,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 87.6,
+       "div": 86.7,
+       "bye": 0.8,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 12.3,
+       "div": 12.1,
+       "bye": 0.5,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 75.3,
+       "div": 74.6,
+       "bye": 0.3,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 69.9,
+       "div": 69.3,
+       "bye": 0.1,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -5.4,
+       "div": -5.3,
+       "bye": -0.2,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "JAX",
+     "base": {
+      "playoff": 99.6,
+      "div": 98.7,
+      "bye": 18.7,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 99.6,
+       "div": 98.7,
+       "bye": 18.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.4,
+       "div": 97.7,
+       "bye": 10.2,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -0.2,
+       "div": -1.0,
+       "bye": -8.5,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 99.6,
+       "div": 98.7,
+       "bye": 18.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.8,
+       "div": 99.2,
+       "bye": 23.5,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 0.2,
+       "div": 0.5,
+       "bye": 4.8,
+       "top5": 0.0
+      }
+     }
+    },
+    "total_playoff_swing": 18.1,
+    "total_div_swing": 18.9,
+    "total_bye_swing": 14.0,
+    "total_draft_swing": 0.0,
+    "branches": {
+     "home": {
+      "winner": "NYG",
+      "loser": "JAX",
+      "label": "If NYG wins",
+      "home": {
+       "base": {
+        "playoff": 75.3,
+        "div": 74.6,
+        "bye": 0.3,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 87.6,
+        "div": 86.7,
+        "bye": 0.8,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 12.3,
+        "div": 12.1,
+        "bye": 0.5,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 99.6,
+        "div": 98.7,
+        "bye": 18.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.4,
+        "div": 97.7,
+        "bye": 10.2,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -0.2,
+        "div": -1.0,
+        "bye": -8.5,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "NYG moves to 6-3-1; JAX drops to 7-3.",
+       "Playoff odds shift to 88% (+12 pts) for NYG and 99% (-0 pts) for JAX.",
+       "Boosts NYG's NFC East title odds to 87% (+12 pts)."
+      ]
+     },
+     "away": {
+      "winner": "JAX",
+      "loser": "NYG",
+      "label": "If JAX wins",
+      "home": {
+       "base": {
+        "playoff": 75.3,
+        "div": 74.6,
+        "bye": 0.3,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 69.9,
+        "div": 69.3,
+        "bye": 0.1,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -5.4,
+        "div": -5.3,
+        "bye": -0.2,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 99.6,
+        "div": 98.7,
+        "bye": 18.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.8,
+        "div": 99.2,
+        "bye": 23.5,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 0.2,
+        "div": 0.5,
+        "bye": 4.8,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "JAX moves to 8-2; NYG drops to 5-4-1.",
+       "Playoff odds shift to 100% (+0 pts) for JAX and 70% (-5 pts) for NYG."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "DAL",
+      "name": "Cowboys",
+      "record": "4-6",
+      "roots_for": "JAX",
+      "metric": "division",
+      "swing": 11.4,
+      "if_home_playoff": 9.6,
+      "if_away_playoff": 20.0
+     },
+     {
+      "team": "WAS",
+      "name": "Commanders",
+      "record": "3-5-1",
+      "roots_for": "JAX",
+      "metric": "division",
+      "swing": 5.8,
+      "if_home_playoff": 6.1,
+      "if_away_playoff": 11.7
+     },
+     {
+      "team": "BUF",
+      "name": "Bills",
+      "record": "8-1",
+      "roots_for": "NYG",
+      "metric": "#1-seed bye",
+      "swing": 6.0,
+      "if_home_playoff": 99.9,
+      "if_away_playoff": 99.9
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether JAX holds control at halftime",
+     "benchmark": "Pregame line: JAX -6 (expected half ~13\u201310)",
+     "why": "A single result swings combined playoff odds by 18 percentage points and division odds by 19 pts. Predicting whether NYG can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=-6.0&home_h1_pts=10&away_h1_pts=13&game=JAX+%40+NYG+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 46.5 benchmark",
+     "benchmark": "Pregame total: 46.5 \u00b7 Half pace: 23.2 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 46.5-point game (23+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=46.5&wind=6&home_h1_pts=10&away_h1_pts=13&compare=46.5&game=JAX+%40+NYG+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 46.5",
+     "benchmark": "Test live O/U at halftime using spread (JAX -6) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 46.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=46.5&spread_line=-6.0&wind=6&line=46.5&home_h1_pts=10&away_h1_pts=13&game=JAX+%40+NYG+%28Wk+11%29"
+    }
+   ],
+   "rank": 3
+  },
+  {
+   "game_id": "2026_11_CIN_WAS",
+   "week": 11,
+   "gameday": "2026-11-23",
+   "weekday": "Monday",
+   "gametime": "20:15",
+   "primetime": true,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Northwest Stadium",
+   "roof": "outdoors",
+   "spread_line": -6.0,
+   "spread_label": "CIN -6",
+   "total_line": 53.5,
+   "home_win_prob": 33,
+   "away_win_prob": 67,
+   "away": {
+    "team": "CIN",
+    "name": "Bengals",
+    "city": "Cincinnati",
+    "conf": "AFC",
+    "div": "AFC North",
+    "record": "7-2",
+    "div_rank": 1,
+    "streak": "W5",
+    "ppg": 30.9,
+    "papg": 21.4,
+    "off_rank": 3,
+    "def_rank": 10,
+    "qb": "Joe Burrow",
+    "coach": "Zac Taylor",
+    "rest": 8,
+    "score": null,
+    "playoff_pct": 99.1,
+    "div_pct": 88.2
+   },
+   "home": {
+    "team": "WAS",
+    "name": "Commanders",
+    "city": "Washington",
+    "conf": "NFC",
+    "div": "NFC East",
+    "record": "3-5-1",
+    "div_rank": 3,
+    "streak": "W1",
+    "ppg": 21.8,
+    "papg": 24.8,
+    "off_rank": 21,
+    "def_rank": 20,
+    "qb": "Jayden Daniels",
+    "coach": "Dan Quinn",
+    "rest": 11,
+    "score": null,
+    "playoff_pct": 10.0,
+    "div_pct": 9.2
+   },
+   "interest_score": 56,
+   "tier": "Intriguing",
+   "tags": [
+    "Shootouts",
+    "Primetime"
+   ],
+   "hook": "Expected shootout (53.5 total) featuring Joe Burrow vs. Jayden Daniels.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "CIN (7-2, 1st in AFC North) enters with 99% playoff odds; WAS (3-5-1, 3rd in NFC East) sits at 10%. Division-title odds shift by 18 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Joe Burrow vs. Jayden Daniels at quarterback. CIN averages 30.9 PPG (#3 offense) and allows 21.4 (#10 defense), while WAS scores 21.8 (#21) and allows 24.8 (#20)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Standalone Monday night window (20:15 ET) at Northwest Stadium. Rest edge to WAS (11 days rest vs. 8). Recent form: CIN is on a W5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 14.4,
+     "max": 34,
+     "value": "\u00b111% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 11.1,
+     "max": 24,
+     "value": "CIN -6"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 18.0,
+     "max": 18,
+     "value": "53.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 7.0,
+     "max": 14,
+     "value": "7-2 vs 3-5-1"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 5.5,
+     "max": 10,
+     "value": "Mon night \u00b7 Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "WAS",
+     "base": {
+      "playoff": 10.0,
+      "div": 9.2,
+      "bye": 0.0,
+      "top5": 5.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 10.0,
+       "div": 9.2,
+       "bye": 0.0,
+       "top5": 5.0
+      },
+      "after": {
+       "playoff": 16.6,
+       "div": 14.8,
+       "bye": 0.0,
+       "top5": 0.9
+      },
+      "delta": {
+       "playoff": 6.6,
+       "div": 5.6,
+       "bye": 0.0,
+       "top5": -4.1
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 10.0,
+       "div": 9.2,
+       "bye": 0.0,
+       "top5": 5.0
+      },
+      "after": {
+       "playoff": 6.6,
+       "div": 6.4,
+       "bye": 0.0,
+       "top5": 7.0
+      },
+      "delta": {
+       "playoff": -3.4,
+       "div": -2.8,
+       "bye": 0.0,
+       "top5": 2.0
+      }
+     }
+    },
+    "away": {
+     "team": "CIN",
+     "base": {
+      "playoff": 99.1,
+      "div": 88.2,
+      "bye": 13.7,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 99.1,
+       "div": 88.2,
+       "bye": 13.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 98.5,
+       "div": 81.6,
+       "bye": 6.9,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -0.6,
+       "div": -6.6,
+       "bye": -6.8,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 99.1,
+       "div": 88.2,
+       "bye": 13.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.6,
+       "div": 91.0,
+       "bye": 16.9,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 0.5,
+       "div": 2.8,
+       "bye": 3.2,
+       "top5": 0.0
+      }
+     }
+    },
+    "total_playoff_swing": 11.1,
+    "total_div_swing": 17.8,
+    "total_bye_swing": 10.0,
+    "total_draft_swing": 6.1,
+    "branches": {
+     "home": {
+      "winner": "WAS",
+      "loser": "CIN",
+      "label": "If WAS wins",
+      "home": {
+       "base": {
+        "playoff": 10.0,
+        "div": 9.2,
+        "bye": 0.0,
+        "top5": 5.0
+       },
+       "after": {
+        "playoff": 16.6,
+        "div": 14.8,
+        "bye": 0.0,
+        "top5": 0.9
+       },
+       "delta": {
+        "playoff": 6.6,
+        "div": 5.6,
+        "bye": 0.0,
+        "top5": -4.1
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 99.1,
+        "div": 88.2,
+        "bye": 13.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 98.5,
+        "div": 81.6,
+        "bye": 6.9,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -0.6,
+        "div": -6.6,
+        "bye": -6.8,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "WAS moves to 4-5-1; CIN drops to 7-3.",
+       "Playoff odds shift to 17% (+7 pts) for WAS and 98% (-1 pts) for CIN."
+      ]
+     },
+     "away": {
+      "winner": "CIN",
+      "loser": "WAS",
+      "label": "If CIN wins",
+      "home": {
+       "base": {
+        "playoff": 10.0,
+        "div": 9.2,
+        "bye": 0.0,
+        "top5": 5.0
+       },
+       "after": {
+        "playoff": 6.6,
+        "div": 6.4,
+        "bye": 0.0,
+        "top5": 7.0
+       },
+       "delta": {
+        "playoff": -3.4,
+        "div": -2.8,
+        "bye": 0.0,
+        "top5": 2.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 99.1,
+        "div": 88.2,
+        "bye": 13.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.6,
+        "div": 91.0,
+        "bye": 16.9,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 0.5,
+        "div": 2.8,
+        "bye": 3.2,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "CIN moves to 8-2; WAS drops to 3-6-1.",
+       "Playoff odds shift to 100% (+0 pts) for CIN and 7% (-3 pts) for WAS."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "NYG",
+      "name": "Giants",
+      "record": "5-3-1",
+      "roots_for": "CIN",
+      "metric": "division",
+      "swing": 6.4,
+      "if_home_playoff": 71.3,
+      "if_away_playoff": 77.4
+     },
+     {
+      "team": "PIT",
+      "name": "Steelers",
+      "record": "6-3",
+      "roots_for": "WAS",
+      "metric": "division",
+      "swing": 6.0,
+      "if_home_playoff": 79.4,
+      "if_away_playoff": 79.4
+     },
+     {
+      "team": "DAL",
+      "name": "Cowboys",
+      "record": "4-6",
+      "roots_for": "CIN",
+      "metric": "playoff",
+      "swing": 2.0,
+      "if_home_playoff": 15.4,
+      "if_away_playoff": 17.4
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether CIN holds control at halftime",
+     "benchmark": "Pregame line: CIN -6 (expected half ~15\u201312)",
+     "why": "With CIN -6 on the board, the key call is whether CIN separates before halftime or whether WAS keeps win probability live into the third quarter.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=-6.0&home_h1_pts=12&away_h1_pts=15&game=CIN+%40+WAS+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Shootout pace: does the final clear 53.5?",
+     "benchmark": "Pregame total: 53.5 \u00b7 Half pace: 26.8 pts \u00b7 Wind ~6 mph",
+     "why": "A 53.5 total signals one of the week's fastest scoring environments (CIN ranks #3 in scoring at 30.9 PPG; WAS ranks #21 at 21.8). If the winner comes from trading explosive drives, the over/under is tightly coupled to who survives a late possession game.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=53.5&wind=6&home_h1_pts=12&away_h1_pts=15&compare=53.5&game=CIN+%40+WAS+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 53.5",
+     "benchmark": "Test live O/U at halftime using spread (CIN -6) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 53.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=53.5&spread_line=-6.0&wind=6&line=53.5&home_h1_pts=12&away_h1_pts=15&game=CIN+%40+WAS+%28Wk+11%29"
+    }
+   ],
+   "rank": 4
+  },
+  {
+   "game_id": "2026_11_LV_DEN",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "16:25",
+   "primetime": false,
+   "finished": false,
+   "div_game": true,
+   "stadium": "Empower Field at Mile High",
+   "roof": "outdoors",
+   "spread_line": 10.5,
+   "spread_label": "DEN -10.5",
+   "total_line": 40.5,
+   "home_win_prob": 78,
+   "away_win_prob": 22,
+   "away": {
+    "team": "LV",
+    "name": "Raiders",
+    "city": "Las Vegas",
+    "conf": "AFC",
+    "div": "AFC West",
+    "record": "4-6",
+    "div_rank": 3,
+    "streak": "L2",
+    "ppg": 25.1,
+    "papg": 28.9,
+    "off_rank": 10,
+    "def_rank": 32,
+    "qb": "Fernando Mendoza",
+    "coach": "Klint Kubiak",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 9.5,
+    "div_pct": 0.2
+   },
+   "home": {
+    "team": "DEN",
+    "name": "Broncos",
+    "city": "Denver",
+    "conf": "AFC",
+    "div": "AFC West",
+    "record": "7-2",
+    "div_rank": 2,
+    "streak": "W5",
+    "ppg": 22.0,
+    "papg": 20.7,
+    "off_rank": 19,
+    "def_rank": 9,
+    "qb": "Bo Nix",
+    "coach": "Sean Payton",
+    "rest": 14,
+    "score": null,
+    "playoff_pct": 96.7,
+    "div_pct": 37.1
+   },
+   "interest_score": 49,
+   "tier": "Intriguing",
+   "tags": [
+    "High Leverage",
+    "Divisional"
+   ],
+   "hook": "AFC West pivot game: 22-pt division-title swing.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "LV (4-6, 3rd in AFC West) enters with 10% playoff odds; DEN (7-2, 2nd in AFC West) sits at 97%. This single result moves their combined playoff probability by 24 percentage points. Division-title odds shift by 22 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Fernando Mendoza vs. Bo Nix at quarterback. LV averages 25.1 PPG (#10 offense) and allows 28.9 (#32 defense), while DEN scores 22.0 (#19) and allows 20.7 (#9). Classic strength-on-strength: LV's top-10 offense tests DEN's top-10 defense."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "First AFC West meeting of the season\u2014division wins double as primary tiebreakers. Rest edge to DEN (14 days rest vs. 7). Recent form: DEN is on a W5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 22.0,
+     "max": 34,
+     "value": "\u00b124% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 4.3,
+     "max": 24,
+     "value": "DEN -10.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 5.7,
+     "max": 18,
+     "value": "40.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 10.1,
+     "max": 14,
+     "value": "4-6 vs 7-2"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 7.0,
+     "max": 10,
+     "value": "Divisional \u00b7 Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "DEN",
+     "base": {
+      "playoff": 96.7,
+      "div": 37.1,
+      "bye": 7.7,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 96.7,
+       "div": 37.1,
+       "bye": 7.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 98.1,
+       "div": 42.2,
+       "bye": 9.3,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 1.4,
+       "div": 5.1,
+       "bye": 1.6,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 96.7,
+       "div": 37.1,
+       "bye": 7.7,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 90.2,
+       "div": 21.3,
+       "bye": 1.9,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -6.5,
+       "div": -15.8,
+       "bye": -5.8,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "LV",
+     "base": {
+      "playoff": 9.5,
+      "div": 0.2,
+      "bye": 0.0,
+      "top5": 3.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 9.5,
+       "div": 0.2,
+       "bye": 0.0,
+       "top5": 3.0
+      },
+      "after": {
+       "playoff": 6.1,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 3.8
+      },
+      "delta": {
+       "playoff": -3.4,
+       "div": -0.2,
+       "bye": 0.0,
+       "top5": 0.8
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 9.5,
+       "div": 0.2,
+       "bye": 0.0,
+       "top5": 3.0
+      },
+      "after": {
+       "playoff": 22.0,
+       "div": 0.8,
+       "bye": 0.0,
+       "top5": 0.6
+      },
+      "delta": {
+       "playoff": 12.5,
+       "div": 0.6,
+       "bye": 0.0,
+       "top5": -2.4
+      }
+     }
+    },
+    "total_playoff_swing": 23.8,
+    "total_div_swing": 21.7,
+    "total_bye_swing": 7.4,
+    "total_draft_swing": 3.2,
+    "branches": {
+     "home": {
+      "winner": "DEN",
+      "loser": "LV",
+      "label": "If DEN wins",
+      "home": {
+       "base": {
+        "playoff": 96.7,
+        "div": 37.1,
+        "bye": 7.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 98.1,
+        "div": 42.2,
+        "bye": 9.3,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 1.4,
+        "div": 5.1,
+        "bye": 1.6,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 9.5,
+        "div": 0.2,
+        "bye": 0.0,
+        "top5": 3.0
+       },
+       "after": {
+        "playoff": 6.1,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 3.8
+       },
+       "delta": {
+        "playoff": -3.4,
+        "div": -0.2,
+        "bye": 0.0,
+        "top5": 0.8
+       }
+      },
+      "notes": [
+       "DEN moves to 8-2; LV drops to 4-7.",
+       "Playoff odds shift to 98% (+1 pts) for DEN and 6% (-3 pts) for LV.",
+       "Gives DEN the early head-to-head tiebreaker and a crucial division win in the AFC West."
+      ]
+     },
+     "away": {
+      "winner": "LV",
+      "loser": "DEN",
+      "label": "If LV wins",
+      "home": {
+       "base": {
+        "playoff": 96.7,
+        "div": 37.1,
+        "bye": 7.7,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 90.2,
+        "div": 21.3,
+        "bye": 1.9,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -6.5,
+        "div": -15.8,
+        "bye": -5.8,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 9.5,
+        "div": 0.2,
+        "bye": 0.0,
+        "top5": 3.0
+       },
+       "after": {
+        "playoff": 22.0,
+        "div": 0.8,
+        "bye": 0.0,
+        "top5": 0.6
+       },
+       "delta": {
+        "playoff": 12.5,
+        "div": 0.6,
+        "bye": 0.0,
+        "top5": -2.4
+       }
+      },
+      "notes": [
+       "LV moves to 5-6; DEN drops to 7-3.",
+       "Playoff odds shift to 22% (+12 pts) for LV and 90% (-6 pts) for DEN.",
+       "Gives LV the early head-to-head tiebreaker and a crucial division win in the AFC West."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "KC",
+      "name": "Chiefs",
+      "record": "7-2",
+      "roots_for": "LV",
+      "metric": "division",
+      "swing": 20.2,
+      "if_home_playoff": 99.2,
+      "if_away_playoff": 98.8
+     },
+     {
+      "team": "CLE",
+      "name": "Browns",
+      "record": "6-4",
+      "roots_for": "DEN",
+      "metric": "playoff",
+      "swing": 2.6,
+      "if_home_playoff": 57.8,
+      "if_away_playoff": 55.2
+     },
+     {
+      "team": "PIT",
+      "name": "Steelers",
+      "record": "6-3",
+      "roots_for": "DEN",
+      "metric": "playoff",
+      "swing": 2.1,
+      "if_home_playoff": 79.9,
+      "if_away_playoff": 77.8
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether DEN holds control at halftime",
+     "benchmark": "Pregame line: DEN -10.5 (expected half ~8\u201313)",
+     "why": "A single result swings combined playoff odds by 24 percentage points and division odds by 22 pts. Predicting whether LV can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=10.5&home_h1_pts=13&away_h1_pts=8&game=LV+%40+DEN+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Defensive squeeze: does scoring stay under 40.5?",
+     "benchmark": "Pregame total: 40.5 \u00b7 Half pace: 20.2 pts \u00b7 Wind ~6 mph",
+     "why": "The low 40.5 total reflects defense and field position (LV allows 28.9 PPG, #32; DEN allows 20.7, #9). In a game this compressed, one defensive touchdown or busted coverage flips both the total and the outright winner.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=40.5&wind=6&home_h1_pts=13&away_h1_pts=8&compare=40.5&game=LV+%40+DEN+%28Wk+11%29"
+    },
+    {
+     "category": "Game Script & Blowout Risk",
+     "title": "Does DEN cruise early, or does LV drag this into a live second half?",
+     "benchmark": "Upset alert if LV is within 3 pts at half (spread DEN -10.5)",
+     "why": "With a heavy DEN -10.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "model_slug": "nfl-halftime-game-types",
+     "model_label": "Classify Halftime Game Type",
+     "model_url": "/m/nfl-halftime-game-types?home_h1_pts=13&away_h1_pts=8&game=LV+%40+DEN+%28Wk+11%29"
+    }
+   ],
+   "rank": 5
+  },
+  {
+   "game_id": "2026_11_NO_CHI",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Soldier Field",
+   "roof": "outdoors",
+   "spread_line": 11.5,
+   "spread_label": "CHI -11.5",
+   "total_line": 48.5,
+   "home_win_prob": 80,
+   "away_win_prob": 20,
+   "away": {
+    "team": "NO",
+    "name": "Saints",
+    "city": "New Orleans",
+    "conf": "NFC",
+    "div": "NFC South",
+    "record": "3-6",
+    "div_rank": 3,
+    "streak": "L1",
+    "ppg": 22.4,
+    "papg": 26.2,
+    "off_rank": 15,
+    "def_rank": 26,
+    "qb": "Tyler Shough",
+    "coach": "Kellen Moore",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 7.9,
+    "div_pct": 7.9
+   },
+   "home": {
+    "team": "CHI",
+    "name": "Bears",
+    "city": "Chicago",
+    "conf": "NFC",
+    "div": "NFC North",
+    "record": "7-2",
+    "div_rank": 3,
+    "streak": "W4",
+    "ppg": 26.8,
+    "papg": 20.4,
+    "off_rank": 7,
+    "def_rank": 8,
+    "qb": "Caleb Williams",
+    "coach": "Ben Johnson",
+    "rest": 14,
+    "score": null,
+    "playoff_pct": 89.5,
+    "div_pct": 24.1
+   },
+   "interest_score": 48,
+   "tier": "Intriguing",
+   "tags": [
+    "High Leverage",
+    "Shootouts"
+   ],
+   "hook": "Real postseason leverage (23-pt combined playoff swing) between NO (3-6) and CHI (7-2).",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "NO (3-6, 3rd in NFC South) enters with 8% playoff odds; CHI (7-2, 3rd in NFC North) sits at 90%. This single result moves their combined playoff probability by 23 percentage points. Division-title odds shift by 21 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Tyler Shough vs. Caleb Williams at quarterback. NO averages 22.4 PPG (#15 offense) and allows 26.2 (#26 defense), while CHI scores 26.8 (#7) and allows 20.4 (#8)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Rest edge to CHI (14 days rest vs. 7). Recent form: CHI is on a W4 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 22.1,
+     "max": 34,
+     "value": "\u00b123% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 3.3,
+     "max": 24,
+     "value": "CHI -11.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 13.3,
+     "max": 18,
+     "value": "48.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 6.5,
+     "max": 14,
+     "value": "3-6 vs 7-2"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 3.0,
+     "max": 10,
+     "value": "Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "CHI",
+     "base": {
+      "playoff": 89.5,
+      "div": 24.1,
+      "bye": 10.6,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 89.5,
+       "div": 24.1,
+       "bye": 10.6,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 92.3,
+       "div": 26.1,
+       "bye": 12.2,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 2.8,
+       "div": 2.0,
+       "bye": 1.6,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 89.5,
+       "div": 24.1,
+       "bye": 10.6,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 78.5,
+       "div": 14.1,
+       "bye": 3.4,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -11.0,
+       "div": -10.0,
+       "bye": -7.2,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "NO",
+     "base": {
+      "playoff": 7.9,
+      "div": 7.9,
+      "bye": 0.0,
+      "top5": 15.9
+     },
+     "if_home": {
+      "base": {
+       "playoff": 7.9,
+       "div": 7.9,
+       "bye": 0.0,
+       "top5": 15.9
+      },
+      "after": {
+       "playoff": 5.8,
+       "div": 5.8,
+       "bye": 0.0,
+       "top5": 19.0
+      },
+      "delta": {
+       "playoff": -2.1,
+       "div": -2.1,
+       "bye": 0.0,
+       "top5": 3.1
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 7.9,
+       "div": 7.9,
+       "bye": 0.0,
+       "top5": 15.9
+      },
+      "after": {
+       "playoff": 15.4,
+       "div": 15.0,
+       "bye": 0.0,
+       "top5": 5.1
+      },
+      "delta": {
+       "playoff": 7.5,
+       "div": 7.1,
+       "bye": 0.0,
+       "top5": -10.8
+      }
+     }
+    },
+    "total_playoff_swing": 23.4,
+    "total_div_swing": 21.2,
+    "total_bye_swing": 8.8,
+    "total_draft_swing": 13.9,
+    "branches": {
+     "home": {
+      "winner": "CHI",
+      "loser": "NO",
+      "label": "If CHI wins",
+      "home": {
+       "base": {
+        "playoff": 89.5,
+        "div": 24.1,
+        "bye": 10.6,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 92.3,
+        "div": 26.1,
+        "bye": 12.2,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 2.8,
+        "div": 2.0,
+        "bye": 1.6,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 7.9,
+        "div": 7.9,
+        "bye": 0.0,
+        "top5": 15.9
+       },
+       "after": {
+        "playoff": 5.8,
+        "div": 5.8,
+        "bye": 0.0,
+        "top5": 19.0
+       },
+       "delta": {
+        "playoff": -2.1,
+        "div": -2.1,
+        "bye": 0.0,
+        "top5": 3.1
+       }
+      },
+      "notes": [
+       "CHI moves to 8-2; NO drops to 3-7.",
+       "Counts as a NFC conference win for CHI\u2014critical for wild-card tiebreakers."
+      ]
+     },
+     "away": {
+      "winner": "NO",
+      "loser": "CHI",
+      "label": "If NO wins",
+      "home": {
+       "base": {
+        "playoff": 89.5,
+        "div": 24.1,
+        "bye": 10.6,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 78.5,
+        "div": 14.1,
+        "bye": 3.4,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -11.0,
+        "div": -10.0,
+        "bye": -7.2,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 7.9,
+        "div": 7.9,
+        "bye": 0.0,
+        "top5": 15.9
+       },
+       "after": {
+        "playoff": 15.4,
+        "div": 15.0,
+        "bye": 0.0,
+        "top5": 5.1
+       },
+       "delta": {
+        "playoff": 7.5,
+        "div": 7.1,
+        "bye": 0.0,
+        "top5": -10.8
+       }
+      },
+      "notes": [
+       "NO moves to 4-6; CHI drops to 7-3.",
+       "Playoff odds shift to 15% (+8 pts) for NO and 78% (-11 pts) for CHI.",
+       "Counts as a NFC conference win for NO\u2014critical for wild-card tiebreakers."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "TB",
+      "name": "Buccaneers",
+      "record": "3-6",
+      "roots_for": "CHI",
+      "metric": "division",
+      "swing": 4.4,
+      "if_home_playoff": 49.7,
+      "if_away_playoff": 45.4
+     },
+     {
+      "team": "CAR",
+      "name": "Panthers",
+      "record": "4-5",
+      "roots_for": "CHI",
+      "metric": "division",
+      "swing": 3.8,
+      "if_home_playoff": 40.0,
+      "if_away_playoff": 36.4
+     },
+     {
+      "team": "MIN",
+      "name": "Vikings",
+      "record": "7-2",
+      "roots_for": "NO",
+      "metric": "division",
+      "swing": 6.8,
+      "if_home_playoff": 94.2,
+      "if_away_playoff": 94.7
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether CHI holds control at halftime",
+     "benchmark": "Pregame line: CHI -11.5 (expected half ~9\u201315)",
+     "why": "A single result swings combined playoff odds by 23 percentage points and division odds by 21 pts. Predicting whether NO can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=11.5&home_h1_pts=15&away_h1_pts=9&game=NO+%40+CHI+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Shootout pace: does the final clear 48.5?",
+     "benchmark": "Pregame total: 48.5 \u00b7 Half pace: 24.2 pts \u00b7 Wind ~6 mph",
+     "why": "A 48.5 total signals one of the week's fastest scoring environments (NO ranks #15 in scoring at 22.4 PPG; CHI ranks #7 at 26.8). If the winner comes from trading explosive drives, the over/under is tightly coupled to who survives a late possession game.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=48.5&wind=6&home_h1_pts=15&away_h1_pts=9&compare=48.5&game=NO+%40+CHI+%28Wk+11%29"
+    },
+    {
+     "category": "Game Script & Blowout Risk",
+     "title": "Does CHI cruise early, or does NO drag this into a live second half?",
+     "benchmark": "Upset alert if NO is within 3 pts at half (spread CHI -11.5)",
+     "why": "With a heavy CHI -11.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "model_slug": "nfl-halftime-game-types",
+     "model_label": "Classify Halftime Game Type",
+     "model_url": "/m/nfl-halftime-game-types?home_h1_pts=15&away_h1_pts=9&game=NO+%40+CHI+%28Wk+11%29"
+    }
+   ],
+   "rank": 6
+  },
+  {
+   "game_id": "2026_11_BAL_CAR",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Bank of America Stadium",
+   "roof": "outdoors",
+   "spread_line": 3.0,
+   "spread_label": "CAR -3",
+   "total_line": 43.5,
+   "home_win_prob": 59,
+   "away_win_prob": 41,
+   "away": {
+    "team": "BAL",
+    "name": "Ravens",
+    "city": "Baltimore",
+    "conf": "AFC",
+    "div": "AFC North",
+    "record": "4-6",
+    "div_rank": 4,
+    "streak": "L5",
+    "ppg": 20.9,
+    "papg": 25.9,
+    "off_rank": 22,
+    "def_rank": 24,
+    "qb": "Tyler Huntley",
+    "coach": "Jesse Minter",
+    "rest": 6,
+    "score": null,
+    "playoff_pct": 3.3,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "CAR",
+    "name": "Panthers",
+    "city": "Carolina",
+    "conf": "NFC",
+    "div": "NFC South",
+    "record": "4-5",
+    "div_rank": 1,
+    "streak": "W1",
+    "ppg": 24.3,
+    "papg": 26.2,
+    "off_rank": 12,
+    "def_rank": 25,
+    "qb": "Bryce Young",
+    "coach": "Dave Canales",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 39.0,
+    "div_pct": 38.4
+   },
+   "interest_score": 47,
+   "tier": "Intriguing",
+   "tags": [
+    "High Leverage",
+    "Toss-ups"
+   ],
+   "hook": "Real postseason leverage (20-pt combined playoff swing) between BAL (4-6) and CAR (4-5).",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "BAL (4-6, 4th in AFC North) enters with 3% playoff odds; CAR (4-5, 1st in NFC South) sits at 39%. This single result moves their combined playoff probability by 20 percentage points. Division-title odds shift by 15 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Tyler Huntley vs. Bryce Young at quarterback. BAL averages 20.9 PPG (#22 offense) and allows 25.9 (#24 defense), while CAR scores 24.3 (#12) and allows 26.2 (#25)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Recent form: BAL is on a L5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 15.4,
+     "max": 34,
+     "value": "\u00b120% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 18.1,
+     "max": 24,
+     "value": "CAR -3"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 8.5,
+     "max": 18,
+     "value": "43.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 3.9,
+     "max": 14,
+     "value": "4-6 vs 4-5"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 1.5,
+     "max": 10,
+     "value": "Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "CAR",
+     "base": {
+      "playoff": 39.0,
+      "div": 38.4,
+      "bye": 0.0,
+      "top5": 2.3
+     },
+     "if_home": {
+      "base": {
+       "playoff": 39.0,
+       "div": 38.4,
+       "bye": 0.0,
+       "top5": 2.3
+      },
+      "after": {
+       "playoff": 45.9,
+       "div": 45.1,
+       "bye": 0.0,
+       "top5": 0.7
+      },
+      "delta": {
+       "playoff": 6.9,
+       "div": 6.7,
+       "bye": 0.0,
+       "top5": -1.6
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 39.0,
+       "div": 38.4,
+       "bye": 0.0,
+       "top5": 2.3
+      },
+      "after": {
+       "playoff": 30.2,
+       "div": 30.0,
+       "bye": 0.0,
+       "top5": 5.0
+      },
+      "delta": {
+       "playoff": -8.8,
+       "div": -8.4,
+       "bye": 0.0,
+       "top5": 2.7
+      }
+     }
+    },
+    "away": {
+     "team": "BAL",
+     "base": {
+      "playoff": 3.3,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 8.4
+     },
+     "if_home": {
+      "base": {
+       "playoff": 3.3,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 8.4
+      },
+      "after": {
+       "playoff": 1.8,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 13.3
+      },
+      "delta": {
+       "playoff": -1.5,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 4.9
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 3.3,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 8.4
+      },
+      "after": {
+       "playoff": 5.6,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": 2.6
+      },
+      "delta": {
+       "playoff": 2.3,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": -5.8
+      }
+     }
+    },
+    "total_playoff_swing": 19.5,
+    "total_div_swing": 15.2,
+    "total_bye_swing": 0.0,
+    "total_draft_swing": 15.0,
+    "branches": {
+     "home": {
+      "winner": "CAR",
+      "loser": "BAL",
+      "label": "If CAR wins",
+      "home": {
+       "base": {
+        "playoff": 39.0,
+        "div": 38.4,
+        "bye": 0.0,
+        "top5": 2.3
+       },
+       "after": {
+        "playoff": 45.9,
+        "div": 45.1,
+        "bye": 0.0,
+        "top5": 0.7
+       },
+       "delta": {
+        "playoff": 6.9,
+        "div": 6.7,
+        "bye": 0.0,
+        "top5": -1.6
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 3.3,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 8.4
+       },
+       "after": {
+        "playoff": 1.8,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 13.3
+       },
+       "delta": {
+        "playoff": -1.5,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 4.9
+       }
+      },
+      "notes": [
+       "CAR moves to 5-5; BAL drops to 4-7.",
+       "Playoff odds shift to 46% (+7 pts) for CAR and 2% (-1 pts) for BAL."
+      ]
+     },
+     "away": {
+      "winner": "BAL",
+      "loser": "CAR",
+      "label": "If BAL wins",
+      "home": {
+       "base": {
+        "playoff": 39.0,
+        "div": 38.4,
+        "bye": 0.0,
+        "top5": 2.3
+       },
+       "after": {
+        "playoff": 30.2,
+        "div": 30.0,
+        "bye": 0.0,
+        "top5": 5.0
+       },
+       "delta": {
+        "playoff": -8.8,
+        "div": -8.4,
+        "bye": 0.0,
+        "top5": 2.7
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 3.3,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 8.4
+       },
+       "after": {
+        "playoff": 5.6,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": 2.6
+       },
+       "delta": {
+        "playoff": 2.3,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": -5.8
+       }
+      },
+      "notes": [
+       "BAL moves to 5-6; CAR drops to 4-6.",
+       "Playoff odds shift to 6% (+2 pts) for BAL and 30% (-9 pts) for CAR."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "TB",
+      "name": "Buccaneers",
+      "record": "3-6",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 10.6,
+      "if_home_playoff": 44.2,
+      "if_away_playoff": 54.5
+     },
+     {
+      "team": "NO",
+      "name": "Saints",
+      "record": "3-6",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 2.5,
+      "if_home_playoff": 6.8,
+      "if_away_playoff": 9.3
+     },
+     {
+      "team": "ATL",
+      "name": "Falcons",
+      "record": "3-7",
+      "roots_for": "BAL",
+      "metric": "division",
+      "swing": 2.0,
+      "if_home_playoff": 4.5,
+      "if_away_playoff": 6.4
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether CAR holds control at halftime",
+     "benchmark": "Pregame line: CAR -3 (expected half ~10\u201312)",
+     "why": "A single result swings combined playoff odds by 20 percentage points and division odds by 15 pts. Predicting whether BAL can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=3.0&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 43.5 benchmark",
+     "benchmark": "Pregame total: 43.5 \u00b7 Half pace: 21.8 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 43.5-point game (22+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=43.5&wind=6&home_h1_pts=12&away_h1_pts=10&compare=43.5&game=BAL+%40+CAR+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 43.5",
+     "benchmark": "Test live O/U at halftime using spread (CAR -3) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 43.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=43.5&spread_line=3.0&wind=6&line=43.5&home_h1_pts=12&away_h1_pts=10&game=BAL+%40+CAR+%28Wk+11%29"
+    }
+   ],
+   "rank": 7
+  },
+  {
+   "game_id": "2026_11_PIT_PHI",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "16:25",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "Lincoln Financial Field",
+   "roof": "outdoors",
+   "spread_line": -3.5,
+   "spread_label": "PIT -3.5",
+   "total_line": 37.5,
+   "home_win_prob": 40,
+   "away_win_prob": 60,
+   "away": {
+    "team": "PIT",
+    "name": "Steelers",
+    "city": "Pittsburgh",
+    "conf": "AFC",
+    "div": "AFC North",
+    "record": "6-3",
+    "div_rank": 2,
+    "streak": "L1",
+    "ppg": 22.0,
+    "papg": 20.2,
+    "off_rank": 20,
+    "def_rank": 7,
+    "qb": "Aaron Rodgers",
+    "coach": "Mike McCarthy",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 79.4,
+    "div_pct": 7.1
+   },
+   "home": {
+    "team": "PHI",
+    "name": "Eagles",
+    "city": "Philadelphia",
+    "conf": "NFC",
+    "div": "NFC East",
+    "record": "2-7",
+    "div_rank": 4,
+    "streak": "L7",
+    "ppg": 16.4,
+    "papg": 24.6,
+    "off_rank": 31,
+    "def_rank": 19,
+    "qb": "Joe Milton III",
+    "coach": "Nick Sirianni",
+    "rest": 14,
+    "score": null,
+    "playoff_pct": 0.1,
+    "div_pct": 0.1
+   },
+   "interest_score": 44,
+   "tier": "Intriguing",
+   "tags": [
+    "High Leverage",
+    "Toss-ups"
+   ],
+   "hook": "Tight defensive rock fight: PIT -3.5 with a 37.5 total.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "PIT (6-3, 2nd in AFC North) enters with 79% playoff odds; PHI (2-7, 4th in NFC East) sits at 0%. This single result moves their combined playoff probability by 19 percentage points."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Aaron Rodgers vs. Joe Milton III at quarterback. PIT averages 22.0 PPG (#20 offense) and allows 20.2 (#7 defense), while PHI scores 16.4 (#31) and allows 24.6 (#19)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Rest edge to PHI (14 days rest vs. 7). Recent form: PHI is on a L7 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 12.5,
+     "max": 34,
+     "value": "\u00b119% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 16.9,
+     "max": 24,
+     "value": "PIT -3.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 7.3,
+     "max": 18,
+     "value": "37.5 total (rock fight)"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 4.3,
+     "max": 14,
+     "value": "6-3 vs 2-7"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 3.0,
+     "max": 10,
+     "value": "Rest edge \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "PHI",
+     "base": {
+      "playoff": 0.1,
+      "div": 0.1,
+      "bye": 0.0,
+      "top5": 53.2
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.1,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": 53.2
+      },
+      "after": {
+       "playoff": 0.3,
+       "div": 0.3,
+       "bye": 0.0,
+       "top5": 37.2
+      },
+      "delta": {
+       "playoff": 0.2,
+       "div": 0.2,
+       "bye": 0.0,
+       "top5": -16.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.1,
+       "div": 0.1,
+       "bye": 0.0,
+       "top5": 53.2
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 64.8
+      },
+      "delta": {
+       "playoff": -0.1,
+       "div": -0.1,
+       "bye": 0.0,
+       "top5": 11.6
+      }
+     }
+    },
+    "away": {
+     "team": "PIT",
+     "base": {
+      "playoff": 79.4,
+      "div": 7.1,
+      "bye": 0.4,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 79.4,
+       "div": 7.1,
+       "bye": 0.4,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 68.0,
+       "div": 3.8,
+       "bye": 0.2,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -11.4,
+       "div": -3.3,
+       "bye": -0.2,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 79.4,
+       "div": 7.1,
+       "bye": 0.4,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 86.3,
+       "div": 9.6,
+       "bye": 0.6,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 6.9,
+       "div": 2.5,
+       "bye": 0.2,
+       "top5": 0.0
+      }
+     }
+    },
+    "total_playoff_swing": 18.6,
+    "total_div_swing": 6.1,
+    "total_bye_swing": 0.4,
+    "total_draft_swing": 27.6,
+    "branches": {
+     "home": {
+      "winner": "PHI",
+      "loser": "PIT",
+      "label": "If PHI wins",
+      "home": {
+       "base": {
+        "playoff": 0.1,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": 53.2
+       },
+       "after": {
+        "playoff": 0.3,
+        "div": 0.3,
+        "bye": 0.0,
+        "top5": 37.2
+       },
+       "delta": {
+        "playoff": 0.2,
+        "div": 0.2,
+        "bye": 0.0,
+        "top5": -16.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 79.4,
+        "div": 7.1,
+        "bye": 0.4,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 68.0,
+        "div": 3.8,
+        "bye": 0.2,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -11.4,
+        "div": -3.3,
+        "bye": -0.2,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "PHI moves to 3-7; PIT drops to 6-4.",
+       "Playoff odds shift to 0% (+0 pts) for PHI and 68% (-11 pts) for PIT."
+      ]
+     },
+     "away": {
+      "winner": "PIT",
+      "loser": "PHI",
+      "label": "If PIT wins",
+      "home": {
+       "base": {
+        "playoff": 0.1,
+        "div": 0.1,
+        "bye": 0.0,
+        "top5": 53.2
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 64.8
+       },
+       "delta": {
+        "playoff": -0.1,
+        "div": -0.1,
+        "bye": 0.0,
+        "top5": 11.6
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 79.4,
+        "div": 7.1,
+        "bye": 0.4,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 86.3,
+        "div": 9.6,
+        "bye": 0.6,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 6.9,
+        "div": 2.5,
+        "bye": 0.2,
+        "top5": 0.0
+       }
+      },
+      "notes": [
+       "PIT moves to 7-3; PHI drops to 2-8.",
+       "Playoff odds shift to 86% (+7 pts) for PIT and 0% (-0 pts) for PHI.",
+       "Moves PHI's top-5 draft-pick odds to 65% (+12 pts)."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "CLE",
+      "name": "Browns",
+      "record": "6-4",
+      "roots_for": "PHI",
+      "metric": "playoff",
+      "swing": 4.4,
+      "if_home_playoff": 59.8,
+      "if_away_playoff": 55.5
+     },
+     {
+      "team": "HOU",
+      "name": "Texans",
+      "record": "4-6",
+      "roots_for": "PHI",
+      "metric": "playoff",
+      "swing": 5.0,
+      "if_home_playoff": 28.0,
+      "if_away_playoff": 23.0
+     },
+     {
+      "team": "NE",
+      "name": "Patriots",
+      "record": "5-5",
+      "roots_for": "PHI",
+      "metric": "playoff",
+      "swing": 4.8,
+      "if_home_playoff": 34.2,
+      "if_away_playoff": 29.4
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether PIT holds control at halftime",
+     "benchmark": "Pregame line: PIT -3.5 (expected half ~10\u20138)",
+     "why": "A single result swings combined playoff odds by 19 percentage points. Predicting whether PHI can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=-3.5&home_h1_pts=8&away_h1_pts=10&game=PIT+%40+PHI+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Defensive squeeze: does scoring stay under 37.5?",
+     "benchmark": "Pregame total: 37.5 \u00b7 Half pace: 18.8 pts \u00b7 Wind ~6 mph",
+     "why": "The low 37.5 total reflects defense and field position (PIT allows 20.2 PPG, #7; PHI allows 24.6, #19). In a game this compressed, one defensive touchdown or busted coverage flips both the total and the outright winner.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=37.5&wind=6&home_h1_pts=8&away_h1_pts=10&compare=37.5&game=PIT+%40+PHI+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 37.5",
+     "benchmark": "Test live O/U at halftime using spread (PIT -3.5) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 37.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=37.5&spread_line=-3.5&wind=6&line=37.5&home_h1_pts=8&away_h1_pts=10&game=PIT+%40+PHI+%28Wk+11%29"
+    }
+   ],
+   "rank": 8
+  },
+  {
+   "game_id": "2026_11_TEN_DAL",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "AT&T Stadium",
+   "roof": "",
+   "spread_line": 7.5,
+   "spread_label": "DAL -7.5",
+   "total_line": 54.5,
+   "home_win_prob": 71,
+   "away_win_prob": 29,
+   "away": {
+    "team": "TEN",
+    "name": "Titans",
+    "city": "Tennessee",
+    "conf": "AFC",
+    "div": "AFC South",
+    "record": "1-8",
+    "div_rank": 4,
+    "streak": "L3",
+    "ppg": 18.6,
+    "papg": 26.6,
+    "off_rank": 28,
+    "def_rank": 28,
+    "qb": "Cam Ward",
+    "coach": "Robert Saleh",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 0.0,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "DAL",
+    "name": "Cowboys",
+    "city": "Dallas",
+    "conf": "NFC",
+    "div": "NFC East",
+    "record": "4-6",
+    "div_rank": 2,
+    "streak": "L1",
+    "ppg": 28.6,
+    "papg": 28.2,
+    "off_rank": 5,
+    "def_rank": 30,
+    "qb": "Dak Prescott",
+    "coach": "Brian Schottenheimer",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 16.9,
+    "div_pct": 16.1
+   },
+   "interest_score": 38,
+   "tier": "Niche",
+   "tags": [
+    "Shootouts"
+   ],
+   "hook": "Expected shootout (54.5 total) featuring Cam Ward vs. Dak Prescott.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "Both teams sit on the outside of the playoff race (TEN 0%, DAL 17%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 26 points."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Cam Ward vs. Dak Prescott at quarterback. TEN averages 18.6 PPG (#28 offense) and allows 26.6 (#28 defense), while DAL scores 28.6 (#5) and allows 28.2 (#30)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Recent form: TEN is on a L3 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 9.6,
+     "max": 34,
+     "value": "\u00b112% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 8.3,
+     "max": 24,
+     "value": "DAL -7.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 18.0,
+     "max": 18,
+     "value": "54.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 0.7,
+     "max": 14,
+     "value": "1-8 vs 4-6"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 1.5,
+     "max": 10,
+     "value": "Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "DAL",
+     "base": {
+      "playoff": 16.9,
+      "div": 16.1,
+      "bye": 0.0,
+      "top5": 2.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 16.9,
+       "div": 16.1,
+       "bye": 0.0,
+       "top5": 2.0
+      },
+      "after": {
+       "playoff": 19.9,
+       "div": 18.9,
+       "bye": 0.0,
+       "top5": 0.7
+      },
+      "delta": {
+       "playoff": 3.0,
+       "div": 2.8,
+       "bye": 0.0,
+       "top5": -1.3
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 16.9,
+       "div": 16.1,
+       "bye": 0.0,
+       "top5": 2.0
+      },
+      "after": {
+       "playoff": 8.4,
+       "div": 8.0,
+       "bye": 0.0,
+       "top5": 5.7
+      },
+      "delta": {
+       "playoff": -8.5,
+       "div": -8.1,
+       "bye": 0.0,
+       "top5": 3.7
+      }
+     }
+    },
+    "away": {
+     "team": "TEN",
+     "base": {
+      "playoff": 0.0,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 82.4
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 82.4
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 88.4
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 6.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 82.4
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 67.2
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": -15.2
+      }
+     }
+    },
+    "total_playoff_swing": 11.5,
+    "total_div_swing": 10.9,
+    "total_bye_swing": 0.0,
+    "total_draft_swing": 26.2,
+    "branches": {
+     "home": {
+      "winner": "DAL",
+      "loser": "TEN",
+      "label": "If DAL wins",
+      "home": {
+       "base": {
+        "playoff": 16.9,
+        "div": 16.1,
+        "bye": 0.0,
+        "top5": 2.0
+       },
+       "after": {
+        "playoff": 19.9,
+        "div": 18.9,
+        "bye": 0.0,
+        "top5": 0.7
+       },
+       "delta": {
+        "playoff": 3.0,
+        "div": 2.8,
+        "bye": 0.0,
+        "top5": -1.3
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 82.4
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 88.4
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 6.0
+       }
+      },
+      "notes": [
+       "DAL moves to 5-6; TEN drops to 1-9.",
+       "Playoff odds shift to 20% (+3 pts) for DAL and 0% (+0 pts) for TEN."
+      ]
+     },
+     "away": {
+      "winner": "TEN",
+      "loser": "DAL",
+      "label": "If TEN wins",
+      "home": {
+       "base": {
+        "playoff": 16.9,
+        "div": 16.1,
+        "bye": 0.0,
+        "top5": 2.0
+       },
+       "after": {
+        "playoff": 8.4,
+        "div": 8.0,
+        "bye": 0.0,
+        "top5": 5.7
+       },
+       "delta": {
+        "playoff": -8.5,
+        "div": -8.1,
+        "bye": 0.0,
+        "top5": 3.7
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 82.4
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 67.2
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": -15.2
+       }
+      },
+      "notes": [
+       "TEN moves to 2-8; DAL drops to 4-7.",
+       "Playoff odds shift to 0% (+0 pts) for TEN and 8% (-8 pts) for DAL."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "NYG",
+      "name": "Giants",
+      "record": "5-3-1",
+      "roots_for": "TEN",
+      "metric": "division",
+      "swing": 8.8,
+      "if_home_playoff": 73.2,
+      "if_away_playoff": 81.4
+     },
+     {
+      "team": "WAS",
+      "name": "Commanders",
+      "record": "3-5-1",
+      "roots_for": "TEN",
+      "metric": "playoff",
+      "swing": 2.0,
+      "if_home_playoff": 9.5,
+      "if_away_playoff": 11.4
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether DAL holds control at halftime",
+     "benchmark": "Pregame line: DAL -7.5 (expected half ~12\u201316)",
+     "why": "Playoff odds are slim, so the main implication is draft position (26-pt swing in top-5 pick odds). Predicting an upset flips who controls early-round draft leverage.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=7.5&home_h1_pts=16&away_h1_pts=12&game=TEN+%40+DAL+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Shootout pace: does the final clear 54.5?",
+     "benchmark": "Pregame total: 54.5 \u00b7 Half pace: 27.2 pts \u00b7 Wind ~6 mph",
+     "why": "A 54.5 total signals one of the week's fastest scoring environments (TEN ranks #28 in scoring at 18.6 PPG; DAL ranks #5 at 28.6). If the winner comes from trading explosive drives, the over/under is tightly coupled to who survives a late possession game.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=54.5&wind=6&home_h1_pts=16&away_h1_pts=12&compare=54.5&game=TEN+%40+DAL+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 54.5",
+     "benchmark": "Test live O/U at halftime using spread (DAL -7.5) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 54.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=54.5&spread_line=7.5&wind=6&line=54.5&home_h1_pts=16&away_h1_pts=12&game=TEN+%40+DAL+%28Wk+11%29"
+    }
+   ],
+   "rank": 9
+  },
+  {
+   "game_id": "2026_11_NYJ_LAC",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "16:05",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "SoFi Stadium",
+   "roof": "dome",
+   "spread_line": 3.0,
+   "spread_label": "LAC -3",
+   "total_line": 42.5,
+   "home_win_prob": 59,
+   "away_win_prob": 41,
+   "away": {
+    "team": "NYJ",
+    "name": "Jets",
+    "city": "New York",
+    "conf": "AFC",
+    "div": "AFC East",
+    "record": "2-8",
+    "div_rank": 3,
+    "streak": "L5",
+    "ppg": 19.4,
+    "papg": 25.4,
+    "off_rank": 25,
+    "def_rank": 22,
+    "qb": "Geno Smith",
+    "coach": "Aaron Glenn",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 0.2,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "LAC",
+    "name": "Chargers",
+    "city": "Los Angeles",
+    "conf": "AFC",
+    "div": "AFC West",
+    "record": "1-8",
+    "div_rank": 4,
+    "streak": "W1",
+    "ppg": 16.0,
+    "papg": 26.6,
+    "off_rank": 32,
+    "def_rank": 27,
+    "qb": "Justin Herbert",
+    "coach": "Jim Harbaugh",
+    "rest": 6,
+    "score": null,
+    "playoff_pct": 0.0,
+    "div_pct": 0.0
+   },
+   "interest_score": 35,
+   "tier": "Niche",
+   "tags": [
+    "Toss-ups"
+   ],
+   "hook": "Close matchup (LAC -3) between NYJ (2-8) and LAC (1-8).",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "Both teams sit on the outside of the playoff race (NYJ 0%, LAC 0%), making draft position the primary consequence\u2014this outcome swings top-5 draft-pick odds by 50 points."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Geno Smith vs. Justin Herbert at quarterback. NYJ averages 19.4 PPG (#25 offense) and allows 25.4 (#22 defense), while LAC scores 16.0 (#32) and allows 26.6 (#27)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Recent form: NYJ is on a L5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 7.9,
+     "max": 34,
+     "value": "\u00b150% top-5 draft"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 18.1,
+     "max": 24,
+     "value": "LAC -3"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 7.6,
+     "max": 18,
+     "value": "42.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 0.0,
+     "max": 14,
+     "value": "2-8 vs 1-8"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 1.5,
+     "max": 10,
+     "value": "Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "LAC",
+     "base": {
+      "playoff": 0.0,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 78.6
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 78.6
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 70.9
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": -7.7
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 78.6
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 90.6
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 12.0
+      }
+     }
+    },
+    "away": {
+     "team": "NYJ",
+     "base": {
+      "playoff": 0.2,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 46.7
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.2,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 46.7
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 58.8
+      },
+      "delta": {
+       "playoff": -0.2,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 12.1
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.2,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 46.7
+      },
+      "after": {
+       "playoff": 0.4,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 28.9
+      },
+      "delta": {
+       "playoff": 0.2,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": -17.8
+      }
+     }
+    },
+    "total_playoff_swing": 0.4,
+    "total_div_swing": 0.0,
+    "total_bye_swing": 0.0,
+    "total_draft_swing": 49.6,
+    "branches": {
+     "home": {
+      "winner": "LAC",
+      "loser": "NYJ",
+      "label": "If LAC wins",
+      "home": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 78.6
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 70.9
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": -7.7
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.2,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 46.7
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 58.8
+       },
+       "delta": {
+        "playoff": -0.2,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 12.1
+       }
+      },
+      "notes": [
+       "LAC moves to 2-8; NYJ drops to 2-9.",
+       "Counts as a AFC conference win for LAC\u2014critical for wild-card tiebreakers.",
+       "Moves NYJ's top-5 draft-pick odds to 59% (+12 pts)."
+      ]
+     },
+     "away": {
+      "winner": "NYJ",
+      "loser": "LAC",
+      "label": "If NYJ wins",
+      "home": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 78.6
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 90.6
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 12.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.2,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 46.7
+       },
+       "after": {
+        "playoff": 0.4,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 28.9
+       },
+       "delta": {
+        "playoff": 0.2,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": -17.8
+       }
+      },
+      "notes": [
+       "NYJ moves to 3-8; LAC drops to 1-9.",
+       "Counts as a AFC conference win for NYJ\u2014critical for wild-card tiebreakers.",
+       "Moves LAC's top-5 draft-pick odds to 91% (+12 pts)."
+      ]
+     }
+    },
+    "ripples": []
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether LAC holds control at halftime",
+     "benchmark": "Pregame line: LAC -3 (expected half ~10\u201311)",
+     "why": "Playoff odds are slim, so the main implication is draft position (50-pt swing in top-5 pick odds). Predicting an upset flips who controls early-round draft leverage.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=3.0&home_h1_pts=11&away_h1_pts=10&game=NYJ+%40+LAC+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 42.5 benchmark",
+     "benchmark": "Pregame total: 42.5 \u00b7 Half pace: 21.2 pts \u00b7 Dome/indoor",
+     "why": "The market expects a balanced 42.5-point game (21+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=42.5&wind=0&home_h1_pts=11&away_h1_pts=10&compare=42.5&game=NYJ+%40+LAC+%28Wk+11%29"
+    },
+    {
+     "category": "Live Over/Under & Script",
+     "title": "Second-half scoring probability around 42.5",
+     "benchmark": "Test live O/U at halftime using spread (LAC -3) + pace",
+     "why": "In a competitive matchup, halftime box-score efficiency (first downs and explosive plays, not just scoreboard points) often predicts whether second-half scoring regresses or accelerates past 42.5.",
+     "model_slug": "nfl-halftime-ou-logit",
+     "model_label": "Test Live O/U Classifier",
+     "model_url": "/m/nfl-halftime-ou-logit?total_line=42.5&spread_line=3.0&wind=0&line=42.5&home_h1_pts=11&away_h1_pts=10&game=NYJ+%40+LAC+%28Wk+11%29"
+    }
+   ],
+   "rank": 10
+  },
+  {
+   "game_id": "2026_11_MIA_BUF",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": true,
+   "stadium": "Highmark Stadium",
+   "roof": "outdoors",
+   "spread_line": 16.5,
+   "spread_label": "BUF -16.5",
+   "total_line": 44.5,
+   "home_win_prob": 89,
+   "away_win_prob": 11,
+   "away": {
+    "team": "MIA",
+    "name": "Dolphins",
+    "city": "Miami",
+    "conf": "AFC",
+    "div": "AFC East",
+    "record": "1-8",
+    "div_rank": 4,
+    "streak": "L3",
+    "ppg": 16.4,
+    "papg": 24.9,
+    "off_rank": 30,
+    "def_rank": 21,
+    "qb": "Kyle McCord",
+    "coach": "Jeff Hafley",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 0.0,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "BUF",
+    "name": "Bills",
+    "city": "Buffalo",
+    "conf": "AFC",
+    "div": "AFC East",
+    "record": "8-1",
+    "div_rank": 1,
+    "streak": "W5",
+    "ppg": 31.9,
+    "papg": 22.1,
+    "off_rank": 1,
+    "def_rank": 15,
+    "qb": "Josh Allen",
+    "coach": "Joe Brady",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 99.9,
+    "div_pct": 99.3
+   },
+   "interest_score": 30,
+   "tier": "Niche",
+   "tags": [
+    "High Leverage",
+    "Divisional"
+   ],
+   "hook": "Top-seed race: 26-pt swing in conference #1-seed bye odds.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "MIA (1-8, 4th in AFC East) enters with 0% playoff odds; BUF (8-1, 1st in AFC East) sits at 100%. With both clubs positioned near the top of the AFC, conference #1-seed bye odds swing by 26 percentage points."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Kyle McCord vs. Josh Allen at quarterback. MIA averages 16.4 PPG (#30 offense) and allows 24.9 (#21 defense), while BUF scores 31.9 (#1) and allows 22.1 (#15)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "First AFC East meeting of the season\u2014division wins double as primary tiebreakers. Recent form: MIA is on a L3 streak and BUF is on a W5 streak."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 8.6,
+     "max": 34,
+     "value": "\u00b126% #1-seed swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 0.9,
+     "max": 24,
+     "value": "BUF -16.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 9.5,
+     "max": 18,
+     "value": "44.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 5.4,
+     "max": 14,
+     "value": "1-8 vs 8-1"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 5.5,
+     "max": 10,
+     "value": "Divisional \u00b7 Hot streak"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "BUF",
+     "base": {
+      "playoff": 99.9,
+      "div": 99.3,
+      "bye": 45.9,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 99.9,
+       "div": 99.3,
+       "bye": 45.9,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.9,
+       "div": 99.4,
+       "bye": 49.1,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.1,
+       "bye": 3.2,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 99.9,
+       "div": 99.3,
+       "bye": 45.9,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.5,
+       "div": 98.6,
+       "bye": 22.6,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -0.4,
+       "div": -0.7,
+       "bye": -23.3,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "MIA",
+     "base": {
+      "playoff": 0.0,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 85.1
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 85.1
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 87.7
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 2.6
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 85.1
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 68.1
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": -17.0
+      }
+     }
+    },
+    "total_playoff_swing": 0.4,
+    "total_div_swing": 0.8,
+    "total_bye_swing": 26.5,
+    "total_draft_swing": 19.6,
+    "branches": {
+     "home": {
+      "winner": "BUF",
+      "loser": "MIA",
+      "label": "If BUF wins",
+      "home": {
+       "base": {
+        "playoff": 99.9,
+        "div": 99.3,
+        "bye": 45.9,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.9,
+        "div": 99.4,
+        "bye": 49.1,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.1,
+        "bye": 3.2,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 85.1
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 87.7
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 2.6
+       }
+      },
+      "notes": [
+       "BUF moves to 9-1; MIA drops to 1-9.",
+       "Gives BUF the early head-to-head tiebreaker and a crucial division win in the AFC East."
+      ]
+     },
+     "away": {
+      "winner": "MIA",
+      "loser": "BUF",
+      "label": "If MIA wins",
+      "home": {
+       "base": {
+        "playoff": 99.9,
+        "div": 99.3,
+        "bye": 45.9,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.5,
+        "div": 98.6,
+        "bye": 22.6,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -0.4,
+        "div": -0.7,
+        "bye": -23.3,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 85.1
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 68.1
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": -17.0
+       }
+      },
+      "notes": [
+       "MIA moves to 2-8; BUF drops to 8-2.",
+       "Gives MIA the early head-to-head tiebreaker and a crucial division win in the AFC East."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "JAX",
+      "name": "Jaguars",
+      "record": "7-2",
+      "roots_for": "MIA",
+      "metric": "#1-seed bye",
+      "swing": 11.0,
+      "if_home_playoff": 99.6,
+      "if_away_playoff": 99.6
+     },
+     {
+      "team": "CIN",
+      "name": "Bengals",
+      "record": "7-2",
+      "roots_for": "MIA",
+      "metric": "#1-seed bye",
+      "swing": 7.0,
+      "if_home_playoff": 99.1,
+      "if_away_playoff": 99.1
+     },
+     {
+      "team": "KC",
+      "name": "Chiefs",
+      "record": "7-2",
+      "roots_for": "MIA",
+      "metric": "#1-seed bye",
+      "swing": 5.2,
+      "if_home_playoff": 99.0,
+      "if_away_playoff": 99.0
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether BUF holds control at halftime",
+     "benchmark": "Pregame line: BUF -16.5 (expected half ~7\u201315)",
+     "why": "Both clubs have strong postseason equity, so the #1-seed bye (26-pt swing) are the real prize. Predict whether BUF builds an early cushion or whether MIA keeps win probability live into the fourth quarter.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=15.5&home_h1_pts=15&away_h1_pts=7&game=MIA+%40+BUF+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 44.5 benchmark",
+     "benchmark": "Pregame total: 44.5 \u00b7 Half pace: 22.2 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 44.5-point game (22+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=44.5&wind=6&home_h1_pts=15&away_h1_pts=7&compare=44.5&game=MIA+%40+BUF+%28Wk+11%29"
+    },
+    {
+     "category": "Game Script & Blowout Risk",
+     "title": "Does BUF cruise early, or does MIA drag this into a live second half?",
+     "benchmark": "Upset alert if MIA is within 3 pts at half (spread BUF -16.5)",
+     "why": "With a heavy BUF -16.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "model_slug": "nfl-halftime-game-types",
+     "model_label": "Classify Halftime Game Type",
+     "model_url": "/m/nfl-halftime-game-types?home_h1_pts=15&away_h1_pts=7&game=MIA+%40+BUF+%28Wk+11%29"
+    }
+   ],
+   "rank": 11
+  },
+  {
+   "game_id": "2026_11_ARI_KC",
+   "week": 11,
+   "gameday": "2026-11-22",
+   "weekday": "Sunday",
+   "gametime": "13:00",
+   "primetime": false,
+   "finished": false,
+   "div_game": false,
+   "stadium": "GEHA Field at Arrowhead Stadium",
+   "roof": "outdoors",
+   "spread_line": 16.5,
+   "spread_label": "KC -16.5",
+   "total_line": 40.5,
+   "home_win_prob": 89,
+   "away_win_prob": 11,
+   "away": {
+    "team": "ARI",
+    "name": "Cardinals",
+    "city": "Arizona",
+    "conf": "NFC",
+    "div": "NFC West",
+    "record": "3-7",
+    "div_rank": 4,
+    "streak": "L2",
+    "ppg": 18.4,
+    "papg": 28.9,
+    "off_rank": 29,
+    "def_rank": 31,
+    "qb": "Gardner Minshew",
+    "coach": "Mike LaFleur",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 0.0,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "KC",
+    "name": "Chiefs",
+    "city": "Kansas City",
+    "conf": "AFC",
+    "div": "AFC West",
+    "record": "7-2",
+    "div_rank": 1,
+    "streak": "W2",
+    "ppg": 26.3,
+    "papg": 17.3,
+    "off_rank": 8,
+    "def_rank": 3,
+    "qb": "Patrick Mahomes",
+    "coach": "Andy Reid",
+    "rest": 7,
+    "score": null,
+    "playoff_pct": 99.0,
+    "div_pct": 62.7
+   },
+   "interest_score": 22,
+   "tier": "Niche",
+   "tags": [
+    "High Leverage"
+   ],
+   "hook": "KC -16.5 mismatch; watch whether ARI keeps it live past halftime.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "ARI (3-7, 4th in NFC West) enters with 0% playoff odds; KC (7-2, 1st in AFC West) sits at 99%. Division-title odds shift by 18 pts."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Gardner Minshew vs. Patrick Mahomes at quarterback. ARI averages 18.4 PPG (#29 offense) and allows 28.9 (#31 defense), while KC scores 26.3 (#8) and allows 17.3 (#3)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Played at GEHA Field at Arrowhead Stadium (outdoors). Market line is KC -16.5 with a 40.5 total."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 9.2,
+     "max": 34,
+     "value": "\u00b12% PO swing"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 0.9,
+     "max": 24,
+     "value": "KC -16.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 5.7,
+     "max": 18,
+     "value": "40.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 6.1,
+     "max": 14,
+     "value": "3-7 vs 7-2"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 0.0,
+     "max": 10,
+     "value": "Standard Sunday"
+    }
+   ],
+   "implications": {
+    "home": {
+     "team": "KC",
+     "base": {
+      "playoff": 99.0,
+      "div": 62.7,
+      "bye": 13.6,
+      "top5": 0.0
+     },
+     "if_home": {
+      "base": {
+       "playoff": 99.0,
+       "div": 62.7,
+       "bye": 13.6,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 99.2,
+       "div": 64.6,
+       "bye": 14.8,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": 0.2,
+       "div": 1.9,
+       "bye": 1.2,
+       "top5": 0.0
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 99.0,
+       "div": 62.7,
+       "bye": 13.6,
+       "top5": 0.0
+      },
+      "after": {
+       "playoff": 97.2,
+       "div": 46.2,
+       "bye": 5.6,
+       "top5": 0.0
+      },
+      "delta": {
+       "playoff": -1.8,
+       "div": -16.5,
+       "bye": -8.0,
+       "top5": 0.0
+      }
+     }
+    },
+    "away": {
+     "team": "ARI",
+     "base": {
+      "playoff": 0.0,
+      "div": 0.0,
+      "bye": 0.0,
+      "top5": 37.7
+     },
+     "if_home": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 37.7
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 40.4
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 2.7
+      }
+     },
+     "if_away": {
+      "base": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 37.7
+      },
+      "after": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": 16.3
+      },
+      "delta": {
+       "playoff": 0.0,
+       "div": 0.0,
+       "bye": 0.0,
+       "top5": -21.4
+      }
+     }
+    },
+    "total_playoff_swing": 2.0,
+    "total_div_swing": 18.4,
+    "total_bye_swing": 9.2,
+    "total_draft_swing": 24.1,
+    "branches": {
+     "home": {
+      "winner": "KC",
+      "loser": "ARI",
+      "label": "If KC wins",
+      "home": {
+       "base": {
+        "playoff": 99.0,
+        "div": 62.7,
+        "bye": 13.6,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 99.2,
+        "div": 64.6,
+        "bye": 14.8,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": 0.2,
+        "div": 1.9,
+        "bye": 1.2,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 37.7
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 40.4
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 2.7
+       }
+      },
+      "notes": [
+       "KC moves to 8-2; ARI drops to 3-8."
+      ]
+     },
+     "away": {
+      "winner": "ARI",
+      "loser": "KC",
+      "label": "If ARI wins",
+      "home": {
+       "base": {
+        "playoff": 99.0,
+        "div": 62.7,
+        "bye": 13.6,
+        "top5": 0.0
+       },
+       "after": {
+        "playoff": 97.2,
+        "div": 46.2,
+        "bye": 5.6,
+        "top5": 0.0
+       },
+       "delta": {
+        "playoff": -1.8,
+        "div": -16.5,
+        "bye": -8.0,
+        "top5": 0.0
+       }
+      },
+      "away": {
+       "base": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 37.7
+       },
+       "after": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": 16.3
+       },
+       "delta": {
+        "playoff": 0.0,
+        "div": 0.0,
+        "bye": 0.0,
+        "top5": -21.4
+       }
+      },
+      "notes": [
+       "ARI moves to 4-7; KC drops to 7-3."
+      ]
+     }
+    },
+    "ripples": [
+     {
+      "team": "DEN",
+      "name": "Broncos",
+      "record": "7-2",
+      "roots_for": "ARI",
+      "metric": "division",
+      "swing": 18.0,
+      "if_home_playoff": 96.7,
+      "if_away_playoff": 96.7
+     },
+     {
+      "team": "JAX",
+      "name": "Jaguars",
+      "record": "7-2",
+      "roots_for": "ARI",
+      "metric": "#1-seed bye",
+      "swing": 3.6,
+      "if_home_playoff": 99.6,
+      "if_away_playoff": 99.6
+     },
+     {
+      "team": "BUF",
+      "name": "Bills",
+      "record": "8-1",
+      "roots_for": "ARI",
+      "metric": "#1-seed bye",
+      "swing": 2.9,
+      "if_home_playoff": 99.9,
+      "if_away_playoff": 99.9
+     }
+    ]
+   },
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether KC holds control at halftime",
+     "benchmark": "Pregame line: KC -16.5 (expected half ~6\u201314)",
+     "why": "A single result swings combined playoff odds by 2 percentage points and division odds by 18 pts. Predicting whether ARI can stay within one score at halftime\u2014or force an upset\u2014is the highest-leverage call on the board.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=15.5&home_h1_pts=14&away_h1_pts=6&game=ARI+%40+KC+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Defensive squeeze: does scoring stay under 40.5?",
+     "benchmark": "Pregame total: 40.5 \u00b7 Half pace: 20.2 pts \u00b7 Wind ~6 mph",
+     "why": "The low 40.5 total reflects defense and field position (ARI allows 28.9 PPG, #31; KC allows 17.3, #3). In a game this compressed, one defensive touchdown or busted coverage flips both the total and the outright winner.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=40.5&wind=6&home_h1_pts=14&away_h1_pts=6&compare=40.5&game=ARI+%40+KC+%28Wk+11%29"
+    },
+    {
+     "category": "Game Script & Blowout Risk",
+     "title": "Does KC cruise early, or does ARI drag this into a live second half?",
+     "benchmark": "Upset alert if ARI is within 3 pts at half (spread KC -16.5)",
+     "why": "With a heavy KC -16.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "model_slug": "nfl-halftime-game-types",
+     "model_label": "Classify Halftime Game Type",
+     "model_url": "/m/nfl-halftime-game-types?home_h1_pts=14&away_h1_pts=6&game=ARI+%40+KC+%28Wk+11%29"
+    }
+   ],
+   "rank": 12
+  },
+  {
+   "game_id": "2026_11_IND_HOU",
+   "week": 11,
+   "gameday": "2026-11-19",
+   "weekday": "Thursday",
+   "gametime": "20:15",
+   "primetime": true,
+   "finished": true,
+   "div_game": true,
+   "stadium": "Reliant Stadium",
+   "roof": "open",
+   "spread_line": 12.5,
+   "spread_label": "HOU -12.5",
+   "total_line": 44.5,
+   "home_win_prob": 82,
+   "away_win_prob": 18,
+   "away": {
+    "team": "IND",
+    "name": "Colts",
+    "city": "Indianapolis",
+    "conf": "AFC",
+    "div": "AFC South",
+    "record": "3-8",
+    "div_rank": 3,
+    "streak": "L1",
+    "ppg": 19.2,
+    "papg": 27.0,
+    "off_rank": 26,
+    "def_rank": 29,
+    "qb": "Daniel Jones",
+    "coach": "Shane Steichen",
+    "rest": 4,
+    "score": 3,
+    "playoff_pct": 0.1,
+    "div_pct": 0.0
+   },
+   "home": {
+    "team": "HOU",
+    "name": "Texans",
+    "city": "Houston",
+    "conf": "AFC",
+    "div": "AFC South",
+    "record": "4-6",
+    "div_rank": 2,
+    "streak": "W1",
+    "ppg": 25.9,
+    "papg": 22.2,
+    "off_rank": 9,
+    "def_rank": 17,
+    "qb": "C.J. Stroud",
+    "coach": "DeMeco Ryans",
+    "rest": 4,
+    "score": 26,
+    "playoff_pct": 25.2,
+    "div_pct": 1.3
+   },
+   "interest_score": 27,
+   "tier": "Niche",
+   "tags": [
+    "Divisional",
+    "Primetime"
+   ],
+   "hook": "Final: IND 3\u201326 HOU. HOU took a 23-pt decision in a 29-pt game.",
+   "why_watch": [
+    {
+     "label": "The Stakes",
+     "text": "IND (3-8, 3rd in AFC South) vs. HOU (4-6, 2nd in AFC South)."
+    },
+    {
+     "label": "Matchup & Style",
+     "text": "Daniel Jones vs. C.J. Stroud at quarterback. IND averages 19.2 PPG (#26 offense) and allows 27.0 (#29 defense), while HOU scores 25.9 (#9) and allows 22.2 (#17)."
+    },
+    {
+     "label": "Context & Angles",
+     "text": "Divisional rematch: IND won Week 3 (HOU 17\u201319 IND), putting a season sweep and head-to-head tiebreaker on the line. Standalone Thursday night window (20:15 ET) at Reliant Stadium."
+    }
+   ],
+   "drivers": [
+    {
+     "id": "leverage",
+     "label": "Stakes & playoff leverage",
+     "points": 4.4,
+     "max": 34,
+     "value": "Completed game"
+    },
+    {
+     "id": "competitiveness",
+     "label": "Competitiveness (spread)",
+     "points": 2.6,
+     "max": 24,
+     "value": "HOU -12.5"
+    },
+    {
+     "id": "pace",
+     "label": "Scoring pace & style",
+     "points": 9.5,
+     "max": 18,
+     "value": "44.5 O/U"
+    },
+    {
+     "id": "quality",
+     "label": "Team quality & contrast",
+     "points": 2.2,
+     "max": 14,
+     "value": "3-8 vs 4-6"
+    },
+    {
+     "id": "context",
+     "label": "Rivalry & spotlight context",
+     "points": 8.0,
+     "max": 10,
+     "value": "Divisional rematch \u00b7 Thu night"
+    }
+   ],
+   "implications": null,
+   "predict": [
+    {
+     "category": "Winner & Margin",
+     "title": "Who wins\u2014and whether HOU holds control at halftime",
+     "benchmark": "Pregame line: HOU -12.5 (expected half ~8\u201314)",
+     "why": "With HOU -12.5 on the board, the key call is whether HOU separates before halftime or whether IND keeps win probability live into the third quarter.",
+     "model_slug": "nfl-halftime-win",
+     "model_label": "Run in Halftime Win Model",
+     "model_url": "/m/nfl-halftime-win?spread_line=12.5&home_h1_pts=14&away_h1_pts=8&game=IND+%40+HOU+%28Wk+11%29"
+    },
+    {
+     "category": "Scoring & Pace",
+     "title": "Total points vs. 44.5 benchmark",
+     "benchmark": "Pregame total: 44.5 \u00b7 Half pace: 22.2 pts \u00b7 Wind ~6 mph",
+     "why": "The market expects a balanced 44.5-point game (22+ needed by halftime to stay on over pace). Predicting whether explosive plays push scoring above baseline tells you if this breaks open or stays tight.",
+     "model_slug": "nfl-halftime-total",
+     "model_label": "Run in Halftime Total Model",
+     "model_url": "/m/nfl-halftime-total?total_line=44.5&wind=6&home_h1_pts=14&away_h1_pts=8&compare=44.5&game=IND+%40+HOU+%28Wk+11%29"
+    },
+    {
+     "category": "Game Script & Blowout Risk",
+     "title": "Does HOU cruise early, or does IND drag this into a live second half?",
+     "benchmark": "Upset alert if IND is within 3 pts at half (spread HOU -12.5)",
+     "why": "With a heavy HOU -12.5 spread, the real forecasting edge is game script: early blowouts drain second-half play volume and suppress scoring, whereas a close halftime turns the game into a high-leverage upset watch.",
+     "model_slug": "nfl-halftime-game-types",
+     "model_label": "Classify Halftime Game Type",
+     "model_url": "/m/nfl-halftime-game-types?home_h1_pts=14&away_h1_pts=8&game=IND+%40+HOU+%28Wk+11%29"
+    }
+   ],
+   "rank": 13
+  }
+ ]
+}

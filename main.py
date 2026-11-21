@@ -25,6 +25,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
 import ui
+import watch
 
 ROOT = Path(__file__).resolve().parent
 app = FastAPI(title="ddyno")
@@ -46,8 +47,12 @@ for meta_path in sorted((ROOT / "models").glob("*/meta.json")):
         REGISTRY[meta["slug"]] = {"meta": meta, "model": json.loads(model_path.read_text())}
 
 # Pages that are not slider models still show up on the hub through this list.
-BUILT_IN = [{"slug": "ncr", "name": "NCR Classifier", "category": "Manufacturing", "url": "/apps/ncr",
-             "summary": "Paste a manufacturing non-conformance description and get the likely flaw category."}]
+BUILT_IN = [
+    {"slug": "watch", "name": "Why Watch", "category": "NFL", "url": "/watch",
+     "summary": "What makes each game interesting, how each outcome shifts playoff odds, and what to predict."},
+    {"slug": "ncr", "name": "NCR Classifier", "category": "Manufacturing", "url": "/apps/ncr",
+     "summary": "Paste a manufacturing non-conformance description and get the likely flaw category."},
+]
 
 OPS = {
     "absdiff": lambda a, b: abs(a - b),
@@ -599,10 +604,59 @@ def leaders(page: str = "hub"):
             "groups": [g for g in data["groups"] if home(g) == page]}
 
 
+# ------------------------------------------------------------- game watch & implications
+WATCH_REFRESH_SECONDS = 6 * 3600
+WATCH = {"data": None, "rows": None, "weeks": {}, "live": False}
+WATCH_NOTES = ROOT / "models" / "watch_notes.json"
+
+
+def _refresh_watch_forever():
+    while True:
+        try:
+            bundle = watch.build_all_weeks_cache(notes_path=WATCH_NOTES)
+            WATCH["data"] = bundle["active"]
+            WATCH["rows"] = bundle["rows"]
+            WATCH["weeks"] = {bundle["active"]["week"]: bundle["active"]}
+            WATCH["live"] = True
+        except Exception as e:                           # keep snapshot / previous refresh; retry later
+            print("watch refresh failed:", repr(e))
+        time.sleep(WATCH_REFRESH_SECONDS if WATCH["live"] else 600)
+
+
+_watch_snap = ROOT / "models" / "watch_snapshot.json"
+if _watch_snap.exists():
+    _wdata = json.loads(_watch_snap.read_text())
+    WATCH["data"] = _wdata
+    WATCH["weeks"][_wdata["week"]] = _wdata
+threading.Thread(target=_refresh_watch_forever, daemon=True).start()
+
+
+@app.get("/api/watch")
+def api_watch(week: int | None = None):
+    """Ranked NFL slate with interest breakdown, outcome implications, and outcomes to predict."""
+    data = WATCH["data"]
+    if not data:
+        raise HTTPException(503, "Game watch data is still loading. Try again in a moment.")
+    if week is None or week == data["week"]:
+        return {**data, "live": WATCH["live"]}
+    if week in WATCH["weeks"]:
+        return {**WATCH["weeks"][week], "live": WATCH["live"]}
+    if WATCH["rows"] is not None and week in data.get("available_weeks", []):
+        computed = watch.build_watch_data(week=week, season=data["season"], notes_path=WATCH_NOTES, raw_rows=WATCH["rows"])
+        WATCH["weeks"][week] = computed
+        return {**computed, "live": WATCH["live"]}
+    raise HTTPException(404, f"Week {week} is not available right now.")
+
+
 # ------------------------------------------------------------------------- pages
 @app.get("/", response_class=HTMLResponse)
 def hub():
     return ui.HUB
+
+
+@app.get("/watch", response_class=HTMLResponse)
+def watch_page():
+    return ui.WATCH
 
 
 @app.get("/m/{slug}", response_class=HTMLResponse)

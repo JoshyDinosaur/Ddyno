@@ -3,7 +3,8 @@
 FastAPI service behind ddyno.com. Hosts small ML models with slider inputs.
 
 - `main.py`: model registry, generic prediction API, pages. Also the NCR text demo.
-- `ui.py`: HTML and CSS for the hub, the model page and the NCR page.
+- `watch.py`: NFL Why Watch slate scoring, Monte Carlo outcome implications, and prediction target links.
+- `ui.py`: HTML and CSS for the hub, the model page, the Why Watch page, and the NCR page.
 - `models/<slug>/`: one folder per model.
 
 ## Run locally
@@ -26,3 +27,4 @@ The hub lists it under its category and `/m/<slug>` builds the sliders from `met
 - `GET /api/models`
 - `GET /api/models/{slug}`
 - `POST /api/models/{slug}/predict` with `{"inputs": {...}, "line": 47.5}` (`line` is optional)
+- `GET /api/watch` (optional `?week=11`)
