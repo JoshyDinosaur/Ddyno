@@ -888,7 +888,7 @@ function row(m){
   if(meta){const st=stat(meta);a.appendChild(spark(st));
     const v=el('span','val',st.value);v.appendChild(el('small',null,st.unit));rt.appendChild(v);
     const p=st.pill?el('span','pill flat',st.pill):el('span','pill '+(Math.abs(st.diff)<0.05?'flat':st.good?'up':'dn'),sg(st.diff)+st.suffix);if(!st.pill)p.title='Compared with the best other method';rt.appendChild(p);
-  }else{a.appendChild(el('span','spark'));rt.appendChild(el('span','pill '+(m.slug==='watch'?'strong':'flat'),m.slug==='watch'?'Slate':'Demo'))}
+  }else{a.appendChild(el('span','spark'));rt.appendChild(el('span','pill '+(m.pill&&m.pill!=='Demo'?'strong':'flat'),m.pill||'App'))}
   a.appendChild(rt);
   a.addEventListener('mouseenter',()=>{if(wide())pick(m.slug)});a.addEventListener('focus',()=>{if(wide())pick(m.slug)});
   return a;
@@ -921,7 +921,7 @@ function panel(){
     const kv=(k,v)=>{const d=el('div','kv');d.appendChild(el('span',null,k));d.appendChild(el('b',null,v));p.appendChild(d)};
     kv('Inputs you set',meta.features.length);kv('Trained on',meta.card.n_games.toLocaleString()+' games');kv('Seasons',meta.card.seasons[0]+' to '+meta.card.seasons[1]);kv('Last trained',meta.card.trained_on);
   }
-  const b=el('a','btn',meta?'Open model':m.slug==='watch'?'Open Why Watch':'Open demo');b.href=m.url;p.appendChild(b);
+  const b=el('a','btn',meta?'Open model':(m.cta||'Open app'));b.href=m.url;p.appendChild(b);
 }
 function preview(slug,meta,box){
   const paint=r=>{if(!box.isConnected)return;box.replaceChildren();

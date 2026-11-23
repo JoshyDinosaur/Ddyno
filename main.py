@@ -19,14 +19,10 @@ from pathlib import Path
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, Response
-from pydantic import BaseModel, Field
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import make_pipeline
+from pydantic import BaseModel
 
-import track
+import apps
 import ui
-import watch
 
 ROOT = Path(__file__).resolve().parent
 app = FastAPI(title="ddyno")
@@ -47,12 +43,41 @@ for meta_path in sorted((ROOT / "models").glob("*/meta.json")):
             meta["plots"] = items
         REGISTRY[meta["slug"]] = {"meta": meta, "model": json.loads(model_path.read_text())}
 
-# Pages that are not slider models still show up on the hub through this list.
+# ---------------------------------------------------------- standalone apps registry
+# Drop any apps/<slug>.py exporting APP = {...} to mount its routes, list it on the hub,
+# and optionally route a subdomain or custom domain directly to it at `/`.
+APPS, HOST_MAP = apps.discover_apps()
+for _a in APPS:
+    app.include_router(_a["router"])
+    if callable(_a.get("on_startup")):
+        _a["on_startup"]()
+
+
+class HostRouterMiddleware:
+    """Serve an app's root URL when `/` is requested via a mapped subdomain or custom domain."""
+    def __init__(self, asgi_app, host_map: dict[str, dict]):
+        self.asgi_app = asgi_app
+        self.host_map = host_map
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] == "http" and scope.get("path") == "/" and self.host_map:
+            hdrs = {k.lower(): v.decode("latin1") for k, v in scope.get("headers", [])}
+            raw_host = hdrs.get(b"x-forwarded-host") or hdrs.get(b"host") or ""
+            host = raw_host.split(",", 1)[0].strip().lower().split(":", 1)[0]
+            target = self.host_map.get(host)
+            if target:
+                scope = dict(scope)
+                scope["path"] = target["url"]
+                scope["raw_path"] = target["url"].encode("utf-8")
+        await self.asgi_app(scope, receive, send)
+
+
+app.add_middleware(HostRouterMiddleware, host_map=HOST_MAP)
+
 BUILT_IN = [
-    {"slug": "watch", "name": "Why Watch", "category": "NFL", "url": "/watch",
-     "summary": "What makes each game interesting, how each outcome shifts playoff odds, and what to predict."},
-    {"slug": "ncr", "name": "NCR Classifier", "category": "Manufacturing", "url": "/apps/ncr",
-     "summary": "Paste a manufacturing non-conformance description and get the likely flaw category."},
+    {"slug": a["slug"], "name": a["name"], "category": a["category"], "url": a["url"],
+     "summary": a["summary"], "pill": a["pill"], "cta": a["cta"]}
+    for a in APPS
 ]
 
 OPS = {
@@ -419,7 +444,17 @@ class PredictIn(BaseModel):
 
 @app.get("/api/health")
 def health():
-    return {"ok": True, "models": len(REGISTRY)}
+    return {"ok": True, "models": len(REGISTRY), "apps": len(APPS)}
+
+
+@app.get("/api/apps")
+def list_apps():
+    """All auto-discovered standalone apps mounted from apps/."""
+    return {"apps": [
+        {"slug": a["slug"], "name": a["name"], "category": a["category"], "url": a["url"],
+         "summary": a["summary"], "pill": a["pill"], "cta": a["cta"], "nav": a["nav"], "hosts": a["hosts"]}
+        for a in APPS
+    ]}
 
 
 @app.get("/api/models")
@@ -605,84 +640,10 @@ def leaders(page: str = "hub"):
             "groups": [g for g in data["groups"] if home(g) == page]}
 
 
-# ------------------------------------------------------------- game watch & implications
-WATCH_REFRESH_SECONDS = 6 * 3600
-WATCH = {"data": None, "rows": None, "team_rows": None, "track": None, "weeks": {}, "live": False}
-WATCH_NOTES = ROOT / "models" / "watch_notes.json"
-
-
-def _refresh_watch_forever():
-    while True:
-        try:
-            bundle = watch.build_all_weeks_cache(notes_path=WATCH_NOTES)
-            WATCH["data"] = bundle["active"]
-            WATCH["rows"] = bundle["rows"]
-            WATCH["team_rows"] = bundle["team_rows"]
-            WATCH["weeks"] = {bundle["active"]["week"]: bundle["active"]}
-            try:
-                WATCH["track"] = track.build_track_data(
-                    season=bundle["active"]["season"],
-                    raw_rows=bundle["rows"],
-                    team_rows=bundle["team_rows"],
-                )
-            except Exception as te:
-                print("track refresh failed:", repr(te))
-            WATCH["live"] = True
-        except Exception as e:                           # keep snapshot / previous refresh; retry later
-            print("watch refresh failed:", repr(e))
-        time.sleep(WATCH_REFRESH_SECONDS if WATCH["live"] else 600)
-
-
-_watch_snap = ROOT / "models" / "watch_snapshot.json"
-if _watch_snap.exists():
-    _wdata = json.loads(_watch_snap.read_text())
-    WATCH["data"] = _wdata
-    WATCH["weeks"][_wdata["week"]] = _wdata
-_track_snap = ROOT / "models" / "track_snapshot.json"
-if _track_snap.exists():
-    WATCH["track"] = json.loads(_track_snap.read_text())
-threading.Thread(target=_refresh_watch_forever, daemon=True).start()
-
-
-@app.get("/api/watch")
-def api_watch(week: int | None = None):
-    """Ranked NFL slate with interest breakdown, outcome implications, and outcomes to predict."""
-    data = WATCH["data"]
-    if not data:
-        raise HTTPException(503, "Game watch data is still loading. Try again in a moment.")
-    if week is None or week == data["week"]:
-        return {**data, "live": WATCH["live"]}
-    if week in WATCH["weeks"]:
-        return {**WATCH["weeks"][week], "live": WATCH["live"]}
-    if WATCH["rows"] is not None and week in data.get("available_weeks", []):
-        computed = watch.build_watch_data(
-            week=week, season=data["season"], notes_path=WATCH_NOTES,
-            raw_rows=WATCH["rows"], team_rows=WATCH["team_rows"],
-        )
-        WATCH["weeks"][week] = computed
-        return {**computed, "live": WATCH["live"]}
-    raise HTTPException(404, f"Week {week} is not available right now.")
-
-
-@app.get("/api/watch/track")
-def api_watch_track():
-    """Point-in-time verification scorecard and game-by-game audit log for Why Watch."""
-    data = WATCH["track"]
-    if not data:
-        raise HTTPException(503, "Track record data is still loading. Try again in a moment.")
-    return {**data, "live": WATCH["live"]}
-
-
 # ------------------------------------------------------------------------- pages
 @app.get("/", response_class=HTMLResponse)
 def hub():
     return ui.HUB
-
-
-@app.get("/watch", response_class=HTMLResponse)
-@app.get("/watch/track", response_class=HTMLResponse)
-def watch_page():
-    return ui.WATCH
 
 
 @app.get("/m/{slug}", response_class=HTMLResponse)
@@ -691,40 +652,3 @@ def model_page(slug: str):
         raise HTTPException(404, "Unknown model")
     return ui.MODEL.replace("__SLUG__", slug).replace("__NAME__", REGISTRY[slug]["meta"]["name"])
 
-
-# ---------------------------------------------- demo: NCR text classifier (unchanged)
-NCR_DATA = {
-    "Dimensional": ["bore diameter out of tolerance on finished part", "length exceeds drawing spec by 0.02 inches",
-                    "flange thickness below minimum dimension", "hole position off from datum by 0.015",
-                    "outer diameter oversize after final grind", "wall thickness under tolerance at section B"],
-    "Surface Finish": ["scratches visible on sealing surface", "surface roughness exceeds Ra requirement",
-                       "machining chatter marks on housing face", "pitting and corrosion spots on exterior",
-                       "burrs left on edge after deburr operation", "tool marks on bearing journal"],
-    "Material": ["hardness test below specified range", "wrong alloy certificate received from supplier",
-                 "inclusions found in forging cross section", "material lot missing traceability documentation",
-                 "porosity detected in casting during x-ray", "tensile strength failed supplier cert check"],
-    "Assembly": ["fastener torque not within specification", "missing washer during final assembly",
-                 "o-ring installed twisted in groove", "wrong part number installed at station 4",
-                 "connector not fully seated on harness", "gasket misaligned causing leak at joint"],
-    "Documentation": ["operator signature missing on traveler", "inspection record incomplete for lot",
-                      "revision level mismatch between drawing and work order", "calibration sticker expired on gauge used",
-                      "cert of conformance not attached to shipment", "incorrect serial number recorded in log"],
-}
-NCR_MODEL = make_pipeline(TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True), LogisticRegression(max_iter=1000, C=10))
-NCR_MODEL.fit([t for ts in NCR_DATA.values() for t in ts], [k for k, ts in NCR_DATA.items() for _ in ts])
-
-
-class ClassifyIn(BaseModel):
-    text: str = Field(min_length=3, max_length=2000)
-
-
-@app.post("/api/classify")
-def api_classify(body: ClassifyIn):
-    probs = NCR_MODEL.predict_proba([body.text])[0]
-    ranked = sorted(zip(NCR_MODEL.classes_, probs), key=lambda p: -p[1])[:3]
-    return {"predictions": [{"label": l, "score": round(float(s), 4)} for l, s in ranked]}
-
-
-@app.get("/apps/ncr", response_class=HTMLResponse)
-def ncr_page():
-    return ui.NCR
